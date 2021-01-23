@@ -10,11 +10,11 @@
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* ViewController.swift */; };
-		277A882725BCD0C700C1F374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A882525BCD0C700C1F374 /* Main.storyboard */; };
 		277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277A882825BCD0C700C1F374 /* Assets.xcassets */; };
 		277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */; };
 		277A883725BCD0C700C1F374 /* FitForestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A883625BCD0C700C1F374 /* FitForestTests.swift */; };
 		277A884225BCD0C700C1F374 /* FitForestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A884125BCD0C700C1F374 /* FitForestUITests.swift */; };
+		277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A885625BCE06B00C1F374 /* StepTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		277A882325BCD0C700C1F374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		277A882625BCD0C700C1F374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		277A882825BCD0C700C1F374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		277A882B25BCD0C700C1F374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		277A882D25BCD0C700C1F374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		277A883D25BCD0C700C1F374 /* FitForestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitForestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A884125BCD0C700C1F374 /* FitForestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestUITests.swift; sourceTree = "<group>"; };
 		277A884325BCD0C700C1F374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		277A885625BCE06B00C1F374 /* StepTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +99,10 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				277A885525BCE02A00C1F374 /* StepTracker */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
 				277A882325BCD0C700C1F374 /* ViewController.swift */,
-				277A882525BCD0C700C1F374 /* Main.storyboard */,
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
@@ -126,6 +126,14 @@
 				277A884325BCD0C700C1F374 /* Info.plist */,
 			);
 			path = FitForestUITests;
+			sourceTree = "<group>";
+		};
+		277A885525BCE02A00C1F374 /* StepTracker */ = {
+			isa = PBXGroup;
+			children = (
+				277A885625BCE06B00C1F374 /* StepTracker.swift */,
+			);
+			path = StepTracker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +241,6 @@
 			files = (
 				277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */,
 				277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */,
-				277A882725BCD0C700C1F374 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* ViewController.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
@@ -296,14 +304,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		277A882525BCD0C700C1F374 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				277A882625BCD0C700C1F374 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -446,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vigz.FitForest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -465,7 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vigz.FitForest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import CoreMotion
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        StepTracker.sharedInstance.startUpdating()
     }
 
 
