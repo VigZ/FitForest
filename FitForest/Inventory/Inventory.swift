@@ -11,7 +11,9 @@ class Inventory {
     
     static let sharedInstance = Inventory()
     
-    var points: Int = 0
+    var points: Int {
+        return StepTracker.sharedInstance.numberOfSteps
+    }
     
     var itemHash = {}
     

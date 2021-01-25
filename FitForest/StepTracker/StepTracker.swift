@@ -15,6 +15,11 @@ class StepTracker {
     private let activityManager = CMMotionActivityManager()
     private let pedometer = CMPedometer()
     
+    var currentActivity: String = "Stationary"
+    
+    var numberOfSteps: Int = 0
+
+    
     private func startTrackingActivityType() {
       activityManager.startActivityUpdates(to: OperationQueue.main) {
           [weak self] (activity: CMMotionActivity?) in
@@ -22,17 +27,13 @@ class StepTracker {
           guard let activity = activity else { return }
           DispatchQueue.main.async {
               if activity.walking {
-                print(activity)
-//                  self?.activityTypeLabel.text = "Walking"
+                self?.currentActivity = "Walking"
               } else if activity.stationary {
-                print(activity)
-//                  self?.activityTypeLabel.text = "Stationary"
+                self?.currentActivity = "Stationary"
               } else if activity.running {
-                print(activity)
-//                  self?.activityTypeLabel.text = "Running"
+                self?.currentActivity = "Running"
               } else if activity.automotive {
-                print(activity)
-//                  self?.activityTypeLabel.text = "Automotive"
+                self?.currentActivity = "Cruising"
               }
           }
       }
@@ -44,8 +45,8 @@ class StepTracker {
           guard let pedometerData = pedometerData, error == nil else { return }
 
           DispatchQueue.main.async {
-            print(pedometerData.numberOfSteps.stringValue)
-//              self?.stepsCountLabel.text = pedometerData.numberOfSteps.stringValue
+            
+            self?.numberOfSteps = Int(truncating: pedometerData.numberOfSteps)
           }
       }
     }
