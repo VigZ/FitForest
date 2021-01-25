@@ -16,6 +16,7 @@
 		277A884225BCD0C700C1F374 /* FitForestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A884125BCD0C700C1F374 /* FitForestUITests.swift */; };
 		277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A885625BCE06B00C1F374 /* StepTracker.swift */; };
 		277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A885C25BF1DE200C1F374 /* Inventory.swift */; };
+		277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A886225BF380700C1F374 /* NotificationCenter+names.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		277A884325BCD0C700C1F374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277A885625BCE06B00C1F374 /* StepTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTracker.swift; sourceTree = "<group>"; };
 		277A885C25BF1DE200C1F374 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		277A886225BF380700C1F374 /* NotificationCenter+names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+names.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				277A886125BF37B900C1F374 /* Networking */,
 				277A885B25BF1DA600C1F374 /* Inventory */,
 				277A885525BCE02A00C1F374 /* StepTracker */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
@@ -145,6 +148,14 @@
 				277A885C25BF1DE200C1F374 /* Inventory.swift */,
 			);
 			path = Inventory;
+			sourceTree = "<group>";
+		};
+		277A886125BF37B900C1F374 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				277A886225BF380700C1F374 /* NotificationCenter+names.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 				277A882425BCD0C700C1F374 /* ViewController.swift in Sources */,
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
+				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

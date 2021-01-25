@@ -17,7 +17,11 @@ class StepTracker {
     
     var currentActivity: String = "Stationary"
     
-    var numberOfSteps: Int = 0
+    var numberOfSteps: Int = 0 {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name.StepTrackerEvents.stepCountUpdated, object: self)
+        }
+    }
 
     
     private func startTrackingActivityType() {
