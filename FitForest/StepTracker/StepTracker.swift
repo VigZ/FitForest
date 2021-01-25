@@ -44,12 +44,13 @@ class StepTracker {
     private func startCountingSteps() {
       pedometer.startUpdates(from: Date()) {
           [weak self] pedometerData, error in
-          guard let pedometerData = pedometerData, error == nil else { return }
+        guard let pedometerData = pedometerData, error == nil, let previousSteps = self?.numberOfSteps else { return }
+    
             self?.numberOfSteps = Int(truncating: pedometerData.numberOfSteps)
-        guard let steps = self?.numberOfSteps else{ return }
-        if steps % 5 == 0 {
-            Inventory.sharedInstance.addPoint()
-        }
+            guard let steps = self?.numberOfSteps else { return }
+        // math for point updates
+            let stepDifference = steps - previousSteps
+        Inventory.sharedInstance.points += stepDifference % 3 //roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
       }
     }
     

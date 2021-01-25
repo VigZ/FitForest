@@ -14,8 +14,4 @@ class Inventory {
     var points: Int = 0 // Initial state should be retrieved from hard storage (via Save/Load module) TODO
     
     var itemHash = {}
-    
-    func addPoint() {
-        self.points += 1
-    }
 }
