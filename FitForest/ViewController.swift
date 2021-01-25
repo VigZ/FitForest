@@ -26,7 +26,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerForNotifications()
         StepTracker.sharedInstance.startUpdating()
+        
         view.backgroundColor = .white
         view.addSubview(pointsLabel)
         view.addSubview(stateLabel)
@@ -44,6 +46,20 @@ class ViewController: UIViewController {
         stateLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         stateLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         stateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    private func registerForNotifications() {
+        let ns = NotificationCenter.default
+        let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
+        
+        ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.pointsLabel.text = String(StepTracker.sharedInstance.numberOfSteps)
+                self.stateLabel.text = StepTracker.sharedInstance.currentActivity
+            }
+        }
+        
     }
 
 
