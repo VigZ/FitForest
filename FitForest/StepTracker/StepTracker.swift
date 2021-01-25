@@ -29,7 +29,6 @@ class StepTracker {
           [weak self] (activity: CMMotionActivity?) in
 
           guard let activity = activity else { return }
-          DispatchQueue.main.async {
               if activity.walking {
                 self?.currentActivity = "Walking"
               } else if activity.stationary {
@@ -39,7 +38,6 @@ class StepTracker {
               } else if activity.automotive {
                 self?.currentActivity = "Cruising"
               }
-          }
       }
     }
     
