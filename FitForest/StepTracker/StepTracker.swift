@@ -46,6 +46,10 @@ class StepTracker {
           [weak self] pedometerData, error in
           guard let pedometerData = pedometerData, error == nil else { return }
             self?.numberOfSteps = Int(truncating: pedometerData.numberOfSteps)
+        guard let steps = self?.numberOfSteps else{ return }
+        if steps % 5 == 0 {
+            Inventory.sharedInstance.addPoint()
+        }
       }
     }
     

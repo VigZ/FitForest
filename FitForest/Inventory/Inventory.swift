@@ -11,9 +11,11 @@ class Inventory {
     
     static let sharedInstance = Inventory()
     
-    var points: Int {
-        return StepTracker.sharedInstance.numberOfSteps
-    }
+    var points: Int = 0 // Initial state should be retrieved from hard storage (via Save/Load module) TODO
     
-    var itemHash = {}    
+    var itemHash = {}
+    
+    func addPoint() {
+        self.points += 1
+    }
 }
