@@ -50,7 +50,10 @@ class StepTracker {
             guard let steps = self?.numberOfSteps else { return }
         // math for point updates
             let stepDifference = steps - previousSteps
-        Inventory.sharedInstance.points += stepDifference % 3 //roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
+        print("steps:", steps)
+        print("previousSteps:", previousSteps)
+        print("stepDifference", stepDifference)
+        Inventory.sharedInstance.points += stepDifference /  PointConstants.pointDivision.rawValue//roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
       }
     }
     
