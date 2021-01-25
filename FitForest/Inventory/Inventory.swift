@@ -15,7 +15,5 @@ class Inventory {
         return StepTracker.sharedInstance.numberOfSteps
     }
     
-    var itemHash = {}
-    
-    
+    var itemHash = {}    
 }

@@ -35,7 +35,7 @@ class StepTracker {
                 self?.currentActivity = "Stationary"
               } else if activity.running {
                 self?.currentActivity = "Running"
-              } else if activity.automotive {
+              } else if activity.automotive || activity.cycling {
                 self?.currentActivity = "Cruising"
               }
       }

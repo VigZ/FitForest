@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     let stateLabel: UILabel = {
         let label = UILabel()
-        label.text = "State"
+        label.text = "Stationary"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
