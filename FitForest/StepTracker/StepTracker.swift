@@ -47,11 +47,7 @@ class StepTracker {
       pedometer.startUpdates(from: Date()) {
           [weak self] pedometerData, error in
           guard let pedometerData = pedometerData, error == nil else { return }
-
-          DispatchQueue.main.async {
-            
             self?.numberOfSteps = Int(truncating: pedometerData.numberOfSteps)
-          }
       }
     }
     
