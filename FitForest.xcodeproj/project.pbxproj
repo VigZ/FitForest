@@ -107,6 +107,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				277A887925C0824900C1F374 /* Animations */,
 				277A886725BF670000C1F374 /* Contants */,
 				277A886125BF37B900C1F374 /* Networking */,
 				277A885B25BF1DA600C1F374 /* Inventory */,
@@ -170,6 +171,13 @@
 				277A886825BF671B00C1F374 /* PointContants.swift */,
 			);
 			path = Contants;
+			sourceTree = "<group>";
+		};
+		277A887925C0824900C1F374 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
