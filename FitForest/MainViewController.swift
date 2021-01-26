@@ -8,7 +8,7 @@
 import UIKit
 import CoreMotion
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     let stepsLabel: UILabel = {
         let label = UILabel()

@@ -16,11 +16,22 @@ class MainTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        createTabBarItems()
         
     }
     
     private func createTabBarItems() {
-      
+        
+        // Create First Tab
+        let tabOne = MainViewController()
+        let tabOneImage = UIImage(systemName: "figure.walk.circle")
+        let selectedTabOneImage = UIImage(systemName: "figure.walk.circle.fill")
+        let tabOneBarItem = UITabBarItem(title: "Home", image: tabOneImage, selectedImage: selectedTabOneImage)
+        
+        tabOne.tabBarItem = tabOneBarItem
+        
+        // Add ViewControllers
+        self.viewControllers = [tabOne]
     }
     
 
