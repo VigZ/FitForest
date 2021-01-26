@@ -51,9 +51,9 @@ class MainViewController: UIViewController {
         StepTracker.sharedInstance.startUpdating()
         
         view.backgroundColor = .white
-//        view.addSubview(stepsLabel)
+        view.addSubview(stepsLabel)
         view.addSubview(pointsLabel)
-//        view.addSubview(stateLabel)
+        view.addSubview(stateLabel)
         view.addSubview(upperContainer)
         view.addSubview(lowerContainer)
         
@@ -76,17 +76,17 @@ class MainViewController: UIViewController {
         pointsLabel.topAnchor.constraint(equalTo: upperContainer.topAnchor, constant: 10).isActive = true
         
         pointsLabel.layer.zPosition = 1
-//        stepsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        stepsLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-//        stepsLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        stepsLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//        
-//        pointsLabel.centerXAnchor.constraint(equalTo: stepsLabel.centerXAnchor, constant: 20).isActive = true
-//        
-//        stateLabel.topAnchor.constraint(equalTo: pointsLabel.bottomAnchor, constant: 150).isActive = true
-//        stateLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        stateLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-//        stateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        stepsLabel.centerXAnchor.constraint(equalTo: upperContainer.centerXAnchor).isActive = true
+        stepsLabel.centerYAnchor.constraint(equalTo: upperContainer.centerYAnchor).isActive = true
+        stepsLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        stepsLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        stepsLabel.font = stepsLabel.font.withSize(40)
+        stepsLabel.layer.zPosition = 1
+      
+        stateLabel.centerXAnchor.constraint(equalTo: upperContainer.centerXAnchor).isActive = true
+
+        stateLabel.bottomAnchor.constraint(equalTo: upperContainer.bottomAnchor, constant: 0).isActive = true
+        stateLabel.layer.zPosition = 1
     }
     
     private func registerForNotifications() {
