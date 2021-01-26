@@ -18,6 +18,7 @@
 		277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A885C25BF1DE200C1F374 /* Inventory.swift */; };
 		277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A886225BF380700C1F374 /* NotificationCenter+names.swift */; };
 		277A886925BF671B00C1F374 /* PointContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A886825BF671B00C1F374 /* PointContants.swift */; };
+		277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A887025C04DAE00C1F374 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		277A885C25BF1DE200C1F374 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		277A886225BF380700C1F374 /* NotificationCenter+names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+names.swift"; sourceTree = "<group>"; };
 		277A886825BF671B00C1F374 /* PointContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointContants.swift; sourceTree = "<group>"; };
+		277A887025C04DAE00C1F374 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
+				277A887025C04DAE00C1F374 /* MainTabBarController.swift */,
 			);
 			path = FitForest;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			files = (
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* ViewController.swift in Sources */,
+				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
