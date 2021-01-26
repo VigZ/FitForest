@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     
     let stepsLabel: UILabel = {
         let label = UILabel()
-        label.text = String(StepTracker.sharedInstance.numberOfSteps)
+        label.text = "Steps: \(StepTracker.sharedInstance.numberOfSteps)"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
     
     let pointsLabel: UILabel = {
         let label = UILabel()
-        label.text = String(Inventory.sharedInstance.points)
+        label.text = "Gems: \(Inventory.sharedInstance.points)"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
     
     let lowerContainer: UIView = {
         let lowerContainer = UIView()
-        lowerContainer.backgroundColor = .systemBlue
+        lowerContainer.backgroundColor = .systemPurple
         lowerContainer.translatesAutoresizingMaskIntoConstraints = false
         return lowerContainer
     }()
@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         
         view.backgroundColor = .white
 //        view.addSubview(stepsLabel)
-//        view.addSubview(pointsLabel)
+        view.addSubview(pointsLabel)
 //        view.addSubview(stateLabel)
         view.addSubview(upperContainer)
         view.addSubview(lowerContainer)
@@ -65,13 +65,17 @@ class MainViewController: UIViewController {
         upperContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         upperContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         upperContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        upperContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        upperContainer.heightAnchor.constraint(equalToConstant: 600).isActive = true
         
         lowerContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         lowerContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         lowerContainer.topAnchor.constraint(equalTo: upperContainer.bottomAnchor).isActive = true
-        upperContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        lowerContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
+        pointsLabel.trailingAnchor.constraint(equalTo: upperContainer.trailingAnchor, constant: -10).isActive = true
+        pointsLabel.topAnchor.constraint(equalTo: upperContainer.topAnchor, constant: 10).isActive = true
+        
+        pointsLabel.layer.zPosition = 1
 //        stepsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 //        stepsLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
 //        stepsLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
