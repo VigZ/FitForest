@@ -107,6 +107,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				277A888525C0A6C300C1F374 /* Storage */,
 				277A887925C0824900C1F374 /* Animations */,
 				277A886725BF670000C1F374 /* Contants */,
 				277A886125BF37B900C1F374 /* Networking */,
@@ -178,6 +179,13 @@
 			children = (
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		277A888525C0A6C300C1F374 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
