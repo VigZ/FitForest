@@ -19,6 +19,7 @@
 		277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A886225BF380700C1F374 /* NotificationCenter+names.swift */; };
 		277A886925BF671B00C1F374 /* PointContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A886825BF671B00C1F374 /* PointContants.swift */; };
 		277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A887025C04DAE00C1F374 /* MainTabBarController.swift */; };
+		277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		277A886225BF380700C1F374 /* NotificationCenter+names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+names.swift"; sourceTree = "<group>"; };
 		277A886825BF671B00C1F374 /* PointContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointContants.swift; sourceTree = "<group>"; };
 		277A887025C04DAE00C1F374 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		277A889225C31DCD00C1F374 /* FitForest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitForest.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
 				277A887025C04DAE00C1F374 /* MainTabBarController.swift */,
+				277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */,
 			);
 			path = FitForest;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
+				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
@@ -649,6 +653,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				277A889225C31DCD00C1F374 /* FitForest.xcdatamodel */,
+			);
+			currentVersion = 277A889225C31DCD00C1F374 /* FitForest.xcdatamodel */;
+			path = FitForest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 277A881425BCD0C700C1F374 /* Project object */;
 }
