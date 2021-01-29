@@ -107,10 +107,12 @@ class CreateJourneyViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
             self.endJourney()
             self.saveJourney()
+            let dvc = JourneyDetailViewController()
+            dvc.journey = self.journey
+            self.navigationController?.pushViewController(dvc, animated: true)
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
-          self.endJourney()
-//          _ = self.navigationController?.popToRootViewController(animated: true)
+            self.endJourney()
         })
         
         timer?.invalidate()
