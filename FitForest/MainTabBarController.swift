@@ -24,14 +24,24 @@ class MainTabBarController: UITabBarController {
         
         // Create First Tab
         let tabOne = MainViewController()
-        let tabOneImage = UIImage(systemName: "figure.walk.circle")
-        let selectedTabOneImage = UIImage(systemName: "figure.walk.circle.fill")
+        let tabOneImage = UIImage(systemName: "house.circle")
+        let selectedTabOneImage = UIImage(systemName: "house.circle.fill")
         let tabOneBarItem = UITabBarItem(title: "Home", image: tabOneImage, selectedImage: selectedTabOneImage)
         
         tabOne.tabBarItem = tabOneBarItem
         
+        // Create Second Tab
+        let tabTwo = CreateJourneyViewController()
+        // Embed in Navigation Controller
+        let tabTwoNav = UINavigationController(rootViewController: tabTwo)
+        let tabTwoImage = UIImage(systemName: "figure.walk.circle")
+        let selectedTabTwoImage = UIImage(systemName: "figure.walk.circle.fill")
+        let tabTwoBarItem = UITabBarItem(title: "Journey", image: tabTwoImage, selectedImage: selectedTabTwoImage)
+        
+        tabTwoNav.tabBarItem = tabTwoBarItem
+        
         // Add ViewControllers
-        self.viewControllers = [tabOne]
+        self.viewControllers = [tabOne, tabTwoNav]
     }
     
 
