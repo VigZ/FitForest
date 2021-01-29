@@ -6,10 +6,28 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CreateJourneyViewController: UIViewController {
     
     private var journey: Journey?
+    private let locationManager = LocationManager.sharedInstance
+    private var seconds = 0 {
+        didSet {
+            let formattedDistance = FormatDisplay.distance(distance)
+            let formattedTime = FormatDisplay.time(seconds)
+            let formattedPace = FormatDisplay.pace(distance: distance,
+                                                   seconds: seconds,
+                                                   outputUnit: UnitSpeed.minutesPerMile)
+             
+            distanceLabel.text = "Distance:  \(formattedDistance)"
+            timeLabel.text = "Time:  \(formattedTime)"
+            paceLabel.text = "Pace:  \(formattedPace)"
+        }
+    }
+    private var timer: Timer?
+    private var distance = Measurement(value: 0 , unit: UnitLength.meters)
+    private var locationList: [CLLocation] = []
     
     let startButton: UIButton = {
         let button = UIButton()
@@ -51,6 +69,10 @@ class CreateJourneyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let locationManager = LocationManager.sharedInstance
+        locationManager.requestWhenInUseAuthorization()
+        
         view.backgroundColor = .white
         view.addSubview(startButton)
         view.addSubview(endButton)
@@ -101,6 +123,12 @@ class CreateJourneyViewController: UIViewController {
         paceLabel.centerYAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20).isActive = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+      super.viewWillDisappear(animated)
+      timer?.invalidate()
+      locationManager.stopUpdatingLocation()
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -112,4 +140,21 @@ class CreateJourneyViewController: UIViewController {
     }
     */
 
+}
+
+extension CreateJourneyViewController: CLLocationManagerDelegate {
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    for newLocation in locations {
+      let howRecent = newLocation.timestamp.timeIntervalSinceNow
+      guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
+
+      if let lastLocation = locationList.last {
+        let delta = newLocation.distance(from: lastLocation)
+        distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+      }
+
+      locationList.append(newLocation)
+    }
+  }
 }
