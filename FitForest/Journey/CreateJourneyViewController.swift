@@ -34,6 +34,7 @@ class CreateJourneyViewController: UIViewController {
         button.backgroundColor = .systemGreen
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start", for: .normal)
+        button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         return button
     }()
     
@@ -83,7 +84,13 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func startJourney(){
-        
+        seconds = 0
+        distance = Measurement(value: 0, unit: UnitLength.meters)
+        locationList.removeAll()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+          self.seconds += 1
+        }
+        startLocationUpdates()
     }
     
     private func endJourney(){
@@ -106,6 +113,10 @@ class CreateJourneyViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    @objc func startTapped() {
+        startJourney()
+    }
+    
     private func setUpViews(){
         startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         startButton.centerYAnchor.constraint(equalTo: endButton.topAnchor, constant: -20).isActive = true
@@ -121,6 +132,13 @@ class CreateJourneyViewController: UIViewController {
         
         paceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         paceLabel.centerYAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20).isActive = true
+    }
+    
+    private func startLocationUpdates() {
+      locationManager.delegate = self
+      locationManager.activityType = .fitness
+      locationManager.distanceFilter = 10
+      locationManager.startUpdatingLocation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
