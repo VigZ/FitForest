@@ -24,6 +24,8 @@
 		277A88E125C474B000C1F374 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88E025C474B000C1F374 /* LocationManager.swift */; };
 		277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88E525C488E700C1F374 /* UnitConverterPace.swift */; };
 		277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88EA25C4896A00C1F374 /* FormatDisplay.swift */; };
+		277A88F325C494D700C1F374 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88F225C494D700C1F374 /* CoreDataManager.swift */; };
+		277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		277A88E025C474B000C1F374 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		277A88E525C488E700C1F374 /* UnitConverterPace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverterPace.swift; sourceTree = "<group>"; };
 		277A88EA25C4896A00C1F374 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
+		277A88F225C494D700C1F374 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				277A88F725C4951B00C1F374 /* CoreData */,
 				277A88DA25C468E300C1F374 /* Journey */,
 				277A888525C0A6C300C1F374 /* Storage */,
 				277A887925C0824900C1F374 /* Animations */,
@@ -131,7 +136,6 @@
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
 				277A887025C04DAE00C1F374 /* MainTabBarController.swift */,
-				277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */,
 			);
 			path = FitForest;
 			sourceTree = "<group>";
@@ -209,6 +213,16 @@
 				277A88EA25C4896A00C1F374 /* FormatDisplay.swift */,
 			);
 			path = Journey;
+			sourceTree = "<group>";
+		};
+		277A88F725C4951B00C1F374 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */,
+				277A88F225C494D700C1F374 /* CoreDataManager.swift */,
+				277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +366,8 @@
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
+				277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */,
+				277A88F325C494D700C1F374 /* CoreDataManager.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

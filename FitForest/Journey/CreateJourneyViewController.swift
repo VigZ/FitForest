@@ -94,7 +94,7 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func endJourney(){
-        
+        locationManager.stopUpdatingLocation()
     }
     
     @objc func stopTapped() {
@@ -103,12 +103,15 @@ class CreateJourneyViewController: UIViewController {
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-          self.endJourney()
+            self.endJourney()
+            self.saveJourney()
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
           self.endJourney()
 //          _ = self.navigationController?.popToRootViewController(animated: true)
         })
+        
+        timer?.invalidate()
             
         present(alertController, animated: true)
     }
@@ -147,6 +150,24 @@ class CreateJourneyViewController: UIViewController {
       locationManager.stopUpdatingLocation()
     }
     
+    private func saveJourney() {
+      let newJourney = Journey(context: CoreDataManager.context)
+      newJourney.distance = distance.value
+      newJourney.duration = Int16(seconds)
+      newJourney.timestamp = Date()
+      
+      for location in locationList {
+        let locationObject = Location(context: CoreDataManager.context)
+        locationObject.timestamp = location.timestamp
+        locationObject.latitude = location.coordinate.latitude
+        locationObject.longitude = location.coordinate.longitude
+        newJourney.addToLocations(locationObject)
+      }
+      
+      CoreDataManager.saveContext()
+      
+      journey = newJourney
+    }
 
     /*
     // MARK: - Navigation
@@ -176,3 +197,4 @@ extension CreateJourneyViewController: CLLocationManagerDelegate {
     }
   }
 }
+
