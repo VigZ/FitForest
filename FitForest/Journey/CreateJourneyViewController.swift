@@ -31,18 +31,21 @@ class CreateJourneyViewController: UIViewController {
     let distanceLabel: UILabel = {
         let label = UILabel()
         label.text = "Distance:"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "Time:"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let paceLabel: UILabel = {
         let label = UILabel()
         label.text = "Pace:"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -51,6 +54,9 @@ class CreateJourneyViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(startButton)
         view.addSubview(endButton)
+        view.addSubview(distanceLabel)
+        view.addSubview(timeLabel)
+        view.addSubview(paceLabel)
         setUpViews()
     }
     
@@ -84,6 +90,15 @@ class CreateJourneyViewController: UIViewController {
         
         endButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         endButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        
+        distanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        distanceLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        
+        timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        timeLabel.centerYAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 20).isActive = true
+        
+        paceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        paceLabel.centerYAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20).isActive = true
     }
     
 
