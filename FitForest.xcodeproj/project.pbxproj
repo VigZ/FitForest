@@ -22,6 +22,8 @@
 		277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */; };
 		277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88DB25C4690F00C1F374 /* CreateJourneyViewController.swift */; };
 		277A88E125C474B000C1F374 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88E025C474B000C1F374 /* LocationManager.swift */; };
+		277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88E525C488E700C1F374 /* UnitConverterPace.swift */; };
+		277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88EA25C4896A00C1F374 /* FormatDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		277A889225C31DCD00C1F374 /* FitForest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitForest.xcdatamodel; sourceTree = "<group>"; };
 		277A88DB25C4690F00C1F374 /* CreateJourneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJourneyViewController.swift; sourceTree = "<group>"; };
 		277A88E025C474B000C1F374 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		277A88E525C488E700C1F374 /* UnitConverterPace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverterPace.swift; sourceTree = "<group>"; };
+		277A88EA25C4896A00C1F374 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 			children = (
 				277A88DB25C4690F00C1F374 /* CreateJourneyViewController.swift */,
 				277A88E025C474B000C1F374 /* LocationManager.swift */,
+				277A88E525C488E700C1F374 /* UnitConverterPace.swift */,
+				277A88EA25C4896A00C1F374 /* FormatDisplay.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -337,9 +343,11 @@
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
+				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
 				277A88E125C474B000C1F374 /* LocationManager.swift in Sources */,
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
+				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
