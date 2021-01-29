@@ -14,15 +14,17 @@ class CreateJourneyViewController: UIViewController {
     private let locationManager = LocationManager.sharedInstance
     private var seconds = 0 {
         didSet {
-            let formattedDistance = FormatDisplay.distance(distance)
-            let formattedTime = FormatDisplay.time(seconds)
-            let formattedPace = FormatDisplay.pace(distance: distance,
-                                                   seconds: seconds,
-                                                   outputUnit: UnitSpeed.minutesPerMile)
-             
-            distanceLabel.text = "Distance:  \(formattedDistance)"
-            timeLabel.text = "Time:  \(formattedTime)"
-            paceLabel.text = "Pace:  \(formattedPace)"
+            DispatchQueue.main.async {
+                let formattedDistance = FormatDisplay.distance(self.distance)
+                let formattedTime = FormatDisplay.time(self.seconds)
+                let formattedPace = FormatDisplay.pace(distance: self.distance,
+                                                       seconds: self.seconds,
+                                                       outputUnit: UnitSpeed.minutesPerMile)
+                self.distanceLabel.text = "Distance:  \(formattedDistance)"
+                self.timeLabel.text = "Time:  \(formattedTime)"
+                self.paceLabel.text = "Pace:  \(formattedPace)"
+            }
+
         }
     }
     private var timer: Timer?
