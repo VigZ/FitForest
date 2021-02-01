@@ -69,6 +69,7 @@ class JourneyDetailViewController: UIViewController {
         mapView.center = view.center
         view.addSubview(mapView)
         self.mapView = mapView
+        mapView.delegate = self
         
         
     }
@@ -100,7 +101,6 @@ class JourneyDetailViewController: UIViewController {
       else {
         return nil
       }
-      
       let latitudes = locations.map { location -> Double in
         let location = location as! Location
         return location.latitude
@@ -216,12 +216,15 @@ class JourneyDetailViewController: UIViewController {
 
 extension JourneyDetailViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    
     guard let polyline = overlay as? MulticolorPolyline else {
       return MKOverlayRenderer(overlay: overlay)
+        
     }
     let renderer = MKPolylineRenderer(polyline: polyline)
     renderer.strokeColor = polyline.color
     renderer.lineWidth = 3
+    
     return renderer
   }
 }

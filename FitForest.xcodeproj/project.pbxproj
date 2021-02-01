@@ -28,6 +28,8 @@
 		277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */; };
 		277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */; };
 		277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */; };
+		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
+		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUD.swift; sourceTree = "<group>"; };
 		277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
 		277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
+		278453BC25C89F5B00D00B80 /* FitForest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitForest.entitlements; sourceTree = "<group>"; };
+		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +115,7 @@
 				277A883525BCD0C700C1F374 /* FitForestTests */,
 				277A884025BCD0C700C1F374 /* FitForestUITests */,
 				277A881D25BCD0C700C1F374 /* Products */,
+				278453BD25C89F5B00D00B80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				278453BC25C89F5B00D00B80 /* FitForest.entitlements */,
 				277A88F725C4951B00C1F374 /* CoreData */,
 				277A88DA25C468E300C1F374 /* Journey */,
 				277A888525C0A6C300C1F374 /* Storage */,
@@ -217,6 +225,7 @@
 				277A88EA25C4896A00C1F374 /* FormatDisplay.swift */,
 				277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */,
 				277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */,
+				278453C325C89FD700D00B80 /* FitForestHealthStore.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -229,6 +238,14 @@
 				277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		278453BD25C89F5B00D00B80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				278453BE25C89F5B00D00B80 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +389,7 @@
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
+				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
 				277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */,
 				277A88F325C494D700C1F374 /* CoreDataManager.swift in Sources */,
@@ -544,6 +562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FitForest/FitForest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RH95SV2NG5;
 				INFOPLIST_FILE = FitForest/Info.plist;
@@ -563,6 +582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FitForest/FitForest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RH95SV2NG5;
 				INFOPLIST_FILE = FitForest/Info.plist;
