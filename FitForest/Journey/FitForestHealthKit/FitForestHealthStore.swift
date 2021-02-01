@@ -32,4 +32,14 @@ class FitForestHealthStore {
             }
         }
     }
+    
+    func retrieveSteps(start: Date, end: Date, completion: (_ stepRetrieved: Double) -> Void) {
+        let stepsCount = HKQuantityType.quantityType(forIdentifier: .stepCount)
+        
+        let predicate = HKQuery.predicateForSamples(withStart: start , end: end, options: .strictStartDate )
+        
+        
+    }
+    
+    
 }
