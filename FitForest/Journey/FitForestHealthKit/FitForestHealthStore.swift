@@ -13,6 +13,7 @@ class FitForestHealthStore {
     static let sharedInstance = FitForestHealthStore()
     
     private var hkHealthStore: HKHealthStore? = {
+        //check if health store is available
         if HKHealthStore.isHealthDataAvailable(){
             return HKHealthStore()
         }
@@ -33,13 +34,8 @@ class FitForestHealthStore {
         }
     }
     
-    func retrieveSteps(start: Date, end: Date, completion: (_ stepRetrieved: Double) -> Void) {
-        let stepsCount = HKQuantityType.quantityType(forIdentifier: .stepCount)
-        
-        let predicate = HKQuery.predicateForSamples(withStart: start , end: end, options: .strictStartDate )
-        
+    func createWorkout(){
         
     }
-    
     
 }
