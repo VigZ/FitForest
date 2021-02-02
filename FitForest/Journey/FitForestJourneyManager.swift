@@ -10,7 +10,7 @@ import HealthKit
 
 class FitForestJourneyManager {
     
-    var builderPack: BuilderPack
+    var builderPack: BuilderPack!
     
     
     //External Services
@@ -29,7 +29,6 @@ class FitForestJourneyManager {
         let workoutRouteBuilder = HKWorkoutRouteBuilder(healthStore: hkHealthStore, device: nil)
         
         self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, workoutBuilder: workoutBuilder, routeBuilder: workoutRouteBuilder)
-        
     }
     
     private func requestUserPermissions(){
@@ -56,6 +55,41 @@ class FitForestJourneyManager {
             }
         
         }
+    
+//    func endWorkout(){
+//        let endDate = Date()
+//        self.collectData(endDate: endDate)
+//        workoutBuilder?.endCollection(withEnd: endDate){
+//            (bool, error) in
+//        }
+//    }
+    
+//    private func collectData(endDate: Date){
+//
+//        guard let start = workoutBuilder?.startDate else {
+//            return
+//        }
+//        //TODO: Need to add error handling when using simulator and pedometer data unavailable.
+//        // Query StepTracker for step data during workout
+//        stepTracker.queryPedometer(from: start, to: endDate) { (data, error) in
+//
+//            guard let data = data else {return}
+//
+//            // Add data to workout.
+//            // Create Samples
+//            // data.startDate
+//            // data.endDate
+//            // data.steps
+//            // data.distance May want to use location objects for more accurate distance
+//            // data.currentPace
+//            // data.currentCadence
+//            // data.averageActivePace
+//            // data.floorsAscended / floorsDecended
+////            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
+//
+//
+//        }
+//    }
     
 
 }
