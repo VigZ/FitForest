@@ -20,6 +20,12 @@ class FitForestHealthStore {
         return nil
     }()
     
+    private var hkWorkoutConfig: HKWorkoutConfiguration = {
+        let config = HKWorkoutConfiguration()
+        config.activityType = .running
+        return config
+    }()
+    
     func requestUserPermissions(){
         let permissions = Set([HKObjectType.workoutType(),
                             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
@@ -35,7 +41,40 @@ class FitForestHealthStore {
     }
     
     func createWorkout(){
+        guard let hkHealthStore = hkHealthStore else { return }
+        let builder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
+       
+        startWorkout(builder: builder)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//
+//            builder.finishWorkout(){ (workout, error) in
+//
+//            }
+//        }
         
     }
     
+    private func startWorkout(builder: HKWorkoutBuilder){
+        builder.beginCollection(withStart: Date()){
+            (bool, error) in
+        }
+    }
+    
+    private func endWorkout(builder:HKWorkoutBuilder){
+        builder.endCollection(withEnd: Date()){
+            (bool, error) in
+        }
+    }
+    
+    func collectSteps(){
+        
+    }
+    
+    func collectDistance(){
+        
+    }
+    
+    func collectEnergyBurned(){
+        
+    }
 }

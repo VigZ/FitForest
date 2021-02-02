@@ -83,6 +83,9 @@ class CreateJourneyViewController: UIViewController {
         view.addSubview(timeLabel)
         view.addSubview(paceLabel)
         setUpViews()
+        //TODO: REMOVE THESE
+        FitForestHealthStore.sharedInstance.requestUserPermissions()
+        FitForestHealthStore.sharedInstance.startWorkout()
     }
     
     private func startJourney(){
