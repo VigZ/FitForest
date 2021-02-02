@@ -12,7 +12,7 @@ class FitForestHealthStore {
     
     static let sharedInstance = FitForestHealthStore()
     
-    private var hkHealthStore: HKHealthStore? = {
+    var hkHealthStore: HKHealthStore? = {
         //check if health store is available
         if HKHealthStore.isHealthDataAvailable(){
             return HKHealthStore()
@@ -20,7 +20,7 @@ class FitForestHealthStore {
         return nil
     }()
     
-    private var hkWorkoutConfig: HKWorkoutConfiguration = {
+    var hkWorkoutConfig: HKWorkoutConfiguration = {
         let config = HKWorkoutConfiguration()
         config.activityType = .running
         return config
@@ -86,7 +86,6 @@ class FitForestHealthStore {
             // data.currentCadence
             // data.averageActivePace
             // data.floorsAscended / floorsDecended
-            workoutBuilder?.
 //            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
 
             

@@ -10,8 +10,6 @@ import HealthKit
 
 class FitForestJourneyManager {
     
-    typealias BuilderPack = (JourneyWorkout, HKWorkoutBuilder, HKWorkoutRouteBuilder)
-    
     var builderPack: BuilderPack
     
     
@@ -25,12 +23,19 @@ class FitForestJourneyManager {
     
     init(journeyWorkout:JourneyWorkout) {
        // Create Builder Pack
+        guard let hkHealthStore = fitForestHealthStore.hkHealthStore else { return }
+        let workoutBuilder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: fitForestHealthStore.hkWorkoutConfig, device: nil)
+        
+        let workoutRouteBuilder = HKWorkoutRouteBuilder(healthStore: hkHealthStore, device: nil)
+        
+        self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, workoutBuilder: workoutBuilder, routeBuilder: workoutRouteBuilder)
+        
     }
-    
     
     private func requestUserPermissions(){
         //Check Location Data
         requestLocationData()
+        
         //Request Health Permissions
         requestHealthKitPermissions()
     
@@ -41,16 +46,16 @@ class FitForestJourneyManager {
     }
     
     private func requestHealthKitPermissions(){
-        let permissions = Set([HKObjectType.workoutType(),
-                            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
-                            HKObjectType.quantityType(forIdentifier: .distanceCycling)!,
-                            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-                            HKObjectType.quantityType(forIdentifier: .heartRate)!])
-        
-        fitForestHealthStore.hkHealthStore?.requestAuthorization(toShare: permissions, read: permissions) { (sucess, error) in
-            if !sucess {
-                // TODO: Add error handling for failure.
-            }
-        }
+        fitForestHealthStore.requestUserPermissions()
     }
+    
+    func startWorkout() {
+        builderPack.workoutBuilder.beginCollection(withStart: Date()){
+            (bool, error) in
+            //Initialize location tracking here.
+            }
+        
+        }
+    
+
 }

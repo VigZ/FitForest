@@ -32,6 +32,7 @@
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
 		27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */; };
+		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
 		278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyWorkout.swift; sourceTree = "<group>"; };
 		27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestJourneyManager.swift; sourceTree = "<group>"; };
+		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */,
 				278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */,
 				27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */,
+				27A93F0725C9F0410090A794 /* BuilderPack.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
+				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,
