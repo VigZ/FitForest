@@ -13,6 +13,7 @@ class CreateJourneyViewController: UIViewController {
     private var journey: Journey?
     private let locationManager = LocationManager.sharedInstance
     private let fitHealthStore = FitForestHealthStore.sharedInstance
+    
     private var seconds = 0 {
         didSet {
             DispatchQueue.main.async {
@@ -73,9 +74,7 @@ class CreateJourneyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let locationManager = LocationManager.sharedInstance
-        locationManager.requestWhenInUseAuthorization()
+
         
         view.backgroundColor = .white
         view.addSubview(startButton)
@@ -84,9 +83,13 @@ class CreateJourneyViewController: UIViewController {
         view.addSubview(timeLabel)
         view.addSubview(paceLabel)
         setUpViews()
-        //TODO: REMOVE THESE
+        checkPermissions()
+        
+    }
+    
+    private func checkPermissions(){
+        locationManager.requestWhenInUseAuthorization()
         FitForestHealthStore.sharedInstance.requestUserPermissions()
-        FitForestHealthStore.sharedInstance.startWorkout()
     }
     
     private func startJourney(){
@@ -97,10 +100,13 @@ class CreateJourneyViewController: UIViewController {
           self.seconds += 1
         }
         startLocationUpdates()
+        fitHealthStore.createWorkout()
+        fitHealthStore.startWorkout()
     }
     
     private func endJourney(){
         locationManager.stopUpdatingLocation()
+        fitHealthStore.endWorkout()
     }
     
     @objc func stopTapped() {

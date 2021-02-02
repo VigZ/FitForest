@@ -26,6 +26,10 @@ class FitForestHealthStore {
         return config
     }()
     
+    private var stepTracker = StepTracker.sharedInstance
+    
+    var workoutBuilder: HKWorkoutBuilder?
+    
     func requestUserPermissions(){
         let permissions = Set([HKObjectType.workoutType(),
                             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
@@ -40,16 +44,16 @@ class FitForestHealthStore {
         }
     }
     
-    func createWorkout() -> HKWorkoutBuilder? {
-        guard let hkHealthStore = hkHealthStore else { return nil }
-        let builder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
-        return builder
+    func createWorkout(){
+        guard let hkHealthStore = hkHealthStore else { return }
+        workoutBuilder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
     }
         
-    func startWorkout(builder:HKWorkoutBuilder) {
-        builder.beginCollection(withStart: Date()){
+    func startWorkout() {
+        workoutBuilder?.beginCollection(withStart: Date()){
             (bool, error) in
             }
+        
         }
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
@@ -58,21 +62,30 @@ class FitForestHealthStore {
 //
 //            }
 //        }
-        
-    }
     
-    func endWorkout(builder: HKWorkoutBuilder){
-        builder.endCollection(withEnd: Date()){
+    func endWorkout(){
+        let endDate = Date()
+        self.collectSteps(endDate: endDate)
+        workoutBuilder?.endCollection(withEnd: endDate){
             (bool, error) in
         }
     }
     
-    func collectSteps(){
-//        // Query StepTracker for step data during workout
-//        StepTracker.sharedInstance.queryPedometer(from: builder?.startDate, to: builder?.endDate) { (data, error) in
-//            // Create Sample for Step Data
-//
-//        }
+    func collectSteps(endDate: Date){
+        
+        guard let start = workoutBuilder?.startDate else {
+            return
+        }
+        // Query StepTracker for step data during workout
+        stepTracker.queryPedometer(from: start, to: endDate) { (data, error) in
+            
+            guard let data = data else {return}
+            
+            print(data.averageActivePace)
+            print(data.distance)
+            print(data.floorsAscended)
+            
+        }
     }
     
     func collectDistance(){
@@ -81,5 +94,9 @@ class FitForestHealthStore {
     
     func collectEnergyBurned(){
         
+    }
+    
+    func isActiveWorkoutBuilder() -> Bool {
+        return workoutBuilder != nil ? true : false
     }
 }
