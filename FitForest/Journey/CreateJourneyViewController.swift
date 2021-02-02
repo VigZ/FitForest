@@ -10,7 +10,6 @@ import CoreLocation
 
 class CreateJourneyViewController: UIViewController {
     
-    private let fitHealthStore = FitForestHealthStore.sharedInstance
     private var journeyManager: FitForestJourneyManager!
     
     private var seconds = 0 {
@@ -104,8 +103,8 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func endJourney(){
-        locationManager.stopUpdatingLocation()
-//        fitHealthStore.endWorkout()
+        journeyManager.locationManager.stopUpdatingLocation()
+        journeyManager.endWorkout()
     }
     
     @objc func stopTapped() {
@@ -117,7 +116,7 @@ class CreateJourneyViewController: UIViewController {
             self.endJourney()
             self.saveJourney()
             let dvc = JourneyDetailViewController()
-            dvc.journey = self.journey
+            dvc.journey = self.journeyManager.builderPack.journeyWorkout
             self.navigationController?.pushViewController(dvc, animated: true)
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
@@ -160,7 +159,7 @@ class CreateJourneyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
       timer?.invalidate()
-      locationManager.stopUpdatingLocation()
+        journeyManager.locationManager.stopUpdatingLocation()
     }
     
     private func saveJourney() {
@@ -179,53 +178,27 @@ class CreateJourneyViewController: UIViewController {
       
       CoreDataManager.saveContext()
       
-      journey = newJourney
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension CreateJourneyViewController: CLLocationManagerDelegate {
 
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    for newLocation in locations {
-      let howRecent = newLocation.timestamp.timeIntervalSinceNow
-      guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
-
-      if let lastLocation = locationList.last {
-        let delta = newLocation.distance(from: lastLocation)
-        distance = distance + Measurement(value: delta, unit: UnitLength.meters)
-      }
-
-      locationList.append(newLocation)
-      // Add the filtered data to the route.
-      routeBuilder.insertRouteData(filteredLocations) { (success, error) in
-            if !success {
-                // Handle any errors here.
-            }
-        }
-        
-    }
-  }
-}
-
-func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    // Filter location data
     
-    // Filter the raw data.
     let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-        location.horizontalAccuracy <= 20.0
+        location.horizontalAccuracy <= 5.0
     }
     
     guard !filteredLocations.isEmpty else { return }
     
-
+    locationList = filteredLocations
+    // Add the filtered data to the route.
+      journeyManager.builderPack.routeBuilder.insertRouteData(locationList) { (success, error) in
+          if !success {
+              // Handle any errors here.
+          }
+    }
+  }
 }
+

@@ -10,7 +10,7 @@ import MapKit
 
 class JourneyDetailViewController: UIViewController {
     
-    var journey: Journey!
+    var journey: JourneyWorkout!
     var mapView: MKMapView!
     
     let distanceLabel: UILabel = {
