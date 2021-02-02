@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 class FitForestJourneyManager {
     
@@ -31,7 +32,7 @@ class FitForestJourneyManager {
         self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, workoutBuilder: workoutBuilder, routeBuilder: workoutRouteBuilder)
     }
     
-    private func requestUserPermissions(){
+    func requestUserPermissions(){
         //Check Location Data
         requestLocationData()
         
@@ -50,8 +51,12 @@ class FitForestJourneyManager {
     
     func startWorkout() {
         builderPack.workoutBuilder.beginCollection(withStart: Date()){
-            (bool, error) in
-            //Initialize location tracking here.
+            (sucess, error) in
+            guard !sucess else {
+                //Handle error here
+                return
+            }
+            //Initialize location tracking here possibly?
             }
         
         }
@@ -90,6 +95,6 @@ class FitForestJourneyManager {
 //
 //        }
 //    }
-    
 
 }
+

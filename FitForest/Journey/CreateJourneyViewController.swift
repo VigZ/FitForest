@@ -10,9 +10,8 @@ import CoreLocation
 
 class CreateJourneyViewController: UIViewController {
     
-    private var journey: Journey?
-    private let locationManager = LocationManager.sharedInstance
     private let fitHealthStore = FitForestHealthStore.sharedInstance
+    private var journeyManager: FitForestJourneyManager!
     
     private var seconds = 0 {
         didSet {
@@ -88,8 +87,7 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func checkPermissions(){
-        locationManager.requestWhenInUseAuthorization()
-        FitForestHealthStore.sharedInstance.requestUserPermissions()
+        journeyManager.requestUserPermissions()
     }
     
     private func startJourney(){
@@ -100,12 +98,14 @@ class CreateJourneyViewController: UIViewController {
           self.seconds += 1
         }
         startLocationUpdates()
-        fitHealthStore.createWorkout()
+        let newJourney = JourneyWorkout(start: Date(), end: nil)
+        journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
+        
     }
     
     private func endJourney(){
         locationManager.stopUpdatingLocation()
-        fitHealthStore.endWorkout()
+//        fitHealthStore.endWorkout()
     }
     
     @objc func stopTapped() {
@@ -151,10 +151,10 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func startLocationUpdates() {
-      locationManager.delegate = self
-      locationManager.activityType = .fitness
-      locationManager.distanceFilter = 10
-      locationManager.startUpdatingLocation()
+        journeyManager.locationManager.delegate = self
+        journeyManager.locationManager.activityType = .fitness
+        journeyManager.locationManager.distanceFilter = 10
+        journeyManager.locationManager.startUpdatingLocation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,7 +207,25 @@ extension CreateJourneyViewController: CLLocationManagerDelegate {
       }
 
       locationList.append(newLocation)
+      // Add the filtered data to the route.
+      routeBuilder.insertRouteData(filteredLocations) { (success, error) in
+            if !success {
+                // Handle any errors here.
+            }
+        }
+        
     }
   }
 }
 
+func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    // Filter the raw data.
+    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
+        location.horizontalAccuracy <= 20.0
+    }
+    
+    guard !filteredLocations.isEmpty else { return }
+    
+
+}

@@ -10,18 +10,19 @@ import Foundation
 struct JourneyWorkout {
     
     var start: Date
-    var end: Date
+    var end: Date?
     
-    init(start: Date, end: Date) {
+    init(start: Date, end: Date?) {
         self.start = start
         self.end = end
     }
     
-    var duration: TimeInterval {
-        return end.timeIntervalSince(start)
+    var duration: TimeInterval? {
+        return end?.timeIntervalSince(start) ?? nil
     }
     
     var totalEnergyBurned: Double {
+        guard let duration = duration else { return 0}
         let caloriesPerHour: Double = 400 //Should make this a constant
         let hours: Double = duration / 3600
         let totalCalories = caloriesPerHour * hours
