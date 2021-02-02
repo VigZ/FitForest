@@ -11,6 +11,11 @@ struct JourneyWorkout {
     
     var start: Date
     var end: Date?
+    var distance: Double = 0
+    var steps: Int = 0
+    var averagePace: Float = 0.0
+    
+    
     
     init(start: Date, end: Date?) {
         self.start = start

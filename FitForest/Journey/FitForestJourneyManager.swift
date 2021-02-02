@@ -62,7 +62,8 @@ class FitForestJourneyManager {
     
     func endWorkout(){
         let endDate = Date()
-        collectData(endDate: endDate)
+        guard let startDate = builderPack.workoutBuilder.startDate else {return}
+        collectData(startDate: startDate, endDate: endDate)
         builderPack.workoutBuilder.endCollection(withEnd: endDate){
             (sucess, error) in
             guard !sucess else {
@@ -81,17 +82,20 @@ class FitForestJourneyManager {
         }
     }
     
-    private func collectData(endDate: Date){
+    private func collectData(startDate: Date, endDate: Date){
 
-        guard let start = workoutBuilder?.startDate else {
-            return
-        }
         //TODO: Need to add error handling when using simulator and pedometer data unavailable.
         // Query StepTracker for step data during workout
-        stepTracker.queryPedometer(from: start, to: endDate) { (data, error) in
+        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
 
             guard let data = data else {return}
-
+            
+            // Add data to JourneyWorkout
+            self.builderPack.journeyWorkout.end = endDate
+            self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
+            self.builderPack.journeyWorkout.distance = data.distance as! Double
+            self.builderPack.journeyWorkout.averagePace = data.averageActivePace as! Float
+            
             // Add data to workout.
             // Create Samples
             // data.startDate
