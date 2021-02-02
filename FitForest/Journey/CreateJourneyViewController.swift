@@ -12,6 +12,7 @@ class CreateJourneyViewController: UIViewController {
     
     private var journey: Journey?
     private let locationManager = LocationManager.sharedInstance
+    private let fitHealthStore = FitForestHealthStore.sharedInstance
     private var seconds = 0 {
         didSet {
             DispatchQueue.main.async {

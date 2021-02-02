@@ -26,12 +26,6 @@ class FitForestHealthStore {
         return config
     }()
     
-    lazy var builder: HKWorkoutBuilder? = {
-        guard let hkHealthStore = hkHealthStore else { return nil }
-        let builder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
-        return builder
-    }()
-    
     func requestUserPermissions(){
         let permissions = Set([HKObjectType.workoutType(),
                             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
@@ -46,10 +40,16 @@ class FitForestHealthStore {
         }
     }
     
-    func startWorkout(){
-        guard let builder = builder else { return }
+    func createWorkout() -> HKWorkoutBuilder? {
+        guard let hkHealthStore = hkHealthStore else { return nil }
+        let builder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
+        return builder
+    }
+        
+    func startWorkout(builder:HKWorkoutBuilder) {
         builder.beginCollection(withStart: Date()){
             (bool, error) in
+            }
         }
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
@@ -61,19 +61,18 @@ class FitForestHealthStore {
         
     }
     
-    func endWorkout(){
-        guard let builder = builder else { return }
+    func endWorkout(builder: HKWorkoutBuilder){
         builder.endCollection(withEnd: Date()){
             (bool, error) in
         }
     }
     
     func collectSteps(){
-        // Query StepTracker for step data during workout
-        StepTracker.sharedInstance.queryPedometer(from: builder?.startDate, to: builder?.endDate) { (data, error) in
-            // Create Sample for Step Data
-            
-        }
+//        // Query StepTracker for step data during workout
+//        StepTracker.sharedInstance.queryPedometer(from: builder?.startDate, to: builder?.endDate) { (data, error) in
+//            // Create Sample for Step Data
+//
+//        }
     }
     
     func collectDistance(){
