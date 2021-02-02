@@ -66,4 +66,8 @@ class StepTracker {
           startCountingSteps()
       }
     }
+    
+    func queryPedometer(from: Date, to: Date, withHandler: @escaping CMPedometerHandler){
+        pedometer.queryPedometerData(from: from, to: to, withHandler: withHandler)
+    }
 }
