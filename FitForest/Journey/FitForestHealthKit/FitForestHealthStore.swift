@@ -47,43 +47,48 @@ class FitForestHealthStore {
     func createWorkout(){
         guard let hkHealthStore = hkHealthStore else { return }
         workoutBuilder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: hkWorkoutConfig, device: nil)
+        startWorkout()
     }
         
-    func startWorkout() {
+    private func startWorkout() {
         workoutBuilder?.beginCollection(withStart: Date()){
             (bool, error) in
             }
         
         }
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//
-//            builder.finishWorkout(){ (workout, error) in
-//
-//            }
-//        }
     
     func endWorkout(){
         let endDate = Date()
-        self.collectSteps(endDate: endDate)
+        self.collectData(endDate: endDate)
         workoutBuilder?.endCollection(withEnd: endDate){
             (bool, error) in
         }
     }
     
-    func collectSteps(endDate: Date){
+    private func collectData(endDate: Date){
         
         guard let start = workoutBuilder?.startDate else {
             return
         }
+        //TODO: Need to add error handling when using simulator and pedometer data unavailable.
         // Query StepTracker for step data during workout
         stepTracker.queryPedometer(from: start, to: endDate) { (data, error) in
             
             guard let data = data else {return}
             
-            print(data.averageActivePace)
-            print(data.distance)
-            print(data.floorsAscended)
+            // Add data to workout.
+            // Create Samples
+            // data.startDate
+            // data.endDate
+            // data.steps
+            // data.distance May want to use location objects for more accurate distance
+            // data.currentPace
+            // data.currentCadence
+            // data.averageActivePace
+            // data.floorsAscended / floorsDecended
+            workoutBuilder?.
+//            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
+
             
         }
     }

@@ -101,7 +101,6 @@ class CreateJourneyViewController: UIViewController {
         }
         startLocationUpdates()
         fitHealthStore.createWorkout()
-        fitHealthStore.startWorkout()
     }
     
     private func endJourney(){

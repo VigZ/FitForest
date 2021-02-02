@@ -31,6 +31,7 @@
 		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
+		27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
 		278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyWorkout.swift; sourceTree = "<group>"; };
+		27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestJourneyManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */,
 				277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */,
 				278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */,
+				27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
 				277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */,
 				277A88F325C494D700C1F374 /* CoreDataManager.swift in Sources */,
+				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,
 			);
