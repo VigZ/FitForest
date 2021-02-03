@@ -24,7 +24,9 @@ class FitForestJourneyManager {
     
     init(journeyWorkout:JourneyWorkout) {
        // Create Builder Pack
-        guard let hkHealthStore = fitForestHealthStore.hkHealthStore else { return }
+        guard let hkHealthStore = fitForestHealthStore.hkHealthStore else {
+            //Handle Error here
+            return }
         let workoutBuilder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: fitForestHealthStore.hkWorkoutConfig, device: nil)
         
         let workoutRouteBuilder = HKWorkoutRouteBuilder(healthStore: hkHealthStore, device: nil)
@@ -57,44 +59,49 @@ class FitForestJourneyManager {
                 return
             }
         }
-        
-        }
+    }
     
     func endWorkout(){
+        
         let endDate = Date()
+        
         guard let startDate = builderPack.workoutBuilder.startDate else {return}
+        
         collectData(startDate: startDate, endDate: endDate)
         builderPack.workoutBuilder.endCollection(withEnd: endDate){
             (sucess, error) in
             guard !sucess else {
+                
+                return
                 // handle error
-            }
+            }            
+
         }
         // Create, save, and associate the route with the provided workout.
-        buidlerPack.routeBuilder.finishRoute(with: myWorkout, metadata: myMetadata) { (newRoute, error) in
-            
-            guard newRoute != nil else {
-                // Handle any errors here.
-                return
-            }
-            
-            // Optional: Do something with the route here.
-        }
+//        builderPack.routeBuilder.finishRoute(with: myWorkout, metadata: myMetadata) { (newRoute, error) in
+//
+//            guard newRoute != nil else {
+//                // Handle any errors here.
+//                return
+//            }
+//
+//            // Optional: Do something with the route here.
+//        }
     }
     
     private func collectData(startDate: Date, endDate: Date){
 
         //TODO: Need to add error handling when using simulator and pedometer data unavailable.
         // Query StepTracker for step data during workout
-        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
-
-            guard let data = data else {return}
+//        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
+//
+//            guard let data = data else {return}
             
             // Add data to JourneyWorkout
-            self.builderPack.journeyWorkout.end = endDate
-            self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
-            self.builderPack.journeyWorkout.distance = data.distance as! Double
-            self.builderPack.journeyWorkout.averagePace = data.averageActivePace as! Float
+//            self.builderPack.journeyWorkout.end = endDate
+//            self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
+//            self.builderPack.journeyWorkout.distance = data.distance as! Double
+//            self.builderPack.journeyWorkout.averagePace = data.averageActivePace as! Float
             
             // Add data to workout.
             // Create Samples
@@ -109,7 +116,7 @@ class FitForestJourneyManager {
 //            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
 
 
-        }
+//        }
     }
 
 }

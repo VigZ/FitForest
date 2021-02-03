@@ -75,17 +75,17 @@ class JourneyDetailViewController: UIViewController {
     }
     
     private func configureView() {
-      let distance = Measurement(value: journey.distance, unit: UnitLength.meters)
-      let seconds = Int(journey.duration)
-      let formattedDistance = FormatDisplay.distance(distance)
-      let formattedDate = FormatDisplay.date(journey.timestamp)
-      let formattedTime = FormatDisplay.time(seconds)
-      let formattedPace = FormatDisplay.pace(distance: distance,
+        let distance = Measurement(value: journey.distance, unit: UnitLength.meters)
+        let seconds = Int(journey.duration ?? 0)
+        let formattedDistance = FormatDisplay.distance(distance)
+//        let formattedDate = FormatDisplay.date(journey.timestamp)
+        let formattedTime = FormatDisplay.time(seconds)
+        let formattedPace = FormatDisplay.pace(distance: distance,
                                              seconds: seconds,
                                              outputUnit: UnitSpeed.minutesPerMile)
       
       distanceLabel.text = "Distance:  \(formattedDistance)"
-      dateLabel.text = formattedDate
+//      dateLabel.text = formattedDate
       timeLabel.text = "Time:  \(formattedTime)"
       paceLabel.text = "Pace:  \(formattedPace)"
       
@@ -96,17 +96,16 @@ class JourneyDetailViewController: UIViewController {
     
     private func mapRegion() -> MKCoordinateRegion? {
       guard
-        let locations = journey.locations,
-        locations.count > 0
+        journey.locations.count > 0
       else {
         return nil
       }
-      let latitudes = locations.map { location -> Double in
+        let latitudes = journey.locations.map { location -> Double in
         let location = location as! Location
         return location.latitude
       }
       
-      let longitudes = locations.map { location -> Double in
+        let longitudes = journey.locations.map { location -> Double in
         let location = location as! Location
         return location.longitude
       }
@@ -126,7 +125,7 @@ class JourneyDetailViewController: UIViewController {
     private func polyLine() -> [MulticolorPolyline] {
       
       // 1
-      let locations = journey.locations?.allObjects as! [Location]
+      let locations = journey.locations
       var coordinates: [(CLLocation, CLLocation)] = []
       var speeds: [Double] = []
       var minSpeed = Double.greatestFiniteMagnitude
@@ -166,8 +165,7 @@ class JourneyDetailViewController: UIViewController {
     
     private func loadMap() {
       guard
-        let locations = journey.locations,
-        locations.count > 0,
+        journey.locations.count > 0,
         let region = mapRegion()
       else {
           let alert = UIAlertController(title: "Error",

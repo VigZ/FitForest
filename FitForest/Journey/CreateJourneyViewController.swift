@@ -81,7 +81,6 @@ class CreateJourneyViewController: UIViewController {
         view.addSubview(timeLabel)
         view.addSubview(paceLabel)
         setUpViews()
-        checkPermissions()
         
     }
     
@@ -90,16 +89,17 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func startJourney(){
+        let newJourney = JourneyWorkout(start: Date(), end: nil)
+        journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
         locationList.removeAll()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
+        checkPermissions()
         startLocationUpdates()
-        let newJourney = JourneyWorkout(start: Date(), end: nil)
-        journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
-        
+        journeyManager.startWorkout()
     }
     
     private func endJourney(){
