@@ -30,6 +30,12 @@ class CreateJourneyViewController: UIViewController {
 //    }
     private var timer: Timer?
     private var distance = Measurement(value: 0 , unit: UnitLength.meters)
+    
+    private var initialDistance:Double = 0
+    private var initialSteps:Int = 0
+    private var initialPace:Double = 0
+    private var initialFloors = 0
+    
     private var locationList: [CLLocation] = []
     
     let startButton: UIButton = {
@@ -52,35 +58,35 @@ class CreateJourneyViewController: UIViewController {
     
     let distanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Distance:"
+        label.text = "Distance: 0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Time:"
+        label.text = "Time: 0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let paceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Pace:"
+        label.text = "Pace: 0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let stepsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Steps:"
+        label.text = "Steps: 0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let floorsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Floors Ascended:"
+        label.text = "Floors Ascended: 0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -117,6 +123,7 @@ class CreateJourneyViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
+        registerForNotifications()
     }
     
     private func endJourney(){
@@ -180,8 +187,8 @@ class CreateJourneyViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      timer?.invalidate()
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
         journeyManager.locationManager.stopUpdatingLocation()
     }
     
@@ -214,31 +221,38 @@ class CreateJourneyViewController: UIViewController {
         ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
             (notification) in
             DispatchQueue.main.async {
-                self.stepsLabel.text = String(StepTracker.sharedInstance.numberOfSteps)
+                self.stepsLabel.text = "Steps: \(String(StepTracker.sharedInstance.numberOfSteps - self.initialSteps))"
             }
         }
         
         ns.addObserver(forName: paceUpdated, object: nil, queue: nil){
             (notification) in
             DispatchQueue.main.async {
-                self.paceLabel.text = String(StepTracker.sharedInstance.currentPace)
+                self.paceLabel.text = "Pace: \(String(StepTracker.sharedInstance.averagePace - self.initialPace))"
             }
         }
         
         ns.addObserver(forName: distanceUpdated, object: nil, queue: nil){
             (notification) in
             DispatchQueue.main.async {
-                self.distanceLabel.text = String(StepTracker.sharedInstance.distance)
+                self.distanceLabel.text = "Distance: \(String(StepTracker.sharedInstance.distance - self.initialDistance))"
             }
         }
         
         ns.addObserver(forName: floorsUpdated, object: nil, queue: nil){
             (notification) in
             DispatchQueue.main.async {
-                self.floorsLabel.text = String(StepTracker.sharedInstance.floorsAscended)
+                self.floorsLabel.text = "Floors: \(String(StepTracker.sharedInstance.floorsAscended - self.initialFloors))"
             }
         }
         
+    }
+    
+    private func setInitialValues(){
+        initialSteps = StepTracker.sharedInstance.numberOfSteps
+        initialPace =  StepTracker.sharedInstance.averagePace
+        initialDistance = StepTracker.sharedInstance.distance
+        initialFloors = StepTracker.sharedInstance.floorsAscended
     }
 }
 

@@ -23,12 +23,12 @@ class StepTracker {
         }
     }
     
-    var currentPace: Float = 0.0 {
+    var averagePace: Double = 0.0 {
         didSet {
             NotificationCenter.default.post(name: Notification.Name.StepTrackerEvents.paceUpdated, object: self)
         }
     }
-    var distance: Float = 0.0 {
+    var distance: Double = 0.0 {
         didSet {
             NotificationCenter.default.post(name: Notification.Name.StepTrackerEvents.distanceUpdated, object: self)
         }
@@ -66,18 +66,15 @@ class StepTracker {
             guard let steps = self?.numberOfSteps else { return }
         // Math for point updates
             let stepDifference = steps - previousSteps
-        print("steps:", steps)
-        print("previousSteps:", previousSteps)
-        print("stepDifference", stepDifference)
         Inventory.sharedInstance.points += stepDifference /  PointConstants.pointDivision.rawValue//roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
         
         // Update other data
         if let dataDistance = pedometerData.distance {
-            self?.distance = dataDistance.floatValue
+            self?.distance = dataDistance.doubleValue
         }
         
-        if let dataPace = pedometerData.currentPace {
-            self?.currentPace = dataPace.floatValue
+        if let dataPace = pedometerData.averageActivePace {
+            self?.averagePace = dataPace.doubleValue
         }
         
         if let dataFloors = pedometerData.floorsAscended {
