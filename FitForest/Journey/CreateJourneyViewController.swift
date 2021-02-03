@@ -70,6 +70,20 @@ class CreateJourneyViewController: UIViewController {
         return label
     }()
     
+    let stepsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Steps:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let floorsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Floors Ascended:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,6 +94,8 @@ class CreateJourneyViewController: UIViewController {
         view.addSubview(distanceLabel)
         view.addSubview(timeLabel)
         view.addSubview(paceLabel)
+        view.addSubview(stepsLabel)
+        view.addSubview(floorsLabel)
         setUpViews()
         
     }
@@ -147,6 +163,12 @@ class CreateJourneyViewController: UIViewController {
         
         paceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         paceLabel.centerYAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20).isActive = true
+        
+        stepsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        stepsLabel.centerYAnchor.constraint(equalTo: paceLabel.bottomAnchor, constant: 20).isActive = true
+        
+        floorsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        floorsLabel.centerYAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 20).isActive = true
     }
     
     private func startLocationUpdates() {
@@ -178,6 +200,44 @@ class CreateJourneyViewController: UIViewController {
       
       CoreDataManager.saveContext()
       
+    }
+    
+    private func registerForNotifications() {
+        let ns = NotificationCenter.default
+        
+        let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
+        let paceUpdated = Notification.Name.StepTrackerEvents.paceUpdated
+        let distanceUpdated = Notification.Name.StepTrackerEvents.distanceUpdated
+        let floorsUpdated = Notification.Name.StepTrackerEvents.floorsUpdated
+        
+        ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.stepsLabel.text = String(StepTracker.sharedInstance.numberOfSteps)
+            }
+        }
+        
+        ns.addObserver(forName: paceUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.paceLabel.text = String(StepTracker.sharedInstance.currentPace)
+            }
+        }
+        
+        ns.addObserver(forName: distanceUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.distanceLabel.text = String(StepTracker.sharedInstance.distance)
+            }
+        }
+        
+        ns.addObserver(forName: floorsUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.floorsLabel.text = String(StepTracker.sharedInstance.floorsAscended)
+            }
+        }
+        
     }
 }
 
