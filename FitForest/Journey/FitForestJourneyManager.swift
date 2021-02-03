@@ -110,21 +110,39 @@ class FitForestJourneyManager {
             self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
             self.builderPack.journeyWorkout.distance = data.distance?.doubleValue ?? 0
             self.builderPack.journeyWorkout.averagePace = data.averageActivePace?.floatValue ?? 0.0
-            print(self.builderPack.journeyWorkout.averagePace) // Can't use average pace
-            print(self.builderPack.journeyWorkout.steps)
-            print(self.builderPack.journeyWorkout.distance)
             
-//             Add data to workout.
+            
+            
+            // Add data to workout.
+            
+            // Add Calorie Sample
+            let caloriesBurned = self.builderPack.journeyWorkout.totalEnergyBurned
+            let calorieQuantity = HKQuantity(unit: HKUnit.largeCalorie(), doubleValue: caloriesBurned)
+            let calorieType = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)
+            let calorieSample = HKQuantitySample(type: calorieType!, quantity: calorieQuantity, start: startDate, end: endDate)
+            
+            // Add Distance Sample
+            let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: self.builderPack.journeyWorkout.distance)
+            let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
+            let distanceSample = HKQuantitySample(type: distanceType!, quantity: distanceQuantity, start: startDate, end: endDate)
+            
+            // Add Step Sample
+            let stepQuantity = HKQuantity(unit: HKUnit.count(), doubleValue: Double(self.builderPack.journeyWorkout.steps))
+            let stepType = HKObjectType.quantityType(forIdentifier: .stepCount)
+            let stepSample = HKQuantitySample(type: stepType!, quantity: stepQuantity, start: startDate, end: endDate)
+            
+            
 //             Create Samples
 //             data.startDate
 //             data.endDate
 //             data.steps
 //             data.distance May want to use location objects for more accurate distance
-//             data.currentPace
-//             data.currentCadence
 //             data.averageActivePace
-//             data.floorsAscended / floorsDecended
-//            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
+//             data.floorsAscended
+            
+            self.builderPack.workoutBuilder.add([stepSample, distanceSample, calorieSample]){  (success, error) in
+                print(success)
+            }
 
 
         }

@@ -31,7 +31,9 @@ class FitForestHealthStore {
                             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
                             HKObjectType.quantityType(forIdentifier: .distanceCycling)!,
                             HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-                            HKObjectType.quantityType(forIdentifier: .heartRate)!])
+                            HKObjectType.quantityType(forIdentifier: .heartRate)!,
+                            HKObjectType.quantityType(forIdentifier: .stepCount)!
+        ])
         
         hkHealthStore?.requestAuthorization(toShare: permissions, read: permissions) { (sucess, error) in
             if !sucess {
