@@ -17,7 +17,12 @@ class StepTracker {
     
     var currentActivity: String = "Stationary"
     
-    var numberOfSteps: Int = 0
+    var numberOfSteps: Int = 0 {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name.StepTrackerEvents.stepCountUpdated, object: self)
+        }
+    }
+    
     var averagePace: Double = 0.0
     var distance: Double = 0.0
     var floorsAscended: Int = 0

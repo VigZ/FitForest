@@ -101,30 +101,33 @@ class FitForestJourneyManager {
 
         //TODO: Need to add error handling when using simulator and pedometer data unavailable.
         // Query StepTracker for step data during workout
-//        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
-//
-//            guard let data = data else {return}
+        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
+
+            guard let data = data else {return}
             
             // Add data to JourneyWorkout
-//            self.builderPack.journeyWorkout.end = endDate
-//            self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
-//            self.builderPack.journeyWorkout.distance = data.distance as! Double
-//            self.builderPack.journeyWorkout.averagePace = data.averageActivePace as! Float
+            self.builderPack.journeyWorkout.end = endDate
+            self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
+            self.builderPack.journeyWorkout.distance = data.distance?.doubleValue ?? 0
+            self.builderPack.journeyWorkout.averagePace = data.averageActivePace?.floatValue ?? 0.0
+            print(self.builderPack.journeyWorkout.averagePace) // Can't use average pace
+            print(self.builderPack.journeyWorkout.steps)
+            print(self.builderPack.journeyWorkout.distance)
             
-            // Add data to workout.
-            // Create Samples
-            // data.startDate
-            // data.endDate
-            // data.steps
-            // data.distance May want to use location objects for more accurate distance
-            // data.currentPace
-            // data.currentCadence
-            // data.averageActivePace
-            // data.floorsAscended / floorsDecended
+//             Add data to workout.
+//             Create Samples
+//             data.startDate
+//             data.endDate
+//             data.steps
+//             data.distance May want to use location objects for more accurate distance
+//             data.currentPace
+//             data.currentCadence
+//             data.averageActivePace
+//             data.floorsAscended / floorsDecended
 //            self.workoutBuilder?.add([], completion: <#T##(Bool, Error?) -> Void#>)
 
 
-//        }
+        }
     }
 
 }
