@@ -74,8 +74,12 @@ class FitForestJourneyManager {
                 
                 return
                 // handle error
-            }            
-
+            }
+        }
+        builderPack.workoutBuilder.finishWorkout(){
+            (workout, error) in
+            
+            
         }
         // Create, save, and associate the route with the provided workout.
 //        builderPack.routeBuilder.finishRoute(with: myWorkout, metadata: myMetadata) { (newRoute, error) in

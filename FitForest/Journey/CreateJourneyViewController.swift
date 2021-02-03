@@ -94,12 +94,12 @@ class CreateJourneyViewController: UIViewController {
         seconds = 0
         distance = Measurement(value: 0, unit: UnitLength.meters)
         locationList.removeAll()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-          self.seconds += 1
-        }
         checkPermissions()
         startLocationUpdates()
         journeyManager.startWorkout()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+          self.seconds += 1
+        }
     }
     
     private func endJourney(){
