@@ -12,7 +12,11 @@ class CreateJourneyViewController: UIViewController {
     
     private var journeyManager: FitForestJourneyManager!
     
-    private var seconds = 0
+    private var seconds = 0 {
+        didSet{
+            self.timeLabel.text = "Time: \(String(seconds))"
+        }
+    }
 //    {
 //        didSet {
 //            DispatchQueue.main.async {
@@ -29,11 +33,10 @@ class CreateJourneyViewController: UIViewController {
 //        }
 //    }
     private var timer: Timer?
-    private var distance = Measurement(value: 0 , unit: UnitLength.meters)
     
-    private var initialDistance:Double = 0
-    private var initialSteps:Int = 0
-    private var initialPace:Double = 0
+    private var initialDistance: Double = 0
+    private var initialSteps: Int = 0
+    private var initialPace: Double = 0
     private var initialFloors = 0
     
     private var locationList: [CLLocation] = []
@@ -114,8 +117,7 @@ class CreateJourneyViewController: UIViewController {
     private func startJourney(){
         let newJourney = JourneyWorkout(start: Date(), end: nil)
         journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
-        seconds = 0
-        distance = Measurement(value: 0, unit: UnitLength.meters)
+        clearValues()
         locationList.removeAll()
         checkPermissions()
         startLocationUpdates()
@@ -123,6 +125,7 @@ class CreateJourneyViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
+        setInitialValues()
         registerForNotifications()
     }
     
@@ -138,7 +141,7 @@ class CreateJourneyViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
             self.endJourney()
-            self.saveJourney()
+//            self.saveJourney()
             let dvc = JourneyDetailViewController()
             dvc.journey = self.journeyManager.builderPack.journeyWorkout
             self.navigationController?.pushViewController(dvc, animated: true)
@@ -189,26 +192,25 @@ class CreateJourneyViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
-        journeyManager.locationManager.stopUpdatingLocation()
     }
     
-    private func saveJourney() {
-      let newJourney = Journey(context: CoreDataManager.context)
-      newJourney.distance = distance.value
-      newJourney.duration = Int16(seconds)
-      newJourney.timestamp = Date()
-      
-      for location in locationList {
-        let locationObject = Location(context: CoreDataManager.context)
-        locationObject.timestamp = location.timestamp
-        locationObject.latitude = location.coordinate.latitude
-        locationObject.longitude = location.coordinate.longitude
-        newJourney.addToLocations(locationObject)
-      }
-      
-      CoreDataManager.saveContext()
-      
-    }
+//    private func saveJourney() {
+//      let newJourney = Journey(context: CoreDataManager.context)
+//      newJourney.distance = distance.value
+//      newJourney.duration = Int16(seconds)
+//      newJourney.timestamp = Date()
+//
+//      for location in locationList {
+//        let locationObject = Location(context: CoreDataManager.context)
+//        locationObject.timestamp = location.timestamp
+//        locationObject.latitude = location.coordinate.latitude
+//        locationObject.longitude = location.coordinate.longitude
+//        newJourney.addToLocations(locationObject)
+//      }
+//
+//      CoreDataManager.saveContext()
+//
+//    }
     
     private func registerForNotifications() {
         let ns = NotificationCenter.default
@@ -253,6 +255,14 @@ class CreateJourneyViewController: UIViewController {
         initialPace =  StepTracker.sharedInstance.averagePace
         initialDistance = StepTracker.sharedInstance.distance
         initialFloors = StepTracker.sharedInstance.floorsAscended
+    }
+    
+    private func clearValues(){
+        seconds = 0
+        initialSteps = 0
+        initialPace =  0
+        initialDistance = 0
+        initialFloors = 0
     }
 }
 
