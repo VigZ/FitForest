@@ -15,23 +15,26 @@ class CreateJourneyViewController: UIViewController {
     private var seconds = 0 {
         didSet{
             self.timeLabel.text = "Time: \(String(seconds))"
+                DispatchQueue.main.async {
+                    let newDistance = StepTracker.sharedInstance.distance - self.initialDistance
+                    let steps = StepTracker.sharedInstance.numberOfSteps
+                    let floors =  StepTracker.sharedInstance.floorsAscended
+                    let distanceMeasurement = Measurement(value: newDistance, unit: UnitLength.meters )
+                    
+                    let formattedDistance = FormatDisplay.distance(newDistance)
+                    let formattedTime = FormatDisplay.time(self.seconds)
+                    let formattedPace = FormatDisplay.pace(distance: distanceMeasurement,
+                                                           seconds: self.seconds,
+                                                           outputUnit: UnitSpeed.minutesPerMile)
+                    self.distanceLabel.text = "Distance:  \(formattedDistance)"
+                    self.timeLabel.text = "Time:  \(formattedTime)"
+                    self.paceLabel.text = "Pace:  \(formattedPace)"
+                    self.stepsLabel.text = "Steps:  \(steps)"
+                    self.floorsLabel.text = "Floors Ascended:  \(floors)"
+                }
         }
     }
-//    {
-//        didSet {
-//            DispatchQueue.main.async {
-//                let formattedDistance = FormatDisplay.distance(self.distance)
-//                let formattedTime = FormatDisplay.time(self.seconds)
-//                let formattedPace = FormatDisplay.pace(distance: self.distance,
-//                                                       seconds: self.seconds,
-//                                                       outputUnit: UnitSpeed.minutesPerMile)
-//                self.distanceLabel.text = "Distance:  \(formattedDistance)"
-//                self.timeLabel.text = "Time:  \(formattedTime)"
-//                self.paceLabel.text = "Pace:  \(formattedPace)"
-//            }
-//
-//        }
-//    }
+
     private var timer: Timer?
     
     private var initialDistance: Double = 0
@@ -126,7 +129,7 @@ class CreateJourneyViewController: UIViewController {
           self.seconds += 1
         }
         setInitialValues()
-        registerForNotifications()
+//        registerForNotifications()
     }
     
     private func endJourney(){
@@ -212,43 +215,43 @@ class CreateJourneyViewController: UIViewController {
 //
 //    }
     
-    private func registerForNotifications() {
-        let ns = NotificationCenter.default
-        
-        let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
-        let paceUpdated = Notification.Name.StepTrackerEvents.paceUpdated
-        let distanceUpdated = Notification.Name.StepTrackerEvents.distanceUpdated
-        let floorsUpdated = Notification.Name.StepTrackerEvents.floorsUpdated
-        
-        ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
-            (notification) in
-            DispatchQueue.main.async {
-                self.stepsLabel.text = "Steps: \(String(StepTracker.sharedInstance.numberOfSteps - self.initialSteps))"
-            }
-        }
-        
-        ns.addObserver(forName: paceUpdated, object: nil, queue: nil){
-            (notification) in
-            DispatchQueue.main.async {
-                self.paceLabel.text = "Pace: \(String(StepTracker.sharedInstance.averagePace - self.initialPace))"
-            }
-        }
-        
-        ns.addObserver(forName: distanceUpdated, object: nil, queue: nil){
-            (notification) in
-            DispatchQueue.main.async {
-                self.distanceLabel.text = "Distance: \(String(StepTracker.sharedInstance.distance - self.initialDistance))"
-            }
-        }
-        
-        ns.addObserver(forName: floorsUpdated, object: nil, queue: nil){
-            (notification) in
-            DispatchQueue.main.async {
-                self.floorsLabel.text = "Floors: \(String(StepTracker.sharedInstance.floorsAscended - self.initialFloors))"
-            }
-        }
-        
-    }
+//    private func registerForNotifications() {
+//        let ns = NotificationCenter.default
+//
+//        let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
+//        let paceUpdated = Notification.Name.StepTrackerEvents.paceUpdated
+//        let distanceUpdated = Notification.Name.StepTrackerEvents.distanceUpdated
+//        let floorsUpdated = Notification.Name.StepTrackerEvents.floorsUpdated
+//
+//        ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
+//            (notification) in
+//            DispatchQueue.main.async {
+//                self.stepsLabel.text = "Steps: \(String(StepTracker.sharedInstance.numberOfSteps - self.initialSteps))"
+//            }
+//        }
+//
+//        ns.addObserver(forName: paceUpdated, object: nil, queue: nil){
+//            (notification) in
+//            DispatchQueue.main.async {
+//                self.paceLabel.text = "Pace: \(String(StepTracker.sharedInstance.averagePace))"
+//            }
+//        }
+//
+//        ns.addObserver(forName: distanceUpdated, object: nil, queue: nil){
+//            (notification) in
+//            DispatchQueue.main.async {
+//                self.distanceLabel.text = "Distance: \(String(StepTracker.sharedInstance.distance - self.initialDistance))"
+//            }
+//        }
+//
+//        ns.addObserver(forName: floorsUpdated, object: nil, queue: nil){
+//            (notification) in
+//            DispatchQueue.main.async {
+//                self.floorsLabel.text = "Floors: \(String(StepTracker.sharedInstance.floorsAscended - self.initialFloors))"
+//            }
+//        }
+//
+//    }
     
     private func setInitialValues(){
         initialSteps = StepTracker.sharedInstance.numberOfSteps
