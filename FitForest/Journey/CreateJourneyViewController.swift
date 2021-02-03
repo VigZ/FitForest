@@ -17,7 +17,7 @@ class CreateJourneyViewController: UIViewController {
             self.timeLabel.text = "Time: \(String(seconds))"
                 DispatchQueue.main.async {
                     let newDistance = StepTracker.sharedInstance.distance - self.initialDistance
-                    let steps = StepTracker.sharedInstance.numberOfSteps
+                    let steps = StepTracker.sharedInstance.numberOfSteps - self.initialSteps
                     let floors =  StepTracker.sharedInstance.floorsAscended
                     let distanceMeasurement = Measurement(value: newDistance, unit: UnitLength.meters )
                     
@@ -129,7 +129,6 @@ class CreateJourneyViewController: UIViewController {
           self.seconds += 1
         }
         setInitialValues()
-//        registerForNotifications()
     }
     
     private func endJourney(){
