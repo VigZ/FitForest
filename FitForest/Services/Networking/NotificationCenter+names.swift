@@ -13,5 +13,11 @@ extension NSNotification.Name {
     class StepTrackerEvents {
         
         static let stepCountUpdated = NSNotification.Name(rawValue: "stepCountUpdated")
+        
+        static let distanceUpdated = NSNotification.Name(rawValue: "distanceUpdated")
+        
+        static let paceUpdated = NSNotification.Name(rawValue: "paceUpdated")
+        
+        static let floorsUpdated = NSNotification.Name(rawValue: "floorsUpdated")
     }
 }
