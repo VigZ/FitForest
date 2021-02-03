@@ -12,21 +12,22 @@ class CreateJourneyViewController: UIViewController {
     
     private var journeyManager: FitForestJourneyManager!
     
-    private var seconds = 0 {
-        didSet {
-            DispatchQueue.main.async {
-                let formattedDistance = FormatDisplay.distance(self.distance)
-                let formattedTime = FormatDisplay.time(self.seconds)
-                let formattedPace = FormatDisplay.pace(distance: self.distance,
-                                                       seconds: self.seconds,
-                                                       outputUnit: UnitSpeed.minutesPerMile)
-                self.distanceLabel.text = "Distance:  \(formattedDistance)"
-                self.timeLabel.text = "Time:  \(formattedTime)"
-                self.paceLabel.text = "Pace:  \(formattedPace)"
-            }
-
-        }
-    }
+    private var seconds = 0
+//    {
+//        didSet {
+//            DispatchQueue.main.async {
+//                let formattedDistance = FormatDisplay.distance(self.distance)
+//                let formattedTime = FormatDisplay.time(self.seconds)
+//                let formattedPace = FormatDisplay.pace(distance: self.distance,
+//                                                       seconds: self.seconds,
+//                                                       outputUnit: UnitSpeed.minutesPerMile)
+//                self.distanceLabel.text = "Distance:  \(formattedDistance)"
+//                self.timeLabel.text = "Time:  \(formattedTime)"
+//                self.paceLabel.text = "Pace:  \(formattedPace)"
+//            }
+//
+//        }
+//    }
     private var timer: Timer?
     private var distance = Measurement(value: 0 , unit: UnitLength.meters)
     private var locationList: [CLLocation] = []

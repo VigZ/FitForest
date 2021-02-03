@@ -72,10 +72,17 @@ class StepTracker {
         Inventory.sharedInstance.points += stepDifference /  PointConstants.pointDivision.rawValue//roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
         
         // Update other data
-        self?.distance = pedometerData.distance as! Float
-        self?.currentPace = pedometerData.currentPace as! Float
-        self?.floorsAscended = pedometerData.floorsAscended as! Int
+        if let dataDistance = pedometerData.distance {
+            self?.distance = dataDistance.floatValue
+        }
         
+        if let dataPace = pedometerData.currentPace {
+            self?.currentPace = dataPace.floatValue
+        }
+        
+        if let dataFloors = pedometerData.floorsAscended {
+            self?.floorsAscended = dataFloors.intValue
+        }
       }
     }
     
