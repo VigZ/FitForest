@@ -78,19 +78,23 @@ class FitForestJourneyManager {
         }
         builderPack.workoutBuilder.finishWorkout(){
             (workout, error) in
-            
+            guard let workout = workout else {
+                //Throw error here.
+                return
+            }
+                // Create, save, and associate the route with the provided workout.
+            self.builderPack.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
+
+                        guard newRoute != nil else {
+                            // Handle any errors here.
+                            return
+                        }
+
+                        // Optional: Do something with the route here.
+                    }
             
         }
-        // Create, save, and associate the route with the provided workout.
-//        builderPack.routeBuilder.finishRoute(with: myWorkout, metadata: myMetadata) { (newRoute, error) in
-//
-//            guard newRoute != nil else {
-//                // Handle any errors here.
-//                return
-//            }
-//
-//            // Optional: Do something with the route here.
-//        }
+
     }
     
     private func collectData(startDate: Date, endDate: Date){
