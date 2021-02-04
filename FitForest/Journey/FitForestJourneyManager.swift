@@ -9,9 +9,10 @@ import Foundation
 import HealthKit
 import CoreLocation
 
-class FitForestJourneyManager {
+class FitForestJourneyManager: NSObject {
     
     var builderPack: BuilderPack!
+    var locationList = [CLLocation]()
     
     
     //External Services
@@ -58,10 +59,6 @@ class FitForestJourneyManager {
         
         // Create workout with data
         collectData(startDate: startDate, endDate: endDate)
-
- 
-            
-
 
     }
     
@@ -120,6 +117,32 @@ class FitForestJourneyManager {
 
         }
     }
-
+    
+     func startLocationUpdates() {
+        locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
+        locationManager.startUpdatingLocation()
+    }
 }
 
+extension FitForestJourneyManager: CLLocationManagerDelegate {
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    // Filter location data
+    
+    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
+        location.horizontalAccuracy <= 5.0
+    }
+    
+    guard !filteredLocations.isEmpty else { return }
+    
+    locationList = filteredLocations
+    // Add the filtered data to the route.
+      builderPack.routeBuilder.insertRouteData(locationList) { (success, error) in
+          if !success {
+              // Handle any errors here.
+          }
+    }
+  }
+}

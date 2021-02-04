@@ -143,7 +143,7 @@
 				277A88DA25C468E300C1F374 /* Journey */,
 				277A888525C0A6C300C1F374 /* Storage */,
 				277A887925C0824900C1F374 /* Animations */,
-				277A886725BF670000C1F374 /* Contants */,
+				277A886725BF670000C1F374 /* Constants */,
 				277A885B25BF1DA600C1F374 /* Inventory */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
@@ -198,12 +198,12 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		277A886725BF670000C1F374 /* Contants */ = {
+		277A886725BF670000C1F374 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				277A886825BF671B00C1F374 /* PointContants.swift */,
 			);
-			path = Contants;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		277A887925C0824900C1F374 /* Animations */ = {

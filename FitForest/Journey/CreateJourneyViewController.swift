@@ -123,7 +123,7 @@ class CreateJourneyViewController: UIViewController {
         clearValues()
         locationList.removeAll()
         checkPermissions()
-        startLocationUpdates()
+        journeyManager.startLocationUpdates()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
@@ -183,12 +183,6 @@ class CreateJourneyViewController: UIViewController {
         floorsLabel.centerYAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 20).isActive = true
     }
     
-    private func startLocationUpdates() {
-        journeyManager.locationManager.delegate = self
-        journeyManager.locationManager.activityType = .fitness
-        journeyManager.locationManager.distanceFilter = 10
-        journeyManager.locationManager.startUpdatingLocation()
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -267,24 +261,4 @@ class CreateJourneyViewController: UIViewController {
     }
 }
 
-extension CreateJourneyViewController: CLLocationManagerDelegate {
-
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    // Filter location data
-    
-    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-        location.horizontalAccuracy <= 5.0
-    }
-    
-    guard !filteredLocations.isEmpty else { return }
-    
-    locationList = filteredLocations
-    // Add the filtered data to the route.
-      journeyManager.builderPack.routeBuilder.insertRouteData(locationList) { (success, error) in
-          if !success {
-              // Handle any errors here.
-          }
-    }
-  }
-}
 
