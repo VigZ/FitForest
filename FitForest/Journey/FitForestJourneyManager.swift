@@ -65,8 +65,9 @@ class FitForestJourneyManager: NSObject {
     private func collectData(startDate: Date, endDate: Date){
 
         //TODO: Need to add error handling when using simulator and pedometer data unavailable.
+        
         // Query StepTracker for step data during workout
-        stepCounter.queryPedometer(from: startDate, to: endDate) { (data, error) in
+        stepCounter.queryPedometer(from: startDate, to: endDate) { [self] (data, error) in
 
             guard let data = data else {return}
             
@@ -96,12 +97,17 @@ class FitForestJourneyManager: NSObject {
             // Create Workout
             let duration = endDate.timeIntervalSince(startDate)
             let newWorkout = HKWorkout(activityType: .running, start: startDate, end: endDate, duration: duration, totalEnergyBurned: calorieQuantity, totalDistance: distanceQuantity, metadata: nil)
+            
+            fitForestHealthStore.hkHealthStore?.save(newWorkout) { (success, error) in
+                guard !success else {
+                    //Handle error
+                    return
+                }
+                // Create Samples
+                self.fitForestHealthStore.hkHealthStore?.add([stepSample, distanceSample, calorieSample], to: newWorkout){  (success, error) in
+                }
 
-            // Create Samples
-            
-            self.fitForestHealthStore.hkHealthStore?.add([stepSample, distanceSample, calorieSample], to: newWorkout){  (success, error) in
             }
-            
             // Create, save, and associate the route with the provided workout.
             
             self.builderPack.routeBuilder.finishRoute(with: newWorkout, metadata: nil) { (newRoute, error) in
@@ -113,8 +119,6 @@ class FitForestJourneyManager: NSObject {
                     
                         // Optional: Do something with the route here.
                     }
-
-
         }
     }
     
