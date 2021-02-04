@@ -66,7 +66,6 @@ class FitForestJourneyManager {
         let endDate = Date()
         
         guard let startDate = builderPack.workoutBuilder.startDate else {return}
-        
         collectData(startDate: startDate, endDate: endDate)
         builderPack.workoutBuilder.endCollection(withEnd: endDate){
             (sucess, error) in
@@ -82,7 +81,7 @@ class FitForestJourneyManager {
                 //Throw error here.
                 return
             }
-           
+            
                 // Create, save, and associate the route with the provided workout.
             self.builderPack.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
 
