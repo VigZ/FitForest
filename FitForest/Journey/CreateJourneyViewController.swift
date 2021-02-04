@@ -189,62 +189,6 @@ class CreateJourneyViewController: UIViewController {
         timer?.invalidate()
     }
     
-//    private func saveJourney() {
-//      let newJourney = Journey(context: CoreDataManager.context)
-//      newJourney.distance = distance.value
-//      newJourney.duration = Int16(seconds)
-//      newJourney.timestamp = Date()
-//
-//      for location in locationList {
-//        let locationObject = Location(context: CoreDataManager.context)
-//        locationObject.timestamp = location.timestamp
-//        locationObject.latitude = location.coordinate.latitude
-//        locationObject.longitude = location.coordinate.longitude
-//        newJourney.addToLocations(locationObject)
-//      }
-//
-//      CoreDataManager.saveContext()
-//
-//    }
-    
-//    private func registerForNotifications() {
-//        let ns = NotificationCenter.default
-//
-//        let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
-//        let paceUpdated = Notification.Name.StepTrackerEvents.paceUpdated
-//        let distanceUpdated = Notification.Name.StepTrackerEvents.distanceUpdated
-//        let floorsUpdated = Notification.Name.StepTrackerEvents.floorsUpdated
-//
-//        ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
-//            (notification) in
-//            DispatchQueue.main.async {
-//                self.stepsLabel.text = "Steps: \(String(StepTracker.sharedInstance.numberOfSteps - self.initialSteps))"
-//            }
-//        }
-//
-//        ns.addObserver(forName: paceUpdated, object: nil, queue: nil){
-//            (notification) in
-//            DispatchQueue.main.async {
-//                self.paceLabel.text = "Pace: \(String(StepTracker.sharedInstance.averagePace))"
-//            }
-//        }
-//
-//        ns.addObserver(forName: distanceUpdated, object: nil, queue: nil){
-//            (notification) in
-//            DispatchQueue.main.async {
-//                self.distanceLabel.text = "Distance: \(String(StepTracker.sharedInstance.distance - self.initialDistance))"
-//            }
-//        }
-//
-//        ns.addObserver(forName: floorsUpdated, object: nil, queue: nil){
-//            (notification) in
-//            DispatchQueue.main.async {
-//                self.floorsLabel.text = "Floors: \(String(StepTracker.sharedInstance.floorsAscended - self.initialFloors))"
-//            }
-//        }
-//
-//    }
-    
     private func setInitialValues(){
         initialSteps = StepTracker.sharedInstance.numberOfSteps
         initialPace =  StepTracker.sharedInstance.averagePace

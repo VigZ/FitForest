@@ -77,7 +77,6 @@ class FitForestJourneyManager: NSObject {
             self.builderPack.journeyWorkout.distance = data.distance?.doubleValue ?? 0
             self.builderPack.journeyWorkout.averagePace = data.averageActivePace?.floatValue ?? 0.0
             
-            
             // Add Calorie Sample
             let caloriesBurned = self.builderPack.journeyWorkout.totalEnergyBurned
             let calorieQuantity = HKQuantity(unit: HKUnit.largeCalorie(), doubleValue: caloriesBurned)
@@ -109,14 +108,13 @@ class FitForestJourneyManager: NSObject {
 
             }
             // Create, save, and associate the route with the provided workout.
-            
             self.builderPack.routeBuilder.finishRoute(with: newWorkout, metadata: nil) { (newRoute, error) in
 
                         guard newRoute != nil else {
                             // Handle any errors here.
                             return
                         }
-                    
+                
                         // Optional: Do something with the route here.
                     }
         }
@@ -136,14 +134,14 @@ extension FitForestJourneyManager: CLLocationManagerDelegate {
     // Filter location data
     
     let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-        location.horizontalAccuracy <= 5.0
+        location.horizontalAccuracy <= 20.0
     }
     
     guard !filteredLocations.isEmpty else { return }
     
-    locationList = filteredLocations
+    locationList.append(contentsOf: locations)
     // Add the filtered data to the route.
-      builderPack.routeBuilder.insertRouteData(locationList) { (success, error) in
+      builderPack.routeBuilder.insertRouteData(filteredLocations) { (success, error) in
           if !success {
               // Handle any errors here.
           }
