@@ -82,6 +82,7 @@ class FitForestJourneyManager {
                 //Throw error here.
                 return
             }
+           
                 // Create, save, and associate the route with the provided workout.
             self.builderPack.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
 
@@ -112,9 +113,6 @@ class FitForestJourneyManager {
             self.builderPack.journeyWorkout.averagePace = data.averageActivePace?.floatValue ?? 0.0
             
             
-            
-            // Add data to workout.
-            
             // Add Calorie Sample
             let caloriesBurned = self.builderPack.journeyWorkout.totalEnergyBurned
             let calorieQuantity = HKQuantity(unit: HKUnit.largeCalorie(), doubleValue: caloriesBurned)
@@ -141,7 +139,6 @@ class FitForestJourneyManager {
 //             data.floorsAscended
             
             self.builderPack.workoutBuilder.add([stepSample, distanceSample, calorieSample]){  (success, error) in
-                print(success)
             }
 
 
