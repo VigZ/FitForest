@@ -124,7 +124,6 @@ class CreateJourneyViewController: UIViewController {
         locationList.removeAll()
         checkPermissions()
         startLocationUpdates()
-        journeyManager.startWorkout()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
@@ -133,7 +132,7 @@ class CreateJourneyViewController: UIViewController {
     
     private func endJourney(){
         journeyManager.locationManager.stopUpdatingLocation()
-        journeyManager.endWorkout()
+        journeyManager.createWorkout()
     }
     
     @objc func stopTapped() {

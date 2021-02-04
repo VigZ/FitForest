@@ -27,11 +27,10 @@ class FitForestJourneyManager {
         guard let hkHealthStore = fitForestHealthStore.hkHealthStore else {
             //Handle Error here
             return }
-        let workoutBuilder = HKWorkoutBuilder(healthStore: hkHealthStore, configuration: fitForestHealthStore.hkWorkoutConfig, device: nil)
         
         let workoutRouteBuilder = HKWorkoutRouteBuilder(healthStore: hkHealthStore, device: nil)
         
-        self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, workoutBuilder: workoutBuilder, routeBuilder: workoutRouteBuilder)
+        self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, routeBuilder: workoutRouteBuilder)
     }
     
     func requestUserPermissions(){
@@ -51,49 +50,18 @@ class FitForestJourneyManager {
         fitForestHealthStore.requestUserPermissions()
     }
     
-    func startWorkout() {
-        builderPack.workoutBuilder.beginCollection(withStart: builderPack.journeyWorkout.start){
-            (sucess, error) in
-            guard !sucess else {
-                //Handle error here
-                return
-            }
-        }
-    }
-    
-    func endWorkout(){
+    func createWorkout(){
         
         let endDate = Date()
         
-        guard let startDate = builderPack.workoutBuilder.startDate else {return}
+        let startDate = builderPack.journeyWorkout.start
+        
+        // Create workout with data
         collectData(startDate: startDate, endDate: endDate)
-        builderPack.workoutBuilder.endCollection(withEnd: endDate){
-            (sucess, error) in
-            guard !sucess else {
-                
-                return
-                // handle error
-            }
-        }
-        builderPack.workoutBuilder.finishWorkout(){
-            (workout, error) in
-            guard let workout = workout else {
-                //Throw error here.
-                return
-            }
-            
-                // Create, save, and associate the route with the provided workout.
-            self.builderPack.routeBuilder.finishRoute(with: workout, metadata: nil) { (newRoute, error) in
 
-                        guard newRoute != nil else {
-                            // Handle any errors here.
-                            return
-                        }
-
-                        // Optional: Do something with the route here.
-                    }
+ 
             
-        }
+
 
     }
     
@@ -128,17 +96,26 @@ class FitForestJourneyManager {
             let stepType = HKObjectType.quantityType(forIdentifier: .stepCount)
             let stepSample = HKQuantitySample(type: stepType!, quantity: stepQuantity, start: startDate, end: endDate)
             
+            // Create Workout
+            let duration = endDate.timeIntervalSince(startDate)
+            let newWorkout = HKWorkout(activityType: .running, start: startDate, end: endDate, duration: duration, totalEnergyBurned: calorieQuantity, totalDistance: distanceQuantity, metadata: nil)
+
+            // Create Samples
             
-//             Create Samples
-//             data.startDate
-//             data.endDate
-//             data.steps
-//             data.distance May want to use location objects for more accurate distance
-//             data.averageActivePace
-//             data.floorsAscended
-            
-            self.builderPack.workoutBuilder.add([stepSample, distanceSample, calorieSample]){  (success, error) in
+            self.fitForestHealthStore.hkHealthStore?.add([stepSample, distanceSample, calorieSample], to: newWorkout){  (success, error) in
             }
+            
+            // Create, save, and associate the route with the provided workout.
+            
+            self.builderPack.routeBuilder.finishRoute(with: newWorkout, metadata: nil) { (newRoute, error) in
+
+                        guard newRoute != nil else {
+                            // Handle any errors here.
+                            return
+                        }
+                    
+                        // Optional: Do something with the route here.
+                    }
 
 
         }

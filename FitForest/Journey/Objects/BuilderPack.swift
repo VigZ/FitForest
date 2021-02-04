@@ -10,6 +10,5 @@ import HealthKit
 
 struct BuilderPack {
     var journeyWorkout: JourneyWorkout
-    var workoutBuilder: HKWorkoutBuilder
     var routeBuilder: HKWorkoutRouteBuilder
 }
