@@ -63,7 +63,16 @@ class FitForestJourneyManager: NSObject {
         // Map Struct to Entity
         
         
-        let journeyEntity = try? builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
+        do {
+            let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
+        }
+        
+        catch {
+            // Add error handling here
+        }
+        
+        
+
         
         // Save Entity to Core Data
         
