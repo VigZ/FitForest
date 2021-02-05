@@ -6,7 +6,17 @@
 //
 
 import Foundation
+import CoreData
 
 protocol CoreDataCRUD {
-    func saveContext()
+    
+    func create<T>(type: T.Type, managedObjectContext: NSManagedObjectContext, completion: @escaping ((T) -> Void))
+    
+    func fetch<T>(type: T.Type, predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, relationshipKeysToFetch: [String]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([T]?) -> Void))
+    
+    func fetch<T>(type: T.Type, predicate: NSPredicate?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([T]?) -> Void))
+    
+    func fetch<T>(type: T.Type, predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([T]?) -> Void))
+    
+    func fetchCount<T>(type: T.Type, predicate: NSPredicate, managedObjectContext: NSManagedObjectContext, completion: @escaping ((Int) -> Void))
 }

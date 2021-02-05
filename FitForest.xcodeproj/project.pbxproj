@@ -33,6 +33,7 @@
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
 		27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */; };
 		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
+		27A93F1825CDA95A0090A794 /* JourneyMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F1725CDA95A0090A794 /* JourneyMO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyWorkout.swift; sourceTree = "<group>"; };
 		27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestJourneyManager.swift; sourceTree = "<group>"; };
 		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
+		27A93F1725CDA95A0090A794 /* JourneyMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyMO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 			children = (
 				27A93F0725C9F0410090A794 /* BuilderPack.swift */,
 				278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */,
+				27A93F1725CDA95A0090A794 /* JourneyMO.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
 				278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */,
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
+				27A93F1825CDA95A0090A794 /* JourneyMO.swift in Sources */,
 				277A88E125C474B000C1F374 /* LocationManager.swift in Sources */,
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				277A885D25BF1DE200C1F374 /* Inventory.swift in Sources */,
