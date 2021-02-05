@@ -55,23 +55,12 @@ class FitForestJourneyManager: NSObject {
         
         let endDate = Date()
         
-        let startDate = builderPack.journeyWorkout.start
+        let startDate = builderPack.journeyWorkout.startDate
         
         // Create workout with data
         collectData(startDate: startDate, endDate: endDate)
         
         // Map Struct to Entity
-        
-        
-        do {
-            let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
-        }
-        
-        catch {
-            // Add error handling here
-        }
-        
-        
 
         
         // Save Entity to Core Data
@@ -89,7 +78,7 @@ class FitForestJourneyManager: NSObject {
             guard let data = data else {return}
             
             // Add data to JourneyWorkout
-            self.builderPack.journeyWorkout.end = endDate
+            self.builderPack.journeyWorkout.endDate = endDate
             self.builderPack.journeyWorkout.steps = Int(truncating: data.numberOfSteps)
             self.builderPack.journeyWorkout.distance = data.distance?.doubleValue ?? 0
             self.builderPack.journeyWorkout.averagePace = data.averageActivePace?.floatValue ?? 0.0
@@ -134,6 +123,15 @@ class FitForestJourneyManager: NSObject {
                 
                         // Optional: Do something with the route here.
                     }
+            do {
+                let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
+                print(journeyEntity)
+                
+            }
+            
+            catch {
+                // Add error handling here
+            }
         }
     }
     

@@ -9,10 +9,10 @@ import Foundation
 
 struct JourneyWorkout: CoreDataDecodeable {
     
-    static var entityName = "journey"
+    static var entityName = "Journey"
     
-    var start: Date
-    var end: Date?
+    var startDate: Date
+    var endDate: Date?
     var distance: Double = 0
     var steps: Int = 0
     var averagePace: Float = 0.0
@@ -21,12 +21,12 @@ struct JourneyWorkout: CoreDataDecodeable {
     
     
     init(start: Date, end: Date?) {
-        self.start = start
-        self.end = end
+        self.startDate = start
+        self.endDate = end
     }
     
     var duration: TimeInterval? {
-        return end?.timeIntervalSince(start) ?? nil
+        return endDate?.timeIntervalSince(startDate) ?? nil
     }
     
     var totalEnergyBurned: Double {
