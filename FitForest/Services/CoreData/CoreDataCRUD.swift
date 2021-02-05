@@ -9,23 +9,24 @@ import Foundation
 import CoreData
 
 protocol CoreDataCRUD {
+    
     associatedtype EntityType
     
     
-    func create( managedObjectContext: NSManagedObjectContext, completion: @escaping ((EntityType) -> Void))
+    static func create( managedObjectContext: NSManagedObjectContext, completion: @escaping ((EntityType) -> Void))
     
-    func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, relationshipKeysToFetch: [String]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
+    static func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, relationshipKeysToFetch: [String]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
     
-    func fetch( predicate: NSPredicate?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
+    static func fetch( predicate: NSPredicate?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
     
-    func fetch ( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
+    static func fetch ( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void))
     
-    func fetchCount( predicate: NSPredicate, managedObjectContext: NSManagedObjectContext, completion: @escaping ((Int) -> Void))
+    static func fetchCount( predicate: NSPredicate, managedObjectContext: NSManagedObjectContext, completion: @escaping ((Int) -> Void))
 }
 
 extension CoreDataCRUD {
     
-    func create(managedObjectContext: NSManagedObjectContext, completion: @escaping ((EntityType) -> Void)) {
+    static func create(managedObjectContext: NSManagedObjectContext, completion: @escaping ((EntityType) -> Void)) {
         
         let entityDescription =  NSEntityDescription.entity(forEntityName: String.init(describing: EntityType.self),
                                                             in: managedObjectContext)
@@ -35,7 +36,7 @@ extension CoreDataCRUD {
         
     }
     
-    func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, relationshipKeysToFetch: [String]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
+    static func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, relationshipKeysToFetch: [String]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
         
         managedObjectContext.perform {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: EntityType.self))
@@ -58,15 +59,15 @@ extension CoreDataCRUD {
         
     }
     
-    func fetch( predicate: NSPredicate?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
+    static func fetch( predicate: NSPredicate?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
         
     }
     
-    func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
+    static func fetch( predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?, managedObjectContext: NSManagedObjectContext, completion: @escaping (([EntityType]?) -> Void)){
         
     }
     
-    func fetchCount( predicate: NSPredicate, managedObjectContext: NSManagedObjectContext, completion: @escaping ((Int) -> Void)) {
+    static func fetchCount( predicate: NSPredicate, managedObjectContext: NSManagedObjectContext, completion: @escaping ((Int) -> Void)) {
         
     }
 }

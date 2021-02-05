@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 
 class JourneyMO: NSManagedObject {
+    
     typealias EntityType = JourneyMO
+    typealias StructType = JourneyWorkout
     
 }

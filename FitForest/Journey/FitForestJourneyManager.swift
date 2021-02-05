@@ -62,7 +62,8 @@ class FitForestJourneyManager: NSObject {
         
         // Map Struct to Entity
         
-        let journeyEntity = Journey(entity: NSEntityDescription, insertInto: CoreDataManager.sharedInstance.context)
+        
+        let journeyEntity = try? builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
         
         // Save Entity to Core Data
         
