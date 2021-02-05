@@ -34,6 +34,8 @@
 		27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */; };
 		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
 		27A93F1825CDA95A0090A794 /* JourneyMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F1725CDA95A0090A794 /* JourneyMO.swift */; };
+		27A93F1D25CDDA9E0090A794 /* StructDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F1C25CDDA9E0090A794 /* StructDecoder.swift */; };
+		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestJourneyManager.swift; sourceTree = "<group>"; };
 		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
 		27A93F1725CDA95A0090A794 /* JourneyMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyMO.swift; sourceTree = "<group>"; };
+		27A93F1C25CDDA9E0090A794 /* StructDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructDecoder.swift; sourceTree = "<group>"; };
+		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,9 +241,11 @@
 		277A88F725C4951B00C1F374 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				27A93F2125CDDD860090A794 /* Errors */,
 				277A889125C31DCD00C1F374 /* FitForest.xcdatamodeld */,
 				277A88F225C494D700C1F374 /* CoreDataManager.swift */,
 				277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */,
+				27A93F1C25CDDA9E0090A794 /* StructDecoder.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -282,6 +288,14 @@
 				27A93F1725CDA95A0090A794 /* JourneyMO.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		27A93F2125CDDD860090A794 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				27A93F2225CDDDB60090A794 /* SerializationError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +430,7 @@
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */,
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
+				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
 				278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */,
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
@@ -426,6 +441,7 @@
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
+				27A93F1D25CDDA9E0090A794 /* StructDecoder.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,

@@ -130,8 +130,12 @@ class CreateJourneyViewController: UIViewController {
         setInitialValues()
     }
     
-    private func endJourney(){
+    private func endJourney(save: Bool){
         journeyManager.locationManager.stopUpdatingLocation()
+        guard save else {
+            // Hand discard Logic
+            return
+        }
         journeyManager.createWorkout()
     }
     
@@ -141,14 +145,13 @@ class CreateJourneyViewController: UIViewController {
                                                 preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-            self.endJourney()
-//            self.saveJourney()
+            self.endJourney(save: true)
             let dvc = JourneyDetailViewController()
             dvc.journey = self.journeyManager.builderPack.journeyWorkout
             self.navigationController?.pushViewController(dvc, animated: true)
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
-            self.endJourney()
+            self.endJourney(save: false)
         })
         
         timer?.invalidate()

@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct JourneyWorkout {
+struct JourneyWorkout: CoreDataStructDecoder {
+    
+    static var entityType = "journey"
+    
     
     var start: Date
     var end: Date?

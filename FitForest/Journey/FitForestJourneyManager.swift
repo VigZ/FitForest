@@ -59,6 +59,13 @@ class FitForestJourneyManager: NSObject {
         
         // Create workout with data
         collectData(startDate: startDate, endDate: endDate)
+        
+        // Map Struct to Entity
+        
+        let journeyEntity = Journey(entity: NSEntityDescription, insertInto: CoreDataManager.sharedInstance.context)
+        
+        // Save Entity to Core Data
+        
 
     }
     
