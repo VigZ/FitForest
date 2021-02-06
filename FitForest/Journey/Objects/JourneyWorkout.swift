@@ -16,7 +16,7 @@ struct JourneyWorkout: CoreDataDecodeable {
     var distance: Double = 0
     var steps: Int = 0
     var averagePace: Float = 0.0
-    var locations = [Location]()
+    var locations = Set<Location>()
     
     
     

@@ -11,14 +11,13 @@ import CoreData
 protocol CoreDataDecodeable {
     
     static var entityName: String { get } // The entity type that will be created from struct.
-    
     func toCoreData(context: NSManagedObjectContext) throws -> NSManagedObject
     
     
 }
 
 extension CoreDataDecodeable {
-
+    
     func toCoreData(context: NSManagedObjectContext) throws -> NSManagedObject {
         
         let entityName = type(of:self).entityName
@@ -38,6 +37,7 @@ extension CoreDataDecodeable {
         guard mirror.displayStyle == .`struct` else { throw SerializationError.structRequired }
 
         for case let (label?, anyValue) in mirror.children {
+            // TODO: Add error handling for when keys don't match exactly.
             managedObject.setValue(anyValue, forKey: label)
         }
         // TODO: Add error here to make sure that object keys on struct match core data representation.

@@ -73,7 +73,7 @@ class FitForestJourneyManager: NSObject {
         //TODO: Need to add error handling when using simulator and pedometer data unavailable.
         
         // Query StepTracker for step data during workout
-        stepCounter.queryPedometer(from: startDate, to: endDate) { [self] (data, error) in
+        stepCounter.queryPedometer(from: startDate, to: endDate) { [unowned self] (data, error) in
 
             guard let data = data else {return}
             
@@ -125,12 +125,13 @@ class FitForestJourneyManager: NSObject {
                     }
             do {
                 let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
-                print(journeyEntity)
+                
                 
             }
             
             catch {
                 // Add error handling here
+            
             }
         }
     }

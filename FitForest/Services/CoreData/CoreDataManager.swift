@@ -8,10 +8,10 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
+class CoreDataStack {
     
     
-    static let sharedInstance = CoreDataManager()
+    static let sharedInstance = CoreDataStack()
     
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FitForest")
