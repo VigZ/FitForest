@@ -48,12 +48,12 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     // Filter location data
     
-//    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-//        location.horizontalAccuracy <= 20.0
-//    }
-//
-//    guard !filteredLocations.isEmpty else { return }
-//
+    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
+        location.horizontalAccuracy <= 20.0
+    }
+
+    guard !filteredLocations.isEmpty else { return }
+
     let lastLocation = locationList.last
     
     locationList.append(contentsOf: locations)

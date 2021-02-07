@@ -221,9 +221,11 @@ class CreateJourneyViewController: UIViewController {
                     if let locations = dict["locations"] as? [CLLocation]{
                         // do something
                         self.journeyManager.builderPack.routeBuilder.insertRouteData(locations) { (success, error) in
+                            
                             if !success {
                                 // Handle any errors here.
                             }
+                            
                       }
                         if let lastLocation = dict["lastLocation"] as? CLLocation {
                             DispatchQueue.main.async {
