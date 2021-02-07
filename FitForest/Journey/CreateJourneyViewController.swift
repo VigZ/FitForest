@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class CreateJourneyViewController: UIViewController {
     
@@ -42,7 +43,7 @@ class CreateJourneyViewController: UIViewController {
     private var initialPace: Double = 0
     private var initialFloors = 0
     
-    private var locationList: [CLLocation] = []
+    private var mapView: MKMapView!
     
     let startButton: UIButton = {
         let button = UIButton()
@@ -110,6 +111,8 @@ class CreateJourneyViewController: UIViewController {
         view.addSubview(stepsLabel)
         view.addSubview(floorsLabel)
         setUpViews()
+        setUpMap()
+        registerForNotifications()
         
     }
     
@@ -120,8 +123,6 @@ class CreateJourneyViewController: UIViewController {
     private func startJourney(){
         let newJourney = JourneyWorkout(start: Date(), end: nil)
         journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
-        clearValues()
-        locationList.removeAll()
         checkPermissions()
         journeyManager.startLocationUpdates()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
@@ -193,6 +194,7 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func setInitialValues(){
+        clearValues()
         initialSteps = StepTracker.sharedInstance.numberOfSteps
         initialPace =  StepTracker.sharedInstance.averagePace
         initialDistance = StepTracker.sharedInstance.distance
@@ -208,17 +210,73 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func registerForNotifications() {
+        
         let ns = NotificationCenter.default
         let locationsUpdated = Notification.Name.LocationManagerEvents.locationsUpdated
         
         ns.addObserver(forName: locationsUpdated, object: nil, queue: nil){
             (notification) in
-            DispatchQueue.main.async {
-                // Add locations to location map and add to route builder
+                // Add to route builder
+                if let dict = notification.userInfo {
+                    if let locations = dict["locations"] as? [CLLocation]{
+                        // do something
+                        self.journeyManager.builderPack.routeBuilder.insertRouteData(locations) { (success, error) in
+                            if !success {
+                                // Handle any errors here.
+                            }
+                      }
+                        if let lastLocation = dict["lastLocation"] as? CLLocation {
+                            DispatchQueue.main.async {
+                                // Add locations to map
+                                
+                                let coordinates = [lastLocation.coordinate, locations[0].coordinate]
+                                
+                                self.mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+                            }
+                        }
+
+                    }
             }
-        }
+    }
+}
+    
+    private func setUpMap(){
+        let mapView = MKMapView()
+        let leftMargin:CGFloat = 10
+        let topMargin:CGFloat = 60
+        let mapWidth:CGFloat = view.frame.size.width-20
+        let mapHeight:CGFloat = 300
+        
+        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+        
+        mapView.mapType = MKMapType.standard
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        
+        // Or, if needed, we can position map in the center of the view
+        mapView.center = view.center
+        view.addSubview(mapView)
+        self.mapView = mapView
+        mapView.delegate = self
+        mapView.userTrackingMode = .follow
+        
         
     }
 }
 
+extension CreateJourneyViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+      
+      guard let polyline = overlay as? MulticolorPolyline else {
+        return MKOverlayRenderer(overlay: overlay)
+          
+      }
+      let renderer = MKPolylineRenderer(polyline: polyline)
+      renderer.strokeColor = polyline.color
+      renderer.lineWidth = 5
+      
+      return renderer
+    }
+}
 

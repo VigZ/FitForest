@@ -48,22 +48,17 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     // Filter location data
     
-    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-        location.horizontalAccuracy <= 20.0
-    }
-    
-    guard !filteredLocations.isEmpty else { return }
+//    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
+//        location.horizontalAccuracy <= 20.0
+//    }
+//
+//    guard !filteredLocations.isEmpty else { return }
+    //TODO: Uncomment this
     
     locationList.append(contentsOf: locations)
     
-    let userInfoDict:[String: [CLLocation]] = ["locations": locations]
+    let userInfoDict:[String: Any] = ["locations": locations, "lastLocation": locationList.last as Any]
     NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationsUpdated, object: nil, userInfo: userInfoDict)
 
-    // Add the filtered data to the route.
-//      builderPack.routeBuilder.insertRouteData(filteredLocations) { (success, error) in
-//          if !success {
-//              // Handle any errors here.
-//          }
-//    }
   }
 }
