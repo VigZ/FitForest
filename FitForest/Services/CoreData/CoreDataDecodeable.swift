@@ -24,7 +24,9 @@ extension CoreDataDecodeable {
         
         // Create the Entity Description
         guard let description = NSEntityDescription.entity(forEntityName: entityName, in: context)
+        
         else { throw SerializationError.unknownEntity(name: entityName) }
+        
         // TODO: Fix error handling here.
         // Create the NSManagedObject
         let managedObject = NSManagedObject(entity: description, insertInto: context)
@@ -38,8 +40,10 @@ extension CoreDataDecodeable {
 
         for case let (label?, anyValue) in mirror.children {
             // TODO: Add error handling for when keys don't match exactly.
+            
             managedObject.setValue(anyValue, forKey: label)
         }
+        
         // TODO: Add error here to make sure that object keys on struct match core data representation.
         return managedObject
     }

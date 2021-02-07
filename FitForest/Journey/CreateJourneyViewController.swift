@@ -225,6 +225,16 @@ class CreateJourneyViewController: UIViewController {
                             if !success {
                                 // Handle any errors here.
                             }
+
+                            for location in locations {
+                                
+                                let newLocation = Location(context: self.journeyManager.coreDataStack.context)
+                                newLocation.setValue(location.coordinate.latitude, forKey: "latitude")
+                                newLocation.setValue(location.coordinate.longitude, forKey: "longitude")
+                                newLocation.setValue(location.timestamp, forKey: "timestamp")
+                                self.journeyManager.builderPack.journeyWorkout.locations.insert(newLocation)
+                            }
+
                             
                       }
                         if let lastLocation = dict["lastLocation"] as? CLLocation {

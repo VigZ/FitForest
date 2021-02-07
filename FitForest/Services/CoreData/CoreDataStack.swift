@@ -28,18 +28,18 @@ class CoreDataStack {
 
     
   
-//  class func saveContext () {
-//    let context = persistentContainer.viewContext
-//
-//    guard context.hasChanges else {
-//      return
-//    }
-//
-//    do {
-//      try context.save()
-//    } catch {
-//      let nserror = error as NSError
-//      fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-//    }
-//  }
+  func saveContext () {
+    let context = persistentContainer.viewContext
+
+    guard context.hasChanges else {
+      return
+    }
+
+    do {
+      try context.save()
+    } catch {
+      let nserror = error as NSError
+      fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    }
+  }
 }

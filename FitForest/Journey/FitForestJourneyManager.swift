@@ -102,36 +102,46 @@ class FitForestJourneyManager: NSObject {
             let newWorkout = HKWorkout(activityType: .running, start: startDate, end: endDate, duration: duration, totalEnergyBurned: calorieQuantity, totalDistance: distanceQuantity, metadata: nil)
             
             fitForestHealthStore.hkHealthStore?.save(newWorkout) { (success, error) in
-                guard !success else {
+                
+                guard success else {
                     //Handle error
                     return
                 }
+                
                 // Create Samples
                 self.fitForestHealthStore.hkHealthStore?.add([stepSample, distanceSample, calorieSample], to: newWorkout){  (success, error) in
                 }
+                
+                self.builderPack.routeBuilder.finishRoute(with: newWorkout, metadata: nil) { (newRoute, error) in
+                            guard newRoute != nil else {
+                                // Handle any errors here.
+                                return
+                            }
+                    //TODO: THERE MAY BE A CONCURRENCY ISSUE. PLEASE FIX FUTURE KYLE.
+                            // Optional: Do something with the route here.
+                        }
+                do {
+                    let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: coreDataStack.context)
+                    print(journeyEntity)
+                    let locationsSet = journeyEntity.mutableSetValue(forKey: "locations")
+                    for location in builderPack.journeyWorkout.locations {
+                        locationsSet.add(location)
+                    }
+                    self.coreDataStack.saveContext()
+                    
+                }
+                
+                catch {
+                    
+                    // Add error handling here
+                
+                }
+                
+            }
 
             }
             // Create, save, and associate the route with the provided workout.
-            self.builderPack.routeBuilder.finishRoute(with: newWorkout, metadata: nil) { (newRoute, error) in
 
-                        guard newRoute != nil else {
-                            // Handle any errors here.
-                            return
-                        }
-                
-                        // Optional: Do something with the route here.
-                    }
-            do {
-                let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: coreDataStack.context)
-                
-                
-            }
-            
-            catch {
-                // Add error handling here
-            
-            }
-        }
     }
     
      func startLocationUpdates() {
