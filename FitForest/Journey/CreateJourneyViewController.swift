@@ -268,13 +268,14 @@ extension CreateJourneyViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
       
-      guard let polyline = overlay as? MulticolorPolyline else {
+      guard let polyline = overlay as? MKPolyline else {
+        
         return MKOverlayRenderer(overlay: overlay)
           
       }
-      let renderer = MKPolylineRenderer(polyline: polyline)
-      renderer.strokeColor = polyline.color
-      renderer.lineWidth = 5
+    let renderer = MKPolylineRenderer(polyline: polyline)
+    renderer.strokeColor = UIColor.systemBlue
+    renderer.lineWidth = 5
       
       return renderer
     }

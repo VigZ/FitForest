@@ -53,11 +53,12 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
 //    }
 //
 //    guard !filteredLocations.isEmpty else { return }
-    //TODO: Uncomment this
+//
+    let lastLocation = locationList.last
     
     locationList.append(contentsOf: locations)
     
-    let userInfoDict:[String: Any] = ["locations": locations, "lastLocation": locationList.last as Any]
+    let userInfoDict:[String: Any] = ["locations": locations, "lastLocation": lastLocation as Any]
     NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationsUpdated, object: nil, userInfo: userInfoDict)
 
   }
