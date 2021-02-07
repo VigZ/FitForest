@@ -20,4 +20,8 @@ extension NSNotification.Name {
         
         static let floorsUpdated = NSNotification.Name(rawValue: "floorsUpdated")
     }
+    
+    class LocationManagerEvents {
+        static let locationsUpdated = NSNotification.Name(rawValue: "locationsUpdated")
+    }
 }

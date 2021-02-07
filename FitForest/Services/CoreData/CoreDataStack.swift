@@ -10,7 +10,6 @@ import CoreData
 
 class CoreDataStack {
     
-    
     static let sharedInstance = CoreDataStack()
     
     let persistentContainer: NSPersistentContainer = {

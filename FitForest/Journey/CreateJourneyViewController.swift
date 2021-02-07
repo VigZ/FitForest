@@ -206,6 +206,19 @@ class CreateJourneyViewController: UIViewController {
         initialDistance = 0
         initialFloors = 0
     }
+    
+    private func registerForNotifications() {
+        let ns = NotificationCenter.default
+        let locationsUpdated = Notification.Name.LocationManagerEvents.locationsUpdated
+        
+        ns.addObserver(forName: locationsUpdated, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                // Add locations to location map and add to route builder
+            }
+        }
+        
+    }
 }
 
 

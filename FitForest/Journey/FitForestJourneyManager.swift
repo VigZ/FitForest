@@ -12,14 +12,12 @@ import CoreLocation
 class FitForestJourneyManager: NSObject {
     
     var builderPack: BuilderPack!
-    var locationList = [CLLocation]()
-    
     
     //External Services
-    let locationManager = LocationManager.sharedInstance
+    let locationManager = FitForestLocationManager.sharedInstance
     let stepCounter = StepTracker.sharedInstance
     let fitForestHealthStore = FitForestHealthStore.sharedInstance
-//    let coreDataManager = CoreDataManager.sharedInstance
+    let coreDataStack = CoreDataStack.sharedInstance
     
     
     
@@ -44,7 +42,7 @@ class FitForestJourneyManager: NSObject {
     }
     
     private func requestLocationData() {
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocationPermissions()
     }
     
     private func requestHealthKitPermissions(){
@@ -124,7 +122,7 @@ class FitForestJourneyManager: NSObject {
                         // Optional: Do something with the route here.
                     }
             do {
-                let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: CoreDataManager.sharedInstance.context)
+                let journeyEntity = try builderPack.journeyWorkout.toCoreData(context: coreDataStack.context)
                 
                 
             }
@@ -137,30 +135,7 @@ class FitForestJourneyManager: NSObject {
     }
     
      func startLocationUpdates() {
-        locationManager.delegate = self
-        locationManager.activityType = .fitness
-        locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
     }
 }
 
-extension FitForestJourneyManager: CLLocationManagerDelegate {
-
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    // Filter location data
-    
-    let filteredLocations = locations.filter { (location: CLLocation) -> Bool in
-        location.horizontalAccuracy <= 20.0
-    }
-    
-    guard !filteredLocations.isEmpty else { return }
-    
-    locationList.append(contentsOf: locations)
-    // Add the filtered data to the route.
-      builderPack.routeBuilder.insertRouteData(filteredLocations) { (success, error) in
-          if !success {
-              // Handle any errors here.
-          }
-    }
-  }
-}
