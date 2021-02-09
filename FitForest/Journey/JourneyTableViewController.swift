@@ -17,6 +17,7 @@ class JourneyTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(JourneyCell.self, forCellReuseIdentifier: "JourneyCell")
         
 //        dataSource = UITableViewDiffableDataSource<JourneySection, Journey>(tableView: self) {
 //            (tableView: UITableView, indexPath: IndexPath, itemIdentifier: UUID) -> UITableViewCell? in
@@ -27,6 +28,24 @@ class JourneyTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    private func setupTableView() {
+        diffableDataSource = UITableViewDiffableDataSource<JourneySection, Journey>(tableView: tableView) { (tableView, indexPath, journey) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JourneyCell", for: indexPath)
+            
+            cell.textLabel?.text = color.name
+            cell.detailTextLabel?.text = color.hexColor
+            
+            let backgroundColor = color.uiColor ?? .systemBackground
+            cell.textLabel?.textColor = UIColor.basedOnBackgroundColor(backgroundColor)
+            cell.detailTextLabel?.textColor = UIColor.basedOnBackgroundColor(backgroundColor)
+            cell.contentView.backgroundColor = backgroundColor
+            
+            return cell
+        }
+        
+        setupSnapshot()
     }
 
     private func setupSnapshot() {

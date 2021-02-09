@@ -25,6 +25,18 @@ struct JourneyWorkout: CoreDataDecodeable {
         self.endDate = end
     }
     
+    init(journey: Journey) {
+        self.startDate = journey.startDate!
+        self.endDate = journey.endDate
+        self.distance = journey.distance
+        self.steps = Int(journey.steps)
+        self.averagePace = journey.averagePace
+        if journey.locations != nil{
+            self.locations = journey.locations as! Set<Location>
+        }
+     
+    }
+    
     var duration: TimeInterval? {
         return endDate?.timeIntervalSince(startDate) ?? nil
     }
