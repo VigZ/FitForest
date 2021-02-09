@@ -6,12 +6,22 @@
 //
 
 import UIKit
+import CoreData
 
 class JourneyTableViewController: UITableViewController {
-
+    
+    var fetchedResultsController: NSFetchedResultsController<Journey>!
+    
+    var diffableDataSource: UITableViewDiffableDataSource<JourneySection, Journey>?
+    var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        dataSource = UITableViewDiffableDataSource<JourneySection, Journey>(tableView: self) {
+//            (tableView: UITableView, indexPath: IndexPath, itemIdentifier: UUID) -> UITableViewCell? in
+//            // configure and return cell
+//        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -19,17 +29,41 @@ class JourneyTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    private func setupSnapshot() {
+        diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
+        diffableDataSourceSnapshot.appendSections([JourneySection.main])
+        diffableDataSourceSnapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
+        diffableDataSource?.apply(self.diffableDataSourceSnapshot)
+    }
+    
+    private func setupFetchedResultsController() {
+        let request: NSFetchRequest<Journey> = Journey.fetchRequest()
+        request.fetchBatchSize = 30
+        
+        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.sharedInstance.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+            setupSnapshot()
+        } catch {
+            print("Fetch failed")
+        }
+    }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,5 +119,13 @@ class JourneyTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension JourneyTableViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // This will be used later on
+    }
 
 }
