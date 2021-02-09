@@ -36,6 +36,7 @@
 		27A93F1825CDA95A0090A794 /* JourneyMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F1725CDA95A0090A794 /* JourneyMO.swift */; };
 		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
 		27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */; };
+		27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		27A93F1725CDA95A0090A794 /* JourneyMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyMO.swift; sourceTree = "<group>"; };
 		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDecodeable.swift; sourceTree = "<group>"; };
+		27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 				27A93F0F25C9FDBD0090A794 /* Objects */,
 				27A93F0E25C9FD890090A794 /* Utils */,
 				277A88DB25C4690F00C1F374 /* CreateJourneyViewController.swift */,
+				27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */,
 				277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */,
 				27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */,
 			);
@@ -446,6 +449,7 @@
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
+				27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */,
 				277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */,
 				277A88F325C494D700C1F374 /* CoreDataStack.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
