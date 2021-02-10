@@ -32,15 +32,9 @@ class JourneyTableViewController: UITableViewController {
     
     private func setupTableView() {
         diffableDataSource = UITableViewDiffableDataSource<JourneySection, Journey>(tableView: tableView) { (tableView, indexPath, journey) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "JourneyCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "JourneyCell", for: indexPath) as! JourneyCell
             
-            cell.textLabel?.text = color.name
-            cell.detailTextLabel?.text = color.hexColor
-            
-            let backgroundColor = color.uiColor ?? .systemBackground
-            cell.textLabel?.textColor = UIColor.basedOnBackgroundColor(backgroundColor)
-            cell.detailTextLabel?.textColor = UIColor.basedOnBackgroundColor(backgroundColor)
-            cell.contentView.backgroundColor = backgroundColor
+            cell.journeyWorkout = JourneyWorkout(journey: journey)
             
             return cell
         }
