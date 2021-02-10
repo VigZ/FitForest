@@ -271,8 +271,6 @@ class CreateJourneyViewController: UIViewController {
         self.mapView = mapView
         mapView.delegate = self
         mapView.userTrackingMode = .follow
-        
-        
     }
 }
 
