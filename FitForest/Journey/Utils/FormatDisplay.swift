@@ -40,4 +40,11 @@ struct FormatDisplay {
     formatter.dateStyle = .medium
     return formatter.string(from: timestamp)
   }
+    
+    static func timeOfDay(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        let timeString = formatter.string(from: date)
+        return timeString
+    }
 }
