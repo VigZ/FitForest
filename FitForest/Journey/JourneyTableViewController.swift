@@ -138,7 +138,7 @@ class JourneyTableViewController: UITableViewController {
 extension JourneyTableViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // This will be used later on
+       setupSnapshot()
     }
 
 }
