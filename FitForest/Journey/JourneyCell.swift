@@ -11,9 +11,10 @@ class JourneyCell: UITableViewCell {
     
     var journeyWorkout: JourneyWorkout? {
         didSet {
-            startDateLabel.text = String(describing:journeyWorkout?.startDate)
-            stepsLabel.text = String(describing: journeyWorkout?.steps)
-            distanceLabel.text = String(describing: journeyWorkout?.distance)
+            guard let journeyWorkout = journeyWorkout else { return }
+            startDateLabel.text = String(describing:journeyWorkout.startDate)
+            stepsLabel.text = String(describing: journeyWorkout.steps)
+            distanceLabel.text = String(describing: journeyWorkout.distance)
         }
     }
     

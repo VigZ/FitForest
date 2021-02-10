@@ -19,15 +19,8 @@ class JourneyTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(JourneyCell.self, forCellReuseIdentifier: "JourneyCell")
         
-//        dataSource = UITableViewDiffableDataSource<JourneySection, Journey>(tableView: self) {
-//            (tableView: UITableView, indexPath: IndexPath, itemIdentifier: UUID) -> UITableViewCell? in
-//            // configure and return cell
-//        }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupTableView()
+        setupFetchedResultsController()
     }
     
     private func setupTableView() {
@@ -40,12 +33,13 @@ class JourneyTableViewController: UITableViewController {
         }
         
         setupSnapshot()
+        tableView.rowHeight = 60
     }
 
     private func setupSnapshot() {
         diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
         diffableDataSourceSnapshot.appendSections([JourneySection.main])
-        diffableDataSourceSnapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
+        diffableDataSourceSnapshot.appendItems(fetchedResultsController?.fetchedObjects ?? [])
         diffableDataSource?.apply(self.diffableDataSourceSnapshot)
     }
     
