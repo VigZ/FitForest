@@ -15,8 +15,8 @@ class JourneyCell: UITableViewCell {
 
             startDateLabel.text = FormatDisplay.date(journeyWorkout.startDate)
             startTimeLabel.text = FormatDisplay.timeOfDay(journeyWorkout.startDate)
-            stepsLabel.text = String(describing: journeyWorkout.steps)
-            distanceLabel.text = String(describing: journeyWorkout.distance)
+            stepsLabel.text = String(describing: journeyWorkout.steps) + " steps"
+            distanceLabel.text = FormatDisplay.distance(journeyWorkout.distance)
         }
     }
     
@@ -49,8 +49,8 @@ class JourneyCell: UITableViewCell {
         
     addSubview(startDateLabel)
     addSubview(startTimeLabel)
-//    addSubview(stepsLabel)
-//    addSubview(distanceLabel)
+    addSubview(stepsLabel)
+    addSubview(distanceLabel)
 
     startDateLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
     startDateLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -60,13 +60,11 @@ class JourneyCell: UITableViewCell {
     startTimeLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
     startTimeLabel.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
         
-//    stepsLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
-//    stepsLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
-//    stepsLabel.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
-//
-//    distanceLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 20).isActive = true
-//
-//    distanceLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+    stepsLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+    stepsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+        
+    distanceLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+    distanceLabel.topAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 10).isActive = true
     
     
     }
