@@ -55,7 +55,7 @@ class JourneyTableViewController: UITableViewController {
         let request: NSFetchRequest<Journey> = Journey.fetchRequest()
         request.fetchBatchSize = 30
         
-        let sort = NSSortDescriptor(key: "startDate", ascending: true)
+        let sort = NSSortDescriptor(key: "startDate", ascending: false)
         request.sortDescriptors = [sort]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.sharedInstance.context, sectionNameKeyPath: nil, cacheName: nil)

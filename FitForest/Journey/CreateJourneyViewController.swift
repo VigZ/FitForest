@@ -139,10 +139,14 @@ class CreateJourneyViewController: UIViewController {
             self.endJourney(save: true)
             let dvc = JourneyDetailViewController()
             dvc.journey = self.journeyManager.builderPack.journeyWorkout
-            self.navigationController?.pushViewController(dvc, animated: true)
+            let presenting = self.presentingViewController
+            self.dismiss(animated: true){
+                presenting?.present(dvc, animated: true, completion: nil)
+            }
         })
         alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
             self.endJourney(save: false)
+            self.dismiss(animated: true, completion: nil)
         })
         
         timer?.invalidate()
