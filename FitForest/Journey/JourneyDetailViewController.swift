@@ -123,7 +123,7 @@ class JourneyDetailViewController: UIViewController {
     }
     
     private func polyLine() -> [MulticolorPolyline] {
-      
+        // TODO: FIX THIS CODE, IT SEEMS TO DRAW SOMETHING DIFFERENT EACH TIME
       // 1
       let locations = journey.locations
       var coordinates: [(CLLocation, CLLocation)] = []

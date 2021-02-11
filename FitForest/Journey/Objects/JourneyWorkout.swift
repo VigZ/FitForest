@@ -26,7 +26,6 @@ struct JourneyWorkout: CoreDataDecodeable {
     }
     
     init(journey: Journey) {
-        
         self.startDate = journey.startDate!
         self.endDate = journey.endDate
         self.distance = journey.distance
