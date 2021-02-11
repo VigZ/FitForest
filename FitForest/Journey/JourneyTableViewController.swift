@@ -122,6 +122,7 @@ class JourneyTableViewController: UITableViewController {
             return
         }
         let journeyWorkout = JourneyWorkout(journey: journey)
+        
         let dvc = JourneyDetailViewController()
         dvc.journey = journeyWorkout
         navigationController?.pushViewController(dvc, animated: true)
