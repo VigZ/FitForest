@@ -31,7 +31,7 @@ class MainTabBarController: UITabBarController {
         tabOne.tabBarItem = tabOneBarItem
         
         // Create Second Tab
-        let tabTwo = CreateJourneyViewController()
+        let tabTwo = JourneyTableViewController()
         // Embed in Navigation Controller
         let tabTwoNav = UINavigationController(rootViewController: tabTwo)
         let tabTwoImage = UIImage(systemName: "figure.walk.circle")
@@ -40,18 +40,18 @@ class MainTabBarController: UITabBarController {
         
         tabTwoNav.tabBarItem = tabTwoBarItem
         
-        // Create Third Tab
-        let tabThree = JourneyTableViewController()
-        // Embed in Navigation Controller
-        let tabThreeNav = UINavigationController(rootViewController: tabThree)
-        let tabThreeImage = UIImage(systemName: "table")
-        let selectedTabThreeImage = UIImage(systemName: "table.fill")
-        let tabThreeBarItem = UITabBarItem(title: "JourneyTable", image: tabThreeImage, selectedImage: selectedTabThreeImage)
-        
-        tabThreeNav.tabBarItem = tabThreeBarItem
+//        // Create Third Tab
+//        let tabThree = JourneyTableViewController()
+//        // Embed in Navigation Controller
+//        let tabThreeNav = UINavigationController(rootViewController: tabThree)
+//        let tabThreeImage = UIImage(systemName: "table")
+//        let selectedTabThreeImage = UIImage(systemName: "table.fill")
+//        let tabThreeBarItem = UITabBarItem(title: "JourneyTable", image: tabThreeImage, selectedImage: selectedTabThreeImage)
+//
+//        tabThreeNav.tabBarItem = tabThreeBarItem
         
         // Add ViewControllers
-        self.viewControllers = [tabOne, tabTwoNav, tabThreeNav]
+        self.viewControllers = [tabOne, tabTwoNav]
     }
     
 

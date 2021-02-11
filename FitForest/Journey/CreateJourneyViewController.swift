@@ -45,15 +45,6 @@ class CreateJourneyViewController: UIViewController {
     
     private var mapView: MKMapView!
     
-    let startButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemGreen
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
-        button.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
-        return button
-    }()
-    
     let endButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemRed
@@ -103,7 +94,6 @@ class CreateJourneyViewController: UIViewController {
 
         
         view.backgroundColor = .white
-        view.addSubview(startButton)
         view.addSubview(endButton)
         view.addSubview(distanceLabel)
         view.addSubview(timeLabel)
@@ -165,8 +155,6 @@ class CreateJourneyViewController: UIViewController {
     }
     
     private func setUpViews(){
-        startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        startButton.centerYAnchor.constraint(equalTo: endButton.topAnchor, constant: -20).isActive = true
         
         endButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         endButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true

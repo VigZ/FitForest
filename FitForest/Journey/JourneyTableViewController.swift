@@ -15,6 +15,14 @@ class JourneyTableViewController: UITableViewController {
     var diffableDataSource: UITableViewDiffableDataSource<JourneySection, Journey>?
     var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
     
+    let topView: UIView = {
+        let tv = UIView()
+        tv.frame.size.height = 100
+        tv.backgroundColor = UIColor.systemGreen
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(JourneyCell.self, forCellReuseIdentifier: "JourneyCell")
@@ -70,6 +78,29 @@ class JourneyTableViewController: UITableViewController {
         let dvc = JourneyDetailViewController()
         dvc.journey = journeyWorkout
         navigationController?.pushViewController(dvc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let createButton = UIButton()
+        createButton.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
+
+        createButton.setTitle("Start Journey", for: .normal)
+        createButton.frame = CGRect(x: 0, y: 0, width: 150, height: 90)
+
+        topView.addSubview(createButton)
+
+        return topView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 175
+    }
+    
+    @objc func startTapped() {
+        let vc = CreateJourneyViewController()
+        self.present(vc, animated: true, completion: nil)
+        vc.startTapped()
     }
 
 }
