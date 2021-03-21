@@ -101,12 +101,10 @@ class JourneyDetailViewController: UIViewController {
         return nil
       }
         let latitudes = journey.locations.map { location -> Double in
-        let location = location as! Location
         return location.latitude
       }
       
         let longitudes = journey.locations.map { location -> Double in
-        let location = location as! Location
         return location.longitude
       }
       
@@ -125,7 +123,9 @@ class JourneyDetailViewController: UIViewController {
     private func polyLine() -> [MulticolorPolyline] {
         // TODO: FIX THIS CODE, IT SEEMS TO DRAW SOMETHING DIFFERENT EACH TIME
       // 1
-      let locations = journey.locations
+        let locations = journey.locations.sorted {
+            return $0.timestamp! < $1.timestamp!
+        }
       var coordinates: [(CLLocation, CLLocation)] = []
       var speeds: [Double] = []
       var minSpeed = Double.greatestFiniteMagnitude
@@ -136,7 +136,6 @@ class JourneyDetailViewController: UIViewController {
         let start = CLLocation(latitude: first.latitude, longitude: first.longitude)
         let end = CLLocation(latitude: second.latitude, longitude: second.longitude)
         coordinates.append((start, end))
-        
         //3
         let distance = end.distance(from: start)
         let time = second.timestamp!.timeIntervalSince(first.timestamp! as Date)
@@ -152,6 +151,7 @@ class JourneyDetailViewController: UIViewController {
       //5
       var segments: [MulticolorPolyline] = []
       for ((start, end), speed) in zip(coordinates, speeds) {
+        
         let coords = [start.coordinate, end.coordinate]
         let segment = MulticolorPolyline(coordinates: coords, count: 2)
         segment.color = segmentColor(speed: speed,
@@ -160,6 +160,7 @@ class JourneyDetailViewController: UIViewController {
                                      fastestSpeed: maxSpeed)
         segments.append(segment)
       }
+        
       return segments
     }
     
@@ -219,9 +220,10 @@ extension JourneyDetailViewController: MKMapViewDelegate {
       return MKOverlayRenderer(overlay: overlay)
         
     }
+    
     let renderer = MKPolylineRenderer(polyline: polyline)
     renderer.strokeColor = polyline.color
-    renderer.lineWidth = 3
+    renderer.lineWidth = 5
     
     return renderer
   }
