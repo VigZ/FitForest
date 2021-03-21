@@ -121,7 +121,6 @@ class JourneyDetailViewController: UIViewController {
     }
     
     private func polyLine() -> [MulticolorPolyline] {
-        // TODO: FIX THIS CODE, IT SEEMS TO DRAW SOMETHING DIFFERENT EACH TIME
       // 1
         let locations = journey.locations.sorted {
             return $0.timestamp! < $1.timestamp!
