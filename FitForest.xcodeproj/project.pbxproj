@@ -35,6 +35,9 @@
 		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
 		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
 		27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */; };
+		27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5F626090E1F00B3D62A /* TopContainer.swift */; };
+		27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5FB260914C500B3D62A /* BottomContainer.swift */; };
+		27D5D6012609162600B3D62A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6002609162600B3D62A /* MainView.swift */; };
 		27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */; };
 		27E86C3725D3177F00C5AB8A /* JourneySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3625D3177F00C5AB8A /* JourneySection.swift */; };
 		27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */; };
@@ -93,6 +96,9 @@
 		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
 		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDecodeable.swift; sourceTree = "<group>"; };
+		27D5D5F626090E1F00B3D62A /* TopContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContainer.swift; sourceTree = "<group>"; };
+		27D5D5FB260914C500B3D62A /* BottomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainer.swift; sourceTree = "<group>"; };
+		27D5D6002609162600B3D62A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewController.swift; sourceTree = "<group>"; };
 		27E86C3625D3177F00C5AB8A /* JourneySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneySection.swift; sourceTree = "<group>"; };
 		27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				27D5D5F126090D9B00B3D62A /* Main */,
 				27A93F0D25C9FD220090A794 /* Services */,
 				278453BC25C89F5B00D00B80 /* FitForest.entitlements */,
 				277A88DA25C468E300C1F374 /* Journey */,
@@ -157,7 +164,6 @@
 				277A885B25BF1DA600C1F374 /* Inventory */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
-				277A882325BCD0C700C1F374 /* MainViewController.swift */,
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
@@ -304,6 +310,25 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		27D5D5F126090D9B00B3D62A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				27D5D5F526090DE800B3D62A /* Views */,
+				277A882325BCD0C700C1F374 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		27D5D5F526090DE800B3D62A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27D5D5F626090E1F00B3D62A /* TopContainer.swift */,
+				27D5D5FB260914C500B3D62A /* BottomContainer.swift */,
+				27D5D6002609162600B3D62A /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -439,6 +464,7 @@
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
 				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
+				27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */,
 				278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */,
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
 				277A88E125C474B000C1F374 /* FitForestLocationManager.swift in Sources */,
@@ -456,6 +482,8 @@
 				277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */,
 				277A88F325C494D700C1F374 /* CoreDataStack.swift in Sources */,
 				27E86C3725D3177F00C5AB8A /* JourneySection.swift in Sources */,
+				27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */,
+				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,

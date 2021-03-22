@@ -45,6 +45,12 @@ class MainViewController: UIViewController {
         return lowerContainer
     }()
     
+    override func loadView() {
+        let mainView = MainView()
+        mainView.delegate = self
+        view = myView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
