@@ -20,6 +20,8 @@ class MainView: UIView {
         bottom.translatesAutoresizingMaskIntoConstraints = false
         return bottom
     }()
+    
+    var delegate:UIViewController!
 
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -34,6 +36,8 @@ class MainView: UIView {
     private func setupView() {
         addSubview(topContainer)
         addSubview(bottomContainer)
+        backgroundColor = .white
+        setupLayout()
     }
 
     private func setupLayout() {

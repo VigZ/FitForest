@@ -45,9 +45,10 @@ class TopContainer: UIView {
         addSubview(stepsLabel)
         addSubview(stateLabel)
         addSubview(pointsLabel)
+        setupLayout()
     }
 
-    private func setupLayout() {
+    private func setupLayout() {        
       NSLayoutConstraint.activate([
         
         pointsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),

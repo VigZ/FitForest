@@ -38,6 +38,7 @@
 		27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5F626090E1F00B3D62A /* TopContainer.swift */; };
 		27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5FB260914C500B3D62A /* BottomContainer.swift */; };
 		27D5D6012609162600B3D62A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6002609162600B3D62A /* MainView.swift */; };
+		27D5D60726091E3F00B3D62A /* HasCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D60626091E3F00B3D62A /* HasCustomView.swift */; };
 		27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */; };
 		27E86C3725D3177F00C5AB8A /* JourneySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3625D3177F00C5AB8A /* JourneySection.swift */; };
 		27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */; };
@@ -99,6 +100,7 @@
 		27D5D5F626090E1F00B3D62A /* TopContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContainer.swift; sourceTree = "<group>"; };
 		27D5D5FB260914C500B3D62A /* BottomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainer.swift; sourceTree = "<group>"; };
 		27D5D6002609162600B3D62A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		27D5D60626091E3F00B3D62A /* HasCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCustomView.swift; sourceTree = "<group>"; };
 		27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewController.swift; sourceTree = "<group>"; };
 		27E86C3625D3177F00C5AB8A /* JourneySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneySection.swift; sourceTree = "<group>"; };
 		27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
+				27D5D60526091E1B00B3D62A /* Utils */,
 				27D5D5F126090D9B00B3D62A /* Main */,
 				27A93F0D25C9FD220090A794 /* Services */,
 				278453BC25C89F5B00D00B80 /* FitForest.entitlements */,
@@ -329,6 +332,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		27D5D60526091E1B00B3D62A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				27D5D60626091E3F00B3D62A /* HasCustomView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +475,7 @@
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
 				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
+				27D5D60726091E3F00B3D62A /* HasCustomView.swift in Sources */,
 				27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */,
 				278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */,
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,

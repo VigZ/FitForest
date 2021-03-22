@@ -21,6 +21,7 @@ class BottomContainer: UIView {
 
     private func setupView() {
         backgroundColor = .systemPurple
+        setupLayout()
     }
 
     private func setupLayout() {
