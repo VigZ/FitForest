@@ -41,7 +41,6 @@
 		27D5D60726091E3F00B3D62A /* HasCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D60626091E3F00B3D62A /* HasCustomView.swift */; };
 		27D5D610260925DA00B3D62A /* CreateJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D60F260925DA00B3D62A /* CreateJourneyView.swift */; };
 		27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6192609264D00B3D62A /* JourneyDetailView.swift */; };
-		27D5D622260928CC00B3D62A /* JourneyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D621260928CC00B3D62A /* JourneyTableView.swift */; };
 		27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */; };
 		27E86C3725D3177F00C5AB8A /* JourneySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3625D3177F00C5AB8A /* JourneySection.swift */; };
 		27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */; };
@@ -106,7 +105,6 @@
 		27D5D60626091E3F00B3D62A /* HasCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCustomView.swift; sourceTree = "<group>"; };
 		27D5D60F260925DA00B3D62A /* CreateJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJourneyView.swift; sourceTree = "<group>"; };
 		27D5D6192609264D00B3D62A /* JourneyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailView.swift; sourceTree = "<group>"; };
-		27D5D621260928CC00B3D62A /* JourneyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableView.swift; sourceTree = "<group>"; };
 		27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewController.swift; sourceTree = "<group>"; };
 		27E86C3625D3177F00C5AB8A /* JourneySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneySection.swift; sourceTree = "<group>"; };
 		27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 			children = (
 				27D5D60F260925DA00B3D62A /* CreateJourneyView.swift */,
 				27D5D6192609264D00B3D62A /* JourneyDetailView.swift */,
-				27D5D621260928CC00B3D62A /* JourneyTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -515,7 +512,6 @@
 				27D5D610260925DA00B3D62A /* CreateJourneyView.swift in Sources */,
 				27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */,
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
-				27D5D622260928CC00B3D62A /* JourneyTableView.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,
