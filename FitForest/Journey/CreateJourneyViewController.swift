@@ -9,13 +9,13 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class CreateJourneyViewController: UIViewController {
-    
-    private var journeyManager: FitForestJourneyManager!
+class CreateJourneyViewController: UIViewController, HasCustomView {
+    typealias CustomView = CreateJourneyView
+    var journeyManager: FitForestJourneyManager!
     
     private var seconds = 0 {
         didSet{
-            self.timeLabel.text = "Time: \(String(seconds))"
+            self.customView.labelContainer.timeLabel.text = "Time: \(String(seconds))"
                 DispatchQueue.main.async {
                     let newDistance = StepTracker.sharedInstance.distance - self.initialDistance
                     let steps = StepTracker.sharedInstance.numberOfSteps - self.initialSteps
@@ -27,83 +27,32 @@ class CreateJourneyViewController: UIViewController {
                     let formattedPace = FormatDisplay.pace(distance: distanceMeasurement,
                                                            seconds: self.seconds,
                                                            outputUnit: UnitSpeed.minutesPerMile)
-                    self.distanceLabel.text = "Distance:  \(formattedDistance)"
-                    self.timeLabel.text = "Time:  \(formattedTime)"
-                    self.paceLabel.text = "Pace:  \(formattedPace)"
-                    self.stepsLabel.text = "Steps:  \(steps)"
-                    self.floorsLabel.text = "Floors Ascended:  \(floors)"
+                    self.customView.labelContainer.distanceLabel.text = "Distance:  \(formattedDistance)"
+                    self.customView.labelContainer.timeLabel.text = "Time:  \(formattedTime)"
+                    self.customView.labelContainer.paceLabel.text = "Pace:  \(formattedPace)"
+                    self.customView.labelContainer.stepsLabel.text = "Steps:  \(steps)"
+                    self.customView.labelContainer.floorsLabel.text = "Floors Ascended:  \(floors)"
                 }
         }
     }
 
-    private var timer: Timer?
+    var timer: Timer?
     
     private var initialDistance: Double = 0
     private var initialSteps: Int = 0
     private var initialPace: Double = 0
     private var initialFloors = 0
     
-    private var mapView: MKMapView!
-    
-    let endButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemRed
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("End", for: .normal)
-        button.addTarget(self, action: #selector(stopTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    let distanceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Distance: 0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let timeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Time: 0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let paceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Pace: 0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let stepsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Steps: 0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let floorsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Floors Ascended: 0"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    override func loadView() {
+        let customView = CustomView()
+        customView.delegate = self
+        view = customView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         view.backgroundColor = .white
-        view.addSubview(endButton)
-        view.addSubview(distanceLabel)
-        view.addSubview(timeLabel)
-        view.addSubview(paceLabel)
-        view.addSubview(stepsLabel)
-        view.addSubview(floorsLabel)
-        setUpViews()
-        setUpMap()
         registerForNotifications()
-        
     }
     
     private func checkPermissions(){
@@ -121,7 +70,7 @@ class CreateJourneyViewController: UIViewController {
         setInitialValues()
     }
     
-    private func endJourney(save: Bool){
+     func endJourney(save: Bool){
         journeyManager.locationManager.stopUpdatingLocation()
         guard save else {
             // Hand discard Logic
@@ -130,55 +79,15 @@ class CreateJourneyViewController: UIViewController {
         journeyManager.createWorkout()
     }
     
-    @objc func stopTapped() {
-        let alertController = UIAlertController(title: "End journey?",
-                                                message: "Do you wish to end your journey?",
-                                                preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-            self.endJourney(save: true)
-            let dvc = JourneyDetailViewController()
-            dvc.journey = self.journeyManager.builderPack.journeyWorkout
-            let presenting = self.presentingViewController
-            self.dismiss(animated: true){
-                presenting?.present(dvc, animated: true, completion: nil)
-            }
-        })
-        alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
-            self.endJourney(save: false)
-            self.dismiss(animated: true, completion: nil)
-        })
-        
-        timer?.invalidate()
-            
-        present(alertController, animated: true)
-    }
-    
     @objc func startTapped() {
         startJourney()
     }
     
-    private func setUpViews(){
-        
-        endButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        endButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
-        
-        distanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        distanceLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        
-        timeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        timeLabel.centerYAnchor.constraint(equalTo: distanceLabel.bottomAnchor, constant: 20).isActive = true
-        
-        paceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        paceLabel.centerYAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20).isActive = true
-        
-        stepsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        stepsLabel.centerYAnchor.constraint(equalTo: paceLabel.bottomAnchor, constant: 20).isActive = true
-        
-        floorsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        floorsLabel.centerYAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 20).isActive = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpMap()
+
     }
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -199,6 +108,33 @@ class CreateJourneyViewController: UIViewController {
         initialPace =  0
         initialDistance = 0
         initialFloors = 0
+    }
+    
+    func setUpMap(){
+        let map = MKMapView()
+        map.mapType = MKMapType.standard
+        map.isZoomEnabled = true
+        map.isScrollEnabled = true
+        
+        let xOrigin:CGFloat = 0
+        let yOrigin:CGFloat = customView.frame.midY - 200
+        let mapWidth:CGFloat = customView.frame.width
+        let mapHeight:CGFloat = 300
+        
+        // Or, if needed, we can position map in the center of the view
+        map.center = customView.center
+        customView.addSubview(map)
+        customView.map = map
+        customView.map.delegate = self
+        customView.delegate = self
+        customView.map.userTrackingMode = .follow
+        
+        customView.map.frame = CGRect(x: xOrigin, y: yOrigin, width: mapWidth, height: mapHeight)
+        
+        if FitForestLocationManager.sharedInstance.locationServicesAreEnabled(){
+            customView.map.centerToLocation(FitForestLocationManager.sharedInstance.locationList.last!)
+        }
+
     }
     
     private func registerForNotifications() {
@@ -235,7 +171,7 @@ class CreateJourneyViewController: UIViewController {
                                 
                                 let coordinates = [lastLocation.coordinate, locations[0].coordinate]
                                 
-                                self.mapView.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
+                                self.customView.map.addOverlay(MKPolyline(coordinates: coordinates, count: 2))
                             }
                         }
 
@@ -243,27 +179,6 @@ class CreateJourneyViewController: UIViewController {
             }
     }
 }
-    
-    private func setUpMap(){
-        let mapView = MKMapView()
-        let leftMargin:CGFloat = 10
-        let topMargin:CGFloat = 60
-        let mapWidth:CGFloat = view.frame.size.width-20
-        let mapHeight:CGFloat = 300
-        
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
-        
-        mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
-        
-        // Or, if needed, we can position map in the center of the view
-        mapView.center = view.center
-        view.addSubview(mapView)
-        self.mapView = mapView
-        mapView.delegate = self
-        mapView.userTrackingMode = .follow
-    }
 }
 
 extension CreateJourneyViewController: MKMapViewDelegate {
@@ -281,5 +196,7 @@ extension CreateJourneyViewController: MKMapViewDelegate {
       
       return renderer
     }
+    
 }
+
 

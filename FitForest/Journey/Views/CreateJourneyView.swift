@@ -25,7 +25,7 @@ class CreateJourneyView: UIView {
         return button
     }()
     
-    private var mapView: MKMapView!
+    var map: MKMapView!
     
     weak var delegate:CreateJourneyViewController!
 
@@ -42,7 +42,6 @@ class CreateJourneyView: UIView {
     private func setupView() {
         addSubview(labelContainer)
         addSubview(endButton)
-        setUpMap()
         backgroundColor = .white
         setupLayout()
     }
@@ -55,27 +54,6 @@ class CreateJourneyView: UIView {
         endButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         endButton.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20)
       ])
-    }
-    
-    private func setUpMap(){
-        let mapView = MKMapView()
-        let leftMargin:CGFloat = 10
-        let topMargin:CGFloat = 60
-        let mapWidth:CGFloat = self.frame.size.width-20
-        let mapHeight:CGFloat = 300
-        
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
-        
-        mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
-        
-        // Or, if needed, we can position map in the center of the view
-        mapView.center = self.center
-        self.addSubview(mapView)
-        self.mapView = mapView
-        mapView.delegate = self
-        mapView.userTrackingMode = .follow
     }
     
     @objc func stopTapped() {
@@ -107,22 +85,4 @@ class CreateJourneyView: UIView {
       return true
     }
 
-}
-
-
-extension CreateJourneyView: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-      
-      guard let polyline = overlay as? MKPolyline else {
-        
-        return MKOverlayRenderer(overlay: overlay)
-          
-      }
-    let renderer = MKPolylineRenderer(polyline: polyline)
-    renderer.strokeColor = UIColor.systemBlue
-    renderer.lineWidth = 5
-      
-      return renderer
-    }
 }

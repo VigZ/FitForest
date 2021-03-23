@@ -42,6 +42,7 @@
 		27D5D610260925DA00B3D62A /* CreateJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D60F260925DA00B3D62A /* CreateJourneyView.swift */; };
 		27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6192609264D00B3D62A /* JourneyDetailView.swift */; };
 		27D5D62D2609296700B3D62A /* LabelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D62C2609296700B3D62A /* LabelContainer.swift */; };
+		27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6452609796400B3D62A /* MKMapView+centerToLocation.swift */; };
 		27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */; };
 		27E86C3725D3177F00C5AB8A /* JourneySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3625D3177F00C5AB8A /* JourneySection.swift */; };
 		27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */; };
@@ -107,6 +108,7 @@
 		27D5D60F260925DA00B3D62A /* CreateJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJourneyView.swift; sourceTree = "<group>"; };
 		27D5D6192609264D00B3D62A /* JourneyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailView.swift; sourceTree = "<group>"; };
 		27D5D62C2609296700B3D62A /* LabelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelContainer.swift; sourceTree = "<group>"; };
+		27D5D6452609796400B3D62A /* MKMapView+centerToLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+centerToLocation.swift"; sourceTree = "<group>"; };
 		27E86C3125D0AAE700C5AB8A /* JourneyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewController.swift; sourceTree = "<group>"; };
 		27E86C3625D3177F00C5AB8A /* JourneySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneySection.swift; sourceTree = "<group>"; };
 		27E86C3B25D351AB00C5AB8A /* JourneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyCell.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */,
 				277A88EA25C4896A00C1F374 /* FormatDisplay.swift */,
 				277A88E525C488E700C1F374 /* UnitConverterPace.swift */,
+				27D5D6452609796400B3D62A /* MKMapView+centerToLocation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
+				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
 				27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */,
