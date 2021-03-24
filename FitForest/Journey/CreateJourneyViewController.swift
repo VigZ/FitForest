@@ -55,19 +55,10 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         registerForNotifications()
         customView.delegate = self
         customView.map.delegate = self
-        
-        
-    }
-    
-    private func checkPermissions(){
-        journeyManager.requestUserPermissions()
+        startJourney()
     }
     
     private func startJourney(){
-        let newJourney = JourneyWorkout(start: Date(), end: nil)
-        journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
-        checkPermissions()
-        journeyManager.startLocationUpdates()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
           self.seconds += 1
         }
@@ -86,7 +77,13 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     @objc func startTapped() {
         startJourney()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if journeyManager.locationManager.locationServicesAreEnabled(){
+            journeyManager.startLocationUpdates()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
@@ -117,7 +114,6 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
                 // Add to route builder
                 if let dict = notification.userInfo {
                     if let locations = dict["locations"] as? [CLLocation]{
-                        print(self.customView.map.userTrackingMode.rawValue)
                         
                         // do something
                         self.journeyManager.builderPack.routeBuilder.insertRouteData(locations) { (success, error) in

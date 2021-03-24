@@ -98,9 +98,13 @@ class JourneyTableViewController: UITableViewController {
     }
     
     @objc func startTapped() {
+        //Should check and set location preferences here.
         let vc = CreateJourneyViewController()
+        let newJourney = JourneyWorkout(start: Date(), end: nil)
+        let journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
+        vc.journeyManager = journeyManager
+        vc.journeyManager.requestUserPermissions()
         self.present(vc, animated: true, completion: nil)
-        vc.startTapped()
     }
 
 }
