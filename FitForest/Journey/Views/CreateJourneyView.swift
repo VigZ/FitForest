@@ -25,7 +25,15 @@ class CreateJourneyView: UIView {
         return button
     }()
     
-    var map: MKMapView!
+    lazy var map: MKMapView = {
+        let map = MKMapView()
+        map.mapType = MKMapType.standard
+        map.isZoomEnabled = true
+        map.isScrollEnabled = true
+        map.userTrackingMode = .follow
+        map.translatesAutoresizingMaskIntoConstraints = false
+        return map
+    }()
     
     weak var delegate:CreateJourneyViewController!
 
@@ -42,6 +50,7 @@ class CreateJourneyView: UIView {
     private func setupView() {
         addSubview(labelContainer)
         addSubview(endButton)
+        addSubview(map)
         backgroundColor = .white
         setupLayout()
     }
@@ -52,7 +61,11 @@ class CreateJourneyView: UIView {
         labelContainer.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
         labelContainer.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
         endButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        endButton.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        endButton.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+        map.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        map.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        map.heightAnchor.constraint(equalToConstant: 300),
+        map.widthAnchor.constraint(equalTo: self.widthAnchor)
       ])
     }
     

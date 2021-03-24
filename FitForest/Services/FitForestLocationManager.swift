@@ -53,7 +53,7 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
 //    }
 //
 //    guard !filteredLocations.isEmpty else { return }
-
+    
     let lastLocation = locationList.last
     
     locationList.append(contentsOf: locations)

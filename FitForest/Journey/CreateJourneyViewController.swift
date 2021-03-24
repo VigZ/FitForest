@@ -53,6 +53,10 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         super.viewDidLoad()
         view.backgroundColor = .white
         registerForNotifications()
+        customView.delegate = self
+        customView.map.delegate = self
+        
+        
     }
     
     private func checkPermissions(){
@@ -82,13 +86,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     @objc func startTapped() {
         startJourney()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setUpMap()
 
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
@@ -110,43 +108,17 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         initialFloors = 0
     }
     
-    func setUpMap(){
-        let map = MKMapView()
-        map.mapType = MKMapType.standard
-        map.isZoomEnabled = true
-        map.isScrollEnabled = true
-        
-        let xOrigin:CGFloat = 0
-        let yOrigin:CGFloat = customView.frame.midY - 200
-        let mapWidth:CGFloat = customView.frame.width
-        let mapHeight:CGFloat = 300
-        
-        // Or, if needed, we can position map in the center of the view
-        map.center = customView.center
-        customView.addSubview(map)
-        customView.map = map
-        customView.map.delegate = self
-        customView.delegate = self
-        customView.map.userTrackingMode = .follow
-        
-        customView.map.frame = CGRect(x: xOrigin, y: yOrigin, width: mapWidth, height: mapHeight)
-        
-        if FitForestLocationManager.sharedInstance.locationServicesAreEnabled(){
-            customView.map.centerToLocation(FitForestLocationManager.sharedInstance.locationList.last!)
-        }
-
-    }
-    
     private func registerForNotifications() {
         
         let ns = NotificationCenter.default
         let locationsUpdated = Notification.Name.LocationManagerEvents.locationsUpdated
-        
         ns.addObserver(forName: locationsUpdated, object: nil, queue: nil){
             (notification) in
                 // Add to route builder
                 if let dict = notification.userInfo {
                     if let locations = dict["locations"] as? [CLLocation]{
+                        print(self.customView.map.userTrackingMode.rawValue)
+                        
                         // do something
                         self.journeyManager.builderPack.routeBuilder.insertRouteData(locations) { (success, error) in
                             
@@ -162,9 +134,8 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
                                 newLocation.setValue(location.timestamp, forKey: "timestamp")
                                 self.journeyManager.builderPack.journeyWorkout.locations.insert(newLocation)
                             }
-
-                            
                       }
+                        
                         if let lastLocation = dict["lastLocation"] as? CLLocation {
                             DispatchQueue.main.async {
                                 // Add locations to map
@@ -196,7 +167,6 @@ extension CreateJourneyViewController: MKMapViewDelegate {
       
       return renderer
     }
-    
 }
 
 
