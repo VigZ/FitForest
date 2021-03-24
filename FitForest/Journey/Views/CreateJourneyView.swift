@@ -26,7 +26,7 @@ class CreateJourneyView: UIView {
     }()
     
     lazy var map: MKMapView = {
-        let map = MKMapView()
+        let map = MKMapView(frame: UIScreen.main.bounds) // THE FRAME IS NEEDED BECAUSE OF SDK BUG
         map.mapType = MKMapType.standard
         map.isZoomEnabled = true
         map.isScrollEnabled = true
@@ -97,5 +97,4 @@ class CreateJourneyView: UIView {
     override class var requiresConstraintBasedLayout: Bool {
       return true
     }
-
 }

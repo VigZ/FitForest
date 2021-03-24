@@ -106,7 +106,6 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     }
     
     private func registerForNotifications() {
-        
         let ns = NotificationCenter.default
         let locationsUpdated = Notification.Name.LocationManagerEvents.locationsUpdated
         ns.addObserver(forName: locationsUpdated, object: nil, queue: nil){

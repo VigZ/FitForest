@@ -62,8 +62,4 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
     NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationsUpdated, object: nil, userInfo: userInfoDict)
 
   }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
-    }
 }
