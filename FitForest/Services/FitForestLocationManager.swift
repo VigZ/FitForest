@@ -60,6 +60,18 @@ extension FitForestLocationManager: CLLocationManagerDelegate {
     
     let userInfoDict:[String: Any] = ["locations": locations, "lastLocation": lastLocation as Any]
     NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationsUpdated, object: nil, userInfo: userInfoDict)
-
   }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways,
+             .authorizedWhenInUse:
+            NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationPermissionsChanged, object: true)
+        case .denied,
+             .restricted:
+            NotificationCenter.default.post(name: Notification.Name.LocationManagerEvents.locationPermissionsChanged, object: false)
+        default:
+            break
+        }
+    }
 }

@@ -31,7 +31,7 @@ class FitForestJourneyManager: NSObject {
         
         self.builderPack = BuilderPack(journeyWorkout:journeyWorkout, routeBuilder: workoutRouteBuilder)
     }
-    
+    // Move location to TableViewController and Healkit to app launch
     func requestUserPermissions(){
         //Check Location Data
         requestLocationData()

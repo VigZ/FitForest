@@ -23,5 +23,7 @@ extension NSNotification.Name {
     
     class LocationManagerEvents {
         static let locationsUpdated = NSNotification.Name(rawValue: "locationsUpdated")
+        
+        static let locationPermissionsChanged = NSNotification.Name(rawValue: "locationPermissionsChanged")
     }
 }

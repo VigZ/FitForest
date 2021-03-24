@@ -29,6 +29,8 @@ class JourneyTableViewController: UITableViewController {
         
         setupTableView()
         setupFetchedResultsController()
+        registerForNotifications()
+        
     }
     
     private func setupTableView() {
@@ -98,13 +100,29 @@ class JourneyTableViewController: UITableViewController {
     }
     
     @objc func startTapped() {
-        //Should check and set location preferences here.
+        let authStatus = FitForestLocationManager.sharedInstance.locationManager.authorizationStatus
+        guard authStatus == .authorizedAlways || authStatus == .authorizedWhenInUse else {
+            FitForestLocationManager.sharedInstance.requestLocationPermissions()
+            return
+        }
+            createJourneyController()
+    }
+    
+    func createJourneyController(){
         let vc = CreateJourneyViewController()
         let newJourney = JourneyWorkout(start: Date(), end: nil)
         let journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
         vc.journeyManager = journeyManager
-        vc.journeyManager.requestUserPermissions()
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    private func registerForNotifications(){
+        let ns = NotificationCenter.default
+        let locationPermissionsChanged = Notification.Name.LocationManagerEvents.locationPermissionsChanged
+        ns.addObserver(forName: locationPermissionsChanged, object: nil, queue: nil){
+           [weak self] (notification) in
+            self?.createJourneyController()
+        }
     }
 
 }
