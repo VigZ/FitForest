@@ -8,70 +8,24 @@
 import UIKit
 import MapKit
 
-class JourneyDetailViewController: UIViewController {
+class JourneyDetailViewController: UIViewController, HasCustomView {
+    typealias CustomView = JourneyDetailView
     
     var journey: JourneyWorkout!
-    var mapView: MKMapView!
     
-    let distanceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Distance:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
-    let timeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Time:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
-    let paceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Pace:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Date:"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
+    override func loadView() {
+        let customView = CustomView()
+        view = customView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(distanceLabel)
-        view.addSubview(timeLabel)
-        view.addSubview(paceLabel)
-        view.addSubview(dateLabel)
-        setUpMap()
+        customView.map.delegate = self
         configureView()
-    }
-    
-    private func setUpMap(){
-        let mapView = MKMapView()
-        let leftMargin:CGFloat = 10
-        let topMargin:CGFloat = 60
-        let mapWidth:CGFloat = view.frame.size.width-20
-        let mapHeight:CGFloat = 300
-        
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
-        
-        mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
-        
-        // Or, if needed, we can position map in the center of the view
-        mapView.center = view.center
-        view.addSubview(mapView)
-        self.mapView = mapView
-        mapView.delegate = self
-        
-        
+        loadMap()
     }
     
     private func configureView() {
@@ -84,12 +38,13 @@ class JourneyDetailViewController: UIViewController {
                                              seconds: seconds,
                                              outputUnit: UnitSpeed.minutesPerMile)
       
-      distanceLabel.text = "Distance:  \(formattedDistance)"
+        customView.labelContainer.distanceLabel.text = "Distance:  \(formattedDistance)"
 //      dateLabel.text = formattedDate
-      timeLabel.text = "Time:  \(formattedTime)"
-      paceLabel.text = "Pace:  \(formattedPace)"
-      
-      loadMap()
+        customView.labelContainer.timeLabel.text = "Time:  \(formattedTime)"
+        customView.labelContainer.paceLabel.text = "Pace:  \(formattedPace)"
+        customView.labelContainer.stepsLabel.text = "Steps:  \(journey.steps)"
+//      customView.labelContainer.floorsLabel.text = "Floors:  \(journey.floorsAscended)"
+//      Need to add floors ascended to journey struct.
     }
     
     
@@ -175,8 +130,8 @@ class JourneyDetailViewController: UIViewController {
           present(alert, animated: true)
           return
       }
-      mapView.setRegion(region, animated: true)
-      mapView.addOverlays(polyLine())
+        customView.map.setRegion(region, animated: true)
+        customView.map.addOverlays(polyLine())
     }
     
     private func segmentColor(speed: Double, midSpeed: Double, slowestSpeed: Double, fastestSpeed: Double) -> UIColor {
