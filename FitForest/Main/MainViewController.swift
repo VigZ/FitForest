@@ -20,6 +20,7 @@ class MainViewController: UIViewController, HasCustomView {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForNotifications()
+        FitForestHealthStore.sharedInstance.requestUserPermissions()
         StepTracker.sharedInstance.startUpdating()
     }
     
