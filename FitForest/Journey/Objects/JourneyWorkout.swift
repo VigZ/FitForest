@@ -17,6 +17,7 @@ struct JourneyWorkout: CoreDataDecodeable {
     var steps: Int = 0
     var averagePace: Float = 0.0
     var locations = Set<Location>()
+    var ranking: Ranking = Ranking.bronze
     
     
     
@@ -31,6 +32,7 @@ struct JourneyWorkout: CoreDataDecodeable {
         self.distance = journey.distance
         self.steps = Int(journey.steps)
         self.averagePace = journey.averagePace
+        self.ranking = Ranking(rawValue: Int(journey.ranking)) ?? Ranking.bronze
         if journey.locations != nil{
             self.locations = journey.locations as! Set<Location>
         }

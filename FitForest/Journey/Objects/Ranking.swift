@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Ranking {
+enum Ranking: Int {
     case bronze
     case silver
     case gold
