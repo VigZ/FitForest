@@ -44,6 +44,8 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     private var initialFloors = 0
     
     var currentRank:Ranking = Ranking.bronze
+    var speedPoints = 0
+    var distancePoints = 0
     
     override func loadView() {
         let customView = CustomView()
@@ -70,6 +72,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     
      func endJourney(save: Bool){
         journeyManager.locationManager.stopUpdatingLocation()
+        journeyManager.builderPack.journeyWorkout.ranking = currentRank
         guard save else {
             // Hand discard Logic
             return
@@ -93,18 +96,16 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     }
     
     func calculateRank() {
-        var rankPoints = 0
         let currentDistance = StepTracker.sharedInstance.distance - initialDistance
         // Multiply current distance by distance multiplier for points.
         
-        let distancePoints = Int((currentDistance * Double(RankPointsMultipliers.distance.rawValue)))
+        distancePoints = Int((currentDistance * Double(RankPointsMultipliers.distance.rawValue)))
         
         // Multiply current speed to points TODO: CHANGE CALC TO AVERAGE OF PREVIOUS SPEEDS
-        let speedPoints = Int((currentDistance / Double(seconds)) * Double(RankPointsMultipliers.speed.rawValue))
+        speedPoints += Int((currentDistance / Double(seconds)) * Double(RankPointsMultipliers.speed.rawValue))
         
-        
-        rankPoints += distancePoints + speedPoints
-    
+        let rankPoints = distancePoints + speedPoints
+
         switch rankPoints {
         case rankPoints where rankPoints <= 1000:
             customView.labelContainer.rankingLabel.text = "Bronze"
