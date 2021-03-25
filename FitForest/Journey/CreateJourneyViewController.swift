@@ -42,6 +42,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     private var initialSteps: Int = 0
     private var initialPace: Double = 0
     private var initialFloors = 0
+    
     var currentRank:Ranking = Ranking.bronze
     
     override func loadView() {
@@ -98,12 +99,12 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         
         let distancePoints = Int((currentDistance * Double(RankPointsMultipliers.distance.rawValue)))
         
-        // Multiply average speed to points
+        // Multiply current speed to points TODO: CHANGE CALC TO AVERAGE OF PREVIOUS SPEEDS
         let speedPoints = Int((currentDistance / Double(seconds)) * Double(RankPointsMultipliers.speed.rawValue))
         
         
         rankPoints += distancePoints + speedPoints
-        
+    
         switch rankPoints {
         case rankPoints where rankPoints <= 1000:
             customView.labelContainer.rankingLabel.text = "Bronze"
