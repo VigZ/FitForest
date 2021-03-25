@@ -21,7 +21,6 @@ class JourneyDetailView: UIView {
         map.mapType = MKMapType.standard
         map.isZoomEnabled = true
         map.isScrollEnabled = true
-        map.userTrackingMode = .follow
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
     }()

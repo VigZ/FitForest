@@ -70,8 +70,8 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
       
       let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
                                           longitude: (minLong + maxLong) / 2)
-      let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
-                                  longitudeDelta: (maxLong - minLong) * 1.3)
+      let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 2,
+                                  longitudeDelta: (maxLong - minLong) * 2)
       return MKCoordinateRegion(center: center, span: span)
     }
     
