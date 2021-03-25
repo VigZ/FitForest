@@ -43,6 +43,8 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
         customView.labelContainer.timeLabel.text = "Time:  \(formattedTime)"
         customView.labelContainer.paceLabel.text = "Pace:  \(formattedPace)"
         customView.labelContainer.stepsLabel.text = "Steps:  \(journey.steps)"
+        let capitalizedRank = "\(journey.ranking)".localizedCapitalized
+        customView.labelContainer.rankingLabel.text = "Rank:  \(capitalizedRank)"
 //      customView.labelContainer.floorsLabel.text = "Floors:  \(journey.floorsAscended)"
 //      Need to add floors ascended to journey struct.
     }

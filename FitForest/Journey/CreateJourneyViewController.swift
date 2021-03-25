@@ -42,6 +42,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     private var initialSteps: Int = 0
     private var initialPace: Double = 0
     private var initialFloors = 0
+    var currentRank:Ranking = Ranking.bronze
     
     override func loadView() {
         let customView = CustomView()
@@ -60,7 +61,8 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     
     private func startJourney(){
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-          self.seconds += 1
+            self.seconds += 1
+            self.calculateRank()
         }
         setInitialValues()
     }
@@ -87,6 +89,38 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
+    }
+    
+    func calculateRank() {
+        var rankPoints = 0
+        let currentDistance = StepTracker.sharedInstance.distance - initialDistance
+        // Multiply current distance by distance multiplier for points.
+        
+        let distancePoints = Int((currentDistance * Double(RankPointsMultipliers.distance.rawValue)))
+        
+        // Multiply average speed to points
+        let speedPoints = Int((currentDistance / Double(seconds)) * Double(RankPointsMultipliers.speed.rawValue))
+        
+        
+        rankPoints += distancePoints + speedPoints
+        
+        switch rankPoints {
+        case rankPoints where rankPoints <= 1000:
+            customView.labelContainer.rankingLabel.text = "Bronze"
+            currentRank = Ranking.bronze
+        case rankPoints where rankPoints >= 1001 && rankPoints <=  4000:
+            customView.labelContainer.rankingLabel.text = "Silver"
+            currentRank = Ranking.silver
+        case rankPoints where rankPoints >= 4001 && rankPoints <=  6000:
+            customView.labelContainer.rankingLabel.text = "Gold"
+            currentRank = Ranking.gold
+        case rankPoints where rankPoints >= 6001:
+            customView.labelContainer.rankingLabel.text = "Diamond"
+            currentRank = Ranking.diamond
+        default:
+            break
+        }
+        
     }
     
     private func setInitialValues(){

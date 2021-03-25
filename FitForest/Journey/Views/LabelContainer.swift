@@ -44,6 +44,13 @@ class LabelContainer: UIView {
         return label
     }()
     
+    let rankingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Rank: Bronze"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(frame: CGRect) {
       super.init(frame: frame)
       setupView()
@@ -61,6 +68,7 @@ class LabelContainer: UIView {
         addSubview(paceLabel)
         addSubview(stepsLabel)
         addSubview(floorsLabel)
+        addSubview(rankingLabel)
         setupLayout()
     }
 
@@ -80,7 +88,10 @@ class LabelContainer: UIView {
         stepsLabel.centerYAnchor.constraint(equalTo: paceLabel.bottomAnchor, constant: 20),
         
         floorsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-        floorsLabel.centerYAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 20)
+        floorsLabel.centerYAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 20),
+        
+        rankingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+        rankingLabel.centerYAnchor.constraint(equalTo: floorsLabel.bottomAnchor, constant: 20)
       ])
     }
 
