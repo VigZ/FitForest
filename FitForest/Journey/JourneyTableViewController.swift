@@ -69,15 +69,12 @@ class JourneyTableViewController: UITableViewController {
     }
     
     func fetch(){
-        print("Number of fetched objects")
-        print(fetchedResultsController?.fetchedObjects?.count)
         do {
             try fetchedResultsController.performFetch()
-            print("Number of fetched objects after fetch.")
-            print(fetchedResultsController?.fetchedObjects?.count)
          
             setupSnapshot()
         } catch {
+            //  TODO Add Error handling here.
             print("Fetch failed")
         }
     }
