@@ -25,6 +25,15 @@ class JourneyDetailView: UIView {
         return map
     }()
     
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Delete", for: .normal)
+        button.setTitleColor(.systemRed, for: .normal)
+        button.addTarget(self, action: #selector(deleteSavedJourney), for: .touchUpInside)
+        return button
+    }()
+    
     override init(frame: CGRect) {
       super.init(frame: frame)
       setupView()
@@ -38,6 +47,7 @@ class JourneyDetailView: UIView {
     private func setupView() {
         addSubview(labelContainer)
         addSubview(map)
+        addSubview(deleteButton)
         backgroundColor = .white
         setupLayout()
     }
@@ -47,6 +57,9 @@ class JourneyDetailView: UIView {
         labelContainer.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
         labelContainer.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
         labelContainer.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+        
+        deleteButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+        deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
 
         map.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         map.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -57,6 +70,10 @@ class JourneyDetailView: UIView {
 
     override class var requiresConstraintBasedLayout: Bool {
       return true
+    }
+    
+    @objc func deleteSavedJourney(){
+        
     }
 }
 
