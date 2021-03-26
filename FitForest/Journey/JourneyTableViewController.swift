@@ -50,6 +50,8 @@ class JourneyTableViewController: UITableViewController {
         diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
         diffableDataSourceSnapshot.appendSections([JourneySection.main])
         diffableDataSourceSnapshot.appendItems(fetchedResultsController?.fetchedObjects ?? [])
+        print("Current number of items:")
+        print(diffableDataSourceSnapshot.numberOfItems)
         diffableDataSource?.apply(self.diffableDataSourceSnapshot)
     }
     
@@ -62,9 +64,18 @@ class JourneyTableViewController: UITableViewController {
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.sharedInstance.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        
+        fetch()
+
+    }
+    
+    func fetch(){
+        print("Number of fetched objects")
+        print(fetchedResultsController?.fetchedObjects?.count)
         do {
             try fetchedResultsController.performFetch()
+            print("Number of fetched objects after fetch.")
+            print(fetchedResultsController?.fetchedObjects?.count)
+         
             setupSnapshot()
         } catch {
             print("Fetch failed")
@@ -80,6 +91,7 @@ class JourneyTableViewController: UITableViewController {
         let dvc = JourneyDetailViewController()
         dvc.journey = journeyWorkout
         dvc.delegate = self
+        
         navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -127,12 +139,10 @@ class JourneyTableViewController: UITableViewController {
     }
     
     func deleteItem(itemToDelete:Journey){
-        var currentSnapshot = diffableDataSourceSnapshot
-        currentSnapshot.deleteItems([itemToDelete])
-        if let diffableDataSource = diffableDataSource {
-            diffableDataSource.apply(currentSnapshot)
-        }
-       
+        var snapshot = diffableDataSourceSnapshot
+        snapshot.deleteItems([itemToDelete])
+        diffableDataSource?.apply(snapshot)
+//        fetch()
     }
 }
 

@@ -76,18 +76,22 @@ class JourneyDetailView: UIView {
     
     @objc func deleteSavedJourney(){
         let context = CoreDataStack.sharedInstance.context
-        guard let journeyEntity =  try? delegate.journey.toCoreData(context: context) else {
+        guard let journeyEntity =  delegate.journey.attachedJourney else {
             return
         }
+        
         context.delete(journeyEntity)
  
         do {
           try context.save()
         } catch {
           let nserror = error as NSError
+            
           fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        delegate.delegate.deleteItem(itemToDelete: journeyEntity as! Journey)
+        
+        delegate.delegate.deleteItem(itemToDelete: journeyEntity)
+
         delegate.navigationController?.popToRootViewController(animated: true)
     }
 }

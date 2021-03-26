@@ -25,7 +25,7 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
         customView.delegate = self
         customView.map.delegate = self
         configureView()
-        loadMap()
+        loadMap()        
     }
     
     private func configureView() {
