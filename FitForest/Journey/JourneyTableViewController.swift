@@ -125,6 +125,15 @@ class JourneyTableViewController: UITableViewController {
             self?.createJourneyController()
         }
     }
+    
+    func deleteItem(itemToDelete:Journey){
+        var currentSnapshot = diffableDataSourceSnapshot
+        currentSnapshot.deleteItems([itemToDelete])
+        if let diffableDataSource = diffableDataSource {
+            diffableDataSource.apply(currentSnapshot)
+        }
+       
+    }
 }
 
 extension JourneyTableViewController: NSFetchedResultsControllerDelegate {

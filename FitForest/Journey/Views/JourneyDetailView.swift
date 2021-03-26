@@ -87,7 +87,8 @@ class JourneyDetailView: UIView {
           let nserror = error as NSError
           fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        delegate.delegate.setupSnapshot()
+        delegate.delegate.deleteItem(itemToDelete: journeyEntity as! Journey)
+        delegate.navigationController?.popToRootViewController(animated: true)
     }
 }
 
