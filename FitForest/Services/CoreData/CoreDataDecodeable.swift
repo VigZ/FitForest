@@ -41,7 +41,14 @@ extension CoreDataDecodeable {
         for case let (label?, anyValue) in mirror.children {
             // TODO: Add error handling for when keys don't match exactly.
             
-            managedObject.setValue(anyValue, forKey: label)
+            if label == "ranking" {
+                let rank = anyValue as? Ranking
+                managedObject.setValue(rank?.rawValue, forKey: label)
+            }
+            else {
+                managedObject.setValue(anyValue, forKey: label)
+            }
+            
         }
         
         // TODO: Add error here to make sure that object keys on struct match core data representation.
