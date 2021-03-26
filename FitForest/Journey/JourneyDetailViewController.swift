@@ -13,8 +13,6 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
     
     var journey: JourneyWorkout!
     
-    
-    
     override func loadView() {
         let customView = CustomView()
         view = customView
@@ -23,6 +21,7 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        customView.delegate = self
         customView.map.delegate = self
         configureView()
         loadMap()

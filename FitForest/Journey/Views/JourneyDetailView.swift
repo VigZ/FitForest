@@ -34,6 +34,8 @@ class JourneyDetailView: UIView {
         return button
     }()
     
+    weak var delegate: JourneyDetailViewController!
+    
     override init(frame: CGRect) {
       super.init(frame: frame)
       setupView()
@@ -73,7 +75,18 @@ class JourneyDetailView: UIView {
     }
     
     @objc func deleteSavedJourney(){
-        
+        let context = CoreDataStack.sharedInstance.context
+        guard let journeyEntity =  try? delegate.journey.toCoreData(context: context) else {
+            return
+        }
+        context.delete(journeyEntity)
+ 
+        do {
+          try context.save()
+        } catch {
+          let nserror = error as NSError
+          fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 }
 
