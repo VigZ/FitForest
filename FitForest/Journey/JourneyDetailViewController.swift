@@ -12,6 +12,7 @@ class JourneyDetailViewController: UIViewController, HasCustomView {
     typealias CustomView = JourneyDetailView
     
     var journey: JourneyWorkout!
+    weak var delegate: JourneyTableViewController!
     
     override func loadView() {
         let customView = CustomView()

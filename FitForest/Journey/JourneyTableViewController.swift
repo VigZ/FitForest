@@ -46,7 +46,7 @@ class JourneyTableViewController: UITableViewController {
         tableView.rowHeight = 60
     }
 
-    private func setupSnapshot() {
+    func setupSnapshot() {
         diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<JourneySection, Journey>()
         diffableDataSourceSnapshot.appendSections([JourneySection.main])
         diffableDataSourceSnapshot.appendItems(fetchedResultsController?.fetchedObjects ?? [])
@@ -79,6 +79,7 @@ class JourneyTableViewController: UITableViewController {
         
         let dvc = JourneyDetailViewController()
         dvc.journey = journeyWorkout
+        dvc.delegate = self
         navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -124,7 +125,6 @@ class JourneyTableViewController: UITableViewController {
             self?.createJourneyController()
         }
     }
-
 }
 
 extension JourneyTableViewController: NSFetchedResultsControllerDelegate {
