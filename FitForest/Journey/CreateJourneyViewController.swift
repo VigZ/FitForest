@@ -155,6 +155,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         ns.addObserver(forName: locationsUpdated, object: nil, queue: nil){
             (notification) in
                 // Add to route builder
+            guard self.mapToggle else { return }
                 if let dict = notification.userInfo {
                     if let locations = dict["locations"] as? [CLLocation]{
                         
