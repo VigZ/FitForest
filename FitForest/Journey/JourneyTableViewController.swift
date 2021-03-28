@@ -32,6 +32,7 @@ class JourneyTableViewController: UITableViewController {
         setupTableView()
         setupFetchedResultsController()
         registerForNotifications()
+        setUpNavBar()
         
     }
     
@@ -155,6 +156,13 @@ class JourneyTableViewController: UITableViewController {
     
     @objc func mapWorkoutToggled(){
         mapWorkout.toggle()
+    }
+    
+    func setUpNavBar() {
+        self.navigationController?.navigationBar.barTintColor = .systemGreen
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 }
 
