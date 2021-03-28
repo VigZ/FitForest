@@ -37,6 +37,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     }
 
     var timer: Timer?
+    var mapToggle: Bool = true
     
     private var initialDistance: Double = 0
     private var initialSteps: Int = 0
@@ -59,6 +60,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         registerForNotifications()
         customView.delegate = self
         customView.map.delegate = self
+        checkMapToggle()
         startJourney()
     }
     
@@ -93,6 +95,12 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
+    }
+    
+    func checkMapToggle() {
+        if !mapToggle {
+            customView.map.isHidden = true
+        }
     }
     
     func calculateRank() {

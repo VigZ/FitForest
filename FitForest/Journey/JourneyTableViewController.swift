@@ -23,6 +23,8 @@ class JourneyTableViewController: UITableViewController {
         return tv
     }()
     
+    var mapWorkout: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(JourneyCell.self, forCellReuseIdentifier: "JourneyCell")
@@ -101,6 +103,12 @@ class JourneyTableViewController: UITableViewController {
         createButton.frame = CGRect(x: 0, y: 0, width: 150, height: 90)
 
         topView.addSubview(createButton)
+        
+        let trackToggle = UISwitch()
+        trackToggle.isOn = true
+        trackToggle.addTarget(self, action: #selector(self.mapWorkoutToggled), for: UIControl.Event.valueChanged)
+
+        topView.addSubview(trackToggle)
 
         return topView
     }
@@ -123,6 +131,7 @@ class JourneyTableViewController: UITableViewController {
         let newJourney = JourneyWorkout(start: Date(), end: nil)
         let journeyManager = FitForestJourneyManager(journeyWorkout: newJourney)
         vc.journeyManager = journeyManager
+        vc.mapToggle = mapWorkout
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -140,6 +149,10 @@ class JourneyTableViewController: UITableViewController {
         snapshot.deleteItems([itemToDelete])
         diffableDataSource?.apply(snapshot)
 //        fetch()
+    }
+    
+    @objc func mapWorkoutToggled(){
+        mapWorkout.toggle()
     }
 }
 
