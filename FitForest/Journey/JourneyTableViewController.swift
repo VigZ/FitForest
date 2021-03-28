@@ -109,6 +109,8 @@ class JourneyTableViewController: UITableViewController {
         trackToggle.addTarget(self, action: #selector(self.mapWorkoutToggled), for: UIControl.Event.valueChanged)
 
         topView.addSubview(trackToggle)
+        topView.layer.cornerRadius = 25
+        topView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         return topView
     }
