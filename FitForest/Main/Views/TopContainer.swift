@@ -29,6 +29,13 @@ class TopContainer: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let headerImageView: UIImageView = {
+        let image = UIImage(named: "runyun.jpeg")!
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
 
     override init(frame: CGRect) {
       super.init(frame: frame)
@@ -45,6 +52,8 @@ class TopContainer: UIView {
         addSubview(stepsLabel)
         addSubview(stateLabel)
         addSubview(pointsLabel)
+        addSubview(headerImageView)
+        
         setupLayout()
     }
 
@@ -53,9 +62,14 @@ class TopContainer: UIView {
         
         pointsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
         pointsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-
+        
+        headerImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+        headerImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        headerImageView.heightAnchor.constraint(equalToConstant: 300),
+        headerImageView.widthAnchor.constraint(equalToConstant: 300),
+        
         stepsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        stepsLabel.centerYAnchor.constraint(equalTo: headerImageView.bottomAnchor, constant: 20),
         stepsLabel.widthAnchor.constraint(equalToConstant: 200),
         stepsLabel.heightAnchor.constraint(equalToConstant: 200),
 
