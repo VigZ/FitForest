@@ -77,6 +77,7 @@ class JourneyCell: UITableViewCell {
         // add corner radius on `contentView`
         self.backgroundColor = .white
         self.layer.cornerRadius = 8
+        self.layoutMargins = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
 
         startDateLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
         startDateLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
