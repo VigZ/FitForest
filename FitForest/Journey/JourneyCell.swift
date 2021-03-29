@@ -20,6 +20,13 @@ class JourneyCell: UITableViewCell {
         }
     }
     
+    private let cellContainer: UIView = {
+        let container = UIView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = .systemGreen
+        return container
+    }()
+    
     private let startDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,28 +51,46 @@ class JourneyCell: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    addSubview(startDateLabel)
-    addSubview(startTimeLabel)
-    addSubview(stepsLabel)
-    addSubview(distanceLabel)
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-    startDateLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-    startDateLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    startDateLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-        
-    startTimeLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-    startTimeLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
-    startTimeLabel.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
-        
-    stepsLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-    stepsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-        
-    distanceLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
-    distanceLabel.topAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 10).isActive = true
+
+    }
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        addSubview(cellContainer)
+        cellContainer.addSubview(startDateLabel)
+        cellContainer.addSubview(startTimeLabel)
+        cellContainer.addSubview(stepsLabel)
+        cellContainer.addSubview(distanceLabel)
+        
+        // add shadow on cell
+        backgroundColor = .clear // very important
+        self.layer.masksToBounds = false
+        self.layer.shadowOpacity = 0.23
+        self.layer.shadowRadius = 4
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowColor = UIColor.black.cgColor
+
+        // add corner radius on `contentView`
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 8
+
+        startDateLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        startDateLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        startDateLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+            
+        startTimeLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        startTimeLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        startTimeLabel.topAnchor.constraint(equalTo: startDateLabel.bottomAnchor, constant: 10).isActive = true
+            
+        stepsLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        stepsLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+            
+        distanceLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        distanceLabel.topAnchor.constraint(equalTo: stepsLabel.bottomAnchor, constant: 10).isActive = true
     
     }
     

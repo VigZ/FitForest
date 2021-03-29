@@ -46,7 +46,8 @@ class JourneyTableViewController: UITableViewController {
         }
         
         setupSnapshot()
-        tableView.rowHeight = 60
+        tableView.rowHeight = 120
+        tableView.separatorStyle = .none
     }
 
     func setupSnapshot() {
@@ -93,6 +94,14 @@ class JourneyTableViewController: UITableViewController {
         dvc.delegate = self
         
         navigationController?.pushViewController(dvc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // this will turn on `masksToBounds` just before showing the cell
+        cell.contentView.layer.masksToBounds = true
+        cell.contentView.backgroundColor = .clear
+        cell.contentView.layer.zPosition = -1
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -164,6 +173,7 @@ class JourneyTableViewController: UITableViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+    
 }
 
 extension JourneyTableViewController: NSFetchedResultsControllerDelegate {
