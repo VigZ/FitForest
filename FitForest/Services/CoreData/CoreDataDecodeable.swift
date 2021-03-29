@@ -45,6 +45,10 @@ extension CoreDataDecodeable {
                 let rank = anyValue as? Ranking
                 managedObject.setValue(rank?.rawValue, forKey: label)
             }
+            else if label == "attatchedJourney" {
+                continue
+            }
+            
             else {
                 managedObject.setValue(anyValue, forKey: label)
             }

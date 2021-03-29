@@ -19,7 +19,7 @@ struct JourneyWorkout: CoreDataDecodeable {
     var locations = Set<Location>()
     var ranking: Ranking = Ranking.bronze
     
-    var attachedJourney: Journey!
+    var attatchedJourney: Journey!
     
     
     
@@ -38,7 +38,7 @@ struct JourneyWorkout: CoreDataDecodeable {
         if journey.locations != nil{
             self.locations = journey.locations as! Set<Location>
         }
-        self.attachedJourney = journey
+        self.attatchedJourney = journey
     }
     
     var duration: TimeInterval? {

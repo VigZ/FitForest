@@ -76,7 +76,7 @@ class JourneyDetailView: UIView {
     
     @objc func deleteSavedJourney(){
         let context = CoreDataStack.sharedInstance.context
-        guard let journeyEntity =  delegate.journey.attachedJourney else {
+        guard let journeyEntity =  delegate.journey.attatchedJourney else {
             return
         }
         
