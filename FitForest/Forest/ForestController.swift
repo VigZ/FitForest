@@ -11,7 +11,11 @@ import SpriteKit
 import GameplayKit
 
 class ForestController: UIViewController {
-
+    
+    override func loadView() {
+      self.view = SKView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

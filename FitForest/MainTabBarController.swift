@@ -40,18 +40,16 @@ class MainTabBarController: UITabBarController {
         
         tabTwoNav.tabBarItem = tabTwoBarItem
         
-//        // Create Third Tab
-//        let tabThree = JourneyTableViewController()
-//        // Embed in Navigation Controller
-//        let tabThreeNav = UINavigationController(rootViewController: tabThree)
-//        let tabThreeImage = UIImage(systemName: "table")
-//        let selectedTabThreeImage = UIImage(systemName: "table.fill")
-//        let tabThreeBarItem = UITabBarItem(title: "JourneyTable", image: tabThreeImage, selectedImage: selectedTabThreeImage)
-//
-//        tabThreeNav.tabBarItem = tabThreeBarItem
+        // Create Third Tab
+        let tabThree = ForestController()
+        let tabThreeImage = UIImage(systemName: "leaf")
+        let selectedTabThreeImage = UIImage(systemName: "leaf.fill")
+        let tabThreeBarItem = UITabBarItem(title: "Forest", image: tabThreeImage, selectedImage: selectedTabThreeImage)
+        
+        tabThree.tabBarItem = tabThreeBarItem
         
         // Add ViewControllers
-        self.viewControllers = [tabOne, tabTwoNav]
+        self.viewControllers = [tabOne, tabTwoNav, tabThree]
     }
     
 
