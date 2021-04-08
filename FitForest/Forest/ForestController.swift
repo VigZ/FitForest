@@ -24,7 +24,6 @@ class ForestController: UIViewController {
             if let scene = SKScene(fileNamed: "ForestScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
                 // Present the scene
                 view.presentScene(scene)
             }
