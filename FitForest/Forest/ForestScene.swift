@@ -14,7 +14,8 @@ class ForestScene: SKScene {
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "forestplaceholder")
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+        background.size = self.size
         addChild(background)
     }
     
