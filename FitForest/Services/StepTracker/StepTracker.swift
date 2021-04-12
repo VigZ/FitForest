@@ -53,7 +53,7 @@ class StepTracker {
             guard let steps = self?.numberOfSteps else { return }
         // Math for point updates
             let stepDifference = steps - previousSteps
-        Inventory.sharedInstance.points += stepDifference /  PointConstants.pointDivision.rawValue//roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
+        GameData.sharedInstance?.points += stepDifference /  PointConstants.pointDivision.rawValue//roughly 3 steps for every point. This will be changed later, as updates under 3 steps earn no points.
         
         // Update other data
         if let dataDistance = pedometerData.distance {

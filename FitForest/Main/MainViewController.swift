@@ -33,7 +33,7 @@ class MainViewController: UIViewController, HasCustomView {
             DispatchQueue.main.async {
                 self.customView.topContainer.stepsLabel.text = String(StepTracker.sharedInstance.numberOfSteps)
                 self.customView.topContainer.stateLabel.text = StepTracker.sharedInstance.currentActivity
-                self.customView.topContainer.pointsLabel.text = String(Inventory.sharedInstance.points)
+                self.customView.topContainer.pointsLabel.text = String(GameData.sharedInstance?.points ?? 0)
             }
         }
         
