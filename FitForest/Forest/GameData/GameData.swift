@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameData: NSObject, NSCoding {
     
-    static let sharedInstance: GameData? = nil
+    static var sharedInstance: GameData = GameData.loadFromDisk()
     
     var points: Int = 0
     var inventory: [String: Int] = [:]
@@ -18,23 +18,29 @@ class GameData: NSObject, NSCoding {
 
     var scene: ForestScene = ForestScene()
     
-    static func loadFromDisk() -> GameData? {
+    static func loadFromDisk() -> GameData {
         let url = getSaveDirectory()
         do {
             if FileManager.default.fileExists(atPath: url.path) {
                 let data = try Data(contentsOf: url)
+                
                 if let gameData = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? GameData {
+                    
                     return gameData
+                    
                 }
             } else {
-                
+    
                 FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
             }
         } catch {
             
             print("ERROR: \(error.localizedDescription)")
         }
-        return GameData(coder: NSKeyedArchiver(requiringSecureCoding: false))
+        
+        let newGameData = GameData(points: 0, inventory: [:], scene: ForestScene())
+        newGameData.saveToDisk()
+        return newGameData
         
     }
     
@@ -61,6 +67,12 @@ class GameData: NSObject, NSCoding {
         coder.encode(self.scene, forKey: "scene")
     }
     
+    init(points:Int, inventory:[String: Int], scene:ForestScene ) {
+        self.points = points
+        self.inventory = inventory
+        self.scene = scene
+    }
+    
     required convenience init?(coder: NSCoder) {
         
         guard let points = coder.decodeObject(forKey: "points") as? Int,
@@ -72,12 +84,6 @@ class GameData: NSObject, NSCoding {
         self.init(points:points,
                   inventory:inventory,
                   scene: scene)
-    }
-    
-    init(points:Int, inventory:[String: Int], scene:ForestScene ) {
-        self.points = points
-        self.inventory = inventory
-        self.scene = scene
     }
 }
  

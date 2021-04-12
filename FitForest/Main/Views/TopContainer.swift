@@ -25,7 +25,7 @@ class TopContainer: UIView {
     
     let pointsLabel: UILabel = {
         let label = UILabel()
-        let points = GameData.sharedInstance?.points ?? 0
+        let points = GameData.sharedInstance.points
         label.text = "Gems: \(String(points))"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
