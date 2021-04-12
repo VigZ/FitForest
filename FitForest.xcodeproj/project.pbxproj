@@ -52,6 +52,8 @@
 		27ED5AAA26135CF4002946F9 /* ForestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5AA926135CF4002946F9 /* ForestScene.swift */; };
 		27ED5AB426161E47002946F9 /* ForestSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5AB326161E47002946F9 /* ForestSprite.swift */; };
 		27ED5AC426162363002946F9 /* ForestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 27ED5AC326162363002946F9 /* ForestScene.sks */; };
+		27ED5AD626247682002946F9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5AD526247682002946F9 /* Item.swift */; };
+		27ED5ADE26247906002946F9 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ED5ADD26247906002946F9 /* ItemType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		27ED5AA926135CF4002946F9 /* ForestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestScene.swift; sourceTree = "<group>"; };
 		27ED5AB326161E47002946F9 /* ForestSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestSprite.swift; sourceTree = "<group>"; };
 		27ED5AC326162363002946F9 /* ForestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ForestScene.sks; sourceTree = "<group>"; };
+		27ED5AD526247682002946F9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		27ED5ADD26247906002946F9 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +189,6 @@
 				277A888525C0A6C300C1F374 /* Storage */,
 				277A887925C0824900C1F374 /* Animations */,
 				277A886725BF670000C1F374 /* Constants */,
-				277A885B25BF1DA600C1F374 /* Inventory */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
@@ -378,6 +381,8 @@
 		27ED5AA326135BD9002946F9 /* Forest */ = {
 			isa = PBXGroup;
 			children = (
+				277A885B25BF1DA600C1F374 /* Inventory */,
+				27ED5AD426247672002946F9 /* Item */,
 				27ED5AC8261F53C1002946F9 /* ForestSprite */,
 				27ED5AA426135C07002946F9 /* ForestController.swift */,
 				27ED5AA926135CF4002946F9 /* ForestScene.swift */,
@@ -392,6 +397,15 @@
 				27ED5AB326161E47002946F9 /* ForestSprite.swift */,
 			);
 			path = ForestSprite;
+			sourceTree = "<group>";
+		};
+		27ED5AD426247672002946F9 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				27ED5AD526247682002946F9 /* Item.swift */,
+				27ED5ADD26247906002946F9 /* ItemType.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
+				27ED5ADE26247906002946F9 /* ItemType.swift in Sources */,
 				277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */,
 				27ED5AB426161E47002946F9 /* ForestSprite.swift in Sources */,
 				27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */,
@@ -544,6 +559,7 @@
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
+				27ED5AD626247682002946F9 /* Item.swift in Sources */,
 				27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
