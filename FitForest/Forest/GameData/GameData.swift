@@ -13,7 +13,11 @@ class GameData: NSObject, NSCoding {
     static var sharedInstance: GameData = GameData.loadFromDisk()
     
     var points: Int = 0
-    var inventory: [String: Int] = [:]
+    var inventory: [String: Int] = [
+        "BeachBall": 3,
+        "SoccerBall": 2,
+        "StoneBall": 1,
+    ]
 
 
     var scene: ForestScene = SKScene(fileNamed: "ForestScene") as! ForestScene
