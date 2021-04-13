@@ -37,6 +37,9 @@
 		278337D92626246900F872A4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337D82626246900F872A4 /* Item.swift */; };
 		278337ED26263BD400F872A4 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337EC26263BD400F872A4 /* ItemCard.swift */; };
 		278337F326263C4D00F872A4 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337F226263C4D00F872A4 /* InventoryView.swift */; };
+		278337F926263E4700F872A4 /* UnitInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337F826263E4700F872A4 /* UnitInteractable.swift */; };
+		278337FE26263E6900F872A4 /* PlayerInteractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337FD26263E6900F872A4 /* PlayerInteractable.swift */; };
+		2783380326263ECA00F872A4 /* Placeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783380226263ECA00F872A4 /* Placeable.swift */; };
 		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
@@ -118,6 +121,9 @@
 		278337D82626246900F872A4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		278337EC26263BD400F872A4 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
 		278337F226263C4D00F872A4 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		278337F826263E4700F872A4 /* UnitInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInteractable.swift; sourceTree = "<group>"; };
+		278337FD26263E6900F872A4 /* PlayerInteractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInteractable.swift; sourceTree = "<group>"; };
+		2783380226263ECA00F872A4 /* Placeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeable.swift; sourceTree = "<group>"; };
 		278453BC25C89F5B00D00B80 /* FitForest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitForest.entitlements; sourceTree = "<group>"; };
 		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
@@ -351,6 +357,16 @@
 			path = UIViews;
 			sourceTree = "<group>";
 		};
+		278337F726263E1D00F872A4 /* GenericProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				278337F826263E4700F872A4 /* UnitInteractable.swift */,
+				278337FD26263E6900F872A4 /* PlayerInteractable.swift */,
+				2783380226263ECA00F872A4 /* Placeable.swift */,
+			);
+			path = GenericProtocol;
+			sourceTree = "<group>";
+		};
 		278453BD25C89F5B00D00B80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +457,7 @@
 		27ED5AA326135BD9002946F9 /* Forest */ = {
 			isa = PBXGroup;
 			children = (
+				278337F726263E1D00F872A4 /* GenericProtocol */,
 				278337A02624A5FB00F872A4 /* GameData */,
 				27ED5AD426247672002946F9 /* Item */,
 				27ED5AC8261F53C1002946F9 /* ForestSprite */,
@@ -608,6 +625,7 @@
 				27ED5AB426161E47002946F9 /* ForestSprite.swift in Sources */,
 				27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */,
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
+				278337F926263E4700F872A4 /* UnitInteractable.swift in Sources */,
 				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
 				278337D92626246900F872A4 /* Item.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
@@ -648,8 +666,10 @@
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
+				2783380326263ECA00F872A4 /* Placeable.swift in Sources */,
 				27D5D658260D370A00B3D62A /* RankPointsMultipliers.swift in Sources */,
 				27D5D62D2609296700B3D62A /* LabelContainer.swift in Sources */,
+				278337FE26263E6900F872A4 /* PlayerInteractable.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

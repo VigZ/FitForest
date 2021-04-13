@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol Toy : Item {
+protocol Toy : Item, PlayerInteractable, UnitInteractable, Placeable {
     // Toys are placeable, have collision, can be interacted with.(Player and ForestSprite)
 }
