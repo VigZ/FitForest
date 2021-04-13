@@ -28,6 +28,7 @@
 		277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */; };
 		277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */; };
 		278337A22624A60B00F872A4 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337A12624A60B00F872A4 /* GameData.swift */; };
+		278337B32625DAA800F872A4 /* ItemDescription.plist in Resources */ = {isa = PBXBuildFile; fileRef = 278337B22625DAA800F872A4 /* ItemDescription.plist */; };
 		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
@@ -101,6 +102,7 @@
 		277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
 		277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
 		278337A12624A60B00F872A4 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		278337B22625DAA800F872A4 /* ItemDescription.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ItemDescription.plist; sourceTree = "<group>"; };
 		278453BC25C89F5B00D00B80 /* FitForest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitForest.entitlements; sourceTree = "<group>"; };
 		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				278337A12624A60B00F872A4 /* GameData.swift */,
+				278337B22625DAA800F872A4 /* ItemDescription.plist */,
 			);
 			path = GameData;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 			files = (
 				277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */,
 				27ED5AC426162363002946F9 /* ForestScene.sks in Resources */,
+				278337B32625DAA800F872A4 /* ItemDescription.plist in Resources */,
 				277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
