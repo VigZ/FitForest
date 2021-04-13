@@ -16,7 +16,7 @@ class GameData: NSObject, NSCoding {
     var inventory: [String: Int] = [:]
 
 
-    var scene: ForestScene = ForestScene()
+    var scene: ForestScene = SKScene(fileNamed: "ForestScene") as! ForestScene
     
     static func loadFromDisk() -> GameData {
         let url = getSaveDirectory()
