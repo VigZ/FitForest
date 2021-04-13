@@ -48,10 +48,12 @@ class GameData: NSObject, NSCoding {
         let url = GameData.getSaveDirectory()
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
+            
             try data.write(to: url)
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
+        
     }
     
     static func getSaveDirectory() -> URL {
@@ -74,9 +76,8 @@ class GameData: NSObject, NSCoding {
     }
     
     required convenience init?(coder: NSCoder) {
-        
-        guard let points = coder.decodeObject(forKey: "points") as? Int,
-              let inventory = coder.decodeObject(forKey: "inventory") as? Dictionary<String, Int>,
+         let points = coder.decodeInteger(forKey:"points")
+        guard let inventory = coder.decodeObject(forKey: "inventory") as? Dictionary<String, Int>,
         let scene = coder.decodeObject(forKey: "scene") as? ForestScene
         
         else { return nil }
