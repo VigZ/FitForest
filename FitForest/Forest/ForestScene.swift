@@ -11,6 +11,7 @@ import GameplayKit
 
 class ForestScene: SKScene {
     
+    weak var viewController: ForestController!
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "placeholderbackground2")

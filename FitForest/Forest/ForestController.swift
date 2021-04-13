@@ -26,6 +26,7 @@ class ForestController: UIViewController {
             scene.scaleMode = .aspectFill
             // Present the scene
             view.presentScene(scene)
+           scene.viewController = self
             
             
             view.ignoresSiblingOrder = true
