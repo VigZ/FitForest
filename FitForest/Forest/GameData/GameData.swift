@@ -37,9 +37,10 @@ class GameData: NSObject, NSCoding {
             
             print("ERROR: \(error.localizedDescription)")
         }
-        
-        let newGameData = GameData(points: 0, inventory: [:], scene: ForestScene())
+        let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
+        let newGameData = GameData(points: 0, inventory: [:], scene: newScene)
         newGameData.saveToDisk()
+        print("Creating new save data...")
         return newGameData
         
     }
@@ -81,7 +82,7 @@ class GameData: NSObject, NSCoding {
         let scene = coder.decodeObject(forKey: "scene") as? ForestScene
         
         else { return nil }
-
+        print("Unpacking saved forest...")
         self.init(points:points,
                   inventory:inventory,
                   scene: scene)
