@@ -3,14 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>Ball</key>
-	<dict/>
-	<key>description</key>
-	<string>This is a test description.</string>
-	<key>itemType</key>
-	<integer>0</integer>
-	<key>stackLimit</key>
-	<integer>5</integer>
-	<key>name</key>
-	<string>Ball</string>
+	<dict>
+		<key>description</key>
+		<string>This is a test description.</string>
+		<key>itemType</key>
+		<integer>0</integer>
+		<key>stackLimit</key>
+		<integer>5</integer>
+		<key>name</key>
+		<string>Ball</string>
+	</dict>
 </dict>
 </plist>

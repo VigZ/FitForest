@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import SpriteKit
+
 
 protocol Item {
-    var stackLimit: Int { get set }
-    var name: String { get set }
+    
+    var stackLimit:Int { get set }
     var itemType: ItemType { get set }
+    
 }
+
 
