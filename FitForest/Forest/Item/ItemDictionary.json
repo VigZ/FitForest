@@ -1,0 +1,10 @@
+{
+    "Ball": {
+        "BeachBall": {
+            "name": "Beach Ball",
+            "stackLimit": 3,
+            "description": "Your average beach ball.",
+            "weight": 5.0
+            }
+    }
+}
