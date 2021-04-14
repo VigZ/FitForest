@@ -17,5 +17,20 @@
         "itemDescription": "I wouldn't kick this thing...",
         "weight": 5.0
     }],
-    "Test":[{}]
+    "Instrument":[{
+        "name": "Guitar",
+        "stackLimit": 3,
+        "itemDescription": "Let's rock out!",
+    },
+    {
+        "name": "Trumpet",
+        "stackLimit": 3,
+        "itemDescription": "Botti who?"
+    },
+    {
+        "name": "Drum",
+        "stackLimit": 3,
+        "itemDescription": "Marching to the beat...of yourself."
+    }
+    ]
 }
