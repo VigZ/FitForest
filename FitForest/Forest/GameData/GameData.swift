@@ -37,7 +37,8 @@ class GameData: NSObject, NSCoding {
             print("ERROR: \(error.localizedDescription)")
         }
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
-        let newInventory = InventoryManager(items:[Item]())
+        let test = [Ball(stackLimit:3 ,name: "Test Ball", itemDescription: "Testing", itemState: .inInventory, weight: 3.0, itemType: .toy)]
+        let newInventory = InventoryManager(items:test)
         let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
         print("Creating new save data...")

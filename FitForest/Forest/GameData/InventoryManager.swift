@@ -25,12 +25,13 @@ class InventoryManager:NSObject, NSCoding {
        print("Unpacking saved inventory...")
         self.init(items:items)
    }
-    }
     
     func retrieveItemData(identifier: String) {
         // Parse Json file for correct item data
         // Call addItem
     }
+}
+    
     
 //    func addItem(json:Data) -> Item{
 //        // Use factory object to create and return correct item
