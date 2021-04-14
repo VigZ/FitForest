@@ -26,10 +26,26 @@ class ItemFactory {
                     let itemDescription = data["itemDescription"] as? String,
                     let weight = data["weight"] as? Float
                     else {return nil}
+                    // Check current instances, if equal to or greater stackLimit, bail
+                    if isAtStackLimit(target: name, stackLimit: stackLimit){
+                        return nil
+                    }
+                    // otherwise create new Item
                     return Ball(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.toy, weight: weight)
 //                case .Instrument:
 //                    return
             }
         }
+    func isAtStackLimit(target:String, stackLimit: Int) -> Bool {
+        // Count instances
+        let array = GameData.sharedInstance.inventory.items
+        var count = 0
+        for item in array {
+            if item.name == target{
+                count += 1
+            }
+        }
+        return count >= stackLimit
+    }
     
 }
