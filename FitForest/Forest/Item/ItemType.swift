@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemType {
+enum ItemType: String, Codable{
     case toy
     case accessory
     case consumable

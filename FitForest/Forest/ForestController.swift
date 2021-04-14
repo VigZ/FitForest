@@ -18,7 +18,6 @@ class ForestController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             let scene = GameData.sharedInstance.scene

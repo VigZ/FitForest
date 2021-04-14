@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemState{
+enum ItemState:String, Codable{
     case inInventory
     case inForest
     

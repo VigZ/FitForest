@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class BallNode: SKSpriteNode, Toy {
+class BallNode: SKSpriteNode {
 
     init() {
         // Make a texture from an image, a color, and size

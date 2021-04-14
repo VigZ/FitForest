@@ -22,9 +22,9 @@ class GameData: NSObject, NSCoding {
         do {
             if FileManager.default.fileExists(atPath: url.path) {
                 let data = try Data(contentsOf: url)
-                
+                print(data)
                 if let gameData = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? GameData {
-                    
+                    print("Loading Data...")
                     return gameData
                     
                 }
@@ -33,12 +33,10 @@ class GameData: NSObject, NSCoding {
                 FileManager.default.createFile(atPath: url.path, contents: nil, attributes: nil)
             }
         } catch {
-            
             print("ERROR: \(error.localizedDescription)")
         }
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
-        let test = [Ball(stackLimit:3 ,name: "Test Ball", itemDescription: "Testing", itemState: .inInventory, weight: 3.0, itemType: .toy)]
-        let newInventory = InventoryManager(items:test)
+        let newInventory = InventoryManager(items:[Item]())
         let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
         print("Creating new save data...")
@@ -55,6 +53,7 @@ class GameData: NSObject, NSCoding {
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
+        print("Successfully saved")
         
     }
     
