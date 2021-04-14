@@ -12,6 +12,15 @@ class BallNode: SKSpriteNode, Toy {
     
     var linkedItem: Ball!
     
+    override var isUserInteractionEnabled: Bool {
+        set {
+            // ignore
+        }
+        get {
+            return true
+        }
+    }
+    
     init(name:String) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: name)
@@ -22,14 +31,17 @@ class BallNode: SKSpriteNode, Toy {
         super.init(texture: texture, color: color, size: size)
 
         // Set physics properties
-//        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
-//        physicsBody?.categoryBitMask = 1
-//        physicsBody?.affectedByGravity = false
-        self.zPosition = 1
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        physicsBody?.categoryBitMask = 1
+        physicsBody?.affectedByGravity = false
+        self.zPosition = 200
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touched")
     }
 }
 
