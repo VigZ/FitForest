@@ -8,7 +8,7 @@
 import Foundation
 
 class InventoryManager:NSObject, NSCoding {
-    
+    typealias ItemDictionary = [String: [[String:Any]]]
     var items = [Item]()
     
     func encode(with coder: NSCoder) {
@@ -26,17 +26,23 @@ class InventoryManager:NSObject, NSCoding {
         self.init(items:items)
    }
     
-    func retrieveItemData(identifier: String) {
+    func retrieveItemData(classIdentifier: String, itemName: String) {
         do {
             if let file = Bundle.main.url(forResource: "ItemDictionary", withExtension: "json") {
                 let data = try Data(contentsOf: file)
+                
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
+                if let object = json as? ItemDictionary {
                     // json is a dictionary
+                    // Parse Json file for correct item data
+                    
+                    guard let itemClassArray = object[classIdentifier] else {return}
+                    guard let item = itemClassArray.first(where:{ $0["name"] as! String == itemName }) else { return }
+                    guard let createdItem = ItemFactory.sharedInstance.createItem(itemClass: classIdentifier, data: item) else {return}
+                    //TODO ADD ERROR HANDLING FOR ALL OF THE GUARD STATEMENTS
+                    
                     print(object)
-                } else if let object = json as? [Any] {
-                    // json is an array
-                    print(object)
+                    self.addItem(item: createdItem)
                 } else {
                     print("JSON is invalid")
                 }
@@ -46,39 +52,16 @@ class InventoryManager:NSObject, NSCoding {
         } catch {
             print(error.localizedDescription)
         }
-        // Parse Json file for correct item data
-        // Call addItem
     }
     
-    private func readJson() {
-        do {
-            if let file = Bundle.main.url(forResource: "points", withExtension: "json") {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let object = json as? [String: Any] {
-                    // json is a dictionary
-                    print(object)
-                } else if let object = json as? [Any] {
-                    // json is an array
-                    print(object)
-                } else {
-                    print("JSON is invalid")
-                }
-            } else {
-                print("no file")
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
+    func addItem(item:Item){
+        // Add item to item array
+        self.items.append(item)
+        // Save GameData
+        GameData.sharedInstance.saveToDisk()
     }
 }
-    
-    
-//    func addItem(data:Data) -> Item{
-//        // Use factory object to create and return correct item
-//        // Add item to item array
-//        
-//    }
+
 //    
 //    func removeItem(item:Item) -> Bool {
 //        // Attempt to remove item from array if it exists.

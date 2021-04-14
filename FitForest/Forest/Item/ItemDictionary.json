@@ -16,5 +16,6 @@
         "stackLimit": 3,
         "itemDescription": "I wouldn't kick this thing...",
         "weight": 5.0
-    }]
+    }],
+    "Test":[{}]
 }

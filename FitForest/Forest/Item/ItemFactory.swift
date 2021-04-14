@@ -11,13 +11,14 @@ class ItemFactory {
     
     static var sharedInstance = ItemFactory()
     
-    enum ItemClass {
+    enum ItemClass:String {
         case Ball
 //        case Instrument
     }
     
-    func createItem(itemClass : ItemClass, data : [String: Any?])-> Item?{
-            switch itemClass {
+    func createItem(itemClass : String, data : [String: Any?])-> Item?{
+        guard let itemEnumClass = ItemClass(rawValue: itemClass) else {return nil}
+            switch itemEnumClass {
                 case .Ball:
                     // extract data into class
                     guard let name = data["name"] as? String,
