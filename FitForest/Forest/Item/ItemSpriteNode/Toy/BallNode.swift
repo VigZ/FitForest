@@ -11,6 +11,7 @@ import SpriteKit
 class BallNode: SKSpriteNode, Toy {
     
     var linkedItem: Ball!
+    var isBeingMoved: Bool = false
     
     override var isUserInteractionEnabled: Bool {
         set {
@@ -42,7 +43,22 @@ class BallNode: SKSpriteNode, Toy {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touched")
+        if isBeingMoved {
+            //Drag Code
+        }
     }
+    
+    func pickedUp() {
+        isBeingMoved = true
+        // TODO Disable physics collisions
+        
+    }
+    
+    func putDown() {
+        isBeingMoved = false
+        // TODO Reenable physics collions
+    }
+
 }
 
 

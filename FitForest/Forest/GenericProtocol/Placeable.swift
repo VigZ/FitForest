@@ -9,5 +9,7 @@ import Foundation
 import SpriteKit
 
 protocol Placeable: SKSpriteNode {
+    var isBeingMoved: Bool {get set}
+    func pickedUp()
     // Can be long tapped to picked up and moved.
 }

@@ -65,11 +65,13 @@ class ForestScene: SKScene {
                            if node.contains(longPressLocation) {
                                // Handle Drag and Drop
                             print("hello")
+                            node.pickedUp()
+                            
                            }
                        }
                    }
                } else if recognizer.state == .ended {
-                   // End Drag and drop
+                   
                }
     }
     
