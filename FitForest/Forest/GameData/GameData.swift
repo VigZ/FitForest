@@ -13,12 +13,7 @@ class GameData: NSObject, NSCoding {
     static var sharedInstance: GameData = GameData.loadFromDisk()
     
     var points: Int = 0
-    var inventory: [String: Int] = [
-        "BeachBall": 3,
-        "SoccerBall": 2,
-        "StoneBall": 1,
-    ]
-
+    var inventory: InventoryManager!
 
     var scene: ForestScene = SKScene(fileNamed: "ForestScene") as! ForestScene
     
@@ -42,7 +37,8 @@ class GameData: NSObject, NSCoding {
             print("ERROR: \(error.localizedDescription)")
         }
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
-        let newGameData = GameData(points: 0, inventory: [:], scene: newScene)
+        let newInventory = InventoryManager(items:[Item]())
+        let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
         print("Creating new save data...")
         return newGameData
@@ -74,7 +70,7 @@ class GameData: NSObject, NSCoding {
         coder.encode(self.scene, forKey: "scene")
     }
     
-    init(points:Int, inventory:[String: Int], scene:ForestScene ) {
+    init(points:Int, inventory:InventoryManager, scene:ForestScene ) {
         self.points = points
         self.inventory = inventory
         self.scene = scene
@@ -82,7 +78,7 @@ class GameData: NSObject, NSCoding {
     
     required convenience init?(coder: NSCoder) {
          let points = coder.decodeInteger(forKey:"points")
-        guard let inventory = coder.decodeObject(forKey: "inventory") as? Dictionary<String, Int>,
+        guard let inventory = coder.decodeObject(forKey: "inventory") as? InventoryManager,
         let scene = coder.decodeObject(forKey: "scene") as? ForestScene
         
         else { return nil }

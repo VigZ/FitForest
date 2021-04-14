@@ -1,10 +1,20 @@
 {
-    "Ball": {
-        "BeachBall": {
-            "name": "Beach Ball",
-            "stackLimit": 3,
-            "description": "Your average beach ball.",
-            "weight": 5.0
-            }
-    }
+    "Ball":[{
+        "name": "Beach Ball",
+        "stackLimit": 3,
+        "description": "Your average beach ball.",
+        "weight": 1.0
+    },
+    {
+        "name": "Soccer Ball",
+        "stackLimit": 3,
+        "description": "Kick it fast!",
+        "weight": 2.0
+    },
+    {
+        "name": "Stone Ball",
+        "stackLimit": 3,
+        "description": "I wouldn't kick this thing...",
+        "weight": 5.0
+    }]
 }
