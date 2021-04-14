@@ -43,7 +43,15 @@ class ForestScene: SKScene {
 
         let endlessAction = SKAction.repeatForever(sequence)
         forestSprite.run(endlessAction)
-//        forestSprite2.run(endlessAction)
+        
+        let ball = GameData.sharedInstance.inventory.items[1]
+        let underScored = ball.name.replacingOccurrences(of: " ", with: "_")
+        let newBallNode = BallNode(name:underScored)
+        newBallNode.linkedItem = ball as? Ball
+        newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
+        newBallNode.size = CGSize(width: 275, height: 200)
+        
+        self.addChild(newBallNode)
         
     }
     

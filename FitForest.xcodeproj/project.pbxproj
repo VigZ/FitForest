@@ -336,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				278337B82625F09C00F872A4 /* Ball.swift */,
-				278337C1262609AA00F872A4 /* Toy.swift */,
 				278338582626D14F00F872A4 /* Instrument.swift */,
 			);
 			path = Toy;
@@ -391,6 +390,7 @@
 		2783382F262691D200F872A4 /* Toy */ = {
 			isa = PBXGroup;
 			children = (
+				278337C1262609AA00F872A4 /* Toy.swift */,
 				2783382526268F6800F872A4 /* BallNode.swift */,
 			);
 			path = Toy;

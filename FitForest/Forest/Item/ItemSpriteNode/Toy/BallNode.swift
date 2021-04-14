@@ -8,11 +8,13 @@
 import Foundation
 import SpriteKit
 
-class BallNode: SKSpriteNode {
-
-    init() {
+class BallNode: SKSpriteNode, Toy {
+    
+    var linkedItem: Ball!
+    
+    init(name:String) {
         // Make a texture from an image, a color, and size
-        let texture = SKTexture(imageNamed: "runyun")
+        let texture = SKTexture(imageNamed: name)
         let color = UIColor.clear
         let size = texture.size()
 
