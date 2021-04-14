@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SpriteKit
 
-protocol PlayerInteractable {
+protocol PlayerInteractable: SKSpriteNode {
     // responds to player input
+    
 }

@@ -49,10 +49,28 @@ class ForestScene: SKScene {
         let newBallNode = BallNode(name:underScored)
         newBallNode.linkedItem = ball as? Ball
         newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
-        newBallNode.size = CGSize(width: 275, height: 200)
+        newBallNode.size = CGSize(width: 100, height: 100)
         
         self.addChild(newBallNode)
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongHold(recognizer:)))
+        self.view!.addGestureRecognizer(gestureRecognizer)
         
+    }
+    
+    @objc func handleLongHold(recognizer: UILongPressGestureRecognizer) {
+        let longPressLocation = convertPoint(fromView: recognizer.location(in: self.view))
+        if recognizer.state == .began {
+                   for child in self.children {
+                       if let node = child as? Placeable {
+                           if node.contains(longPressLocation) {
+                               // Handle Drag and Drop
+                            print("hello")
+                           }
+                       }
+                   }
+               } else if recognizer.state == .ended {
+                   // End Drag and drop
+               }
     }
     
     

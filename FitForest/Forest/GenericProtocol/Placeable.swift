@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import SpriteKit
 
-protocol Placeable {
+protocol Placeable: SKSpriteNode {
     // Can be long tapped to picked up and moved.
 }
