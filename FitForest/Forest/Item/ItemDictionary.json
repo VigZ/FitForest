@@ -2,19 +2,19 @@
     "Ball":[{
         "name": "Beach Ball",
         "stackLimit": 3,
-        "description": "Your average beach ball.",
+        "itemDescription": "Your average beach ball.",
         "weight": 1.0
     },
     {
         "name": "Soccer Ball",
         "stackLimit": 3,
-        "description": "Kick it fast!",
+        "itemDescription": "Kick it fast!",
         "weight": 2.0
     },
     {
         "name": "Stone Ball",
         "stackLimit": 3,
-        "description": "I wouldn't kick this thing...",
+        "itemDescription": "I wouldn't kick this thing...",
         "weight": 5.0
     }]
 }

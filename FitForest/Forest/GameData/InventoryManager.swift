@@ -27,13 +27,54 @@ class InventoryManager:NSObject, NSCoding {
    }
     
     func retrieveItemData(identifier: String) {
+        do {
+            if let file = Bundle.main.url(forResource: "ItemDictionary", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? [String: Any] {
+                    // json is a dictionary
+                    print(object)
+                } else if let object = json as? [Any] {
+                    // json is an array
+                    print(object)
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("The file does not exist.")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         // Parse Json file for correct item data
         // Call addItem
+    }
+    
+    private func readJson() {
+        do {
+            if let file = Bundle.main.url(forResource: "points", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? [String: Any] {
+                    // json is a dictionary
+                    print(object)
+                } else if let object = json as? [Any] {
+                    // json is an array
+                    print(object)
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("no file")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
     
     
-//    func addItem(json:Data) -> Item{
+//    func addItem(data:Data) -> Item{
 //        // Use factory object to create and return correct item
 //        // Add item to item array
 //        

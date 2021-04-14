@@ -43,6 +43,7 @@
 		2783382026268C0300F872A4 /* ItemDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = 2783381F26268C0300F872A4 /* ItemDictionary.json */; };
 		2783382626268F6800F872A4 /* BallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783382526268F6800F872A4 /* BallNode.swift */; };
 		2783382B2626901600F872A4 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783382A2626901600F872A4 /* ItemType.swift */; };
+		2783384B2626B32000F872A4 /* ItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783384A2626B32000F872A4 /* ItemFactory.swift */; };
 		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
@@ -130,6 +131,7 @@
 		2783381F26268C0300F872A4 /* ItemDictionary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ItemDictionary.json; sourceTree = "<group>"; };
 		2783382526268F6800F872A4 /* BallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallNode.swift; sourceTree = "<group>"; };
 		2783382A2626901600F872A4 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		2783384A2626B32000F872A4 /* ItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFactory.swift; sourceTree = "<group>"; };
 		278453BC25C89F5B00D00B80 /* FitForest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FitForest.entitlements; sourceTree = "<group>"; };
 		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				278337D326260CDC00F872A4 /* ItemState.swift */,
 				2783381F26268C0300F872A4 /* ItemDictionary.json */,
 				2783382A2626901600F872A4 /* ItemType.swift */,
+				2783384A2626B32000F872A4 /* ItemFactory.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */,
 				2783382B2626901600F872A4 /* ItemType.swift in Sources */,
+				2783384B2626B32000F872A4 /* ItemFactory.swift in Sources */,
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
 				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
