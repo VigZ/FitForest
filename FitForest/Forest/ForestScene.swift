@@ -51,30 +51,8 @@ class ForestScene: SKScene {
         newBallNode.size = CGSize(width: 100, height: 100)
         
         self.addChild(newBallNode)
-//        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
-//        self.view!.addGestureRecognizer(gestureRecognizer)
         
     }
-
-    
-//    @IBAction func handlePan(recognizer: UIPanGestureRecognizer) {
-//      // 1
-//      let translation = recognizer.translation(in: view)
-//
-//      // 2
-//      guard let gestureView = recognizer.view else {
-//        return
-//      }
-//
-//      gestureView.center = CGPoint(
-//        x: gestureView.center.x + translation.x,
-//        y: gestureView.center.y + translation.y
-//      )
-//
-//      // 3
-//      recognizer.setTranslation(.zero, in: view)
-//    }
-    
     
     func touchDown(atPoint pos : CGPoint) {
 
@@ -89,15 +67,7 @@ class ForestScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else {
-//            return
-//        }
-//        for entity in nodes(at: touch.location(in: self)){
-//            if entity is Placeable {
-//
-//                self.grabbedNode = entity
-//            }
-//        }
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
