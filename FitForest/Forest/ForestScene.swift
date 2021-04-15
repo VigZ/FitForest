@@ -45,10 +45,8 @@ class ForestScene: SKScene {
         let endlessAction = SKAction.repeatForever(sequence)
         forestSprite.run(endlessAction)
         
-        let ball = GameData.sharedInstance.inventory.items[1]
-        let underScored = ball.name.replacingOccurrences(of: " ", with: "_")
-        let newBallNode = BallNode(name:underScored)
-        newBallNode.linkedItem = ball as? Ball
+        let ball = GameData.sharedInstance.inventory.items[2]
+        let newBallNode = ItemNodeFactory.sharedInstance.createItemNode(item: ball)!
         newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
         newBallNode.size = CGSize(width: 100, height: 100)
         
@@ -136,4 +134,5 @@ class ForestScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+    
 }

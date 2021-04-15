@@ -27,6 +27,8 @@
 		277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */; };
 		277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */; };
 		277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */; };
+		277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */; };
+		277FEF052628E668002C5FBB /* InstrumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF042628E668002C5FBB /* InstrumentNode.swift */; };
 		278337A22624A60B00F872A4 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337A12624A60B00F872A4 /* GameData.swift */; };
 		278337B92625F09C00F872A4 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337B82625F09C00F872A4 /* Ball.swift */; };
 		278337C2262609AA00F872A4 /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337C1262609AA00F872A4 /* Toy.swift */; };
@@ -116,6 +118,8 @@
 		277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUD.swift; sourceTree = "<group>"; };
 		277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
 		277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
+		277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNodeFactory.swift; sourceTree = "<group>"; };
+		277FEF042628E668002C5FBB /* InstrumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentNode.swift; sourceTree = "<group>"; };
 		278337A12624A60B00F872A4 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		278337B82625F09C00F872A4 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		278337C1262609AA00F872A4 /* Toy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 			children = (
 				278337C1262609AA00F872A4 /* Toy.swift */,
 				2783382526268F6800F872A4 /* BallNode.swift */,
+				277FEF042628E668002C5FBB /* InstrumentNode.swift */,
 			);
 			path = Toy;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				2783381F26268C0300F872A4 /* ItemDictionary.json */,
 				2783382A2626901600F872A4 /* ItemType.swift */,
 				2783384A2626B32000F872A4 /* ItemFactory.swift */,
+				277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
 				278337F926263E4700F872A4 /* UnitInteractable.swift in Sources */,
 				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
+				277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */,
 				278337D92626246900F872A4 /* Item.swift in Sources */,
 				277A887125C04DAE00C1F374 /* MainTabBarController.swift in Sources */,
 				278337D426260CDC00F872A4 /* ItemState.swift in Sources */,
@@ -692,6 +699,7 @@
 				2783384B2626B32000F872A4 /* ItemFactory.swift in Sources */,
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,
+				277FEF052628E668002C5FBB /* InstrumentNode.swift in Sources */,
 				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
 				278337CA26260A2F00F872A4 /* Accessory.swift in Sources */,
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
