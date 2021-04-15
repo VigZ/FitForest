@@ -8,7 +8,17 @@
 import Foundation
 import SpriteKit
 
-class ForestSprite: SKSpriteNode {
+class ForestSprite: SKSpriteNode, Placeable {
+    var isBeingMoved: Bool = false
+    
+    func pickedUp() {
+        
+    }
+    
+    func putDown() {
+        
+    }
+    
 
     init() {
         // Make a texture from an image, a color, and size
