@@ -91,26 +91,40 @@ class ForestScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        for entity in nodes(at: touch.location(in: self)){
-            if entity is Placeable {
-                
-                self.grabbedNode = entity
-            }
-        }
+//        guard let touch = touches.first else {
+//            return
+//        }
+//        for entity in nodes(at: touch.location(in: self)){
+//            if entity is Placeable {
+//
+//                self.grabbedNode = entity
+//            }
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // TODO Fix snap to center after grabbing Placeable
+        
+        guard let touch = touches.first else {return}
+        
+        if self.grabbedNode == nil {
+            for entity in nodes(at: touch.location(in: self)){
+                if entity is Placeable {
+                    self.grabbedNode = entity
+                    break
+                }
+            }
+        }
         guard let node = self.grabbedNode else {
             return
         }
-        guard let touch = touches.first else {return}
         node.position = touch.location(in: self)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.grabbedNode == nil {
+            print("Current UIView would be rendered.")
+        }
         self.grabbedNode = nil
     }
     
