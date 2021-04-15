@@ -52,28 +52,29 @@ class ForestScene: SKScene {
         newBallNode.size = CGSize(width: 100, height: 100)
         
         self.addChild(newBallNode)
-        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongHold(recognizer:)))
-        self.view!.addGestureRecognizer(gestureRecognizer)
+//        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
+//        self.view!.addGestureRecognizer(gestureRecognizer)
         
     }
+
     
-    @objc func handleLongHold(recognizer: UILongPressGestureRecognizer) {
-        let longPressLocation = convertPoint(fromView: recognizer.location(in: self.view))
-        if recognizer.state == .began {
-                   for child in self.children {
-                       if let node = child as? Placeable {
-                           if node.contains(longPressLocation) {
-                               // Handle Drag and Drop
-                            print("hello")
-                            node.pickedUp()
-                            
-                           }
-                       }
-                   }
-               } else if recognizer.state == .ended {
-                   
-               }
-    }
+//    @IBAction func handlePan(recognizer: UIPanGestureRecognizer) {
+//      // 1
+//      let translation = recognizer.translation(in: view)
+//
+//      // 2
+//      guard let gestureView = recognizer.view else {
+//        return
+//      }
+//
+//      gestureView.center = CGPoint(
+//        x: gestureView.center.x + translation.x,
+//        y: gestureView.center.y + translation.y
+//      )
+//
+//      // 3
+//      recognizer.setTranslation(.zero, in: view)
+//    }
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -89,11 +90,17 @@ class ForestScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-      
+        guard let touch = touches.first else {return}
+        for entity in nodes(at: touch.location(in: self)){
+            if entity is Placeable {
+                entity.position = touch.location(in: self)
+            }
+            
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

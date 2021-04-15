@@ -11,5 +11,6 @@ import SpriteKit
 protocol Placeable: SKSpriteNode {
     var isBeingMoved: Bool {get set}
     func pickedUp()
+    func putDown()
     // Can be long tapped to picked up and moved.
 }

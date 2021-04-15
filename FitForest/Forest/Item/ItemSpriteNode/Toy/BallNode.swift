@@ -13,15 +13,6 @@ class BallNode: SKSpriteNode, Toy {
     var linkedItem: Ball!
     var isBeingMoved: Bool = false
     
-    override var isUserInteractionEnabled: Bool {
-        set {
-            // ignore
-        }
-        get {
-            return true
-        }
-    }
-    
     init(name:String) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: name)
@@ -32,30 +23,47 @@ class BallNode: SKSpriteNode, Toy {
         super.init(texture: texture, color: color, size: size)
 
         // Set physics properties
-        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
-        physicsBody?.categoryBitMask = 1
-        physicsBody?.affectedByGravity = false
-        self.zPosition = 200
+//        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+//        physicsBody?.categoryBitMask = 1
+//        physicsBody?.affectedByGravity = false
+        self.zPosition = 1
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touched")
-        if isBeingMoved {
-            //Drag Code
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if isBeingMoved {
+//            //Drag Code
+//            print("Touches began")
+//
+//        }
+//    }
+//
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+////            //Drag Code
+////            print("Touches are being moved")
+////            let touch = touches.first
+////            if let location = touch?.location(in: self){
+////                self.position = location
+////            }
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        putDown()
+//    }
     
     func pickedUp() {
         isBeingMoved = true
+        print("Node has been picked up after a long press")
         // TODO Disable physics collisions
         
     }
     
     func putDown() {
         isBeingMoved = false
+        print("Node has been put down after a long press")
         // TODO Reenable physics collions
     }
 
