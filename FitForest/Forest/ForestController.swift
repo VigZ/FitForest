@@ -55,7 +55,27 @@ class ForestController: UIViewController {
     }
     
     func setupUIView(){
-        self.view.addSubview(uiInventory.collectionView)
-        uiInventory.collectionView.isHidden = true
+        guard let inventoryView = uiInventory.collectionView else {return}
+        
+        
+        self.view.addSubview(inventoryView)
+        
+        inventoryView.isHidden = false
+        
+       inventoryView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            inventoryView.widthAnchor.constraint(equalToConstant: 100),
+            inventoryView.heightAnchor.constraint(equalToConstant: 100),
+            inventoryView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            inventoryView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        // 3.
+        view.bringSubviewToFront(uiInventory.collectionView)
     }
 }
