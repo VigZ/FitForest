@@ -64,8 +64,8 @@ class ForestController: UIViewController {
         
        inventoryView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            inventoryView.widthAnchor.constraint(equalToConstant: 100),
-            inventoryView.heightAnchor.constraint(equalToConstant: 100),
+            inventoryView.widthAnchor.constraint(equalToConstant: 300),
+            inventoryView.heightAnchor.constraint(equalToConstant: 300),
             inventoryView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             inventoryView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
