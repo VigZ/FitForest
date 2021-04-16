@@ -12,6 +12,7 @@ import GameplayKit
 
 class ForestController: UIViewController {
     
+    var uiInventory = InventoryCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     override func loadView() {
       self.view = SKView()
     }
@@ -33,6 +34,9 @@ class ForestController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        uiInventory.modalPresentationStyle = .overCurrentContext
+        present(uiInventory, animated: false, completion: nil)
+        
     }
 
     override var shouldAutorotate: Bool {

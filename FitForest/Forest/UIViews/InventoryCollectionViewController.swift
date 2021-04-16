@@ -15,14 +15,24 @@ class InventoryCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = .white
+       
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(ItemCard.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+//        if let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.itemSize = CGSize(width: self.collectionView.bounds.width, height: 120)
+//        }
     }
 
     /*
@@ -48,10 +58,12 @@ class InventoryCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ItemCard
         let item = GameData.sharedInstance.inventory.items[indexPath.row]
-        cell.nameLabel.text = item.name        // Configure the cell
         
+        cell.nameLabel.text = item.name        // Configure the cell
+        cell.backgroundColor = .systemGreen
     
         return cell
     }
