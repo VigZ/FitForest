@@ -34,8 +34,7 @@ class ForestController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        uiInventory.modalPresentationStyle = .overCurrentContext
-        present(uiInventory, animated: false, completion: nil)
+        setupUIView()
         
     }
 
@@ -53,5 +52,10 @@ class ForestController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func setupUIView(){
+        self.view.addSubview(uiInventory.collectionView)
+        uiInventory.collectionView.isHidden = true
     }
 }
