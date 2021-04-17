@@ -69,7 +69,7 @@ class ForestController: UIViewController {
             inventoryView.widthAnchor.constraint(equalToConstant: 300),
             inventoryView.heightAnchor.constraint(equalToConstant: 300),
             inventoryView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            inventoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
+            inventoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
         ])
         
     }

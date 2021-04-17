@@ -18,10 +18,9 @@ class BallNode: SKSpriteNode, Toy {
         let texture = SKTexture(imageNamed: name)
         let color = UIColor.clear
         let size = texture.size()
-
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
-
+        self.name = name
         // Set physics properties
 //        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
 //        physicsBody?.categoryBitMask = 1

@@ -26,6 +26,7 @@ class InstrumentNode: SKSpriteNode, Toy {
 //        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
 //        physicsBody?.categoryBitMask = 1
 //        physicsBody?.affectedByGravity = false
+        self.name = name
         self.zPosition = 1
     }
 
