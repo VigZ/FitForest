@@ -45,11 +45,13 @@ class ForestScene: SKScene {
         let endlessAction = SKAction.repeatForever(sequence)
         forestSprite.run(endlessAction)
         
-        let ball = GameData.sharedInstance.inventory.items[2]
+        let test = Ball(stackLimit: 3, name: "Beach Ball", itemDescription: "Test", itemState: .inForest, itemType: .toy, weight: 2.0)
+        GameData.sharedInstance.inventory.items.append(test)
+        let ball = GameData.sharedInstance.inventory.items[0]
         let newBallNode = ItemNodeFactory.sharedInstance.createItemNode(item: ball)!
         newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
         newBallNode.size = CGSize(width: 100, height: 100)
-        
+
         self.addChild(newBallNode)
         
         let itemChest = ItemChest(name: "Item_Chest_Placeholder")
