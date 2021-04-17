@@ -32,6 +32,9 @@
 		277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */; };
 		277FEF1B2629E371002C5FBB /* InventorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF1A2629E371002C5FBB /* InventorySection.swift */; };
 		277FEF232629EC86002C5FBB /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF222629EC86002C5FBB /* ItemCard.swift */; };
+		277FEF3F262B29CC002C5FBB /* ItemChest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF3E262B29CC002C5FBB /* ItemChest.swift */; };
+		277FEF47262B2A10002C5FBB /* HotSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF46262B2A10002C5FBB /* HotSpot.swift */; };
+		277FEF52262B3744002C5FBB /* ForestControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF51262B3744002C5FBB /* ForestControllerDelegate.swift */; };
 		278337A22624A60B00F872A4 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337A12624A60B00F872A4 /* GameData.swift */; };
 		278337B92625F09C00F872A4 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337B82625F09C00F872A4 /* Ball.swift */; };
 		278337C2262609AA00F872A4 /* Toy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337C1262609AA00F872A4 /* Toy.swift */; };
@@ -125,6 +128,9 @@
 		277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
 		277FEF1A2629E371002C5FBB /* InventorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySection.swift; sourceTree = "<group>"; };
 		277FEF222629EC86002C5FBB /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		277FEF3E262B29CC002C5FBB /* ItemChest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemChest.swift; sourceTree = "<group>"; };
+		277FEF46262B2A10002C5FBB /* HotSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSpot.swift; sourceTree = "<group>"; };
+		277FEF51262B3744002C5FBB /* ForestControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForestControllerDelegate.swift; sourceTree = "<group>"; };
 		278337A12624A60B00F872A4 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		278337B82625F09C00F872A4 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		278337C1262609AA00F872A4 /* Toy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toy.swift; sourceTree = "<group>"; };
@@ -333,6 +339,14 @@
 			path = UIViews;
 			sourceTree = "<group>";
 		};
+		277FEF3D262B2994002C5FBB /* Hotspot */ = {
+			isa = PBXGroup;
+			children = (
+				277FEF3E262B29CC002C5FBB /* ItemChest.swift */,
+			);
+			path = Hotspot;
+			sourceTree = "<group>";
+		};
 		278337A02624A5FB00F872A4 /* GameData */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +404,8 @@
 				278337F826263E4700F872A4 /* UnitInteractable.swift */,
 				278337FD26263E6900F872A4 /* PlayerInteractable.swift */,
 				2783380226263ECA00F872A4 /* Placeable.swift */,
+				277FEF46262B2A10002C5FBB /* HotSpot.swift */,
+				277FEF51262B3744002C5FBB /* ForestControllerDelegate.swift */,
 			);
 			path = GenericProtocol;
 			sourceTree = "<group>";
@@ -518,6 +534,7 @@
 		27ED5AA326135BD9002946F9 /* Forest */ = {
 			isa = PBXGroup;
 			children = (
+				277FEF3D262B2994002C5FBB /* Hotspot */,
 				277FEF092628F7A8002C5FBB /* UIViews */,
 				278337F726263E1D00F872A4 /* GenericProtocol */,
 				278337A02624A5FB00F872A4 /* GameData */,
@@ -702,6 +719,7 @@
 				27D5D60726091E3F00B3D62A /* HasCustomView.swift in Sources */,
 				27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */,
 				278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */,
+				277FEF47262B2A10002C5FBB /* HotSpot.swift in Sources */,
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
 				278337B92625F09C00F872A4 /* Ball.swift in Sources */,
 				27ED5AA526135C07002946F9 /* ForestController.swift in Sources */,
@@ -709,6 +727,7 @@
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */,
 				2783382B2626901600F872A4 /* ItemType.swift in Sources */,
+				277FEF52262B3744002C5FBB /* ForestControllerDelegate.swift in Sources */,
 				2783384B2626B32000F872A4 /* ItemFactory.swift in Sources */,
 				277FEF1B2629E371002C5FBB /* InventorySection.swift in Sources */,
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
@@ -741,6 +760,7 @@
 				27ED5AAA26135CF4002946F9 /* ForestScene.swift in Sources */,
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,
+				277FEF3F262B29CC002C5FBB /* ItemChest.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
 				2783380326263ECA00F872A4 /* Placeable.swift in Sources */,
 				27D5D658260D370A00B3D62A /* RankPointsMultipliers.swift in Sources */,

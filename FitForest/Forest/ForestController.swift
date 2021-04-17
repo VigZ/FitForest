@@ -26,8 +26,7 @@ class ForestController: UIViewController {
             scene.scaleMode = .aspectFill
             // Present the scene
             view.presentScene(scene)
-           scene.viewController = self
-            
+            scene.viewController = self
             
             view.ignoresSiblingOrder = true
             
@@ -63,7 +62,7 @@ class ForestController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeInventory(sender:)), for: .touchUpInside)
         inventoryView.addSubview(closeButton)
         
-        inventoryView.isHidden = false
+        inventoryView.isHidden = true
         
        inventoryView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -77,6 +76,12 @@ class ForestController: UIViewController {
     
     @objc func closeInventory(sender:UIButton){
         sender.superview!.isHidden = true
+    }
+    
+    func showInventory(){
+        guard let inventoryView = uiInventory.collectionView else {return}
+        
+        inventoryView.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {

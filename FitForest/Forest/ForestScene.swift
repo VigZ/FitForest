@@ -11,7 +11,7 @@ import GameplayKit
 
 class ForestScene: SKScene {
     
-    weak var viewController: ForestController!
+    var viewController: ForestController!
     var grabbedNode: SKNode?
     
     override func didMove(to view: SKView) {
@@ -52,6 +52,13 @@ class ForestScene: SKScene {
         
         self.addChild(newBallNode)
         
+        let itemChest = ItemChest(name: "Item_Chest_Placeholder")
+        itemChest.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 300)
+        itemChest.size = CGSize(width: 200, height: 200)
+        itemChest.sceneController = self.view?.next as! ForestController // TODO Change this monstrosity
+        
+        self.addChild(itemChest)
+        
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -91,7 +98,7 @@ class ForestScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if self.grabbedNode == nil {
-            print("Current UIView would be rendered.")
+            
         }
         self.grabbedNode = nil
     }
