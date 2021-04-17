@@ -25,6 +25,8 @@ class InventoryCollectionViewController: UICollectionViewController {
         self.collectionView!.register(ItemCard.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        
     }
     
     override func viewDidLayoutSubviews() {

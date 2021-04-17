@@ -26,4 +26,8 @@ extension NSNotification.Name {
         
         static let locationPermissionsChanged = NSNotification.Name(rawValue: "locationPermissionsChanged")
     }
+    //Forest Events
+    class ForestEvents {
+        static let shouldHideInventory = NSNotification.Name(rawValue: "shouldHideInventory")
+    }
 }

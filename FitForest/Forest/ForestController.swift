@@ -56,10 +56,18 @@ class ForestController: UIViewController {
     func setupUIView(){
         guard let inventoryView = uiInventory.collectionView else {return}
         
-        
+        let ns = NotificationCenter.default
+        let shouldHideInventory = Notification.Name.ForestEvents.shouldHideInventory
+        ns.addObserver(forName: shouldHideInventory, object: nil, queue: nil){
+            (notification) in
+            DispatchQueue.main.async {
+                self.closeInventory()
+            }
+        }
+
         self.view.addSubview(inventoryView)
         let closeButton = UIButton(type: .close)
-        closeButton.addTarget(self, action: #selector(closeInventory(sender:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeInventory), for: .touchUpInside)
         inventoryView.addSubview(closeButton)
         
         inventoryView.isHidden = true
@@ -74,8 +82,9 @@ class ForestController: UIViewController {
         
     }
     
-    @objc func closeInventory(sender:UIButton){
-        sender.superview!.isHidden = true
+    @objc func closeInventory(){
+        guard let inventoryView = uiInventory.collectionView else {return}
+        inventoryView.isHidden = true
     }
     
     func showInventory(){

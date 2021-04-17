@@ -52,6 +52,7 @@ class ItemCard: UICollectionViewCell {
         newNode.size = CGSize(width: 100, height: 100)
         newNode.position = newPoint
         GameData.sharedInstance.scene.addChild(newNode)
+        NotificationCenter.default.post(name: Notification.Name.ForestEvents.shouldHideInventory, object: nil)
     }
 }
 
