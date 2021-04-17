@@ -17,11 +17,11 @@ class ItemNodeFactory {
             switch item {
                 case is Ball:
                     let newNode = BallNode(name:underScored_name)
-                    newNode.linkedItem = item as? Ball
+                    newNode.linkedInventoryItem = item as? Ball
                     return newNode
                 case is Instrument:
                     let newNode = InstrumentNode(name:underScored_name)
-                    newNode.linkedItem = item as? Instrument
+                    newNode.linkedInventoryItem = item as? Instrument
                     return newNode
             default:
                 return nil

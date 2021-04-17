@@ -52,6 +52,7 @@ class ItemCard: UICollectionViewCell {
             newNode.position = newPoint
             scene.addChild(newNode)
             scene.grabbedNode = newNode
+            item.itemState = .inForest
             NotificationCenter.default.post(name: Notification.Name.ForestEvents.shouldHideInventory, object: nil)
         }
         else if gesture.state == .changed {

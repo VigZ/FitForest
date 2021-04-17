@@ -123,6 +123,9 @@ class ForestScene: SKScene {
     }
     
     func destroyNode(node:SKSpriteNode) {
+        if let node = node as? HasLinkedItem {
+            node.toggleLinkedItem()
+        }
         node.removeFromParent()
     }
     

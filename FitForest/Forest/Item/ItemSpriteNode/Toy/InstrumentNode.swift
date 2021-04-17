@@ -10,7 +10,7 @@ import SpriteKit
 
 class InstrumentNode: SKSpriteNode, Toy {
     
-    var linkedItem: Instrument!
+    var linkedInventoryItem: Instrument!
     var isBeingMoved: Bool = false
     
     init(name:String) {

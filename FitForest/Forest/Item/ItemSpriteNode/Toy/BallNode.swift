@@ -8,9 +8,10 @@
 import Foundation
 import SpriteKit
 
-class BallNode: SKSpriteNode, Toy {
+class BallNode: SKSpriteNode, Toy, HasLinkedItem {
     
-    var linkedItem: Ball!
+    var linkedInventoryItem: Item!
+    
     var isBeingMoved: Bool = false
     
     init(name:String) {
@@ -64,6 +65,10 @@ class BallNode: SKSpriteNode, Toy {
         isBeingMoved = false
         print("Node has been put down after a long press")
         // TODO Reenable physics collions
+    }
+    
+    func toggleLinkedItem(){
+        linkedInventoryItem.itemState.toggle()
     }
 
 }
