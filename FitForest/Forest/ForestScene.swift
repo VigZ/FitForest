@@ -55,7 +55,7 @@ class ForestScene: SKScene {
         let itemChest = ItemChest(name: "Item_Chest_Placeholder")
         itemChest.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 300)
         itemChest.size = CGSize(width: 200, height: 200)
-        itemChest.sceneController = self.view?.next as! ForestController // TODO Change this monstrosity
+        itemChest.sceneController = self.view?.next as? ForestController // TODO Change this monstrosity
         
         self.addChild(itemChest)
         
