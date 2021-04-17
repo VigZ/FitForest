@@ -59,6 +59,9 @@ class ForestController: UIViewController {
         
         
         self.view.addSubview(inventoryView)
+        let closeButton = UIButton(type: .close)
+        closeButton.addTarget(self, action: #selector(closeInventory(sender:)), for: .touchUpInside)
+        inventoryView.addSubview(closeButton)
         
         inventoryView.isHidden = false
         
@@ -67,9 +70,13 @@ class ForestController: UIViewController {
             inventoryView.widthAnchor.constraint(equalToConstant: 300),
             inventoryView.heightAnchor.constraint(equalToConstant: 300),
             inventoryView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            inventoryView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+            inventoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
         
+    }
+    
+    @objc func closeInventory(sender:UIButton){
+        sender.superview!.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
