@@ -45,14 +45,24 @@ class ItemCard: UICollectionViewCell {
         let scene = GameData.sharedInstance.scene
 
         let newPoint = scene.convertPoint(fromView: location)
-
         
-
-        guard let newNode = ItemNodeFactory.sharedInstance.createItemNode(item:self.item) else { return }
-        newNode.size = CGSize(width: 100, height: 100)
-        newNode.position = newPoint
-        GameData.sharedInstance.scene.addChild(newNode)
-        NotificationCenter.default.post(name: Notification.Name.ForestEvents.shouldHideInventory, object: nil)
+        if gesture.state == .began {
+            guard let newNode = ItemNodeFactory.sharedInstance.createItemNode(item:self.item) else { return }
+            newNode.size = CGSize(width: 100, height: 100)
+            newNode.position = newPoint
+            scene.addChild(newNode)
+            scene.grabbedNode = newNode
+            NotificationCenter.default.post(name: Notification.Name.ForestEvents.shouldHideInventory, object: nil)
+        }
+        else if gesture.state == .changed {
+            guard let grabbed = scene.grabbedNode else {return}
+            grabbed.position = newPoint
+            // Add location conversion here.
+            
+        }
+        else if gesture.state == .ended {
+            scene.grabbedNode = nil
+        }
     }
 }
 
