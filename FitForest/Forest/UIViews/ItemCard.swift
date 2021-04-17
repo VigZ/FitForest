@@ -8,6 +8,9 @@
 import UIKit
 
 class ItemCard: UICollectionViewCell {
+    
+    var item:Item!
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +38,11 @@ class ItemCard: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    @objc func createNode(){
+        guard let newNode = ItemNodeFactory.sharedInstance.createItemNode(item:self.item) else { return }
+        GameData.sharedInstance.scene.addChild(newNode)
     }
 }
 

@@ -63,8 +63,10 @@ class InventoryCollectionViewController: UICollectionViewController {
         let item = GameData.sharedInstance.inventory.items[indexPath.row]
         
         cell.nameLabel.text = item.name        // Configure the cell
+        cell.item = item
         cell.backgroundColor = .systemGreen
-    
+        let recognizer = UILongPressGestureRecognizer(target: cell, action: #selector(cell.createNode))
+        cell.addGestureRecognizer(recognizer)
         return cell
     }
 
