@@ -102,7 +102,7 @@ class ForestScene: SKScene {
         guard let grabbed = self.grabbedNode else {return}
             for child in self.children {
                 if child is ItemChest {
-                    if child.intersects(grabbed){
+                    if child.intersects(grabbed) && grabbed is Toy{
                         destroyNode(node: grabbed)
                     }
                 }
