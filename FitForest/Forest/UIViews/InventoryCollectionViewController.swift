@@ -65,7 +65,7 @@ class InventoryCollectionViewController: UICollectionViewController {
         cell.nameLabel.text = item.name        // Configure the cell
         cell.item = item
         cell.backgroundColor = .systemGreen
-        let recognizer = UILongPressGestureRecognizer(target: cell, action: #selector(cell.createNode))
+        let recognizer = UILongPressGestureRecognizer(target: cell, action: #selector(cell.createNode(_:)))
         cell.addGestureRecognizer(recognizer)
         return cell
     }

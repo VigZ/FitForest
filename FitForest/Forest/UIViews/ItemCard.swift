@@ -40,8 +40,17 @@ class ItemCard: UICollectionViewCell {
         // Initialization code
     }
     
-    @objc func createNode(){
+    @objc func createNode(_ gesture: UIGestureRecognizer){
+        let location = gesture.location(in: gesture.view?.window)
+        let scene = GameData.sharedInstance.scene
+
+        let newPoint = scene.convertPoint(fromView: location)
+
+        
+
         guard let newNode = ItemNodeFactory.sharedInstance.createItemNode(item:self.item) else { return }
+        newNode.size = CGSize(width: 100, height: 100)
+        newNode.position = newPoint
         GameData.sharedInstance.scene.addChild(newNode)
     }
 }
