@@ -33,7 +33,7 @@ class ItemChest: SKSpriteNode, HotSpot {
 //        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
 //        physicsBody?.categoryBitMask = 1
 //        physicsBody?.affectedByGravity = false
-        self.zPosition = 1
+        self.zPosition = -199
     }
 
     required init?(coder aDecoder: NSCoder) {

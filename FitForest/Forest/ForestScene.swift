@@ -12,7 +12,7 @@ import GameplayKit
 class ForestScene: SKScene {
     
     var viewController: ForestController!
-    var grabbedNode: SKNode?
+    var grabbedNode: SKSpriteNode?
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "placeholderbackground2")
@@ -84,9 +84,11 @@ class ForestScene: SKScene {
         
         if self.grabbedNode == nil {
             for entity in nodes(at: touch.location(in: self)){
-                if entity is Placeable {
-                    self.grabbedNode = entity
-                    break
+                if let entity = entity as? SKSpriteNode {
+                    if entity is Placeable {
+                        self.grabbedNode = entity
+                        break
+                    }
                 }
             }
         }
@@ -97,10 +99,16 @@ class ForestScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.grabbedNode == nil {
-            
+        guard let grabbed = self.grabbedNode else {return}
+            for child in self.children {
+                if child is ItemChest {
+                    if child.intersects(grabbed){
+                        destroyNode(node: grabbed)
+                    }
+                }
         }
         self.grabbedNode = nil
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,6 +118,10 @@ class ForestScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func destroyNode(node:SKSpriteNode) {
+        node.removeFromParent()
     }
     
 }
