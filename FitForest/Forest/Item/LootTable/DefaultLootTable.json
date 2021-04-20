@@ -1,0 +1,19 @@
+{ "name": "Default Loot Table",
+    "items": [
+        {"name": "Test Item 1",
+            "itemWeight": 20
+        },
+        {"name": "Test Item 2",
+            "itemWeight": 40
+        },
+        {"name": "Test Item 3",
+            "itemWeight": 80
+        },
+        {"name": "Test Item 4",
+            "itemWeight": 10
+        },
+        
+    
+    ]
+   
+}
