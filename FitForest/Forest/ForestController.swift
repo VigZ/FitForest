@@ -19,6 +19,20 @@ class ForestController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        do {
+//            if let file = Bundle.main.url(forResource: "DefaultLootTable", withExtension: "json") {
+//                let data = try Data(contentsOf: file)
+//                let lootTable = LootTable(data: data)
+//                print(lootTable?.name)
+//                print(lootTable?.items)
+//                
+//            }
+//        }
+//        catch {
+//            
+//        }
+
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             let scene = GameData.sharedInstance.scene

@@ -13,22 +13,25 @@ struct LootTable {
     
     init?(data:Data) {
         do {
+            
            let json = try JSONSerialization.jsonObject(with: data, options: [])
             if let json = json as? Dictionary<String, AnyObject> {
-                if let jsonName = json["name"] as? String {
+                if let jsonName = json["name"] as? String, let jsonItems = json["items"] as? [[String: AnyObject]] {
                     name = jsonName
-                }
-                if let jsonItems = json["items"] as? [[String: AnyObject]] {
                     items = jsonItems
                 }
+                else {
+                    return nil
+                }
+            }else {
+                return nil
             }
-            
             
         }
         catch {
             print(error.localizedDescription)
+            return nil
         }
-        return nil
     }
     
 }
