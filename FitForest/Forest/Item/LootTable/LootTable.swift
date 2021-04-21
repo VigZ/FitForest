@@ -8,8 +8,9 @@
 import Foundation
 
 struct LootTable {
+    typealias Item = [String:AnyObject]
     var name: String
-    var items: [[String:AnyObject]]
+    var items: [Item]
     
     init?(data:Data) {
         do {
@@ -55,7 +56,7 @@ struct LootTable {
         return rangeDict
     }
     
-    func pickRandomItem() -> String? {
+    private func pickRandomValue() -> String? {
         let limit = sumWeights()
         let rangeDict = assignRanges()
         let randomNumber = Int.random(in: 1...limit)
@@ -67,4 +68,13 @@ struct LootTable {
         return nil
     }
     
+    func pickRandomItem() -> Item? {
+        let randomValue = pickRandomValue()
+        for item in items {
+            if item["name"] as? String == randomValue {
+                return item
+            }
+        }
+        return nil
+    }
 }

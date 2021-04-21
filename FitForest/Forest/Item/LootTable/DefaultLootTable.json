@@ -1,19 +1,19 @@
 { "name": "Default Loot Table",
     "items": [
         {"name": "Test Item 1",
-            "type": "Ball",
+            "classIdentifier": "Ball",
             "itemWeight": 20
         },
         {"name": "Test Item 2",
-            "type": "Instrument",
+            "classIdentifier": "Instrument",
             "itemWeight": 40
         },
         {"name": "Test Item 3",
-            "type": "Ball",
+            "classIdentifier": "Ball",
             "itemWeight": 80
         },
         {"name": "Test Item 4",
-            "type": "Instrument",
+            "classIdentifier": "Instrument",
             "itemWeight": 10
         },
         
