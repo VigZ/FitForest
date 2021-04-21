@@ -80,6 +80,7 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
             return
         }
         journeyManager.createWorkout()
+        giveRankRewards()
     }
     
     @objc func startTapped() {
@@ -133,6 +134,41 @@ class CreateJourneyViewController: UIViewController, HasCustomView {
         
     }
     
+    private func giveRankRewards(){
+        var fileName:String
+        switch currentRank {
+        case .bronze:
+            fileName = "Bronze"
+        case .silver:
+            fileName = "Silver"
+        case .gold:
+            fileName = "Gold"
+        case .diamond:
+            fileName = "Diamond"
+        }
+        
+        do {
+            if let file = Bundle.main.url(forResource: fileName, withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                let lootTable = LootTable(data: data)
+                let inventory = GameData.sharedInstance.inventory
+                let itemData = lootTable?.pickRandomItem()
+                if let itemData = itemData {
+                    let name = itemData["name"] as! String
+                    let identifier = itemData["classIdentifier"] as! String
+                    if let inventory = inventory {
+                        inventory.retrieveItemData(classIdentifier: identifier, itemName: name)
+                    }
+                }
+                
+            }
+        }
+        catch {
+            print(error)
+        }
+            
+    }
+
     private func setInitialValues(){
         clearValues()
         initialSteps = StepTracker.sharedInstance.numberOfSteps

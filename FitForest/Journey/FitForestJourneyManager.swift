@@ -118,6 +118,7 @@ class FitForestJourneyManager: NSObject {
             }
 
             }
+            
             // Create, save, and associate the route with the provided workout.
 
     }
