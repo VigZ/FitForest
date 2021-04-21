@@ -59,6 +59,9 @@ class InventoryManager:NSObject, NSCoding {
         self.items.append(item)
         // Save GameData
         GameData.sharedInstance.saveToDisk()
+        let ns = NotificationCenter.default
+        ns.post(name: Notification.Name.ForestEvents.itemAdded, object: item)
+        
     }
 }
 
