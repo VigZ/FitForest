@@ -61,7 +61,7 @@ class InventoryManager:NSObject, NSCoding {
         GameData.sharedInstance.saveToDisk()
         let ns = NotificationCenter.default
         ns.post(name: Notification.Name.ForestEvents.itemAdded, object: item)
-        
+        //TODO Add push notification for item recieved and hilight to newly added item in inventory.
     }
 }
 

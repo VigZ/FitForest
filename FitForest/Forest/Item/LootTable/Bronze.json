@@ -1,0 +1,22 @@
+{ "name": "Bronze Loot Table",
+    "items": [
+        {"name": "Beach Ball",
+            "classIdentifier": "Ball",
+            "itemWeight": 20
+        },
+        {"name": "Soccer Ball",
+            "classIdentifier": "Ball",
+            "itemWeight": 40
+        },
+        {"name": "Guitar",
+            "classIdentifier": "Instrument",
+            "itemWeight": 30
+        },
+        {"name": "Stone Ball",
+            "classIdentifier": "Ball",
+            "itemWeight": 10
+        },
+        
+    
+    ]
+   

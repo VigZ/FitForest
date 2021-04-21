@@ -10,6 +10,10 @@
 		2747627A262B9D4F00190AF4 /* HasLinkedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476279262B9D4F00190AF4 /* HasLinkedItem.swift */; };
 		2747628C262F769400190AF4 /* DefaultLootTable.json in Resources */ = {isa = PBXBuildFile; fileRef = 2747628B262F769400190AF4 /* DefaultLootTable.json */; };
 		27476294262F7CCF00190AF4 /* LootTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476293262F7CCF00190AF4 /* LootTable.swift */; };
+		274762A5262FE0A400190AF4 /* Bronze.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762A4262FE0A400190AF4 /* Bronze.json */; };
+		274762AA262FE0B300190AF4 /* Silver.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762A9262FE0B300190AF4 /* Silver.json */; };
+		274762AF262FE0C300190AF4 /* Gold.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762AE262FE0C300190AF4 /* Gold.json */; };
+		274762B4262FE0CF00190AF4 /* Diamond.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762B3262FE0CF00190AF4 /* Diamond.json */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -101,6 +105,10 @@
 		27476279262B9D4F00190AF4 /* HasLinkedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasLinkedItem.swift; sourceTree = "<group>"; };
 		2747628B262F769400190AF4 /* DefaultLootTable.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultLootTable.json; sourceTree = "<group>"; };
 		27476293262F7CCF00190AF4 /* LootTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootTable.swift; sourceTree = "<group>"; };
+		274762A4262FE0A400190AF4 /* Bronze.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Bronze.json; sourceTree = "<group>"; };
+		274762A9262FE0B300190AF4 /* Silver.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Silver.json; sourceTree = "<group>"; };
+		274762AE262FE0C300190AF4 /* Gold.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gold.json; sourceTree = "<group>"; };
+		274762B3262FE0CF00190AF4 /* Diamond.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Diamond.json; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +217,10 @@
 			children = (
 				2747628B262F769400190AF4 /* DefaultLootTable.json */,
 				27476293262F7CCF00190AF4 /* LootTable.swift */,
+				274762A4262FE0A400190AF4 /* Bronze.json */,
+				274762A9262FE0B300190AF4 /* Silver.json */,
+				274762AE262FE0C300190AF4 /* Gold.json */,
+				274762B3262FE0CF00190AF4 /* Diamond.json */,
 			);
 			path = LootTable;
 			sourceTree = "<group>";
@@ -680,10 +692,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2783382026268C0300F872A4 /* ItemDictionary.json in Resources */,
+				274762A5262FE0A400190AF4 /* Bronze.json in Resources */,
+				274762AA262FE0B300190AF4 /* Silver.json in Resources */,
 				277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */,
 				27ED5AC426162363002946F9 /* ForestScene.sks in Resources */,
 				2747628C262F769400190AF4 /* DefaultLootTable.json in Resources */,
+				274762B4262FE0CF00190AF4 /* Diamond.json in Resources */,
 				277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */,
+				274762AF262FE0C300190AF4 /* Gold.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
