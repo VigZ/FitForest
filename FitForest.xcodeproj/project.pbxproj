@@ -14,6 +14,7 @@
 		274762AA262FE0B300190AF4 /* Silver.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762A9262FE0B300190AF4 /* Silver.json */; };
 		274762AF262FE0C300190AF4 /* Gold.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762AE262FE0C300190AF4 /* Gold.json */; };
 		274762B4262FE0CF00190AF4 /* Diamond.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762B3262FE0CF00190AF4 /* Diamond.json */; };
+		274762B926307BCB00190AF4 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274762B826307BCB00190AF4 /* FindViewController.swift */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -109,6 +110,7 @@
 		274762A9262FE0B300190AF4 /* Silver.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Silver.json; sourceTree = "<group>"; };
 		274762AE262FE0C300190AF4 /* Gold.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gold.json; sourceTree = "<group>"; };
 		274762B3262FE0CF00190AF4 /* Diamond.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Diamond.json; sourceTree = "<group>"; };
+		274762B826307BCB00190AF4 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				277A88EA25C4896A00C1F374 /* FormatDisplay.swift */,
 				277A88E525C488E700C1F374 /* UnitConverterPace.swift */,
 				27D5D6452609796400B3D62A /* MKMapView+centerToLocation.swift */,
+				274762B826307BCB00190AF4 /* FindViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				27D5D610260925DA00B3D62A /* CreateJourneyView.swift in Sources */,
 				27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */,
 				278337CF26260A4F00F872A4 /* Consumable.swift in Sources */,
+				274762B926307BCB00190AF4 /* FindViewController.swift in Sources */,
 				27ED5AAA26135CF4002946F9 /* ForestScene.swift in Sources */,
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
 				27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */,

@@ -10,7 +10,6 @@ import SpriteKit
 
 class ItemChest: SKSpriteNode, HotSpot {
     
-    weak var sceneController:ForestController!
     override var isUserInteractionEnabled: Bool {
         get {
             return true
@@ -40,7 +39,11 @@ class ItemChest: SKSpriteNode, HotSpot {
         super.init(coder: aDecoder)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        sceneController.showInventory()
+        let sceneController = self.scene?.view?.findViewController()
+        if let sceneController = sceneController as? ForestController{
+            sceneController.showInventory()
+        }
+       
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
