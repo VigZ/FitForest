@@ -11,6 +11,8 @@ import CoreMotion
 class MainViewController: UIViewController, HasCustomView {
     typealias CustomView = MainView
     
+    var lootTable: LootTable?
+    
     override func loadView() {
         let customView = CustomView()
         customView.delegate = self
@@ -22,6 +24,17 @@ class MainViewController: UIViewController, HasCustomView {
         registerForNotifications()
         FitForestHealthStore.sharedInstance.requestUserPermissions()
         StepTracker.sharedInstance.startUpdating()
+        do {
+            if let file = Bundle.main.url(forResource: "DefaultLootTable", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+            lootTable = LootTable(data: data)
+                
+            }
+        }
+        catch {
+            print(error)
+        }
+        
     }
     
     private func registerForNotifications() {
@@ -34,9 +47,28 @@ class MainViewController: UIViewController, HasCustomView {
                 self.customView.topContainer.stepsLabel.text = String(StepTracker.sharedInstance.numberOfSteps)
                 self.customView.topContainer.stateLabel.text = StepTracker.sharedInstance.currentActivity
                 self.customView.topContainer.pointsLabel.text = String(GameData.sharedInstance.points)
+                self.checkItemDrop()
             }
         }
         
+    }
+    
+    func checkItemDrop(){
+
+        let randomNumber = Int.random(in: 1..<100)
+        let inventory = GameData.sharedInstance.inventory
+
+        
+        if randomNumber <= 10 {
+            let itemData = lootTable?.pickRandomItem()
+            if let itemData = itemData {
+                let name = itemData["name"] as! String
+                let identifier = itemData["classIdentifier"] as! String
+                if let inventory = inventory {
+                    inventory.retrieveItemData(classIdentifier: identifier, itemName: name)
+                }
+            }
+        }
     }
 
 

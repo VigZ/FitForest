@@ -1,19 +1,19 @@
 { "name": "Default Loot Table",
     "items": [
-        {"name": "Test Item 1",
+        {"name": "Beach Ball",
             "classIdentifier": "Ball",
             "itemWeight": 20
         },
-        {"name": "Test Item 2",
-            "classIdentifier": "Instrument",
+        {"name": "Soccer Ball",
+            "classIdentifier": "Ball",
             "itemWeight": 40
         },
-        {"name": "Test Item 3",
-            "classIdentifier": "Ball",
-            "itemWeight": 80
-        },
-        {"name": "Test Item 4",
+        {"name": "Guitar",
             "classIdentifier": "Instrument",
+            "itemWeight": 30
+        },
+        {"name": "Stone Ball",
+            "classIdentifier": "Ball",
             "itemWeight": 10
         },
         
