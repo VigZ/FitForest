@@ -29,5 +29,6 @@ extension NSNotification.Name {
     //Forest Events
     class ForestEvents {
         static let shouldHideInventory = NSNotification.Name(rawValue: "shouldHideInventory")
+        static let itemAdded = NSNotification.Name(rawValue: "itemAdded")
     }
 }
