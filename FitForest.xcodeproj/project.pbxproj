@@ -15,6 +15,7 @@
 		274762AF262FE0C300190AF4 /* Gold.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762AE262FE0C300190AF4 /* Gold.json */; };
 		274762B4262FE0CF00190AF4 /* Diamond.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762B3262FE0CF00190AF4 /* Diamond.json */; };
 		274762B926307BCB00190AF4 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274762B826307BCB00190AF4 /* FindViewController.swift */; };
+		27476302263222C500190AF4 /* RunyunWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 27476301263222C500190AF4 /* RunyunWalkCycle.atlas */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -111,6 +112,7 @@
 		274762AE262FE0C300190AF4 /* Gold.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Gold.json; sourceTree = "<group>"; };
 		274762B3262FE0CF00190AF4 /* Diamond.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Diamond.json; sourceTree = "<group>"; };
 		274762B826307BCB00190AF4 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		27476301263222C500190AF4 /* RunyunWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RunyunWalkCycle.atlas; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,9 +229,18 @@
 			path = LootTable;
 			sourceTree = "<group>";
 		};
+		274762FD2632228A00190AF4 /* RunyunWalkCycle.atlas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RunyunWalkCycle.atlas;
+			sourceTree = "<group>";
+		};
 		277A881325BCD0C700C1F374 = {
 			isa = PBXGroup;
 			children = (
+				274762FD2632228A00190AF4 /* RunyunWalkCycle.atlas */,
+				27476301263222C500190AF4 /* RunyunWalkCycle.atlas */,
 				277A881E25BCD0C700C1F374 /* FitForest */,
 				277A883525BCD0C700C1F374 /* FitForestTests */,
 				277A884025BCD0C700C1F374 /* FitForestUITests */,
@@ -694,6 +705,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27476302263222C500190AF4 /* RunyunWalkCycle.atlas in Resources */,
 				2783382026268C0300F872A4 /* ItemDictionary.json in Resources */,
 				274762A5262FE0A400190AF4 /* Bronze.json in Resources */,
 				274762AA262FE0B300190AF4 /* Silver.json in Resources */,

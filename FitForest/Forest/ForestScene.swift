@@ -21,6 +21,50 @@ class ForestScene: SKScene {
             initialSetup()
         }
         
+        let texture = SKTexture(imageNamed: "runyunwalk_1")
+        let color = UIColor.clear
+        let size = CGSize(width: 100, height: 140)
+        let sprite = ForestSprite()
+        sprite.texture = texture
+        sprite.color = color
+        sprite.size = size
+        sprite.zPosition = 1
+        let atlas = SKTextureAtlas(named: "RunyunWalkCycle")
+        let m1 = atlas.textureNamed("runyunwalk_1.png")
+        let m2 = atlas.textureNamed("runyunwalk_2.png")
+        let m3 = atlas.textureNamed("runyunwalk_3.png")
+        let m4 = atlas.textureNamed("runyunwalk_4.png")
+
+        let textures = [m1, m2, m3, m4]
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.10)
+        
+        let moveRight = SKAction.moveBy(x: 50, y:0, duration:1.0)
+        let moveLeft = SKAction.moveBy(x: -50, y:0, duration:1.0)
+        let moveUp = SKAction.moveBy(x: 0, y: 50, duration:1.0)
+        let moveDown = SKAction.moveBy(x: 0, y: -50, duration:1.0)
+        let pause = SKAction.wait(forDuration: 1.0)
+        let aboutFace = SKAction.run {
+            if sprite.xScale == 1 {
+                sprite.xScale = -1
+            }
+            else {
+                sprite.xScale = 1
+            }
+           
+        }
+    
+        let pauseAnimation = SKAction.run {
+            sprite.texture = SKTexture(imageNamed: "runyunwalk_1")
+        }
+        let moveLeftSequence = SKAction.sequence([pauseAnimation, pause, moveLeft, aboutFace])
+        let moveRightSequence = SKAction.sequence([pauseAnimation, pause, moveRight, aboutFace])
+        let walk = SKAction.sequence([moveLeftSequence, moveRightSequence])
+
+
+        let endlessAction = SKAction.repeatForever(walk)
+        addChild(sprite)
+        sprite.run(SKAction.repeatForever(endlessAction))
+        sprite.run(SKAction.repeatForever(animation))
     }
     
     func touchDown(atPoint pos : CGPoint) {
