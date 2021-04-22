@@ -16,7 +16,7 @@ class ForestScene: SKScene {
     var isInitialLoad: Bool = false
     
     override func didMove(to view: SKView) {
-        print(isInitialLoad)
+        
         if isInitialLoad {
             initialSetup()
         }
