@@ -1,5 +1,5 @@
 //
-//  ForestSprite.swift
+//  Runyun.swift
 //  FitForest
 //
 //  Created by Kyle Vigorito on 4/1/21.
@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class ForestSprite: SKSpriteNode, Placeable {
+class Runyun: SKSpriteNode, Placeable {
     var isBeingMoved: Bool = false
     
     func pickedUp() {

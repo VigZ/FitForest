@@ -24,7 +24,7 @@ class ForestScene: SKScene {
         let texture = SKTexture(imageNamed: "runyunwalk_1")
         let color = UIColor.clear
         let size = CGSize(width: 100, height: 140)
-        let sprite = ForestSprite()
+        let sprite = Runyun()
         sprite.texture = texture
         sprite.color = color
         sprite.size = size
@@ -59,7 +59,8 @@ class ForestScene: SKScene {
         let moveLeftSequence = SKAction.sequence([pauseAnimation, pause, moveLeft, aboutFace])
         let moveRightSequence = SKAction.sequence([pauseAnimation, pause, moveRight, aboutFace])
         let walk = SKAction.sequence([moveLeftSequence, moveRightSequence])
-
+        sprite.color = UIColor.systemGreen
+        sprite.colorBlendFactor = 1
 
         let endlessAction = SKAction.repeatForever(walk)
         addChild(sprite)
@@ -140,8 +141,8 @@ class ForestScene: SKScene {
         background.zPosition = -200
         addChild(background)
         
-        let forestSprite = ForestSprite()
-        let forestSprite2 = ForestSprite()
+        let forestSprite = Runyun()
+        let forestSprite2 = Runyun()
         
         forestSprite.position = CGPoint(x: frame.midX, y: frame.midY)
         forestSprite.size = CGSize(width: 275, height: 200)
