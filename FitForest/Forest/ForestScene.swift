@@ -66,6 +66,12 @@ class ForestScene: SKScene {
         addChild(sprite)
         sprite.run(SKAction.repeatForever(endlessAction))
         sprite.run(SKAction.repeatForever(animation))
+        
+        let testRunyun = TestRunyun()
+        testRunyun.body.size = CGSize(width: 100, height: 100)
+        testRunyun.leaves.size = CGSize(width: 100, height: 100)
+        testRunyun.position = CGPoint(x: frame.midX, y: frame.midY)
+        self.addChild(testRunyun)
     }
     
     func touchDown(atPoint pos : CGPoint) {

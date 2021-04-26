@@ -16,6 +16,7 @@
 		274762B4262FE0CF00190AF4 /* Diamond.json in Resources */ = {isa = PBXBuildFile; fileRef = 274762B3262FE0CF00190AF4 /* Diamond.json */; };
 		274762B926307BCB00190AF4 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274762B826307BCB00190AF4 /* FindViewController.swift */; };
 		27476302263222C500190AF4 /* RunyunWalkCycle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 27476301263222C500190AF4 /* RunyunWalkCycle.atlas */; };
+		2747630D2632927200190AF4 /* TestRunyun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747630C2632927200190AF4 /* TestRunyun.swift */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -113,6 +114,7 @@
 		274762B3262FE0CF00190AF4 /* Diamond.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Diamond.json; sourceTree = "<group>"; };
 		274762B826307BCB00190AF4 /* FindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		27476301263222C500190AF4 /* RunyunWalkCycle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RunyunWalkCycle.atlas; sourceTree = "<group>"; };
+		2747630C2632927200190AF4 /* TestRunyun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRunyun.swift; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				27ED5AB326161E47002946F9 /* Runyun.swift */,
+				2747630C2632927200190AF4 /* TestRunyun.swift */,
 			);
 			path = Runyun;
 			sourceTree = "<group>";
@@ -758,6 +761,7 @@
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
 				278337B92625F09C00F872A4 /* Ball.swift in Sources */,
 				27ED5AA526135C07002946F9 /* ForestController.swift in Sources */,
+				2747630D2632927200190AF4 /* TestRunyun.swift in Sources */,
 				277A88E125C474B000C1F374 /* FitForestLocationManager.swift in Sources */,
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */,
