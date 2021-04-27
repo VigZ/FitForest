@@ -60,23 +60,23 @@ class ItemFactory {
                     }
                     // otherwise create new Item
                     return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable)
-            case .Accessory:
-                // extract data into class
-                guard let name = data["name"] as? String,
-                let stackLimit = data["stackLimit"] as? Int,
-                let itemDescription = data["itemDescription"] as? String,
-                let anchorPoint = data["anchorPoint"] as? Array<Int>,
-                let runyunAnchorPoint = data["runyunAnchorPoint"] as? Array<Int>
-                else {return nil}
-                // Check current instances, if equal to or greater stackLimit, bail
-                if isAtStackLimit(target: name, stackLimit: stackLimit){
-                    return nil
-                }
-                // Convert anchor points to CGPoint
-                let convertedAnchor = CGPoint(x: anchorPoint[0], y: anchorPoint[1])
-                let convertedRunyunAnchor = CGPoint(x: runyunAnchorPoint[0], y: runyunAnchorPoint[1])
-                // otherwise create new Item
-                return Accessory(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: convertedAnchor, runyunAnchorPoint: convertedRunyunAnchor)
+                case .Accessory:
+                    // extract data into class
+                    guard let name = data["name"] as? String,
+                    let stackLimit = data["stackLimit"] as? Int,
+                    let itemDescription = data["itemDescription"] as? String,
+                    let anchorPoint = data["anchorPoint"] as? Array<Int>,
+                    let runyunAnchorPoint = data["runyunAnchorPoint"] as? Array<Int>
+                    else {return nil}
+                    // Check current instances, if equal to or greater stackLimit, bail
+                    if isAtStackLimit(target: name, stackLimit: stackLimit){
+                        return nil
+                    }
+                    // Convert anchor points to CGPoint
+                    let convertedAnchor = CGPoint(x: anchorPoint[0], y: anchorPoint[1])
+                    let convertedRunyunAnchor = CGPoint(x: runyunAnchorPoint[0], y: runyunAnchorPoint[1])
+                    // otherwise create new Item
+                    return Accessory(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: convertedAnchor, runyunAnchorPoint: convertedRunyunAnchor)
             }
         }
     func isAtStackLimit(target:String, stackLimit: Int) -> Bool {

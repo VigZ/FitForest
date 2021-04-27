@@ -68,7 +68,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     func toggleLinkedItem(){
-        guard var linkedInventoryItem = linkedInventoryItem else {return}
+        guard let linkedInventoryItem = linkedInventoryItem else {return}
         linkedInventoryItem.itemState.toggle()
     }
 
