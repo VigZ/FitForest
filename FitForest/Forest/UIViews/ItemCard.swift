@@ -54,10 +54,6 @@ class ItemCard: UICollectionViewCell {
             scene.grabbedNode = newNode
             item.itemState = .inForest
             NotificationCenter.default.post(name: Notification.Name.ForestEvents.shouldHideInventory, object: nil)
-            if self.item is Consumable {
-                GameData.sharedInstance.inventory.removeItem(item: self.item)
-                
-            }
         }
         else if gesture.state == .changed {
             guard let grabbed = scene.grabbedNode else {return}
@@ -66,6 +62,12 @@ class ItemCard: UICollectionViewCell {
             
         }
         else if gesture.state == .ended {
+            if self.item is Consumable {
+                if let node = scene.grabbedNode{
+                    scene.destroyNode(node: node)
+                }
+                GameData.sharedInstance.inventory.removeItem(item: self.item)
+            }
             scene.grabbedNode = nil
         }
     }

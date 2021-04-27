@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class SeedNode: SKSpriteNode, Placeable {
+class SeedNode: SKSpriteNode, Placeable{
     
     var isBeingMoved: Bool = false
     
