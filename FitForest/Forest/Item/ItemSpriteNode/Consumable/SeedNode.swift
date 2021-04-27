@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class SeedNode: SKSpriteNode, Placeable{
+class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     
     var isBeingMoved: Bool = false
     
@@ -67,6 +67,10 @@ class SeedNode: SKSpriteNode, Placeable{
     
     func spawnRunyun() {
         print("Runyun spawned!")
+    }
+    
+    func consume() {
+        spawnRunyun()
     }
     
 }

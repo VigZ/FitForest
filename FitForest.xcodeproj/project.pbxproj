@@ -21,6 +21,7 @@
 		2747631D2637BE2F00190AF4 /* RunyunNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747631C2637BE2F00190AF4 /* RunyunNodeFactory.swift */; };
 		274763252637BF4F00190AF4 /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274763242637BF4F00190AF4 /* Seed.swift */; };
 		27476335263881DA00190AF4 /* SeedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476334263881DA00190AF4 /* SeedNode.swift */; };
+		2747633D2638A0C300190AF4 /* ConsumableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747633C2638A0C300190AF4 /* ConsumableNode.swift */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -123,6 +124,7 @@
 		2747631C2637BE2F00190AF4 /* RunyunNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunNodeFactory.swift; sourceTree = "<group>"; };
 		274763242637BF4F00190AF4 /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
 		27476334263881DA00190AF4 /* SeedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNode.swift; sourceTree = "<group>"; };
+		2747633C2638A0C300190AF4 /* ConsumableNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumableNode.swift; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				27476334263881DA00190AF4 /* SeedNode.swift */,
+				2747633C2638A0C300190AF4 /* ConsumableNode.swift */,
 			);
 			path = Consumable;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				27D5D610260925DA00B3D62A /* CreateJourneyView.swift in Sources */,
 				27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */,
 				278337CF26260A4F00F872A4 /* Consumable.swift in Sources */,
+				2747633D2638A0C300190AF4 /* ConsumableNode.swift in Sources */,
 				274762B926307BCB00190AF4 /* FindViewController.swift in Sources */,
 				27ED5AAA26135CF4002946F9 /* ForestScene.swift in Sources */,
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,

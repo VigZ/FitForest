@@ -63,7 +63,8 @@ class ItemCard: UICollectionViewCell {
         }
         else if gesture.state == .ended {
             if self.item is Consumable {
-                if let node = scene.grabbedNode{
+                if let node = scene.grabbedNode as? ConsumableNode{
+                    node.consume()
                     scene.destroyNode(node: node)
                 }
                 GameData.sharedInstance.inventory.removeItem(item: self.item)
