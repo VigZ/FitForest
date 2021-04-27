@@ -11,6 +11,7 @@ import SpriteKit
 class Runyun: SKSpriteNode, Placeable {
     var isBeingMoved: Bool = false
     var state: RunyunState!
+    var accessory: AccessoryNode?
     
     func pickedUp() {
         

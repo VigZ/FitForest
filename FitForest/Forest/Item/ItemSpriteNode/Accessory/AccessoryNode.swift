@@ -11,6 +11,7 @@ import SpriteKit
 class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
     
     var linkedInventoryItem: Item!
+    weak var linkedRunyun: Runyun?
     
     var isBeingMoved: Bool = false
     
@@ -71,6 +72,14 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
     func toggleLinkedItem(){
         guard let linkedInventoryItem = linkedInventoryItem else {return}
         linkedInventoryItem.itemState.toggle()
+    }
+    
+    func attachToRunyun(runyun: Runyun) {
+        guard let linkedInventoryItem = linkedInventoryItem as? Accessory else {return}
+        linkedRunyun = runyun
+        runyun.accessory = self
+        position = linkedInventoryItem.runyunAnchorPoint
+        runyun.addChild(self)       
     }
 
 }
