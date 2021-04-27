@@ -54,7 +54,7 @@ class InventoryManager:NSObject, NSCoding {
         }
     }
     
-    private func addItem(item:Item){
+     func addItem(item:Item){
         // Add item to item array
         self.items.append(item)
         // Save GameData

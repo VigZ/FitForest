@@ -23,6 +23,9 @@ class ItemNodeFactory {
                     let newNode = InstrumentNode(name:underScored_name)
                     newNode.linkedInventoryItem = item as? Instrument
                     return newNode
+                case is Seed:
+                    let newNode = SeedNode(name:underScored_name)
+                    return newNode
             default:
                 return nil
             }

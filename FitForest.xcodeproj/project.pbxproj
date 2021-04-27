@@ -20,6 +20,7 @@
 		274763122637BD6F00190AF4 /* RunyunState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274763112637BD6F00190AF4 /* RunyunState.swift */; };
 		2747631D2637BE2F00190AF4 /* RunyunNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747631C2637BE2F00190AF4 /* RunyunNodeFactory.swift */; };
 		274763252637BF4F00190AF4 /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274763242637BF4F00190AF4 /* Seed.swift */; };
+		27476335263881DA00190AF4 /* SeedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476334263881DA00190AF4 /* SeedNode.swift */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -121,6 +122,7 @@
 		274763112637BD6F00190AF4 /* RunyunState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunState.swift; sourceTree = "<group>"; };
 		2747631C2637BE2F00190AF4 /* RunyunNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunNodeFactory.swift; sourceTree = "<group>"; };
 		274763242637BF4F00190AF4 /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
+		27476334263881DA00190AF4 /* SeedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNode.swift; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 		27833831262691EC00F872A4 /* Consumable */ = {
 			isa = PBXGroup;
 			children = (
+				27476334263881DA00190AF4 /* SeedNode.swift */,
 			);
 			path = Consumable;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277FEF232629EC86002C5FBB /* ItemCard.swift in Sources */,
 				2783382626268F6800F872A4 /* BallNode.swift in Sources */,
+				27476335263881DA00190AF4 /* SeedNode.swift in Sources */,
 				27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */,
 				277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
