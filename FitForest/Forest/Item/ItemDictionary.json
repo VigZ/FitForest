@@ -32,5 +32,10 @@
         "stackLimit": 3,
         "itemDescription": "Marching to the beat...of yourself."
     }
-    ]
+    ],
+    "Seed": [{
+        "name": "Basic Red Seed",
+        "stackLimit": 10,
+        "itemDescription": "Your basic red runyun seed."
+    },]
 }

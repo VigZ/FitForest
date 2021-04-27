@@ -9,4 +9,5 @@ import Foundation
 
 protocol Consumable: Item {
     // Consumables exist in the inventory, then when used, produce desired effect and delete themselves.
+    func consumeItem()
 }

@@ -14,7 +14,7 @@ class ItemFactory {
     enum ItemClass:String {
         case Ball
         case Instrument
-//        case Accessory
+        case Seed
     }
     
     func createItem(itemClass : String, data : [String: Any?])-> Item?{
@@ -46,8 +46,19 @@ class ItemFactory {
                     }
                     // otherwise create new Item
                     return Instrument(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.toy)
-//            case .Accessory:
-//                return
+            case .Seed:
+                // extract data into class
+                guard let name = data["name"] as? String,
+                let stackLimit = data["stackLimit"] as? Int,
+                let itemDescription = data["itemDescription"] as? String
+                else {return nil}
+                // Check current instances, if equal to or greater stackLimit, bail
+                if isAtStackLimit(target: name, stackLimit: stackLimit){
+                    return nil
+                }
+                // otherwise create new Item
+                return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable)
+                  
             }
         }
     func isAtStackLimit(target:String, stackLimit: Int) -> Bool {
