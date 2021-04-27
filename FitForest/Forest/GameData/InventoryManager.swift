@@ -65,14 +65,16 @@ class InventoryManager:NSObject, NSCoding {
         
         //TODO Add push notification for item recieved and hilight to newly added item in inventory.
     }
-}
 
-//    
-//    func removeItem(item:Item) -> Bool {
-//        // Attempt to remove item from array if it exists.
-//        // Delete any attached spriteNodes
-//        // Return true if successful, false if not
-//    }
+    func removeItem(item:Item) -> Bool {
+        items.removeAll(where: { $0 === item})
+        return true
+        // Attempt to remove item from array if it exists.
+        // Delete any attached spriteNodes
+        // Return true if successful, false if not
+    }
+
+}
     
     
 
