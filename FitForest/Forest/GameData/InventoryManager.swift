@@ -68,6 +68,7 @@ class InventoryManager:NSObject, NSCoding {
 
     func removeItem(item:Item) -> Bool {
         items.removeAll(where: { $0 === item})
+        GameData.sharedInstance.saveToDisk()
         return true
         // Attempt to remove item from array if it exists.
         // Delete any attached spriteNodes

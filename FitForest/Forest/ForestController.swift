@@ -89,7 +89,7 @@ class ForestController: UIViewController {
     
     func showInventory(){
         guard let inventoryView = uiInventory.collectionView else {return}
-        
+        inventoryView.reloadData()
         inventoryView.isHidden = false
     }
     

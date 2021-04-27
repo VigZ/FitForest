@@ -73,9 +73,9 @@ class ForestScene: SKScene {
         testRunyun.position = CGPoint(x: frame.midX, y: frame.midY)
         self.addChild(testRunyun)
         
-        let inventory = GameData.sharedInstance.inventory
-        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable)
-        inventory?.addItem(item:seed)
+//        let inventory = GameData.sharedInstance.inventory
+//        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable)
+//        inventory?.addItem(item:seed)
     }
     
     func touchDown(atPoint pos : CGPoint) {
