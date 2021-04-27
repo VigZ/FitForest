@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import SpriteKit
 
-protocol UnitInteractable {
+protocol UnitInteractable: SKSpriteNode {
     //responds to runyun interaction and has collision
 }

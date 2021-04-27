@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol Acessory : Item {
+protocol Accessory : Item {
     // Asccessories have no collision, act as a mask for Forest Sprite and are thus tethered to them.
 }

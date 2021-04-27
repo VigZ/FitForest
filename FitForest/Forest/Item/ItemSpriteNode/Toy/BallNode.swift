@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class BallNode: SKSpriteNode, Toy, HasLinkedItem {
+class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
     
     var linkedInventoryItem: Item!
     

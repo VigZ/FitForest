@@ -66,7 +66,11 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     }
     
     func spawnRunyun() {
-        print("Runyun spawned!")
+        let currentLocation = self.position
+        let newRunyun = Runyun()
+        newRunyun.position = currentLocation
+        newRunyun.size = CGSize(width: 275, height: 200)
+        scene?.addChild(newRunyun)
     }
     
     func consume() {

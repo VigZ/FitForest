@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class InstrumentNode: SKSpriteNode, Toy {
+class InstrumentNode: SKSpriteNode, ToyNode {
     
     var linkedInventoryItem: Instrument!
     var isBeingMoved: Bool = false
