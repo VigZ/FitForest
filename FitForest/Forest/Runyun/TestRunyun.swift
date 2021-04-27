@@ -28,7 +28,7 @@ class TestRunyun: SKNode {
         // Make a texture from an image, a color, and size
         body = SKSpriteNode(imageNamed: "runyunfull")
         leaves = SKSpriteNode(imageNamed: "runyunnewleaves")
-        leaves.anchorPoint = CGPoint(x: body.position.x, y: body.position.y)
+        leaves.anchorPoint = CGPoint(x: 0, y: 0)
 
 
         // Call the designated initializer

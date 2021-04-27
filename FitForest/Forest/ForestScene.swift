@@ -68,8 +68,8 @@ class ForestScene: SKScene {
         sprite.run(SKAction.repeatForever(animation))
         
         let testRunyun = TestRunyun()
-        testRunyun.body.size = CGSize(width: 100, height: 100)
-        testRunyun.leaves.size = CGSize(width: 100, height: 100)
+        testRunyun.body.size = CGSize(width: 60, height: 75)
+        testRunyun.leaves.size = CGSize(width: 60, height: 75)
         testRunyun.position = CGPoint(x: frame.midX, y: frame.midY)
         self.addChild(testRunyun)
     }

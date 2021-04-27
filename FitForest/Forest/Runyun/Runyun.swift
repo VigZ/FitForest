@@ -10,6 +10,7 @@ import SpriteKit
 
 class Runyun: SKSpriteNode, Placeable {
     var isBeingMoved: Bool = false
+    var state: RunyunState!
     
     func pickedUp() {
         
@@ -25,7 +26,7 @@ class Runyun: SKSpriteNode, Placeable {
         let texture = SKTexture(imageNamed: "runyun")
         let color = UIColor.clear
         let size = texture.size()
-
+        self.state = RunyunState.seedling
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
@@ -34,6 +35,7 @@ class Runyun: SKSpriteNode, Placeable {
 //        physicsBody?.categoryBitMask = 1
 //        physicsBody?.affectedByGravity = false
         self.zPosition = 1
+        
     }
 
     required init?(coder aDecoder: NSCoder) {
