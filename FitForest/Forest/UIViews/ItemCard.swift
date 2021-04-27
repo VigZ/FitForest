@@ -69,6 +69,17 @@ class ItemCard: UICollectionViewCell {
                 }
                 GameData.sharedInstance.inventory.removeItem(item: self.item)
             }
+            if self.item is Accessory {
+                if let node = scene.grabbedNode as? AccessoryNode {
+                    for child in scene.children {
+                        if node.intersects(child) && child is Runyun {
+                            let runyun = child as! Runyun
+                            node.attachToRunyun(runyun: runyun)
+                        }
+                    }
+                    
+                }
+            }
             scene.grabbedNode = nil
         }
     }

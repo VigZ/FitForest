@@ -123,6 +123,13 @@ class ForestScene: SKScene {
                         destroyNode(node: grabbed)
                     }
                 }
+                if child is Runyun {
+                    guard let runyun = child as? Runyun else {return}
+                    if child.intersects(grabbed) && grabbed is AccessoryNode {
+                        guard let grabbed = grabbed as? AccessoryNode else {return}
+                        grabbed.attachToRunyun(runyun: runyun)
+                    }
+                }
         }
         self.grabbedNode = nil
         

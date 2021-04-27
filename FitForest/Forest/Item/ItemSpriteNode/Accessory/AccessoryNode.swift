@@ -79,7 +79,7 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
         linkedRunyun = runyun
         runyun.accessory = self
         position = linkedInventoryItem.runyunAnchorPoint
-        runyun.addChild(self)       
+        move(toParent:runyun)
     }
 
 }
