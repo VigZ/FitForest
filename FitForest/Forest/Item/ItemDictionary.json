@@ -37,5 +37,12 @@
         "name": "Basic Red Seed",
         "stackLimit": 10,
         "itemDescription": "Your basic red runyun seed."
-    },]
+    },],
+    "Accessory": [{
+        "name": "Sunglasses",
+        "stackLimit": 3,
+        "itemDescription": "Looking cool!",
+        "anchorPoint": [0,0],
+        "runyunAnchorPoint": [0,0]
+    }]
 }
