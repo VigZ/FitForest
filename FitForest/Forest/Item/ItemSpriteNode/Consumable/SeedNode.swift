@@ -30,27 +30,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if isBeingMoved {
-//            //Drag Code
-//            print("Touches began")
-//
-//        }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-////            //Drag Code
-////            print("Touches are being moved")
-////            let touch = touches.first
-////            if let location = touch?.location(in: self){
-////                self.position = location
-////            }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        putDown()
-//    }
+
     
     func pickedUp() {
         isBeingMoved = true

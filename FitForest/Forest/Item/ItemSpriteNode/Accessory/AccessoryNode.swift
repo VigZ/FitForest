@@ -32,29 +32,17 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
 
     required init?(coder aDecoder: NSCoder) {
+        self.linkedInventoryItem = aDecoder.decodeObject(forKey: "linkedInventoryItem") as? Item
+        self.linkedRunyun = aDecoder.decodeObject(forKey: "linkedRunyun") as? Runyun
         super.init(coder: aDecoder)
     }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if isBeingMoved {
-//            //Drag Code
-//            print("Touches began")
-//
-//        }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-////            //Drag Code
-////            print("Touches are being moved")
-////            let touch = touches.first
-////            if let location = touch?.location(in: self){
-////                self.position = location
-////            }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        putDown()
-//    }
+    
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(self.linkedInventoryItem, forKey: "linkedInventoryItem")
+        aCoder.encode(self.linkedRunyun, forKey: "linkedRunyun")
+    }
+
     
     func pickedUp() {
         isBeingMoved = true
