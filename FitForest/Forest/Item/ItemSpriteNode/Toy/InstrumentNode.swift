@@ -10,7 +10,7 @@ import SpriteKit
 
 class InstrumentNode: SKSpriteNode, ToyNode {
     
-    var linkedInventoryItem: Instrument!
+    var linkedInventoryItem: Item!
     var isBeingMoved: Bool = false
     
     init(name:String) {
@@ -31,29 +31,16 @@ class InstrumentNode: SKSpriteNode, ToyNode {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.linkedInventoryItem = aDecoder.decodeObject(forKey: "linkedInventoryItem") as? Item
+        self.isBeingMoved = aDecoder.decodeBool(forKey: "isBeingMoved")
+        super.init(coder: aDecoder)
     }
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if isBeingMoved {
-//            //Drag Code
-//            print("Touches began")
-//
-//        }
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-////            //Drag Code
-////            print("Touches are being moved")
-////            let touch = touches.first
-////            if let location = touch?.location(in: self){
-////                self.position = location
-////            }
-//    }
-//
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        putDown()
-//    }
+    
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+        aCoder.encode(self.linkedInventoryItem, forKey: "linkedInventoryItem")
+        aCoder.encode(self.isBeingMoved, forKey: "isBeingMoved")
+    }
     
     func pickedUp() {
         isBeingMoved = true
