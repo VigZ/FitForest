@@ -102,6 +102,11 @@ class ForestScene: SKScene {
         if self.grabbedNode == nil {
             for entity in nodes(at: touch.location(in: self)){
                 if let entity = entity as? SKSpriteNode {
+                    if let accessory = entity as? AccessoryNode {
+                        if accessory.linkedRunyun != nil {
+                            break
+                        }
+                    }
                     if entity is Placeable {
                         self.grabbedNode = entity
                         break
