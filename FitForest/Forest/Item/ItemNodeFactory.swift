@@ -18,6 +18,7 @@ class ItemNodeFactory {
                 case is Ball:
                     let newNode = BallNode(name:underScoredName)
                     newNode.linkedInventoryItem = item as? Ball
+                    print(newNode.linkedInventoryItem)
                     return newNode
                 case is Instrument:
                     let newNode = InstrumentNode(name:underScoredName)

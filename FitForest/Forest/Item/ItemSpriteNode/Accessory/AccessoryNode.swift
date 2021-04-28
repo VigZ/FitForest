@@ -75,7 +75,10 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     func attachToRunyun(runyun: Runyun) {
+        print(linkedInventoryItem)
+        
         guard let linkedInventoryItem = linkedInventoryItem as? Accessory else {return}
+        print(linkedInventoryItem)
         linkedRunyun = runyun
         runyun.accessory = self
         position = linkedInventoryItem.runyunAnchorPoint

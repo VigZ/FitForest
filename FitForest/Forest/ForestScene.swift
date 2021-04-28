@@ -20,7 +20,7 @@ class ForestScene: SKScene {
         if isInitialLoad {
             initialSetup()
         }
-        
+
 //        let texture = SKTexture(imageNamed: "runyunwalk_1")
 //        let color = UIColor.clear
 //        let size = CGSize(width: 100, height: 140)
@@ -91,7 +91,14 @@ class ForestScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        guard let touch = touches.first else {return}
+        for entity in nodes(at: touch.location(in: self)) {
+            if entity is BallNode {
+                if let entity = entity as? BallNode {
+                    print(entity.linkedInventoryItem)
+                }
+            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -132,6 +139,7 @@ class ForestScene: SKScene {
                     guard let runyun = child as? Runyun else {return}
                     if child.intersects(grabbed) && grabbed is AccessoryNode {
                         guard let grabbed = grabbed as? AccessoryNode else {return}
+                        
                         grabbed.attachToRunyun(runyun: runyun)
                     }
                 }
