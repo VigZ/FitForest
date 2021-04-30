@@ -48,16 +48,22 @@ class Runyun: SKSpriteNode, Placeable {
     }
 
     required init?(coder aDecoder: NSCoder) {
+        guard let keyedDecoder = aDecoder as? NSKeyedUnarchiver else {
+            fatalError("Must use Keyed Coding")
+        }
         self.observedStepsRemaining = aDecoder.decodeInteger(forKey: "observedStepsRemaining")
-        self.state = aDecoder.decodeObject(forKey: state.rawValue) as? RunyunState
+        self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
         super.init(coder: aDecoder)
         addStepObserver()
     }
     
     override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
+        guard let keyedCoder = aCoder as? NSKeyedArchiver else {
+                    fatalError("Must use Keyed Coding")
+                }
+        try! keyedCoder.encodeEncodable(self.state, forKey: "state")
         aCoder.encode(self.observedStepsRemaining, forKey: "observedStepsRemaining")
-        aCoder.encode(self.state, forKey: "state")
     }
 
     
