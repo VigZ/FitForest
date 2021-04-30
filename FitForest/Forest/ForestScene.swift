@@ -13,14 +13,12 @@ class ForestScene: SKScene {
     
     var viewController: ForestController!
     var grabbedNode: SKSpriteNode?
-    var isInitialLoad: Bool = false
+    var isInitialSetup: Bool = false
     
     override func didMove(to view: SKView) {
-        
-        if isInitialLoad {
+        if isInitialSetup {
             initialSetup()
         }
-
 //        let texture = SKTexture(imageNamed: "runyunwalk_1")
 //        let color = UIColor.clear
 //        let size = CGSize(width: 100, height: 140)
@@ -171,29 +169,29 @@ class ForestScene: SKScene {
         background.zPosition = -200
         addChild(background)
         
-        let forestSprite = Runyun()
-        let forestSprite2 = Runyun()
-        
-        forestSprite.position = CGPoint(x: frame.midX, y: frame.midY)
-        forestSprite.size = CGSize(width: 275, height: 200)
-        forestSprite2.position = CGPoint(x: frame.midX + 200, y: frame.midY - 200)
-        forestSprite2.size = CGSize(width: 275, height: 200)
-        forestSprite2.xScale = -1
-        
-        self.addChild(forestSprite)
-        self.addChild(forestSprite2)
-        
-        let moveRight = SKAction.moveBy(x: 50, y:0, duration:1.0)
-        let moveLeft = SKAction.moveBy(x: -50, y:0, duration:1.0)
-        let moveUp = SKAction.moveBy(x: 0, y: 50, duration:1.0)
-        let moveDown = SKAction.moveBy(x: 0, y: -50, duration:1.0)
-        let pause = SKAction.wait(forDuration: 1.0)
-        let bounceTo = SKAction.scale(to: 1.2, duration: 0.1)
-        let bounceFrom = SKAction.scale(to: 1, duration: 0.1)
-        let sequence = SKAction.sequence([bounceTo, bounceFrom, moveRight, pause, bounceTo, bounceFrom, moveUp, pause, bounceTo, bounceFrom, moveLeft, pause, bounceTo, bounceFrom, moveDown, pause])
-
-        let endlessAction = SKAction.repeatForever(sequence)
-        forestSprite.run(endlessAction)
+//        let forestSprite = Runyun()
+//        let forestSprite2 = Runyun()
+//
+//        forestSprite.position = CGPoint(x: frame.midX, y: frame.midY)
+//        forestSprite.size = CGSize(width: 275, height: 200)
+//        forestSprite2.position = CGPoint(x: frame.midX + 200, y: frame.midY - 200)
+//        forestSprite2.size = CGSize(width: 275, height: 200)
+//        forestSprite2.xScale = -1
+//
+//        self.addChild(forestSprite)
+//        self.addChild(forestSprite2)
+//
+//        let moveRight = SKAction.moveBy(x: 50, y:0, duration:1.0)
+//        let moveLeft = SKAction.moveBy(x: -50, y:0, duration:1.0)
+//        let moveUp = SKAction.moveBy(x: 0, y: 50, duration:1.0)
+//        let moveDown = SKAction.moveBy(x: 0, y: -50, duration:1.0)
+//        let pause = SKAction.wait(forDuration: 1.0)
+//        let bounceTo = SKAction.scale(to: 1.2, duration: 0.1)
+//        let bounceFrom = SKAction.scale(to: 1, duration: 0.1)
+//        let sequence = SKAction.sequence([bounceTo, bounceFrom, moveRight, pause, bounceTo, bounceFrom, moveUp, pause, bounceTo, bounceFrom, moveLeft, pause, bounceTo, bounceFrom, moveDown, pause])
+//
+//        let endlessAction = SKAction.repeatForever(sequence)
+//        forestSprite.run(endlessAction)
         
         let test = Ball(stackLimit: 3, name: "Beach Ball", itemDescription: "Test", itemState: .inForest, itemType: .toy, weight: 2.0)
         GameData.sharedInstance.inventory.items.append(test)
@@ -204,12 +202,18 @@ class ForestScene: SKScene {
 
         self.addChild(newBallNode)
         
+        let inventory = GameData.sharedInstance.inventory
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
+        
         let itemChest = ItemChest(name: "Item_Chest_Placeholder")
         itemChest.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 300)
         itemChest.size = CGSize(width: 200, height: 200)
         
         self.addChild(itemChest)
-        isInitialLoad = false
+        self.isInitialSetup = false
+        GameData.sharedInstance.saveToDisk()
     }
     
 }

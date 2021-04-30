@@ -33,12 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        GameData.sharedInstance.saveToDisk()
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
-        GameData.sharedInstance.saveToDisk()
     }
     
 }

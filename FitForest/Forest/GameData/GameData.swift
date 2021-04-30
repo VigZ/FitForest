@@ -18,6 +18,7 @@ class GameData: NSObject, NSCoding {
     var scene: ForestScene = SKScene(fileNamed: "ForestScene") as! ForestScene
     
     static func loadFromDisk() -> GameData {
+        
         let url = getSaveDirectory()
         do {
             if FileManager.default.fileExists(atPath: url.path) {
@@ -36,6 +37,7 @@ class GameData: NSObject, NSCoding {
             print("ERROR: \(error.localizedDescription)")
         }
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
+        newScene.isInitialSetup = true
         let newInventory = InventoryManager(items:[Item]())
         let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
@@ -87,5 +89,6 @@ class GameData: NSObject, NSCoding {
                   inventory:inventory,
                   scene: scene)
     }
+    
 }
  
