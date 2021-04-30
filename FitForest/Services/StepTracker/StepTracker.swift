@@ -67,6 +67,9 @@ class StepTracker {
         if let dataFloors = pedometerData.floorsAscended {
             self?.floorsAscended = dataFloors.intValue
         }
+        var data = [String:Int]()
+        data["steps"] = stepDifference
+        NotificationCenter.default.post(name: Notification.Name.StepTrackerEvents.stepCountUpdated, object: self, userInfo: data)
       }
     }
     
