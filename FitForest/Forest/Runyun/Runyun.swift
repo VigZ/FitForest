@@ -77,6 +77,7 @@ class Runyun: SKSpriteNode, Placeable {
             ns.removeObserver(observer)
         }
         self.state = .idle
+        self.observedStepsRemaining = 0
         print("A new Runyun has hatched!")
     }
     
