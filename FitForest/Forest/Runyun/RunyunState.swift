@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RunyunState: String {
+enum RunyunState: String, Codable {
     case seedling
     case idle
     case pickedUp
