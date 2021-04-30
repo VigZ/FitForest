@@ -16,7 +16,6 @@ class Runyun: SKSpriteNode, Placeable {
     var tokenObserver:NSObjectProtocol?
     
     func pickedUp() {
-        print(self.state)
     }
     
     func putDown() {
@@ -46,6 +45,7 @@ class Runyun: SKSpriteNode, Placeable {
 
     required init?(coder aDecoder: NSCoder) {
         self.observedStepsRemaining = aDecoder.decodeInteger(forKey: "observedStepsRemaining")
+        self.state = aDecoder.decodeObject(forKey: state.rawValue) as? RunyunState
         super.init(coder: aDecoder)
         addStepObserver()
     }
@@ -53,6 +53,7 @@ class Runyun: SKSpriteNode, Placeable {
     override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(self.observedStepsRemaining, forKey: "observedStepsRemaining")
+        aCoder.encode(self.state, forKey: "state")
     }
 
     
