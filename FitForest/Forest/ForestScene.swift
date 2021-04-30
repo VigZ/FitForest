@@ -93,9 +93,9 @@ class ForestScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
         for entity in nodes(at: touch.location(in: self)) {
-            if entity is BallNode {
-                if let entity = entity as? BallNode {
-                    print(entity.linkedInventoryItem)
+            if entity is Runyun {
+                if let entity = entity as? Runyun {
+                    entity.pickedUp()
                 }
             }
         }

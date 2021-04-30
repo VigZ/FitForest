@@ -13,9 +13,10 @@ class Runyun: SKSpriteNode, Placeable {
     var state: RunyunState!
     var accessory: AccessoryNode?
     var observedStepsRemaining: Int
+    var tokenObserver:NSObjectProtocol?
     
     func pickedUp() {
-        
+        print(self.state)
     }
     
     func putDown() {
@@ -38,33 +39,15 @@ class Runyun: SKSpriteNode, Placeable {
 //        physicsBody?.categoryBitMask = 1
 //        physicsBody?.affectedByGravity = false
         self.zPosition = 1
-        if self.state == .seedling {
-            let ns = NotificationCenter.default
-            let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
-            
-            ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
-                (notification) in
-                DispatchQueue.main.async {
-                    guard let steps = notification.userInfo?["steps"] as? Int else {return}
-                    self.observedStepsRemaining -= steps
-                    print("Just added \(steps) steps.")
-                    
-                    if self.observedStepsRemaining <= 0 {
-                        self.state = .idle
-                        print("A new Runyun has hatched!")
-                        ns.removeObserver(self)
-                    }
-                    
-                    
-                }
-            }
-        }
+        addStepObserver()
+
         
     }
 
     required init?(coder aDecoder: NSCoder) {
         self.observedStepsRemaining = aDecoder.decodeInteger(forKey: "observedStepsRemaining")
         super.init(coder: aDecoder)
+        addStepObserver()
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -75,6 +58,37 @@ class Runyun: SKSpriteNode, Placeable {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touched")
+    }
+    
+    func hatch() {
+        if let observer = tokenObserver {
+            let ns = NotificationCenter.default
+            ns.removeObserver(observer)
+        }
+        self.state = .idle
+        print("A new Runyun has hatched!")
+    }
+    
+    private func addStepObserver() {
+        if self.state == .seedling {
+            let ns = NotificationCenter.default
+            let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
+            
+            tokenObserver = ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
+                (notification) in
+                DispatchQueue.main.async {
+                    guard let steps = notification.userInfo?["steps"] as? Int else {return}
+                    self.observedStepsRemaining -= steps
+                    print("\(self.observedStepsRemaining) steps remaing")
+                    
+                    if self.observedStepsRemaining <= 0 {
+                        self.hatch()
+                    }
+                    
+                    
+                }
+            }
+        }
     }
 }
 
