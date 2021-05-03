@@ -13,7 +13,7 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
     var itemDescription: String = ""
     var itemState: ItemState = .inInventory
     var itemType: ItemType = .consumable
-    var modifier: String = ""
+    var modifier: String = "Basic"
     
     init(stackLimit:Int ,name: String, itemDescription: String, itemState: ItemState, itemType: ItemType, modifier: String) {
         self.stackLimit = stackLimit

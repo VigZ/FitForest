@@ -34,7 +34,7 @@
     }
     ],
     "Seed": [{
-        "name": "Basic Red Seed",
+        "name": "Red Seed",
         "stackLimit": 10,
         "itemDescription": "Your basic red runyun seed."
     },],
