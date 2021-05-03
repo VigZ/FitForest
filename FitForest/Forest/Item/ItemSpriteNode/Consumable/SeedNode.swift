@@ -11,8 +11,9 @@ import SpriteKit
 class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     
     var isBeingMoved: Bool = false
+    var modifier: String = "Basic"
     
-    init(name:String) {
+    init(name:String, modifier:String) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: name)
         let color = UIColor.clear
@@ -20,6 +21,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
         self.name = name
+        self.modifier = modifier
         // Set physics properties
 //        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
 //        physicsBody?.categoryBitMask = 1
@@ -46,6 +48,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     }
     
     func spawnRunyun() {
+        // Use Runyun Factory
         let currentLocation = self.position
         let newRunyun = Runyun()
         newRunyun.position = currentLocation

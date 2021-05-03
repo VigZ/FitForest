@@ -10,19 +10,13 @@ import SpriteKit
 //class RunyunNodeFactory {
 //    static var sharedInstance = RunyunNodeFactory()
 //
-//    func createRunyunNode(seed : Seed)-> Runyun?{
-//        let underScored_name = item.name.replacingOccurrences(of: " ", with: "_")
-//        switch seed {
-//                case is Ball:
-//                    let newNode = BallNode(name:underScored_name)
-//                    newNode.linkedInventoryItem = item as? Ball
-//                    return newNode
-//                case is Instrument:
-//                    let newNode = InstrumentNode(name:underScored_name)
-//                    newNode.linkedInventoryItem = item as? Instrument
-//                    return newNode
-//            default:
-//                return nil
-//            }
+//    func createRunyunNode(seedNode : SeedNode)-> Runyun?{
+//        guard let seedName = seedNode.name else {
+//            return nil
 //        }
+//        let runyunType = seedName.components(separatedBy: "_")[0]
+//        
+//        
+//            }
+//        
 //}
