@@ -23,6 +23,8 @@
 		27476335263881DA00190AF4 /* SeedNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476334263881DA00190AF4 /* SeedNode.swift */; };
 		2747633D2638A0C300190AF4 /* ConsumableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2747633C2638A0C300190AF4 /* ConsumableNode.swift */; };
 		274763422638B5F400190AF4 /* AccessoryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274763412638B5F400190AF4 /* AccessoryNode.swift */; };
+		27476393263F918D00190AF4 /* BasicLeaf.json in Resources */ = {isa = PBXBuildFile; fileRef = 27476392263F918D00190AF4 /* BasicLeaf.json */; };
+		274763AD263F945A00190AF4 /* RareLeaf.json in Resources */ = {isa = PBXBuildFile; fileRef = 274763AC263F945A00190AF4 /* RareLeaf.json */; };
 		277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A881F25BCD0C700C1F374 /* AppDelegate.swift */; };
 		277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882125BCD0C700C1F374 /* SceneDelegate.swift */; };
 		277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A882325BCD0C700C1F374 /* MainViewController.swift */; };
@@ -127,6 +129,8 @@
 		27476334263881DA00190AF4 /* SeedNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNode.swift; sourceTree = "<group>"; };
 		2747633C2638A0C300190AF4 /* ConsumableNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumableNode.swift; sourceTree = "<group>"; };
 		274763412638B5F400190AF4 /* AccessoryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryNode.swift; sourceTree = "<group>"; };
+		27476392263F918D00190AF4 /* BasicLeaf.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BasicLeaf.json; sourceTree = "<group>"; };
+		274763AC263F945A00190AF4 /* RareLeaf.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RareLeaf.json; sourceTree = "<group>"; };
 		277A881C25BCD0C700C1F374 /* FitForest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitForest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277A881F25BCD0C700C1F374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		277A882125BCD0C700C1F374 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				274762A9262FE0B300190AF4 /* Silver.json */,
 				274762AE262FE0C300190AF4 /* Gold.json */,
 				274762B3262FE0CF00190AF4 /* Diamond.json */,
+				27476392263F918D00190AF4 /* BasicLeaf.json */,
+				274763AC263F945A00190AF4 /* RareLeaf.json */,
 			);
 			path = LootTable;
 			sourceTree = "<group>";
@@ -724,10 +730,12 @@
 				274762AA262FE0B300190AF4 /* Silver.json in Resources */,
 				277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */,
 				27ED5AC426162363002946F9 /* ForestScene.sks in Resources */,
+				27476393263F918D00190AF4 /* BasicLeaf.json in Resources */,
 				2747628C262F769400190AF4 /* DefaultLootTable.json in Resources */,
 				274762B4262FE0CF00190AF4 /* Diamond.json in Resources */,
 				277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */,
 				274762AF262FE0C300190AF4 /* Gold.json in Resources */,
+				274763AD263F945A00190AF4 /* RareLeaf.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
