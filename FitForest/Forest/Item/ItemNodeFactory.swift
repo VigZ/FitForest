@@ -26,7 +26,7 @@ class ItemNodeFactory {
                     return newNode
                 case is Seed:
                     let seed = item as! Seed
-                    let newNode = SeedNode(name:underScoredName, modifier: seed.modifier )
+                    let newNode = SeedNode(name:underScoredName, modifier: seed.modifier, seedType: seed.seedType )
                     return newNode
                 case is Accessory:
                     let newNode = AccessoryNode(name: underScoredName)

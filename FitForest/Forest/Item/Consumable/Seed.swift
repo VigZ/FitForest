@@ -14,14 +14,16 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
     var itemState: ItemState = .inInventory
     var itemType: ItemType = .consumable
     var modifier: String = "Basic"
+    var seedType: SeedType = .red
     
-    init(stackLimit:Int ,name: String, itemDescription: String, itemState: ItemState, itemType: ItemType, modifier: String) {
+    init(stackLimit:Int ,name: String, itemDescription: String, itemState: ItemState, itemType: ItemType, modifier: String, seedType: SeedType) {
         self.stackLimit = stackLimit
         self.name = name
         self.itemDescription = itemDescription
         self.itemState = itemState
         self.itemType = itemType
         self.modifier = modifier
+        self.seedType = seedType
     }
     
     func encode(with coder: NSCoder) {
@@ -34,6 +36,7 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
         coder.encode(self.modifier, forKey: "modifier")
         try! keyedCoder.encodeEncodable(self.itemState, forKey: "itemState")
         try! keyedCoder.encodeEncodable(self.itemType, forKey: "itemType")
+        try! keyedCoder.encodeEncodable(self.seedType, forKey: "seedType")
     }
     
     required convenience init?(coder: NSCoder) {
@@ -44,6 +47,7 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
         
         let itemState = keyedDecoder.decodeDecodable(ItemState.self, forKey: "itemState") ?? .inForest
         let itemType = keyedDecoder.decodeDecodable(ItemType.self, forKey: "itemType") ?? .toy
+        let seedType = keyedDecoder.decodeDecodable(SeedType.self, forKey: "seedType") ?? .red
         guard let name = coder.decodeObject(forKey: "name") as? String,
               let itemDescription = coder.decodeObject(forKey: "itemDescription") as? String,
               let modifier = coder.decodeObject(forKey: "modifier") as? String
@@ -53,7 +57,8 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
                   itemDescription: itemDescription,
                   itemState: itemState,
                   itemType: itemType,
-                  modifier: modifier
+                  modifier: modifier,
+                  seedType: seedType
                   )
    }
     

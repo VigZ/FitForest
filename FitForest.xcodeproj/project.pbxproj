@@ -45,6 +45,7 @@
 		277A88F925C495DE00C1F374 /* CoreDataCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */; };
 		277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */; };
 		277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */; };
+		277D69AE26405DC900561171 /* SeedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69AD26405DC900561171 /* SeedType.swift */; };
 		277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */; };
 		277FEF052628E668002C5FBB /* InstrumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF042628E668002C5FBB /* InstrumentNode.swift */; };
 		277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */; };
@@ -157,6 +158,7 @@
 		277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCRUD.swift; sourceTree = "<group>"; };
 		277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
 		277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
+		277D69AD26405DC900561171 /* SeedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedType.swift; sourceTree = "<group>"; };
 		277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNodeFactory.swift; sourceTree = "<group>"; };
 		277FEF042628E668002C5FBB /* InstrumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentNode.swift; sourceTree = "<group>"; };
 		277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 			children = (
 				27476334263881DA00190AF4 /* SeedNode.swift */,
 				2747633C2638A0C300190AF4 /* ConsumableNode.swift */,
+				277D69AD26405DC900561171 /* SeedType.swift */,
 			);
 			path = Consumable;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				2783382B2626901600F872A4 /* ItemType.swift in Sources */,
 				277FEF52262B3744002C5FBB /* ForestControllerDelegate.swift in Sources */,
 				2783384B2626B32000F872A4 /* ItemFactory.swift in Sources */,
+				277D69AE26405DC900561171 /* SeedType.swift in Sources */,
 				277FEF1B2629E371002C5FBB /* InventorySection.swift in Sources */,
 				277A88EB25C4896A00C1F374 /* FormatDisplay.swift in Sources */,
 				277A886925BF671B00C1F374 /* PointContants.swift in Sources */,

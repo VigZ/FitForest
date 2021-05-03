@@ -53,14 +53,17 @@ class ItemFactory {
                     guard let name = data["name"] as? String,
                     let stackLimit = data["stackLimit"] as? Int,
                     let itemDescription = data["itemDescription"] as? String,
-                    let modifier =  data["modifier"] as? String
+                    let modifier =  data["modifier"] as? String,
+                    let seedType = data["seedType"] as? String
                     else {return nil}
                     // Check current instances, if equal to or greater stackLimit, bail
                     if isAtStackLimit(target: name, stackLimit: stackLimit){
                         return nil
                     }
+                    let convertedSeedType = SeedType(rawValue: seedType) ?? SeedType.red
                     // otherwise create new Item
-                    return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: modifier)
+                    print("\(convertedSeedType.rawValue) was set in item factory")
+                    return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: modifier, seedType: convertedSeedType)
                 case .Accessory:
                     // extract data into class
                     guard let name = data["name"] as? String,

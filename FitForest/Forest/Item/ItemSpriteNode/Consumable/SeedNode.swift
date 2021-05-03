@@ -12,8 +12,9 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     
     var isBeingMoved: Bool = false
     var modifier: String = "Basic"
+    var seedType: SeedType = .red
     
-    init(name:String, modifier:String) {
+    init(name:String, modifier:String, seedType: SeedType) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: name)
         let color = UIColor.clear
@@ -22,6 +23,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
         super.init(texture: texture, color: color, size: size)
         self.name = name
         self.modifier = modifier
+        self.seedType = seedType
         // Set physics properties
 //        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
 //        physicsBody?.categoryBitMask = 1
