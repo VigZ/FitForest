@@ -49,6 +49,7 @@
 		277D69BB26432B6A00561171 /* SeedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69BA26432B6A00561171 /* SeedModifier.swift */; };
 		277D69C02643360700561171 /* RunyunStorageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69BF2643360700561171 /* RunyunStorageObject.swift */; };
 		277D69C52643390000561171 /* LeafType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69C42643390000561171 /* LeafType.swift */; };
+		277D69D0264365D500561171 /* RunyunStorageSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69CF264365D500561171 /* RunyunStorageSpace.swift */; };
 		277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */; };
 		277FEF052628E668002C5FBB /* InstrumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF042628E668002C5FBB /* InstrumentNode.swift */; };
 		277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */; };
@@ -165,6 +166,7 @@
 		277D69BA26432B6A00561171 /* SeedModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedModifier.swift; sourceTree = "<group>"; };
 		277D69BF2643360700561171 /* RunyunStorageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunStorageObject.swift; sourceTree = "<group>"; };
 		277D69C42643390000561171 /* LeafType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeafType.swift; sourceTree = "<group>"; };
+		277D69CF264365D500561171 /* RunyunStorageSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunStorageSpace.swift; sourceTree = "<group>"; };
 		277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNodeFactory.swift; sourceTree = "<group>"; };
 		277FEF042628E668002C5FBB /* InstrumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentNode.swift; sourceTree = "<group>"; };
 		277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				277FEF3E262B29CC002C5FBB /* ItemChest.swift */,
+				277D69CF264365D500561171 /* RunyunStorageSpace.swift */,
 			);
 			path = Hotspot;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				277A88E625C488E700C1F374 /* UnitConverterPace.swift in Sources */,
 				278337B92625F09C00F872A4 /* Ball.swift in Sources */,
 				274763122637BD6F00190AF4 /* RunyunState.swift in Sources */,
+				277D69D0264365D500561171 /* RunyunStorageSpace.swift in Sources */,
 				27ED5AA526135C07002946F9 /* ForestController.swift in Sources */,
 				2747630D2632927200190AF4 /* TestRunyun.swift in Sources */,
 				277A88E125C474B000C1F374 /* FitForestLocationManager.swift in Sources */,
