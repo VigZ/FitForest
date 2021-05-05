@@ -90,6 +90,12 @@ class InventoryManager:NSObject, NSCoding {
        
        //TODO Add push notification for item recieved and hilight to newly added item in inventory.
    }
+    
+    func removeRunyun(runyun:RunyunStorageObject) -> Bool {
+        items.removeAll(where: { $0 === runyun})
+        GameData.sharedInstance.saveToDisk()
+        return true
+    }
 
 }
     
