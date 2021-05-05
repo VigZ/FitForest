@@ -9,21 +9,26 @@ import Foundation
 
 class InventoryManager:NSObject, NSCoding {
     typealias ItemDictionary = [String: [[String:Any]]]
+    
     var items = [Item]()
+    var runyunStorage = [RunyunStorageObject]()
     
     func encode(with coder: NSCoder) {
         coder.encode(self.items, forKey: "items")
+        coder.encode(self.runyunStorage, forKey: "runyunStorage")
     }
     
-    init(items:[Item]) {
+    init(items:[Item], runyunStorage: [RunyunStorageObject]) {
         self.items = items
+        self.runyunStorage = runyunStorage
     }
     
     required convenience init?(coder: NSCoder) {
-       guard let items = coder.decodeObject(forKey: "items") as? [Item]
+       guard let items = coder.decodeObject(forKey: "items") as? [Item],
+             let runyunStorage = coder.decodeObject(forKey: "runyunStorage") as? [RunyunStorageObject]
        else { return nil }
        print("Unpacking saved inventory...")
-        self.init(items:items)
+        self.init(items:items, runyunStorage: runyunStorage)
    }
     
     func retrieveItemData(classIdentifier: String, itemName: String) {

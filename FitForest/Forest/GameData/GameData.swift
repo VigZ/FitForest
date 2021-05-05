@@ -38,7 +38,7 @@ class GameData: NSObject, NSCoding {
         }
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
         newScene.isInitialSetup = true
-        let newInventory = InventoryManager(items:[Item]())
+        let newInventory = InventoryManager(items:[Item](), runyunStorage: [RunyunStorageObject]())
         let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
         print("Creating new save data...")
