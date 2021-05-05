@@ -72,7 +72,7 @@ class ForestScene: SKScene {
 //        self.addChild(testRunyun)
         
 //        let inventory = GameData.sharedInstance.inventory
-//        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: "Rare", seedType: .blue)
+//        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: .rare, seedType: .blue)
 //        inventory?.addItem(item:seed)
     }
     

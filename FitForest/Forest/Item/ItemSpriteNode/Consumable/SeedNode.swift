@@ -59,6 +59,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     }
     
     func consume() {
+        print(seedType)
         spawnRunyun()
     }
     

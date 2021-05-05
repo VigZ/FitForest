@@ -33,10 +33,17 @@ class Seed: NSObject, NSCoding , Item, Consumable  {
         coder.encode(self.stackLimit, forKey: "stackLimit")
         coder.encode(self.name, forKey: "name")
         coder.encode(self.itemDescription, forKey: "itemDescription")
-        try! keyedCoder.encodeEncodable(self.itemState, forKey: "itemState")
-        try! keyedCoder.encodeEncodable(self.itemType, forKey: "itemType")
-        try! keyedCoder.encodeEncodable(self.seedType, forKey: "seedType")
-        try! keyedCoder.encodeEncodable(self.seedType, forKey: "modifier")
+        
+        do {
+            try keyedCoder.encodeEncodable(self.itemState, forKey: "itemState")
+            try keyedCoder.encodeEncodable(self.itemType, forKey: "itemType")
+            try keyedCoder.encodeEncodable(self.seedType, forKey: "seedType")
+            try keyedCoder.encodeEncodable(self.modifier, forKey: "modifier")
+        } catch {
+            print(error)
+        }
+        
+
     }
     
     required convenience init?(coder: NSCoder) {
