@@ -11,10 +11,10 @@ import SpriteKit
 class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     
     var isBeingMoved: Bool = false
-    var modifier: String = "Basic"
+    var modifier: SeedModifier = .basic
     var seedType: SeedType = .red
     
-    init(name:String, modifier:String, seedType: SeedType) {
+    init(name:String, modifier:SeedModifier, seedType: SeedType) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: name)
         let color = UIColor.clear

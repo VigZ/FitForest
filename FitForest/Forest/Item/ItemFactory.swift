@@ -61,9 +61,10 @@ class ItemFactory {
                         return nil
                     }
                     let convertedSeedType = SeedType(rawValue: seedType) ?? SeedType.red
+                    let convertedSeedModifier = SeedModifier(rawValue: modifier) ?? SeedModifier.basic
                     // otherwise create new Item
                     print("\(convertedSeedType.rawValue) was set in item factory")
-                    return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: modifier, seedType: convertedSeedType)
+                    return Seed(stackLimit: stackLimit, name: name, itemDescription: itemDescription, itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: convertedSeedModifier, seedType: convertedSeedType)
                 case .Accessory:
                     // extract data into class
                     guard let name = data["name"] as? String,
