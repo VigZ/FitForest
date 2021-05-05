@@ -80,8 +80,6 @@ class ForestScene: SKScene {
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
         
-        var inventory = GameData.sharedInstance.inventory
-        let testRSO = RunyunStorageObject(name: "", locationState: .inInventory, accessory: nil, observedStepsRemaining: 100, seedType: .blue, leafType: .standard)
     }
     
     func touchDown(atPoint pos : CGPoint) {

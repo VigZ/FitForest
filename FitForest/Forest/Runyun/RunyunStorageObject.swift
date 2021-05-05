@@ -26,6 +26,7 @@ class RunyunStorageObject: NSObject, NSCoding {
     }
     
     func encode(with coder: NSCoder) {
+        
         guard let keyedCoder = coder as? NSKeyedArchiver else {
                     fatalError("Must use Keyed Coding")
                 }
@@ -44,6 +45,7 @@ class RunyunStorageObject: NSObject, NSCoding {
     }
     
     required convenience init?(coder: NSCoder) {
+        
         guard let keyedDecoder = coder as? NSKeyedUnarchiver else {
             fatalError("Must use Keyed Coding")
         }
@@ -53,7 +55,7 @@ class RunyunStorageObject: NSObject, NSCoding {
         let leafType = keyedDecoder.decodeDecodable(LeafType.self, forKey: "leafType") ?? .standard
         let observedStepsRemaining = coder.decodeInteger(forKey: "observedStepsRemaining")
         guard let name = coder.decodeObject(forKey: "name") as? String,
-              let accessory = coder.decodeObject(forKey: "accessory") as? Accessory
+              let accessory = coder.decodeObject(forKey: "accessory") as? Accessory?
        else { return nil }
         self.init(
             name:name,
