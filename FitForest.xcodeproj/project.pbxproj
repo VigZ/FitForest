@@ -46,6 +46,7 @@
 		277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */; };
 		277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */; };
 		277D69AE26405DC900561171 /* SeedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69AD26405DC900561171 /* SeedType.swift */; };
+		277D69BB26432B6A00561171 /* SeedModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D69BA26432B6A00561171 /* SeedModifier.swift */; };
 		277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */; };
 		277FEF052628E668002C5FBB /* InstrumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF042628E668002C5FBB /* InstrumentNode.swift */; };
 		277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */; };
@@ -159,6 +160,7 @@
 		277A890025C4BBFC00C1F374 /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
 		277A890525C4BE3500C1F374 /* MulticolorPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticolorPolyline.swift; sourceTree = "<group>"; };
 		277D69AD26405DC900561171 /* SeedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedType.swift; sourceTree = "<group>"; };
+		277D69BA26432B6A00561171 /* SeedModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedModifier.swift; sourceTree = "<group>"; };
 		277FEEFF2628E25F002C5FBB /* ItemNodeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNodeFactory.swift; sourceTree = "<group>"; };
 		277FEF042628E668002C5FBB /* InstrumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentNode.swift; sourceTree = "<group>"; };
 		277FEF152628FB0A002C5FBB /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
@@ -434,8 +436,10 @@
 		278337E52626363700F872A4 /* Consumable */ = {
 			isa = PBXGroup;
 			children = (
+				277D69AD26405DC900561171 /* SeedType.swift */,
 				278337CE26260A4F00F872A4 /* Consumable.swift */,
 				274763242637BF4F00190AF4 /* Seed.swift */,
+				277D69BA26432B6A00561171 /* SeedModifier.swift */,
 			);
 			path = Consumable;
 			sourceTree = "<group>";
@@ -486,7 +490,6 @@
 			children = (
 				27476334263881DA00190AF4 /* SeedNode.swift */,
 				2747633C2638A0C300190AF4 /* ConsumableNode.swift */,
-				277D69AD26405DC900561171 /* SeedType.swift */,
 			);
 			path = Consumable;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
 				278337A22624A60B00F872A4 /* GameData.swift in Sources */,
+				277D69BB26432B6A00561171 /* SeedModifier.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,
 				277A882225BCD0C700C1F374 /* SceneDelegate.swift in Sources */,
 				27E86C3225D0AAE700C5AB8A /* JourneyTableViewController.swift in Sources */,
