@@ -20,6 +20,7 @@ class ItemFactory {
     }
     
     func createItem(itemClass : String, data : [String: Any?])-> Item?{
+        
         guard let itemEnumClass = ItemClass(rawValue: itemClass) else {return nil}
             switch itemEnumClass {
                 case .Ball:

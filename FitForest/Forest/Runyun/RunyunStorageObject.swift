@@ -16,7 +16,7 @@ class RunyunStorageObject: NSObject, NSCoding {
     var seedType: SeedType
     var leafType: LeafType
 
-    init(name: String, locationState: ItemState, accessory: Accessory, observedStepsRemaining: Int, seedType: SeedType, leafType: LeafType) {
+    init(name: String, locationState: ItemState, accessory: Accessory?, observedStepsRemaining: Int, seedType: SeedType, leafType: LeafType) {
         self.name = name
         self.locationState = locationState
         self.accessory = accessory

@@ -74,6 +74,14 @@ class ForestScene: SKScene {
 //        let inventory = GameData.sharedInstance.inventory
 //        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: .rare, seedType: .blue)
 //        inventory?.addItem(item:seed)
+        
+//        let inventory = GameData.sharedInstance.inventory
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        
+        var inventory = GameData.sharedInstance.inventory
+        let testRSO = RunyunStorageObject(name: "", locationState: .inInventory, accessory: nil, observedStepsRemaining: 100, seedType: .blue, leafType: .standard)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -203,9 +211,9 @@ class ForestScene: SKScene {
         self.addChild(newBallNode)
         
         let inventory = GameData.sharedInstance.inventory
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Basic Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
         
         let itemChest = ItemChest(name: "Item_Chest_Placeholder")
         itemChest.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 300)
