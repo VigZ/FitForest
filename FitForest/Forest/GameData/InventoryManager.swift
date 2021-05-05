@@ -80,6 +80,16 @@ class InventoryManager:NSObject, NSCoding {
         // Delete any attached spriteNodes
         // Return true if successful, false if not
     }
+    
+    func addRunyun(runyun:RunyunStorageObject){
+       // Add item to item array
+       self.runyunStorage.append(runyun)
+       // Save GameData
+       GameData.sharedInstance.saveToDisk()
+       print(runyun)
+       
+       //TODO Add push notification for item recieved and hilight to newly added item in inventory.
+   }
 
 }
     
