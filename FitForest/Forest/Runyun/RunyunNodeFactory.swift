@@ -16,7 +16,9 @@ class RunyunNodeFactory {
     }
     
     func createFromSeed(seedType: SeedType) -> Runyun? {
-        return Runyun()
+        let newRunyun = Runyun()
+        newRunyun.size = CGSize(width: 275, height: 200)
+        return newRunyun
     }
         
 }
