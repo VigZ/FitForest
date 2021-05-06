@@ -49,7 +49,6 @@ class RunyunCard: UICollectionViewCell {
         
         if gesture.state == .began {
             guard let newNode = RunyunNodeFactory.sharedInstance.createRunyunNode(runyun:self.runyun) else { return }
-            newNode.size = CGSize(width: 100, height: 100)
             newNode.position = newPoint
             scene.addChild(newNode)
             scene.grabbedNode = newNode

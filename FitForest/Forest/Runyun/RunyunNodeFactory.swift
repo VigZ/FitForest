@@ -12,13 +12,15 @@ class RunyunNodeFactory {
     static var sharedInstance = RunyunNodeFactory()
 
     func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
-        return Runyun()
+        let newRunyun = Runyun(runyunStorageObject: runyun)
+        newRunyun.size = CGSize(width: 275, height: 200)
+        return newRunyun
     }
     
     func createFromSeed(seedType: SeedType) -> Runyun? {
-        let newRSO = RunyunStorageObject(name: "", locationState: .inForest, accessory: nil, observedStepsRemaining: 100, seedType: seedType, leafType: .standard)
+        let newRSO = RunyunStorageObject(name: "", locationState: .inForest, accessory: nil, observedStepsRemaining: 100, seedType: seedType, leafType: .standard, seedling: true)
         GameData.sharedInstance.inventory.addRunyun(runyun: newRSO)
-        let newRunyun = Runyun()
+        let newRunyun = Runyun(runyunStorageObject: newRSO)
         newRunyun.size = CGSize(width: 275, height: 200)
         return newRunyun
     }

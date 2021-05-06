@@ -8,7 +8,6 @@
 import Foundation
 
 enum RunyunState: String, Codable {
-    case seedling
     case idle
     case pickedUp
     case falling

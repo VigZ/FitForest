@@ -172,6 +172,9 @@ class ForestScene: SKScene {
         if let node = node as? HasLinkedItem {
             node.toggleLinkedItem()
         }
+        else if let node = node as? Runyun {
+            node.runyunStorageObject.locationState = .inInventory
+        }
         node.removeFromParent()
     }
     

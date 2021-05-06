@@ -15,14 +15,16 @@ class RunyunStorageObject: NSObject, NSCoding {
     var observedStepsRemaining: Int
     var seedType: SeedType
     var leafType: LeafType
+    var seedling: Bool = true
 
-    init(name: String, locationState: ItemState, accessory: Accessory?, observedStepsRemaining: Int, seedType: SeedType, leafType: LeafType) {
+    init(name: String, locationState: ItemState, accessory: Accessory?, observedStepsRemaining: Int, seedType: SeedType, leafType: LeafType, seedling: Bool) {
         self.name = name
         self.locationState = locationState
         self.accessory = accessory
         self.observedStepsRemaining = observedStepsRemaining
         self.seedType = seedType
         self.leafType = leafType
+        self.seedling = seedling
     }
     
     func encode(with coder: NSCoder) {
@@ -33,6 +35,7 @@ class RunyunStorageObject: NSObject, NSCoding {
         coder.encode(self.name, forKey: "name")
         coder.encode(self.accessory, forKey: "accessory")
         coder.encode(self.observedStepsRemaining, forKey: "observedStepsRemaining")
+        coder.encode(self.seedling, forKey: "seedling")
         
         do {
             try keyedCoder.encodeEncodable(self.locationState, forKey: "locationState")
@@ -54,6 +57,7 @@ class RunyunStorageObject: NSObject, NSCoding {
         let seedType = keyedDecoder.decodeDecodable(SeedType.self, forKey: "seedType") ?? .red
         let leafType = keyedDecoder.decodeDecodable(LeafType.self, forKey: "leafType") ?? .standard
         let observedStepsRemaining = coder.decodeInteger(forKey: "observedStepsRemaining")
+        let seedling = coder.decodeBool(forKey: "seedling")
         guard let name = coder.decodeObject(forKey: "name") as? String,
               let accessory = coder.decodeObject(forKey: "accessory") as? Accessory?
        else { return nil }
@@ -63,7 +67,8 @@ class RunyunStorageObject: NSObject, NSCoding {
             accessory: accessory,
             observedStepsRemaining: observedStepsRemaining,
             seedType: seedType,
-            leafType: leafType
+            leafType: leafType,
+            seedling: seedling
                   )
    }
     

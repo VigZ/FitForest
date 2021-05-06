@@ -10,14 +10,14 @@ import SpriteKit
 
 class Runyun: SKSpriteNode, Placeable {
     var isBeingMoved: Bool = false
-    var state: RunyunState!
+    var runyunStorageObject: RunyunStorageObject
+    var state: RunyunState! //TODO: Remove ability to drag and drop seedling state runyuns
     var accessory: AccessoryNode?
-    var observedStepsRemaining: Int
     var tokenObserver:NSObjectProtocol?
     
     func pickedUp() {
-        print(state.rawValue)
-        print(observedStepsRemaining)
+        print(runyunStorageObject.seedling)
+        print(runyunStorageObject.observedStepsRemaining)
         print(tokenObserver)
         
     }
@@ -27,13 +27,13 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
 
-    init() {
+    init(runyunStorageObject: RunyunStorageObject) {
         // Make a texture from an image, a color, and size
         let texture = SKTexture(imageNamed: "runyun")
         let color = UIColor.clear
         let size = texture.size()
-        self.state = RunyunState.seedling
-        self.observedStepsRemaining = 100
+        self.state = .idle
+        self.runyunStorageObject = runyunStorageObject
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
@@ -51,7 +51,7 @@ class Runyun: SKSpriteNode, Placeable {
         guard let keyedDecoder = aDecoder as? NSKeyedUnarchiver else {
             fatalError("Must use Keyed Coding")
         }
-        self.observedStepsRemaining = aDecoder.decodeInteger(forKey: "observedStepsRemaining")
+        self.runyunStorageObject = (keyedDecoder.decodeObject(forKey: "runyunStorageObject") as? RunyunStorageObject)!
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
         super.init(coder: aDecoder)
         addStepObserver()
@@ -62,8 +62,8 @@ class Runyun: SKSpriteNode, Placeable {
         guard let keyedCoder = aCoder as? NSKeyedArchiver else {
                     fatalError("Must use Keyed Coding")
                 }
+        keyedCoder.encode(self.runyunStorageObject, forKey: "runyunStorageObject")
         try! keyedCoder.encodeEncodable(self.state, forKey: "state")
-        aCoder.encode(self.observedStepsRemaining, forKey: "observedStepsRemaining")
     }
 
     
@@ -76,13 +76,13 @@ class Runyun: SKSpriteNode, Placeable {
             let ns = NotificationCenter.default
             ns.removeObserver(observer)
         }
-        self.state = .idle
-        self.observedStepsRemaining = 0
+        self.runyunStorageObject.seedling = false
+        self.runyunStorageObject.observedStepsRemaining = 0
         print("A new Runyun has hatched!")
     }
     
     private func addStepObserver() {
-        if self.state == .seedling {
+        if self.runyunStorageObject.seedling {
             let ns = NotificationCenter.default
             let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
             
@@ -90,10 +90,10 @@ class Runyun: SKSpriteNode, Placeable {
                 (notification) in
                 DispatchQueue.main.async {
                     guard let steps = notification.userInfo?["steps"] as? Int else {return}
-                    self.observedStepsRemaining -= steps
-                    print("\(self.observedStepsRemaining) steps remaing")
+                    self.runyunStorageObject.observedStepsRemaining -= steps
+                    print("\(self.runyunStorageObject.observedStepsRemaining) steps remaing")
                     
-                    if self.observedStepsRemaining <= 0 {
+                    if self.runyunStorageObject.observedStepsRemaining <= 0 {
                         self.hatch()
                     }
                     
