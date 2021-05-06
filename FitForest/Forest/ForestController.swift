@@ -13,6 +13,8 @@ import GameplayKit
 class ForestController: UIViewController {
     
     var uiInventory = InventoryCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    var runyunStorage = RunyunCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    
     override func loadView() {
       self.view = SKView()
     }
@@ -91,6 +93,17 @@ class ForestController: UIViewController {
         guard let inventoryView = uiInventory.collectionView else {return}
         inventoryView.reloadData()
         inventoryView.isHidden = false
+    }
+    
+    func showRunyuns(){
+        guard let runyunView = runyunStorage.collectionView else {return}
+        runyunView.reloadData()
+        runyunView.isHidden = false
+    }
+    
+    @objc func closeRunyunStorage(){
+        guard let runyunView = runyunStorage.collectionView else {return}
+        runyunView.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {

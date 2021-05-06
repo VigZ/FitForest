@@ -7,16 +7,12 @@
 
 import Foundation
 import SpriteKit
-//class RunyunNodeFactory {
-//    static var sharedInstance = RunyunNodeFactory()
-//
-//    func createRunyunNode(seedNode : SeedNode)-> Runyun?{
-//        guard let seedName = seedNode.name else {
-//            return nil
-//        }
-//        let runyunType = seedName.components(separatedBy: "_")[0]
-//        
-//        
-//            }
-//        
-//}
+
+class RunyunNodeFactory {
+    static var sharedInstance = RunyunNodeFactory()
+
+    func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
+        return Runyun()
+    }
+        
+}
