@@ -10,7 +10,7 @@ import UIKit
 
 class RunyunCard: UICollectionViewCell {
     
-    var runyun:RunyunStorageObject
+    var runyun:RunyunStorageObject!
     
     let nameLabel: UILabel = {
         let label = UILabel()

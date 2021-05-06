@@ -21,7 +21,7 @@ class RunyunStorageSpace: SKSpriteNode, HotSpot {
     
     init(name:String) {
         // Make a texture from an image, a color, and size
-        let texture = SKTexture(imageNamed: name)
+        let texture = SKTexture(imageNamed: "treeStump")
         let color = UIColor.clear
         let size = texture.size()
 

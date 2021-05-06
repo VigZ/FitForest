@@ -79,6 +79,7 @@ class ForestScene: SKScene {
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+
         
     }
     
@@ -139,6 +140,12 @@ class ForestScene: SKScene {
                         destroyNode(node: grabbed)
                     }
                 }
+                if child is RunyunStorageSpace {
+                    if child.intersects(grabbed) && grabbed is Runyun {
+                        destroyNode(node: grabbed)
+                    }
+                }
+
                 if child is Runyun {
                     guard let runyun = child as? Runyun else {return}
                     if child.intersects(grabbed) && grabbed is AccessoryNode {
@@ -217,7 +224,12 @@ class ForestScene: SKScene {
         itemChest.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 300)
         itemChest.size = CGSize(width: 200, height: 200)
         
+        let runyunStorage = RunyunStorageSpace(name: "treeStump")
+        runyunStorage.position = CGPoint(x: frame.midX - 200, y: frame.maxY - 700)
+        runyunStorage.size = CGSize(width: 200, height: 200)
+        
         self.addChild(itemChest)
+        self.addChild(runyunStorage)
         self.isInitialSetup = false
         GameData.sharedInstance.saveToDisk()
     }

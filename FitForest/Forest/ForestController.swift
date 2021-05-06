@@ -57,6 +57,7 @@ class ForestController: UIViewController {
     
     func setupUIView(){
         guard let inventoryView = uiInventory.collectionView else {return}
+        guard let runyunStorageView = runyunStorage.collectionView else {return}
         
         let ns = NotificationCenter.default
         let shouldHideInventory = Notification.Name.ForestEvents.shouldHideInventory
@@ -64,15 +65,22 @@ class ForestController: UIViewController {
             (notification) in
             DispatchQueue.main.async {
                 self.closeInventory()
+                self.closeRunyunStorage()
             }
         }
 
         self.view.addSubview(inventoryView)
+        self.view.addSubview(runyunStorageView)
         let closeButton = UIButton(type: .close)
+        let runyunCloseButton = UIButton(type: .close)
         closeButton.addTarget(self, action: #selector(closeInventory), for: .touchUpInside)
+        runyunCloseButton.addTarget(self, action: #selector(closeRunyunStorage), for: .touchUpInside)
+        
         inventoryView.addSubview(closeButton)
+        runyunStorageView.addSubview(runyunCloseButton)
         
         inventoryView.isHidden = true
+        runyunStorageView.isHidden = true
         
        inventoryView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -81,6 +89,14 @@ class ForestController: UIViewController {
             inventoryView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             inventoryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
         ])
+        
+        runyunStorageView.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             runyunStorageView.widthAnchor.constraint(equalToConstant: 300),
+             runyunStorageView.heightAnchor.constraint(equalToConstant: 300),
+             runyunStorageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+             runyunStorageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
+         ])
         
     }
     
@@ -95,7 +111,7 @@ class ForestController: UIViewController {
         inventoryView.isHidden = false
     }
     
-    func showRunyuns(){
+    func showRunyunStorage(){
         guard let runyunView = runyunStorage.collectionView else {return}
         runyunView.reloadData()
         runyunView.isHidden = false

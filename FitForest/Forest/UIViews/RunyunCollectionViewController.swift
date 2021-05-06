@@ -63,10 +63,10 @@ class RunyunCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RunyunCard
-        let item = GameData.sharedInstance.inventory.runyunStorage[indexPath.row]
+        let runyun = GameData.sharedInstance.inventory.runyunStorage[indexPath.row]
         
 //        cell.nameLabel.text = item.name        // Configure the cell
-//        cell.item = item
+        cell.runyun = runyun
         cell.backgroundColor = .systemGreen
         let recognizer = UILongPressGestureRecognizer(target: cell, action: #selector(cell.createNode(_:)))
         cell.addGestureRecognizer(recognizer)
