@@ -14,5 +14,9 @@ class RunyunNodeFactory {
     func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
         return Runyun()
     }
+    
+    func createFromSeed(seedType: SeedType) -> Runyun? {
+        return Runyun()
+    }
         
 }

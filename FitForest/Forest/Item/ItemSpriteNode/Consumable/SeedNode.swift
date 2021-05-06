@@ -52,7 +52,7 @@ class SeedNode: SKSpriteNode, Placeable, ConsumableNode {
     func spawnRunyun() {
         // Use Runyun Factory
         let currentLocation = self.position
-        let newRunyun = Runyun()
+        guard let newRunyun = RunyunNodeFactory.sharedInstance.createFromSeed(seedType: self.seedType) else {return}
         newRunyun.position = currentLocation
         newRunyun.size = CGSize(width: 275, height: 200)
         scene?.addChild(newRunyun)
