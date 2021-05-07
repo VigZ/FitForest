@@ -16,7 +16,7 @@ class Runyun: SKSpriteNode, Placeable {
     var tokenObserver:NSObjectProtocol?
     
     func pickedUp() {
-        print(runyunStorageObject.seedling)
+        print("\(runyunStorageObject.seedling)")
         print(runyunStorageObject.observedStepsRemaining)
         print(tokenObserver)
         

@@ -18,6 +18,9 @@ class RunyunNodeFactory {
     }
     
     func createFromSeed(seedType: SeedType) -> Runyun? {
+        // add switch for oberseved steps int based on seed type
+        // create Loot Table for leaftype and assign
+        
         let newRSO = RunyunStorageObject(name: "", locationState: .inForest, accessory: nil, observedStepsRemaining: 100, seedType: seedType, leafType: .standard, seedling: true)
         GameData.sharedInstance.inventory.addRunyun(runyun: newRSO)
         let newRunyun = Runyun(runyunStorageObject: newRSO)
