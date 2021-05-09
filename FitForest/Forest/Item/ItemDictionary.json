@@ -38,7 +38,7 @@
         "stackLimit": 10,
         "itemDescription": "Your basic red runyun seed.",
         "seedType": "red",
-        "modifier": "basic"
+        "modifier": "basic",
     },],
     "Accessory": [{
         "name": "Sunglasses",
