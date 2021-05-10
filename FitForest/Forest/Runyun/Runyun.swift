@@ -29,6 +29,7 @@ class Runyun: SKSpriteNode, Placeable {
 
     init(runyunStorageObject: RunyunStorageObject) {
         // Make a texture from an image, a color, and size
+        
         let texture = SKTexture(imageNamed: "runyun")
         let color = UIColor.clear
         let size = texture.size()

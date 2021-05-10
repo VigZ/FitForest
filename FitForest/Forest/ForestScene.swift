@@ -79,7 +79,27 @@ class ForestScene: SKScene {
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        let atlas = SKTextureAtlas(named: "runyunWalk")
+        let f1 = atlas.textureNamed("runyun_walk_1")
+        let f2 = atlas.textureNamed("runyun_walk_2")
+        let f3 = atlas.textureNamed("runyun_walk_3")
+        let f4 = atlas.textureNamed("runyun_walk_4")
+        let f5 = atlas.textureNamed("runyun_walk_5")
+        let walkCycle = [f1, f2, f3, f4, f5]
+        
+        let texture = SKTexture(imageNamed: "runyun_walk_1")
+        let color = UIColor.clear
+        let size = CGSize(width: 100, height: 140)
+        let sprite = Runyun(runyunStorageObject: GameData.sharedInstance.inventory.runyunStorage[0])
+        sprite.texture = texture
+        sprite.color = color
+        sprite.size = size
+        sprite.zPosition = 1
 
+        let animation = SKAction.animate(with: walkCycle, timePerFrame: 0.10)
+        self.addChild(sprite)
+        sprite.run(SKAction.repeatForever(animation))
+        
         
     }
     
