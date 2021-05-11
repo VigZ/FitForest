@@ -14,6 +14,7 @@ class ForestController: UIViewController {
     
     var uiInventory = InventoryCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var runyunStorage = RunyunCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+    var runyunDetailView = RunyunDetailView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     override func loadView() {
       self.view = SKView()
@@ -58,6 +59,7 @@ class ForestController: UIViewController {
     func setupUIView(){
         guard let inventoryView = uiInventory.collectionView else {return}
         guard let runyunStorageView = runyunStorage.collectionView else {return}
+        let runyunDetail = runyunDetailView
         
         let ns = NotificationCenter.default
         let shouldHideInventory = Notification.Name.ForestEvents.shouldHideInventory
@@ -66,21 +68,27 @@ class ForestController: UIViewController {
             DispatchQueue.main.async {
                 self.closeInventory()
                 self.closeRunyunStorage()
+                self.closeDetail()
             }
         }
 
         self.view.addSubview(inventoryView)
         self.view.addSubview(runyunStorageView)
+        self.view.addSubview(runyunDetail)
         let closeButton = UIButton(type: .close)
         let runyunCloseButton = UIButton(type: .close)
+        let detailCloseButton = UIButton(type: .close)
         closeButton.addTarget(self, action: #selector(closeInventory), for: .touchUpInside)
         runyunCloseButton.addTarget(self, action: #selector(closeRunyunStorage), for: .touchUpInside)
+        detailCloseButton.addTarget(self, action: #selector(closeDetail), for: .touchUpInside)
         
         inventoryView.addSubview(closeButton)
         runyunStorageView.addSubview(runyunCloseButton)
+        runyunDetail.addSubview(detailCloseButton)
         
         inventoryView.isHidden = true
         runyunStorageView.isHidden = true
+        runyunDetail.isHidden = true
         
        inventoryView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -96,6 +104,14 @@ class ForestController: UIViewController {
              runyunStorageView.heightAnchor.constraint(equalToConstant: 300),
              runyunStorageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
              runyunStorageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
+         ])
+        
+        runyunDetail.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+             runyunDetail.widthAnchor.constraint(equalToConstant: 300),
+             runyunDetail.heightAnchor.constraint(equalToConstant: 300),
+             runyunDetail.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+             runyunDetail.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
          ])
         
     }
@@ -120,6 +136,14 @@ class ForestController: UIViewController {
     @objc func closeRunyunStorage(){
         guard let runyunView = runyunStorage.collectionView else {return}
         runyunView.isHidden = true
+    }
+    
+    func showRunyunDetail(){
+        runyunDetailView.animShow()
+    }
+    
+    @objc func closeDetail(){
+        runyunDetailView.animHide()
     }
     
     override func viewDidLayoutSubviews() {
