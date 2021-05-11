@@ -10,10 +10,13 @@ import UIKit
 
 class RunyunDetailView: UIView {
     
+    var runyun: RunyunStorageObject!
     let nameField: UITextField = {
         let field = UITextField()
-        field.text = "Name"
         field.translatesAutoresizingMaskIntoConstraints = false
+        let cancelButton = UITextField.ToolbarItem(title: "Cancel", target: self, selector: #selector(cancelPressed))
+        let doneButton = UITextField.ToolbarItem(title: "Done", target: self, selector: #selector(donePressed))
+        field.addToolbar(leading: [cancelButton], trailing: [doneButton])
         return field
     }()
     
@@ -48,6 +51,17 @@ class RunyunDetailView: UIView {
       super.init(coder: aDecoder)
       setupView()
     }
+    
+    convenience init (runyun: RunyunStorageObject, frame: CGRect){
+        self.init(frame: frame)
+        self.runyun = runyun
+        
+        setupView()
+        self.nameField.text = runyun.name
+        self.leafLabel.text = runyun.leafType.rawValue
+        self.seedLabel.text = runyun.seedType.rawValue
+        self.accessoryLabel.text = runyun.accessory?.name
+    }
 
     private func setupView() {
         backgroundColor = .systemGreen
@@ -78,6 +92,15 @@ class RunyunDetailView: UIView {
 
     override class var requiresConstraintBasedLayout: Bool {
       return true
+    }
+    
+    @objc func cancelPressed() {
+        nameField.resignFirstResponder()
+    }
+    
+    @objc func donePressed() {
+        runyun.name = nameField.text ?? ""
+        nameField.resignFirstResponder()
     }
 
 

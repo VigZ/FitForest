@@ -125,11 +125,8 @@ class ForestController: UIViewController {
     }
     
     func createRunyunDetail(runyun: RunyunStorageObject) {
-        var runyunDetail = RunyunDetailView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        runyunDetail.nameField.placeholder = runyun.name
-        runyunDetail.leafLabel.text = runyun.leafType.rawValue
-        runyunDetail.seedLabel.text = runyun.seedType.rawValue
-        runyunDetail.accessoryLabel.text = runyun.accessory?.name
+        
+        let runyunDetail = RunyunDetailView(runyun:runyun, frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.view.addSubview(runyunDetail)
         runyunDetail.translatesAutoresizingMaskIntoConstraints = false
          NSLayoutConstraint.activate([
@@ -146,7 +143,7 @@ class ForestController: UIViewController {
     }
     
     @objc func closeDetail(){
-        guard var runyunDetailView = runyunDetailView else {return}
+        guard let runyunDetailView = runyunDetailView else {return}
         runyunDetailView.animHide()
     }
     

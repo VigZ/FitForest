@@ -22,6 +22,7 @@ class Runyun: SKSpriteNode, Placeable {
         print(tokenObserver)
         print(self.size)
         print(runyunStorageObject.leafType)
+        print(runyunStorageObject.name)
         
     }
     
