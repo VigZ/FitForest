@@ -92,6 +92,13 @@ class Runyun: SKSpriteNode, Placeable {
         print("A new Runyun has hatched!")
     }
     
+    func showDetail() {
+        let sceneController = self.scene?.view?.findViewController()
+        if let sceneController = sceneController as? ForestController{
+            sceneController.showRunyunDetail()
+        }
+    }
+    
     private func addStepObserver() {
         if self.runyunStorageObject.seedling {
             let ns = NotificationCenter.default

@@ -161,7 +161,17 @@ class ForestScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let grabbed = self.grabbedNode else {return}
+        guard let grabbed = self.grabbedNode else {
+            guard let touch = touches.first else {return}
+            for entity in nodes(at: touch.location(in: self)) {
+                if entity is Runyun {
+                    if let entity = entity as? Runyun {
+                        entity.showDetail()
+                    }
+                }
+            }
+            return
+        }
             for child in self.children {
                 if child is ItemChest {
                     if child.intersects(grabbed) && grabbed is ToyNode {
@@ -183,6 +193,7 @@ class ForestScene: SKScene {
                     }
                 }
         }
+        
         self.grabbedNode = nil
         
     }
