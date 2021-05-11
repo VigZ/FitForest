@@ -133,12 +133,18 @@ class ForestController: UIViewController {
              runyunDetail.widthAnchor.constraint(equalToConstant: 300),
              runyunDetail.heightAnchor.constraint(equalToConstant: 300),
              runyunDetail.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-             runyunDetail.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            runyunDetail.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
          ])
         self.runyunDetailView = runyunDetail
         let detailCloseButton = UIButton(type: .close)
         runyunDetail.addSubview(detailCloseButton)
         detailCloseButton.addTarget(self, action: #selector(closeDetail), for: .touchUpInside)
+//        let baseConstraint = runyunDetail.topAnchor.constraint(equalTo: runyunDetail.topAnchor, constant: runyunDetail.bounds.height * 2)
+//        runyunDetail.addConstraint(baseConstraint)
+        UIView.animate(withDuration: 0.3) {
+                runyunDetail.layoutIfNeeded()
+        }
+        //TODO FIX SLIDING DRAWER. CHANGE FROM CENTER Y TO ENTIRE HEIGHT OF VIEW AND SLIDE UP AND DOWN
     
     }
     
