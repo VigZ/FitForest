@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class RunyunDetailView: UIView {
-
+    
     let nameField: UITextField = {
         let field = UITextField()
         field.text = "Name"
