@@ -295,8 +295,6 @@
 				27A93F0D25C9FD220090A794 /* Services */,
 				278453BC25C89F5B00D00B80 /* FitForest.entitlements */,
 				277A88DA25C468E300C1F374 /* Journey */,
-				277A888525C0A6C300C1F374 /* Storage */,
-				277A887925C0824900C1F374 /* Animations */,
 				277A886725BF670000C1F374 /* Constants */,
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
@@ -348,20 +346,6 @@
 				277A886825BF671B00C1F374 /* PointContants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		277A887925C0824900C1F374 /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Animations;
-			sourceTree = "<group>";
-		};
-		277A888525C0A6C300C1F374 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 		277A88DA25C468E300C1F374 /* Journey */ = {

@@ -1,15 +1,19 @@
 { "name": " Basic Leaf Loot Table",
     "items": [
-        {"name": "Basic Leaf",
+        {"name": "Standard Leaf",
+            "identifier": "standard",
             "itemWeight": 40
         },
         {"name": "Vine Leaf",
+            "identifier": "vine",
             "itemWeight": 20
         },
         {"name": "Cherry Leaf",
+            "identifier": "cherry",
             "itemWeight": 10
         },
         {"name": "Cactus Leaf",
+            "identifier": "cactus",
             "itemWeight": 10
         },
             

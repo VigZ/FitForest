@@ -15,12 +15,13 @@ class Runyun: SKSpriteNode, Placeable {
     var accessory: AccessoryNode?
     var tokenObserver:NSObjectProtocol?
     var leaf: SKSpriteNode!
-    
+    // TODO: Either turn runyun into SKNode with body and leaf sprite, or make sure that leaf as a child will still move the runyun when tapped and held.
     func pickedUp() {
         print("\(runyunStorageObject.seedling)")
         print(runyunStorageObject.observedStepsRemaining)
         print(tokenObserver)
         print(self.size)
+        print(runyunStorageObject.leafType)
         
     }
     

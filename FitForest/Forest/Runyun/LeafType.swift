@@ -11,4 +11,5 @@ enum LeafType: String, Codable {
     case standard
     case cherry
     case cactus
+    case vine
 }

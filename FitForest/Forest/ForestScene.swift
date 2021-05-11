@@ -143,6 +143,11 @@ class ForestScene: SKScene {
                         }
                     }
                     if entity is Placeable {
+                        if let runyun = entity as? Runyun {
+                            if runyun.runyunStorageObject.seedling {
+                                break
+                            }
+                        }
                         self.grabbedNode = entity
                         break
                     }
