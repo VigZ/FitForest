@@ -22,10 +22,6 @@ class Runyun: SKSpriteNode, Placeable {
         print(tokenObserver)
         print(self.size)
         print(runyunStorageObject.leafType)
-        let sceneController = self.scene?.view?.findViewController()
-        if let sceneController = sceneController as? ForestController{
-            sceneController.showRunyunDetail()
-        }
         
     }
     
