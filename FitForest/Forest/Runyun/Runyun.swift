@@ -19,6 +19,7 @@ class Runyun: SKSpriteNode, Placeable {
         print("\(runyunStorageObject.seedling)")
         print(runyunStorageObject.observedStepsRemaining)
         print(tokenObserver)
+        print(self.size)
         
     }
     
@@ -30,9 +31,9 @@ class Runyun: SKSpriteNode, Placeable {
     init(runyunStorageObject: RunyunStorageObject) {
         // Make a texture from an image, a color, and size
         
-        let texture = SKTexture(imageNamed: "runyun")
+        let texture = SKTexture(imageNamed: "seedling")
         let color = UIColor.clear
-        let size = texture.size()
+        let size = CGSize(width: 100, height: 140)
         self.state = .idle
         self.runyunStorageObject = runyunStorageObject
         // Call the designated initializer

@@ -100,6 +100,9 @@ class ForestScene: SKScene {
         self.addChild(sprite)
         sprite.run(SKAction.repeatForever(animation))
         
+//        let inventory = GameData.sharedInstance.inventory
+//        let sunglasses = Accessory(stackLimit: 3, name: "Sunglasses", itemDescription: "Sunglasses", itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: CGPoint(x: 0, y: 0), runyunAnchorPoint: CGPoint(x: 0, y: 0))
+//        inventory?.addItem(item:sunglasses)
         
     }
     

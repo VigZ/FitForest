@@ -83,7 +83,6 @@
 		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
 		27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */; };
 		27B6D64F2648DD1800351376 /* runyunWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 27B6D64E2648DD1800351376 /* runyunWalk.atlas */; };
-		27B6D6632648F3C600351376 /* seedling.png in Resources */ = {isa = PBXBuildFile; fileRef = 27B6D6622648F3C600351376 /* seedling.png */; };
 		27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5F626090E1F00B3D62A /* TopContainer.swift */; };
 		27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5FB260914C500B3D62A /* BottomContainer.swift */; };
 		27D5D6012609162600B3D62A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6002609162600B3D62A /* MainView.swift */; };
@@ -204,7 +203,6 @@
 		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDecodeable.swift; sourceTree = "<group>"; };
 		27B6D64E2648DD1800351376 /* runyunWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = runyunWalk.atlas; path = FitForest/runyunWalk.atlas; sourceTree = "<group>"; };
-		27B6D6622648F3C600351376 /* seedling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seedling.png; path = ../../../../Downloads/seedling.png; sourceTree = "<group>"; };
 		27D5D5F626090E1F00B3D62A /* TopContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContainer.swift; sourceTree = "<group>"; };
 		27D5D5FB260914C500B3D62A /* BottomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainer.swift; sourceTree = "<group>"; };
 		27D5D6002609162600B3D62A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -303,7 +301,6 @@
 				277A881F25BCD0C700C1F374 /* AppDelegate.swift */,
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
-				27B6D6622648F3C600351376 /* seedling.png */,
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
 				277A887025C04DAE00C1F374 /* MainTabBarController.swift */,
@@ -749,7 +746,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B6D64F2648DD1800351376 /* runyunWalk.atlas in Resources */,
-				27B6D6632648F3C600351376 /* seedling.png in Resources */,
 				2783382026268C0300F872A4 /* ItemDictionary.json in Resources */,
 				274762A5262FE0A400190AF4 /* Bronze.json in Resources */,
 				274762AA262FE0B300190AF4 /* Silver.json in Resources */,
