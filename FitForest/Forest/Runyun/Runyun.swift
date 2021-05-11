@@ -14,6 +14,7 @@ class Runyun: SKSpriteNode, Placeable {
     var state: RunyunState! //TODO: Remove ability to drag and drop seedling state runyuns
     var accessory: AccessoryNode?
     var tokenObserver:NSObjectProtocol?
+    var leaf: SKSpriteNode!
     
     func pickedUp() {
         print("\(runyunStorageObject.seedling)")
@@ -28,7 +29,7 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
 
-    init(runyunStorageObject: RunyunStorageObject) {
+    init(runyunStorageObject: RunyunStorageObject, leaf: SKSpriteNode?) {
         // Make a texture from an image, a color, and size
         
         let texture = SKTexture(imageNamed: "seedling")
@@ -36,6 +37,10 @@ class Runyun: SKSpriteNode, Placeable {
         let size = CGSize(width: 100, height: 140)
         self.state = .idle
         self.runyunStorageObject = runyunStorageObject
+        if let leaf = leaf {
+            self.leaf = leaf
+            
+        }
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
@@ -44,6 +49,9 @@ class Runyun: SKSpriteNode, Placeable {
 //        physicsBody?.categoryBitMask = 1
 //        physicsBody?.affectedByGravity = false
         self.zPosition = 1
+        if let newLeaf = self.leaf {
+            self.addChild(newLeaf)
+        }
         addStepObserver()
 
         

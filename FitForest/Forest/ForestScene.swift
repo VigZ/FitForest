@@ -90,7 +90,7 @@ class ForestScene: SKScene {
         let texture = SKTexture(imageNamed: "runyun_walk_1")
         let color = UIColor.clear
         let size = CGSize(width: 100, height: 140)
-        let sprite = Runyun(runyunStorageObject: GameData.sharedInstance.inventory.runyunStorage[0])
+        let sprite = Runyun(runyunStorageObject: GameData.sharedInstance.inventory.runyunStorage[0], leaf: nil)
         sprite.texture = texture
         sprite.color = color
         sprite.size = size

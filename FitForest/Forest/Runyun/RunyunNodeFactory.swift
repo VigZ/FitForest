@@ -12,7 +12,7 @@ class RunyunNodeFactory {
     static var sharedInstance = RunyunNodeFactory()
 
     func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
-        let newRunyun = Runyun(runyunStorageObject: runyun)
+        let newRunyun = Runyun(runyunStorageObject: runyun, leaf: nil)
         return newRunyun
     }
     
@@ -22,7 +22,7 @@ class RunyunNodeFactory {
         
         let newRSO = RunyunStorageObject(name: "", locationState: .inForest, accessory: nil, observedStepsRemaining: 100, seedType: seedType, leafType: .standard, seedling: true)
         GameData.sharedInstance.inventory.addRunyun(runyun: newRSO)
-        let newRunyun = Runyun(runyunStorageObject: newRSO)
+        let newRunyun = Runyun(runyunStorageObject: newRSO, leaf: nil)
         return newRunyun
     }
         
