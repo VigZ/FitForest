@@ -90,6 +90,7 @@ class Runyun: SKSpriteNode, Placeable {
         }
         self.runyunStorageObject.seedling = false
         self.runyunStorageObject.observedStepsRemaining = 0
+        self.texture = SKTexture(imageNamed: "runyun_walk_1")
         print("A new Runyun has hatched!")
     }
     
