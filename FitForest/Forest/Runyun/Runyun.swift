@@ -68,6 +68,7 @@ class Runyun: SKSpriteNode, Placeable {
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
         super.init(coder: aDecoder)
         addStepObserver()
+        attachActions()
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -77,6 +78,7 @@ class Runyun: SKSpriteNode, Placeable {
                 }
         keyedCoder.encode(self.runyunStorageObject, forKey: "runyunStorageObject")
         try! keyedCoder.encodeEncodable(self.state, forKey: "state")
+        self.removeAllActions()
     }
 
     
@@ -104,6 +106,7 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
     func attachActions(){
+        
         guard runyunStorageObject.seedling != true else {return}
         let walkCycle = setupFrames()
         self.run(SKAction.repeatForever(
@@ -112,6 +115,25 @@ class Runyun: SKSpriteNode, Placeable {
                                    resize: false,
                                    restore: true)),
                   withKey:"runyun_walk")
+        
+        let randomMoveAction = SKAction.run {
+            
+            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
+            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
+            let randomPoint = CGPoint(x: xPosition, y: yPosition)
+            
+            let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
+            
+            let moveDuration = 0.001 * distance
+            
+            let moveAction = SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))
+            
+            self.run(moveAction)
+        }
+        
+        self.run(randomMoveAction)
+        
+        
     }
     
     private func setupFrames() -> [SKTexture]{
