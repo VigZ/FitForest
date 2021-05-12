@@ -55,6 +55,7 @@ class Runyun: SKSpriteNode, Placeable {
             self.addChild(newLeaf)
         }
         addStepObserver()
+        attachActions()
 
         
     }
@@ -91,6 +92,7 @@ class Runyun: SKSpriteNode, Placeable {
         self.runyunStorageObject.seedling = false
         self.runyunStorageObject.observedStepsRemaining = 0
         self.texture = SKTexture(imageNamed: "runyun_walk_1")
+        self.attachActions()
         print("A new Runyun has hatched!")
     }
     
@@ -99,6 +101,39 @@ class Runyun: SKSpriteNode, Placeable {
         if let sceneController = sceneController as? ForestController{
             sceneController.updateRunyunDetail(runyun:self.runyunStorageObject)
         }
+    }
+    
+    func attachActions(){
+        guard runyunStorageObject.seedling != true else {return}
+        let walkCycle = setupFrames()
+        self.run(SKAction.repeatForever(
+                  SKAction.animate(with: walkCycle,
+                                   timePerFrame: 0.1,
+                                   resize: false,
+                                   restore: true)),
+                  withKey:"runyun_walk")
+    }
+    
+    private func setupFrames() -> [SKTexture]{
+        
+        let runyunWalk = SKTextureAtlas(named: "runyunWalk")
+        var walkFrames: [SKTexture] = []
+
+        let numImages = runyunWalk.textureNames.count
+        for i in 1...numImages {
+          let frameName = "runyun_walk_\(i)"
+          walkFrames.append(runyunWalk.textureNamed(frameName))
+        }
+        
+        return walkFrames
+
+
+//        let averageDelay:TimeInterval = 2.0
+//        let delayRange:TimeInterval = 1.0
+//
+//        let delayMove = SKAction.wait(forDuration:averageDelay, withRange:delayRange)
+        
+        
     }
     
     private func addStepObserver() {
