@@ -17,6 +17,7 @@ class RunyunDetailView: UIView {
         let cancelButton = UITextField.ToolbarItem(title: "Cancel", target: self, selector: #selector(cancelPressed))
         let doneButton = UITextField.ToolbarItem(title: "Done", target: self, selector: #selector(donePressed))
         field.addToolbar(leading: [cancelButton], trailing: [doneButton])
+        field.placeholder = "Enter Name"
         return field
     }()
     
@@ -101,6 +102,14 @@ class RunyunDetailView: UIView {
     @objc func donePressed() {
         runyun.name = nameField.text ?? ""
         nameField.resignFirstResponder()
+    }
+    
+    func updateRunyun(runyun:RunyunStorageObject){
+        self.runyun = runyun
+        self.nameField.text = runyun.name
+        self.leafLabel.text = runyun.leafType.rawValue
+        self.seedLabel.text = runyun.seedType.rawValue
+        self.accessoryLabel.text = runyun.accessory?.name
     }
 
 

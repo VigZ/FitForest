@@ -14,7 +14,7 @@ class ForestController: UIViewController {
     
     var uiInventory = InventoryCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
     var runyunStorage = RunyunCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-    var runyunDetailView: RunyunDetailView?
+    var runyunDetailView = RunyunDetailView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     
     override func loadView() {
       self.view = SKView()
@@ -73,16 +73,24 @@ class ForestController: UIViewController {
 
         self.view.addSubview(inventoryView)
         self.view.addSubview(runyunStorageView)
+        self.view.addSubview(runyunDetailView)
+        
         let closeButton = UIButton(type: .close)
         let runyunCloseButton = UIButton(type: .close)
+        let detailCloseButton = UIButton(type: .close)
+        
         closeButton.addTarget(self, action: #selector(closeInventory), for: .touchUpInside)
         runyunCloseButton.addTarget(self, action: #selector(closeRunyunStorage), for: .touchUpInside)
+        detailCloseButton.addTarget(self, action: #selector(closeDetail), for: .touchUpInside)
+        
         
         inventoryView.addSubview(closeButton)
         runyunStorageView.addSubview(runyunCloseButton)
+        runyunDetailView.addSubview(detailCloseButton)
         
         inventoryView.isHidden = true
         runyunStorageView.isHidden = true
+        runyunDetailView.isHidden = true
         
        inventoryView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -99,6 +107,15 @@ class ForestController: UIViewController {
              runyunStorageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
              runyunStorageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -400)
          ])
+        
+        runyunDetailView.translatesAutoresizingMaskIntoConstraints = false
+         NSLayoutConstraint.activate([
+            runyunDetailView.widthAnchor.constraint(equalToConstant: 300),
+            runyunDetailView.heightAnchor.constraint(equalToConstant: 300),
+            runyunDetailView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            runyunDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+         ])
+        
         
     }
     
@@ -124,33 +141,21 @@ class ForestController: UIViewController {
         runyunView.isHidden = true
     }
     
-    func createRunyunDetail(runyun: RunyunStorageObject) {
-        
-        let runyunDetail = RunyunDetailView(runyun:runyun, frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        self.view.addSubview(runyunDetail)
-        runyunDetail.translatesAutoresizingMaskIntoConstraints = false
-         NSLayoutConstraint.activate([
-             runyunDetail.widthAnchor.constraint(equalToConstant: 300),
-             runyunDetail.heightAnchor.constraint(equalToConstant: 300),
-             runyunDetail.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            runyunDetail.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-         ])
-        self.runyunDetailView = runyunDetail
-        let detailCloseButton = UIButton(type: .close)
-        runyunDetail.addSubview(detailCloseButton)
-        detailCloseButton.addTarget(self, action: #selector(closeDetail), for: .touchUpInside)
+    func updateRunyunDetail(runyun: RunyunStorageObject) {
+        runyunDetailView.updateRunyun(runyun: runyun)
+        runyunDetailView.isHidden = false
 //        let baseConstraint = runyunDetail.topAnchor.constraint(equalTo: runyunDetail.topAnchor, constant: runyunDetail.bounds.height * 2)
 //        runyunDetail.addConstraint(baseConstraint)
-        UIView.animate(withDuration: 0.3) {
-                runyunDetail.layoutIfNeeded()
-        }
+//        UIView.animate(withDuration: 0.3) {
+//                runyunDetail.layoutIfNeeded()
+//        }
         //TODO FIX SLIDING DRAWER. CHANGE FROM CENTER Y TO ENTIRE HEIGHT OF VIEW AND SLIDE UP AND DOWN
     
     }
     
     @objc func closeDetail(){
-        guard let runyunDetailView = runyunDetailView else {return}
-        runyunDetailView.animHide()
+        runyunDetailView.isHidden = true
+//        runyunDetailView.animHide()
     }
     
     override func viewDidLayoutSubviews() {

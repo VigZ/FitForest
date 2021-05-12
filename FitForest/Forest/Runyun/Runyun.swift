@@ -96,7 +96,7 @@ class Runyun: SKSpriteNode, Placeable {
     func showDetail() {
         let sceneController = self.scene?.view?.findViewController()
         if let sceneController = sceneController as? ForestController{
-            sceneController.createRunyunDetail(runyun:self.runyunStorageObject)
+            sceneController.updateRunyunDetail(runyun:self.runyunStorageObject)
         }
     }
     
