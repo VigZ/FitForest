@@ -68,7 +68,6 @@ class Runyun: SKSpriteNode, Placeable {
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
         super.init(coder: aDecoder)
         addStepObserver()
-        attachActions()
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -90,6 +89,7 @@ class Runyun: SKSpriteNode, Placeable {
         if let observer = tokenObserver {
             let ns = NotificationCenter.default
             ns.removeObserver(observer)
+            tokenObserver = nil
         }
         self.runyunStorageObject.seedling = false
         self.runyunStorageObject.observedStepsRemaining = 0
@@ -108,31 +108,36 @@ class Runyun: SKSpriteNode, Placeable {
     func attachActions(){
         
         guard runyunStorageObject.seedling != true else {return}
+        
         let walkCycle = setupFrames()
         self.run(SKAction.repeatForever(
                   SKAction.animate(with: walkCycle,
                                    timePerFrame: 0.1,
                                    resize: false,
                                    restore: true)),
-                  withKey:"runyun_walk")
+                  withKey:"runyun_animation")
         
-        let randomMoveAction = SKAction.run {
-            
-            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
-            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
+        let waitAction = SKAction.wait(forDuration: 2.5, withRange: 3.0)
+        
+        let randomMoveAction = SKAction.run { [unowned self] in
+            let xPosition = Double.random(in: -200...200)
+            let yPosition = Double.random(in: -200...200)
+//            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
+//            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
             let randomPoint = CGPoint(x: xPosition, y: yPosition)
             
             let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
             
-            let moveDuration = 0.001 * distance
+            let moveDuration = 0.03 * distance
             
-            let moveAction = SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))
+            self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration)))
             
-            self.run(moveAction)
+            
         }
         
-        self.run(randomMoveAction)
-        
+        let sequence = SKAction.sequence([waitAction, randomMoveAction])
+        let endlessSequence = SKAction.repeatForever(sequence)
+        self.run(endlessSequence)
         
     }
     

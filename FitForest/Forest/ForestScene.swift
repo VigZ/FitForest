@@ -19,6 +19,13 @@ class ForestScene: SKScene {
         if isInitialSetup {
             initialSetup()
         }
+        for child in self.children {
+            if let runyun = child as? Runyun {
+                if !runyun.runyunStorageObject.seedling{
+                    runyun.attachActions()
+                }
+            }
+        }
 //        let texture = SKTexture(imageNamed: "runyunwalk_1")
 //        let color = UIColor.clear
 //        let size = CGSize(width: 100, height: 140)
@@ -145,6 +152,7 @@ class ForestScene: SKScene {
                     }
                     if entity is Placeable {
                         if let runyun = entity as? Runyun {
+                            
                             if runyun.runyunStorageObject.seedling {
                                 break
                             }
