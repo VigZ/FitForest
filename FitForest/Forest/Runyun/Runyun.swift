@@ -117,7 +117,7 @@ class Runyun: SKSpriteNode, Placeable {
                                    restore: true)),
                   withKey:"runyun_animation")
         
-        let waitAction = SKAction.wait(forDuration: 2.5, withRange: 3.0)
+        let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
         
         let randomMoveAction = SKAction.run { [unowned self] in
             let xPosition = Double.random(in: -200...200)
@@ -130,7 +130,9 @@ class Runyun: SKSpriteNode, Placeable {
             
             let moveDuration = 0.03 * distance
             
-            self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration)))
+            self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
+                print("moving stopped")
+            }
             
             
         }
