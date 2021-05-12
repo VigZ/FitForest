@@ -166,6 +166,9 @@ class ForestScene: SKScene {
         guard let node = self.grabbedNode else {
             return
         }
+        if let node = node as? Runyun {
+            node.removeAllActions()
+        }
         node.position = touch.location(in: self)
     }
     
@@ -200,6 +203,8 @@ class ForestScene: SKScene {
                         
                         grabbed.attachToRunyun(runyun: runyun)
                     }
+                    runyun.removeAllActions()
+                    runyun.attachActions()
                 }
         }
         
