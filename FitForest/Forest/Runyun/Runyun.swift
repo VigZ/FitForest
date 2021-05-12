@@ -130,6 +130,12 @@ class Runyun: SKSpriteNode, Placeable {
             
             let moveDuration = 0.03 * distance
             
+            if xPosition > 0 {
+                self.run(SKAction.scaleX(to: -1.0, duration: 0.2))
+            } else {
+                self.run(SKAction.scaleX(to: 1.0, duration: 0.2))
+            }
+            
             self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
                 print("moving stopped")
             }
