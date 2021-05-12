@@ -137,8 +137,9 @@ class Runyun: SKSpriteNode, Placeable {
             }
             
             self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
-                print("moving stopped")
+                print("End of move")
             }
+            //TODO Might be "jumping" because of the speed at which the action completes isn't consistent with the actual movement. After testing this seems to be the case. Fix this in the future.
             
             
         }
