@@ -86,6 +86,7 @@
 		27B6D682264AF79700351376 /* RunyunDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D681264AF79700351376 /* RunyunDetailView.swift */; };
 		27B6D687264AFEC100351376 /* UIVIew+animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D686264AFEC100351376 /* UIVIew+animate.swift */; };
 		27B6D68F264B205800351376 /* UITextField+addToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D68E264B205800351376 /* UITextField+addToolbar.swift */; };
+		27B6D6AC264CCC6100351376 /* CollisionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D6AB264CCC6100351376 /* CollisionCategory.swift */; };
 		27D5D5F726090E1F00B3D62A /* TopContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5F626090E1F00B3D62A /* TopContainer.swift */; };
 		27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D5FB260914C500B3D62A /* BottomContainer.swift */; };
 		27D5D6012609162600B3D62A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D5D6002609162600B3D62A /* MainView.swift */; };
@@ -209,6 +210,7 @@
 		27B6D681264AF79700351376 /* RunyunDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunDetailView.swift; sourceTree = "<group>"; };
 		27B6D686264AFEC100351376 /* UIVIew+animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+animate.swift"; sourceTree = "<group>"; };
 		27B6D68E264B205800351376 /* UITextField+addToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+addToolbar.swift"; sourceTree = "<group>"; };
+		27B6D6AB264CCC6100351376 /* CollisionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionCategory.swift; sourceTree = "<group>"; };
 		27D5D5F626090E1F00B3D62A /* TopContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContainer.swift; sourceTree = "<group>"; };
 		27D5D5FB260914C500B3D62A /* BottomContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainer.swift; sourceTree = "<group>"; };
 		27D5D6002609162600B3D62A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				2747631C2637BE2F00190AF4 /* RunyunNodeFactory.swift */,
 				277D69BF2643360700561171 /* RunyunStorageObject.swift */,
 				277D69C42643390000561171 /* LeafType.swift */,
+				27B6D6AB264CCC6100351376 /* CollisionCategory.swift */,
 			);
 			path = Runyun;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
+				27B6D6AC264CCC6100351376 /* CollisionCategory.swift in Sources */,
 				278337A22624A60B00F872A4 /* GameData.swift in Sources */,
 				277D69BB26432B6A00561171 /* SeedModifier.swift in Sources */,
 				278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */,

@@ -15,6 +15,7 @@ class Runyun: SKSpriteNode, Placeable {
     var accessory: AccessoryNode?
     var tokenObserver:NSObjectProtocol?
     var leaf: SKSpriteNode!
+    var detectionNode: SKNode
     // TODO: Either turn runyun into SKNode with body and leaf sprite, or make sure that leaf as a child will still move the runyun when tapped and held.
     func pickedUp() {
         print("\(runyunStorageObject.seedling)")
@@ -23,6 +24,7 @@ class Runyun: SKSpriteNode, Placeable {
         print(self.size)
         print(runyunStorageObject.leafType)
         print(runyunStorageObject.name)
+        print(detectionNode.physicsBody)
         
     }
     
@@ -43,13 +45,13 @@ class Runyun: SKSpriteNode, Placeable {
             self.leaf = leaf
             
         }
+        self.detectionNode = SKNode()
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
         // Set physics properties
-//        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
-//        physicsBody?.categoryBitMask = 1
-//        physicsBody?.affectedByGravity = false
+        addPhysicsBody()
+        
         self.zPosition = 1
         if let newLeaf = self.leaf {
             self.addChild(newLeaf)
@@ -66,7 +68,9 @@ class Runyun: SKSpriteNode, Placeable {
         }
         self.runyunStorageObject = (keyedDecoder.decodeObject(forKey: "runyunStorageObject") as? RunyunStorageObject)!
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
+        self.detectionNode = SKNode()
         super.init(coder: aDecoder)
+        addPhysicsBody()
         addStepObserver()
     }
     
@@ -170,6 +174,13 @@ class Runyun: SKSpriteNode, Placeable {
 //        let delayMove = SKAction.wait(forDuration:averageDelay, withRange:delayRange)
         
         
+    }
+    
+    func addPhysicsBody() {
+        self.detectionNode.physicsBody = SKPhysicsBody(circleOfRadius: 100)
+        self.detectionNode.physicsBody?.affectedByGravity = false
+        self.detectionNode.physicsBody?.collisionBitMask = CollisionCategory.ItemCategory.rawValue
+        self.detectionNode.physicsBody?.categoryBitMask = CollisionCategory.DetectionCategory.rawValue
     }
     
     private func addStepObserver() {
