@@ -58,10 +58,11 @@ class RunyunCard: UICollectionViewCell {
         else if gesture.state == .changed {
             guard let grabbed = scene.grabbedNode else {return}
             grabbed.position = newPoint
-            // Add location conversion here.
             
         }
         else if gesture.state == .ended {
+            guard let runyun = scene.grabbedNode as? Runyun else {return}
+            runyun.attachActions()
             scene.grabbedNode = nil
         }
     }

@@ -13,6 +13,8 @@ class RunyunNodeFactory {
     
     func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
         let newRunyun = Runyun(runyunStorageObject: runyun, leaf: nil)
+        newRunyun.removeAllActions()
+        newRunyun.attachAnimation()
         return newRunyun
     }
     
