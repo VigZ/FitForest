@@ -299,14 +299,14 @@ class ForestScene: SKScene {
             if spriteNode is Runyun {
                 let spriteNode =  spriteNode as! Runyun
                 if body.node is ToyNode {
-                    spriteNode.interact(toy: body.node as! ToyNode)
+                    spriteNode.moveToToy(toy: body.node as! ToyNode)
                     break
                 }
             }
             if spriteNode is ToyNode {
                 if body.node is Runyun {
                     let runyun = body.node as! Runyun
-                    runyun.interact(toy: spriteNode as! ToyNode)
+                    runyun.moveToToy(toy: spriteNode as! ToyNode)
                     break
                 }
             }
@@ -322,9 +322,16 @@ extension ForestScene: SKPhysicsContactDelegate {
         if contact.bodyA.node == self.grabbedNode || contact.bodyB.node == self.grabbedNode {
            return
         }
-        if contact.bodyA.node is Runyun || contact.bodyB.node is Runyun {
+        if contact.bodyA.node is Runyun && contact.bodyB.node is ToyNode {
             // Have Runyun enact approach and interact action.
-            print("Contact Made!")
+            let runyun = contact.bodyA.node as! Runyun
+            let toy = contact.bodyB.node as! ToyNode
+            runyun.moveToToy(toy: toy)
            }
+        else if contact.bodyB.node is Runyun && contact.bodyA.node is ToyNode {
+            let runyun = contact.bodyB.node as! Runyun
+            let toy = contact.bodyA.node as! ToyNode
+            runyun.moveToToy(toy: toy)
+        }
     }
 }

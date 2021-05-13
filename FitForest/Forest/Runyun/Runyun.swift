@@ -185,8 +185,22 @@ class Runyun: SKSpriteNode, Placeable {
         self.physicsBody!.isDynamic = true
     }
     
+    func moveToToy(toy: ToyNode){
+        //Approach toy
+        self.removeAllActions()
+        let distance = sqrt(pow((toy.position.x - self.position.x), 2.0) + pow((toy.position.y - self.position.y), 2.0))
+        
+        let moveDuration = 0.03 * distance
+        print("Moving towards toy.")
+        self.run(SKAction.move(to: toy.position, duration: TimeInterval(moveDuration))){
+            self.interact(toy: toy)
+        }
+        //Interact with toy
+    }
+    
     func interact(toy: ToyNode){
         print("Interacting!")
+        self.attachActions()
     }
 
     
