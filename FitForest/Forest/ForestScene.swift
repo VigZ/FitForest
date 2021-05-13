@@ -19,6 +19,7 @@ class ForestScene: SKScene {
         if isInitialSetup {
             initialSetup()
         }
+        self.physicsWorld.contactDelegate = self
         for child in self.children {
             if let runyun = child as? Runyun {
                 if !runyun.runyunStorageObject.seedling{
@@ -290,4 +291,13 @@ class ForestScene: SKScene {
         GameData.sharedInstance.saveToDisk()
     }
     
+}
+
+
+extension ForestScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+//        if contact.bodyA.node?.name == "ground" || contact.bodyB.node?.name == "ground" {
+//               // execute code to respond to object hitting ground
+//           }
+    }
 }
