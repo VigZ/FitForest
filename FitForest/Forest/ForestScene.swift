@@ -159,7 +159,6 @@ class ForestScene: SKScene {
                             }
                         }
                         self.grabbedNode = entity
-                        print("Grabbed node is now\(self.grabbedNode)")
                         break
                     }
                 }
@@ -170,6 +169,7 @@ class ForestScene: SKScene {
         }
         if let node = node as? Runyun {
             node.removeAllActions()
+            node.attachAnimation()
         }
         node.position = touch.location(in: self)
     }
