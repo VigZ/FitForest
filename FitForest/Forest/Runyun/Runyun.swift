@@ -109,14 +109,8 @@ class Runyun: SKSpriteNode, Placeable {
         
         guard runyunStorageObject.seedling != true else {return}
         
-        let walkCycle = setupFrames()
-        self.run(SKAction.repeatForever(
-                  SKAction.animate(with: walkCycle,
-                                   timePerFrame: 0.1,
-                                   resize: false,
-                                   restore: true)),
-                  withKey:"runyun_animation")
-        
+
+        attachAnimation()
         let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
         
         let randomMoveAction = SKAction.run { [unowned self] in
@@ -151,6 +145,28 @@ class Runyun: SKSpriteNode, Placeable {
         let endlessSequence = SKAction.repeatForever(sequence)
         self.run(endlessSequence)
         
+    }
+    
+    func attachAnimation(){
+        switch state {
+        case .walking:
+            let walkCycle = setupFrames()
+            self.run(SKAction.repeatForever(
+                      SKAction.animate(with: walkCycle,
+                                       timePerFrame: 0.1,
+                                       resize: false,
+                                       restore: true)),
+                      withKey:"runyun_animation")
+            
+        default:
+            let walkCycle = setupFrames()
+            self.run(SKAction.repeatForever(
+                      SKAction.animate(with: walkCycle,
+                                       timePerFrame: 0.1,
+                                       resize: false,
+                                       restore: true)),
+                      withKey:"runyun_animation")
+        }
     }
     
     private func setupFrames() -> [SKTexture]{
@@ -188,10 +204,17 @@ class Runyun: SKSpriteNode, Placeable {
     func moveToToy(toy: ToyNode){
         //Approach toy
         self.removeAllActions()
+        attachAnimation()
+        let pointX = toy.position.x
         let distance = sqrt(pow((toy.position.x - self.position.x), 2.0) + pow((toy.position.y - self.position.y), 2.0))
         
         let moveDuration = 0.03 * distance
         print("Moving towards toy.")
+        if pointX > 0 {
+            self.run(SKAction.scaleX(to: -1.0, duration: 0.2))
+        } else {
+            self.run(SKAction.scaleX(to: 1.0, duration: 0.2))
+        }
         self.run(SKAction.move(to: toy.position, duration: TimeInterval(moveDuration))){
             self.interact(toy: toy)
         }
