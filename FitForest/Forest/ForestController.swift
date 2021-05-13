@@ -27,14 +27,15 @@ class ForestController: UIViewController {
             let scene = GameData.sharedInstance.scene
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
+            view.showsPhysics = true
+            view.showsFPS = true
+            view.showsNodeCount = true
             // Present the scene
             view.presentScene(scene)
             scene.viewController = self
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
+
         }
         setupUIView()
         
@@ -162,6 +163,6 @@ class ForestController: UIViewController {
         super.viewDidLayoutSubviews()
 
         // 3.
-        view.bringSubviewToFront(uiInventory.collectionView)
+//        view.bringSubviewToFront(uiInventory.collectionView)
     }
 }

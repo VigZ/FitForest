@@ -296,8 +296,9 @@ class ForestScene: SKScene {
 
 extension ForestScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-//        if contact.bodyA.node?.name == "ground" || contact.bodyB.node?.name == "ground" {
-//               // execute code to respond to object hitting ground
-//           }
+        print("This is being called")
+        
+        if contact.bodyA.node?.name == "Detection" || contact.bodyB.node?.name == "Detection" {
+           }
     }
 }

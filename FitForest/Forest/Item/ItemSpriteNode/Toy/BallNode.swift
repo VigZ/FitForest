@@ -23,9 +23,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         super.init(texture: texture, color: color, size: size)
         self.name = name
         // Set physics properties
-//        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
-//        physicsBody?.categoryBitMask = 1
-//        physicsBody?.affectedByGravity = false
+        setUpPhysics()
         self.zPosition = 1
     }
 
@@ -33,6 +31,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         self.linkedInventoryItem = aDecoder.decodeObject(forKey: "linkedInventoryItem") as? Item
         self.isBeingMoved = aDecoder.decodeBool(forKey: "isBeingMoved")
         super.init(coder: aDecoder)
+        setUpPhysics()
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -58,6 +57,16 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
     func toggleLinkedItem(){
         guard let linkedInventoryItem = linkedInventoryItem else {return}
         linkedInventoryItem.itemState.toggle()
+    }
+    
+    func setUpPhysics(){
+        //TODO Set size to be texture size. Changing to hardcoded value for now until I recieve image assets.
+        physicsBody = SKPhysicsBody(circleOfRadius: 100)
+        physicsBody!.categoryBitMask = CollisionCategory.ItemCategory.rawValue
+        physicsBody!.collisionBitMask = 0
+        physicsBody!.contactTestBitMask = CollisionCategory.DetectionCategory.rawValue
+        physicsBody!.affectedByGravity = false
+        physicsBody!.isDynamic = true
     }
 
 }
