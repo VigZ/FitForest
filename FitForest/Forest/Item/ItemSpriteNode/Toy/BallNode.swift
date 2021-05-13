@@ -31,7 +31,6 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         self.linkedInventoryItem = aDecoder.decodeObject(forKey: "linkedInventoryItem") as? Item
         self.isBeingMoved = aDecoder.decodeBool(forKey: "isBeingMoved")
         super.init(coder: aDecoder)
-        setUpPhysics()
     }
     
     override func encode(with aCoder: NSCoder) {

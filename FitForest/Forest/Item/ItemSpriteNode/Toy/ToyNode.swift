@@ -12,4 +12,6 @@ protocol ToyNode : PlayerInteractable, UnitInteractable, Placeable {
     // PlayerInteractable has on tap and on hold effects
     // UnitInteractable means it has collision and Runyuns can interact with said object
     // Placeable means it can exist in the forest
+    
+    func setUpPhysics()
 }

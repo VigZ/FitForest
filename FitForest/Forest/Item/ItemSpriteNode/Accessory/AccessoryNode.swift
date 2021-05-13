@@ -69,5 +69,9 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
         position = linkedInventoryItem.runyunAnchorPoint
         move(toParent:runyun)
     }
+    
+    func setUpPhysics() {
+        
+    }
 
 }

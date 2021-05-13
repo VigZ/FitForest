@@ -66,7 +66,6 @@ class Runyun: SKSpriteNode, Placeable {
         self.runyunStorageObject = (keyedDecoder.decodeObject(forKey: "runyunStorageObject") as? RunyunStorageObject)!
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
         super.init(coder: aDecoder)
-        addPhysicsBody()
         addStepObserver()
     }
     
@@ -199,6 +198,7 @@ class Runyun: SKSpriteNode, Placeable {
         self.physicsBody!.categoryBitMask = CollisionCategory.DetectionCategory.rawValue
         self.physicsBody!.contactTestBitMask =  CollisionCategory.ItemCategory.rawValue
         self.physicsBody!.isDynamic = true
+        
     }
     
     func moveToToy(toy: ToyNode){

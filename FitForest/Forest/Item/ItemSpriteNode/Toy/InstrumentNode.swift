@@ -54,5 +54,9 @@ class InstrumentNode: SKSpriteNode, ToyNode {
         print("Node has been put down after a long press")
         // TODO Reenable physics collions
     }
+    
+    func setUpPhysics() {
+        
+    }
 
 }

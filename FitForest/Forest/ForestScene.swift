@@ -27,6 +27,20 @@ class ForestScene: SKScene {
                 }
             }
         }
+        for child in self.children {
+            if child is Runyun || child is ToyNode {
+                if let node = child as? Runyun {
+                    if !node.runyunStorageObject.seedling{
+                        node.addPhysicsBody()
+                        node.attachActions()
+                    }
+                }
+                else if let node = child as? ToyNode {
+                    node.setUpPhysics()
+                }
+                
+            }
+        }
 //        let texture = SKTexture(imageNamed: "runyunwalk_1")
 //        let color = UIColor.clear
 //        let size = CGSize(width: 100, height: 140)
