@@ -126,9 +126,12 @@ class Runyun: SKSpriteNode, Placeable {
         let randomMoveAction = SKAction.run { [unowned self] in
             let xPosition = Double.random(in: -200...200)
             let yPosition = Double.random(in: -200...200)
+            
+            let xDelta = Double(self.position.x) + xPosition
+            let yDelta = Double(self.position.y) + yPosition
 //            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
 //            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
-            let randomPoint = CGPoint(x: xPosition, y: yPosition)
+            let randomPoint = CGPoint(x: xDelta, y: yDelta)
             
             let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
             
@@ -148,7 +151,7 @@ class Runyun: SKSpriteNode, Placeable {
             
         }
         
-        let sequence = SKAction.sequence([waitAction, randomMoveAction])
+        let sequence = SKAction.sequence([randomMoveAction, waitAction])
         let endlessSequence = SKAction.repeatForever(sequence)
         self.run(endlessSequence)
         
