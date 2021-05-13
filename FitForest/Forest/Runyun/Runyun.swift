@@ -210,7 +210,7 @@ class Runyun: SKSpriteNode, Placeable {
         
         let moveDuration = 0.03 * distance
         print("Moving towards toy.")
-        if pointX > 0 {
+        if pointX > self.position.x {
             self.run(SKAction.scaleX(to: -1.0, duration: 0.2))
         } else {
             self.run(SKAction.scaleX(to: 1.0, duration: 0.2))
