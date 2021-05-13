@@ -49,7 +49,7 @@ class Runyun: SKSpriteNode, Placeable {
         // Set physics properties
         addPhysicsBody()
         
-        self.zPosition = 1
+        self.zPosition = CGFloat(Depth.runyun.rawValue)
         if let newLeaf = self.leaf {
             self.addChild(newLeaf)
         }

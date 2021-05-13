@@ -24,7 +24,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         self.name = name
         // Set physics properties
         setUpPhysics()
-        self.zPosition = 1
+        self.zPosition = CGFloat(Depth.item.rawValue)
     }
 
     required init?(coder aDecoder: NSCoder) {

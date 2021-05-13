@@ -238,7 +238,7 @@ class ForestScene: SKScene {
         let background = SKSpriteNode(imageNamed: "placeholderbackground2")
         background.position = CGPoint(x: frame.midX, y: frame.midY)
         background.size = self.size
-        background.zPosition = -200
+        background.zPosition = CGFloat(Depth.background.rawValue)
         addChild(background)
         
 //        let forestSprite = Runyun()
