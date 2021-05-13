@@ -159,6 +159,7 @@ class ForestScene: SKScene {
                             }
                         }
                         self.grabbedNode = entity
+                        print("Grabbed node is now\(self.grabbedNode)")
                         break
                     }
                 }
@@ -208,8 +209,9 @@ class ForestScene: SKScene {
                     runyun.attachActions()
                 }
         }
-        
+        checkForContacts(spriteNode: grabbed)
         self.grabbedNode = nil
+        print("Grabbed node is now \(self.grabbedNode)")
         
     }
     
@@ -291,14 +293,38 @@ class ForestScene: SKScene {
         GameData.sharedInstance.saveToDisk()
     }
     
+    func checkForContacts(spriteNode: SKSpriteNode){
+        guard let physicsBody = spriteNode.physicsBody else {return}
+        for body in physicsBody.allContactedBodies(){
+            if spriteNode is Runyun {
+                let spriteNode =  spriteNode as! Runyun
+                if body.node is ToyNode {
+                    spriteNode.interact(toy: body.node as! ToyNode)
+                    break
+                }
+            }
+            if spriteNode is ToyNode {
+                if body.node is Runyun {
+                    let runyun = body.node as! Runyun
+                    runyun.interact(toy: spriteNode as! ToyNode)
+                    break
+                }
+            }
+            
+        }
+    }
 }
 
 
 extension ForestScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        print("This is being called")
         
-        if contact.bodyA.node?.name == "Detection" || contact.bodyB.node?.name == "Detection" {
+        if contact.bodyA.node == self.grabbedNode || contact.bodyB.node == self.grabbedNode {
+           return
+        }
+        if contact.bodyA.node is Runyun || contact.bodyB.node is Runyun {
+            // Have Runyun enact approach and interact action.
+            print("Contact Made!")
            }
     }
 }

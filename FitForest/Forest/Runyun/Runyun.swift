@@ -185,6 +185,11 @@ class Runyun: SKSpriteNode, Placeable {
         self.physicsBody!.isDynamic = true
     }
     
+    func interact(toy: ToyNode){
+        print("Interacting!")
+    }
+
+    
     private func addStepObserver() {
         if self.runyunStorageObject.seedling {
             let ns = NotificationCenter.default
