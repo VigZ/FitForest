@@ -93,8 +93,7 @@ class Runyun: SKSpriteNode, Placeable {
         }
         self.runyunStorageObject.seedling = false
         self.runyunStorageObject.observedStepsRemaining = 0
-        self.texture = SKTexture(imageNamed: "runyun_walk_1")
-        self.attachActions()
+        setState(runyunState: .walking)
         addPhysicsBody()
         print("A new Runyun has hatched!")
     }
@@ -106,46 +105,57 @@ class Runyun: SKSpriteNode, Placeable {
         }
     }
     
+    func startBehavior() {
+        guard runyunStorageObject.seedling != true else {return}
+        attachAnimation()
+        attachActions()
+        
+    }
     func attachActions(){
         
         guard runyunStorageObject.seedling != true else {return}
         
 
         attachAnimation()
-        let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
         
-        let randomMoveAction = SKAction.run { [unowned self] in
-            let xPosition = Double.random(in: -200...200)
-            let yPosition = Double.random(in: -200...200)
+        switch state {
+        case .walking:
+            let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
             
-            let xDelta = Double(self.position.x) + xPosition
-            let yDelta = Double(self.position.y) + yPosition
-//            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
-//            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
-            let randomPoint = CGPoint(x: xDelta, y: yDelta)
-            
-            let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
-            
-            let moveDuration = 0.03 * distance
-            
-            if xPosition > 0 {
-                self.run(SKAction.scaleX(to: -1.0, duration: 0.2))
-            } else {
-                self.run(SKAction.scaleX(to: 1.0, duration: 0.2))
+            let randomMoveAction = SKAction.run { [unowned self] in
+                let xPosition = Double.random(in: -200...200)
+                let yPosition = Double.random(in: -200...200)
+                
+                let xDelta = Double(self.position.x) + xPosition
+                let yDelta = Double(self.position.y) + yPosition
+    //            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
+    //            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
+                let randomPoint = CGPoint(x: xDelta, y: yDelta)
+                
+                let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
+                
+                let moveDuration = 0.03 * distance
+                
+                if xPosition > 0 {
+                    self.run(SKAction.scaleX(to: -1.0, duration: 0.2))
+                } else {
+                    self.run(SKAction.scaleX(to: 1.0, duration: 0.2))
+                }
+                
+                self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
+                    print("End of move")
+                }
+                //TODO Might be "jumping" because of the speed at which the action completes isn't consistent with the actual movement. After testing this seems to be the case. Fix this in the future.
             }
             
-            self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
-                print("End of move")
-            }
-            //TODO Might be "jumping" because of the speed at which the action completes isn't consistent with the actual movement. After testing this seems to be the case. Fix this in the future.
-            
-            
+            let sequence = SKAction.sequence([randomMoveAction, waitAction])
+            let endlessSequence = SKAction.repeatForever(sequence)
+            self.run(endlessSequence)
+        case .interacting:
+            self.run(SKAction.wait(forDuration: 3))
+        default:
+            self.run(SKAction.wait(forDuration: 3))
         }
-        
-        let sequence = SKAction.sequence([randomMoveAction, waitAction])
-        let endlessSequence = SKAction.repeatForever(sequence)
-        self.run(endlessSequence)
-        
     }
     
     func attachAnimation(){
@@ -160,13 +170,7 @@ class Runyun: SKSpriteNode, Placeable {
                       withKey:"runyun_animation")
             
         default:
-            let walkCycle = setupFrames()
-            self.run(SKAction.repeatForever(
-                      SKAction.animate(with: walkCycle,
-                                       timePerFrame: 0.1,
-                                       resize: false,
-                                       restore: true)),
-                      withKey:"runyun_animation")
+            self.texture = SKTexture(imageNamed: "runyun_walk_1")
         }
     }
     
@@ -182,14 +186,11 @@ class Runyun: SKSpriteNode, Placeable {
         }
         
         return walkFrames
-
-
-//        let averageDelay:TimeInterval = 2.0
-//        let delayRange:TimeInterval = 1.0
-//
-//        let delayMove = SKAction.wait(forDuration:averageDelay, withRange:delayRange)
-        
-        
+    }
+    
+    func setState(runyunState: RunyunState){
+        state = runyunState
+        startBehavior()
     }
     
     func addPhysicsBody() {

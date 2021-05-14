@@ -22,19 +22,13 @@ class ForestScene: SKScene {
             initialSetup()
         }
         self.physicsWorld.contactDelegate = self
-        for child in self.children {
-            if let runyun = child as? Runyun {
-                if !runyun.runyunStorageObject.seedling{
-                    runyun.attachActions()
-                }
-            }
-        }
+
         for child in self.children {
             if child is Runyun || child is ToyNode {
                 if let node = child as? Runyun {
                     if !node.runyunStorageObject.seedling{
                         node.addPhysicsBody()
-                        node.attachActions()
+                        node.setState(runyunState: .walking)
                     }
                 }
                 else if let node = child as? ToyNode {
@@ -191,7 +185,7 @@ class ForestScene: SKScene {
         }
         if let node = node as? Runyun {
             node.removeAllActions()
-            node.attachAnimation()
+            node.setState(runyunState: .idle)
         }
         if let node = node as? ToyNode {
             resetPhysics(node: node)
@@ -238,7 +232,7 @@ class ForestScene: SKScene {
         if let runyun = grabbed as? Runyun {
             runyun.removeAllActions()
 //            dropNode(node: runyun, completion: runyun.attachActions)
-            runyun.attachActions()
+            runyun.setState(runyunState: .walking)
         }
 //        else if let toy = grabbed as? ToyNode {
 //            dropNode(node: toy, completion: nil)
