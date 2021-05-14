@@ -80,6 +80,9 @@ class ItemCard: UICollectionViewCell {
                     
                 }
             }
+            if let grabbed = scene.grabbedNode {
+                scene.checkForContacts(spriteNode: grabbed)
+            }
             scene.grabbedNode = nil
         }
     }

@@ -63,6 +63,7 @@ class RunyunCard: UICollectionViewCell {
         else if gesture.state == .ended {
             guard let runyun = scene.grabbedNode as? Runyun else {return}
             runyun.attachActions()
+            scene.checkForContacts(spriteNode: runyun)
             scene.grabbedNode = nil
         }
     }

@@ -180,6 +180,7 @@ class ForestScene: SKScene {
                             }
                         }
                         self.grabbedNode = entity
+                        //TODO TRY ADDING PICKED UP ACTION HERE.
                         break
                     }
                 }
@@ -234,10 +235,11 @@ class ForestScene: SKScene {
                     }
                 }
         }
-//        if let runyun = grabbed as? Runyun {
-//            runyun.removeAllActions()
+        if let runyun = grabbed as? Runyun {
+            runyun.removeAllActions()
 //            dropNode(node: runyun, completion: runyun.attachActions)
-//        }
+            runyun.attachActions()
+        }
 //        else if let toy = grabbed as? ToyNode {
 //            dropNode(node: toy, completion: nil)
 //        }
