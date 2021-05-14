@@ -12,7 +12,7 @@ class RunyunNodeFactory {
     static var sharedInstance = RunyunNodeFactory()
     
     func createRunyunNode(runyun : RunyunStorageObject)-> Runyun?{
-        let leafNode = generateLeafNode()
+        let leafNode = generateLeafNode(leafType: runyun.leafType)
         let newRunyun = Runyun(runyunStorageObject: runyun, leaf: leafNode)
         newRunyun.removeAllActions()
         newRunyun.attachAnimation()
@@ -23,7 +23,7 @@ class RunyunNodeFactory {
         // add switch for observed steps int based on seed type
         // create Loot Table for leaftype and assign
         guard let leafType = generateLeafType(seedModifier: seedModifier) else {return nil}
-        let leafNode = generateLeafNode()
+        let leafNode = generateLeafNode(leafType: leafType)
         let newRSO = RunyunStorageObject(name: "", locationState: .inForest, accessory: nil, observedStepsRemaining: 100, seedType: seedType, leafType: leafType, seedling: true)
         GameData.sharedInstance.inventory.addRunyun(runyun: newRSO)
         let newRunyun = Runyun(runyunStorageObject: newRSO, leaf: leafNode)
@@ -56,8 +56,9 @@ class RunyunNodeFactory {
         
     }
     
-    func generateLeafNode() -> SKSpriteNode {
-        let leafNode = SKSpriteNode(imageNamed: "standard_leaf")
+    func generateLeafNode(leafType: LeafType) -> SKSpriteNode {
+        let imageName = "\(leafType.rawValue)_leaf"
+        let leafNode = SKSpriteNode(imageNamed: imageName)
         return leafNode
     }
         
