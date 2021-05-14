@@ -55,7 +55,7 @@ class Runyun: SKSpriteNode, Placeable {
         addStepObserver()
         if !runyunStorageObject.seedling {
             addPhysicsBody()
-            attachActions()
+            setState(runyunState: .walking)
         }
         
     }
@@ -107,17 +107,13 @@ class Runyun: SKSpriteNode, Placeable {
     
     func startBehavior() {
         guard runyunStorageObject.seedling != true else {return}
+        removeAllActions()
         attachAnimation()
         attachActions()
         
     }
     func attachActions(){
-        
         guard runyunStorageObject.seedling != true else {return}
-        
-
-        attachAnimation()
-        
         switch state {
         case .walking:
             let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
@@ -143,7 +139,6 @@ class Runyun: SKSpriteNode, Placeable {
                 }
                 
                 self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
-                    print("End of move")
                 }
                 //TODO Might be "jumping" because of the speed at which the action completes isn't consistent with the actual movement. After testing this seems to be the case. Fix this in the future.
             }
@@ -152,7 +147,9 @@ class Runyun: SKSpriteNode, Placeable {
             let endlessSequence = SKAction.repeatForever(sequence)
             self.run(endlessSequence)
         case .interacting:
-            self.run(SKAction.wait(forDuration: 3))
+            self.run(SKAction.wait(forDuration: 3)){
+                self.setState(runyunState: .walking)
+            }
         default:
             self.run(SKAction.wait(forDuration: 3))
         }
@@ -169,6 +166,8 @@ class Runyun: SKSpriteNode, Placeable {
                                        restore: true)),
                       withKey:"runyun_animation")
             
+        case .idle:
+            self.texture = SKTexture(imageNamed: "runyun_walk_1")
         default:
             self.texture = SKTexture(imageNamed: "runyun_walk_1")
         }
@@ -207,6 +206,7 @@ class Runyun: SKSpriteNode, Placeable {
     func moveToToy(toy: ToyNode){
         //Approach toy
         self.removeAllActions()
+        self.state = .walking
         attachAnimation()
         let pointX = toy.position.x
         let distance = sqrt(pow((toy.position.x - self.position.x), 2.0) + pow((toy.position.y - self.position.y), 2.0))
@@ -226,8 +226,8 @@ class Runyun: SKSpriteNode, Placeable {
     
     func interact(toy: ToyNode){
         print("Interacting!")
+        setState(runyunState: .interacting)
         toy.unitInteract()
-        self.attachActions()
     }
 
     
