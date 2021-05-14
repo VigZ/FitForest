@@ -23,6 +23,7 @@ class Runyun: SKSpriteNode, Placeable {
         print(self.size)
         print(runyunStorageObject.leafType)
         print(runyunStorageObject.name)
+        print(self.state.rawValue)
         
     }
     
@@ -116,8 +117,6 @@ class Runyun: SKSpriteNode, Placeable {
         guard runyunStorageObject.seedling != true else {return}
         switch state {
         case .walking:
-            let waitAction = SKAction.wait(forDuration: 5.0, withRange: 3.5)
-            
             let randomMoveAction = SKAction.run { [unowned self] in
                 let xPosition = Double.random(in: -200...200)
                 let yPosition = Double.random(in: -200...200)
@@ -139,14 +138,15 @@ class Runyun: SKSpriteNode, Placeable {
                 }
                 
                 self.run(SKAction.move(to: randomPoint, duration: TimeInterval(moveDuration))){
+                    self.setState(runyunState: .idle)
                 }
-                //TODO Might be "jumping" because of the speed at which the action completes isn't consistent with the actual movement. After testing this seems to be the case. Fix this in the future.
             }
-            
-            let sequence = SKAction.sequence([randomMoveAction, waitAction])
-            let endlessSequence = SKAction.repeatForever(sequence)
-            self.run(endlessSequence)
+            self.run(randomMoveAction)
         case .interacting:
+            self.run(SKAction.wait(forDuration: 3)){
+                self.setState(runyunState: .walking)
+            }
+        case .idle:
             self.run(SKAction.wait(forDuration: 3)){
                 self.setState(runyunState: .walking)
             }
@@ -167,7 +167,7 @@ class Runyun: SKSpriteNode, Placeable {
                       withKey:"runyun_animation")
             
         case .idle:
-            self.texture = SKTexture(imageNamed: "runyun_walk_1")
+            self.texture = SKTexture(imageNamed: "runyun_walk_1") //TODO Add setup for other animation atlas'
         case .interacting:
             self.texture = SKTexture(imageNamed: "runyun_walk_1")
         default:
