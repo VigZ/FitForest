@@ -23,20 +23,7 @@ class ForestScene: SKScene {
         }
         self.physicsWorld.contactDelegate = self
 
-        for child in self.children {
-            if child is Runyun || child is ToyNode {
-                if let node = child as? Runyun {
-                    if !node.runyunStorageObject.seedling{
-                        node.addPhysicsBody()
-                        node.setState(runyunState: .walking)
-                    }
-                }
-                else if let node = child as? ToyNode {
-                    node.setUpPhysics()
-                }
-                
-            }
-        }
+        sceneSetup()
 //        let texture = SKTexture(imageNamed: "runyunwalk_1")
 //        let color = UIColor.clear
 //        let size = CGSize(width: 100, height: 140)
@@ -323,7 +310,22 @@ class ForestScene: SKScene {
         self.isInitialSetup = false
         GameData.sharedInstance.saveToDisk()
     }
-    
+    func sceneSetup(){
+        for child in self.children {
+            if child is Runyun || child is ToyNode {
+                if let node = child as? Runyun {
+                    if !node.runyunStorageObject.seedling{
+                        node.addPhysicsBody()
+                        node.setState(runyunState: .walking)
+                    }
+                }
+                else if let node = child as? ToyNode {
+                    node.setUpPhysics()
+                }
+                
+            }
+        }
+    }
     func checkForContacts(spriteNode: SKSpriteNode){
         guard let physicsBody = spriteNode.physicsBody else {return}
         for body in physicsBody.allContactedBodies(){
