@@ -168,6 +168,8 @@ class Runyun: SKSpriteNode, Placeable {
             
         case .idle:
             self.texture = SKTexture(imageNamed: "runyun_walk_1")
+        case .interacting:
+            self.texture = SKTexture(imageNamed: "runyun_walk_1")
         default:
             self.texture = SKTexture(imageNamed: "runyun_walk_1")
         }
