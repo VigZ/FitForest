@@ -47,15 +47,16 @@ class Runyun: SKSpriteNode, Placeable {
         super.init(texture: texture, color: color, size: size)
 
         // Set physics properties
-        addPhysicsBody()
         
         self.zPosition = CGFloat(Depth.runyun.rawValue)
         if let newLeaf = self.leaf {
             self.addChild(newLeaf)
         }
         addStepObserver()
-        attachActions()
-
+        if !runyunStorageObject.seedling {
+            addPhysicsBody()
+            attachActions()
+        }
         
     }
 
@@ -94,6 +95,7 @@ class Runyun: SKSpriteNode, Placeable {
         self.runyunStorageObject.observedStepsRemaining = 0
         self.texture = SKTexture(imageNamed: "runyun_walk_1")
         self.attachActions()
+        addPhysicsBody()
         print("A new Runyun has hatched!")
     }
     
