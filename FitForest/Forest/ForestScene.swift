@@ -234,13 +234,13 @@ class ForestScene: SKScene {
                     }
                 }
         }
-        if let runyun = grabbed as? Runyun {
-            runyun.removeAllActions()
-            dropNode(node: runyun, completion: runyun.attachActions)
-        }
-        else if let toy = grabbed as? ToyNode {
-            dropNode(node: toy, completion: nil)
-        }
+//        if let runyun = grabbed as? Runyun {
+//            runyun.removeAllActions()
+//            dropNode(node: runyun, completion: runyun.attachActions)
+//        }
+//        else if let toy = grabbed as? ToyNode {
+//            dropNode(node: toy, completion: nil)
+//        }
         checkForContacts(spriteNode: grabbed)
         self.grabbedNode = nil
     }
@@ -360,6 +360,11 @@ class ForestScene: SKScene {
             node.run(moveAction)
         }
 
+    }
+    
+    func pickupNode(node:SKSpriteNode){
+        let moveAction = SKAction.move(by: CGVector(dx: 0, dy: -60), duration: 0.2)
+        node.run(moveAction)
     }
 }
 
