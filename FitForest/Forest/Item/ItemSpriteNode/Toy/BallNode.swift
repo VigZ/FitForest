@@ -83,7 +83,8 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
                 let randY = Int.random(in: -100...100)
                 physicsBody?.applyImpulse(CGVector(dx: randX, dy: randY))
                 physicsBody!.applyAngularImpulse(2.0)
-                physicsBody!.friction = 0.4
+                physicsBody!.angularDamping = 0.4
+                physicsBody!.friction = 1.0
         }
     }
     

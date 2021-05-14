@@ -3,13 +3,13 @@
         "name": "Beach Ball",
         "stackLimit": 3,
         "itemDescription": "Your average beach ball.",
-        "weight": 1.0
+        "weight": 0.5
     },
     {
         "name": "Soccer Ball",
         "stackLimit": 3,
         "itemDescription": "Kick it fast!",
-        "weight": 2.0
+        "weight": 1.0
     },
     {
         "name": "Stone Ball",
