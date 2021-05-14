@@ -72,22 +72,14 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     func bounce() {
-        // needs to apply impulse base on weight of ball, and in choose random direction.
-        if !isBeingMoved{
-            isBeingMoved = true
-            let randX = Int.random(in: -100...100)
-            let randY = Int.random(in: -100...100)
-            physicsBody?.applyImpulse(CGVector(dx: randX, dy: randY))
-            let fullRotation: Float =  .pi * 2
-            Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { timer in
-                self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                timer.invalidate()
-                self.isBeingMoved = false
-            }
-            let rotate =  SKAction.rotate(byAngle: CGFloat(fullRotation), duration: 4)
-            self.run(rotate)
+        if self.physicsBody?.velocity == CGVector(dx: 0, dy: 0) {
+            // needs to apply impulse base on weight of ball, and in choose random direction.
+                let randX = Int.random(in: -100...100)
+                let randY = Int.random(in: -100...100)
+                physicsBody?.applyImpulse(CGVector(dx: randX, dy: randY))
+                physicsBody!.applyAngularImpulse(2.0)
+                physicsBody!.friction = 0.4
         }
-
     }
     
     func unitInteract() {

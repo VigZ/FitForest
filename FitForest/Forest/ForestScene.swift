@@ -191,7 +191,7 @@ class ForestScene: SKScene {
             node.attachAnimation()
         }
         if let node = node as? ToyNode {
-            node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            resetPhysics(node: node)
         }
         node.position = touch.location(in: self)
     }
@@ -245,7 +245,12 @@ class ForestScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
-    
+    func resetPhysics(node: SKSpriteNode){
+        guard let body = node.physicsBody else {return}
+        body.velocity = CGVector(dx: 0, dy: 0)
+        body.angularVelocity = 0
+        
+    }
     func destroyNode(node:SKSpriteNode) {
         if let node = node as? HasLinkedItem {
             node.toggleLinkedItem()
