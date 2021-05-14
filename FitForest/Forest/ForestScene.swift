@@ -11,6 +11,8 @@ import GameplayKit
 
 class ForestScene: SKScene {
     
+    typealias CompletionHandler = () -> Void
+    
     var viewController: ForestController!
     var grabbedNode: SKSpriteNode?
     var isInitialSetup: Bool = false
@@ -197,6 +199,8 @@ class ForestScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //Check to see if there is a current grabbed node, if not look at nodes at the touch ended location, then do something.
         guard let grabbed = self.grabbedNode else {
             guard let touch = touches.first else {return}
             for entity in nodes(at: touch.location(in: self)) {
@@ -208,6 +212,7 @@ class ForestScene: SKScene {
             }
             return
         }
+        //Check all children. If the child intersects the grabbed node and is appropriate type, destroy the grabbed node.
             for child in self.children {
                 if child is ItemChest {
                     if child.intersects(grabbed) && grabbed is ToyNode {
@@ -219,7 +224,7 @@ class ForestScene: SKScene {
                         destroyNode(node: grabbed)
                     }
                 }
-
+                // If child is Runyun, and intersects the grabbed node, and the grabbed node is an Accessory, attach accessory.
                 if child is Runyun {
                     guard let runyun = child as? Runyun else {return}
                     if child.intersects(grabbed) && grabbed is AccessoryNode {
@@ -227,14 +232,17 @@ class ForestScene: SKScene {
                         
                         grabbed.attachToRunyun(runyun: runyun)
                     }
-                    runyun.removeAllActions()
-                    runyun.attachActions()
                 }
+        }
+        if let runyun = grabbed as? Runyun {
+            runyun.removeAllActions()
+            dropNode(node: runyun, completion: runyun.attachActions)
+        }
+        else if let toy = grabbed as? ToyNode {
+            dropNode(node: toy, completion: nil)
         }
         checkForContacts(spriteNode: grabbed)
         self.grabbedNode = nil
-        print("Grabbed node is now \(self.grabbedNode)")
-        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -339,6 +347,19 @@ class ForestScene: SKScene {
             }
             
         }
+    }
+
+    func dropNode(node:SKSpriteNode, completion: CompletionHandler?){
+        let moveAction = SKAction.move(by: CGVector(dx: 0, dy: -60), duration: 0.2)
+        if let completion = completion {
+            node.run(moveAction){
+                completion()
+            }
+        }
+        else {
+            node.run(moveAction)
+        }
+
     }
 }
 
