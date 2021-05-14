@@ -24,57 +24,7 @@ class ForestScene: SKScene {
         self.physicsWorld.contactDelegate = self
 
         sceneSetup()
-//        let texture = SKTexture(imageNamed: "runyunwalk_1")
-//        let color = UIColor.clear
-//        let size = CGSize(width: 100, height: 140)
-//        let sprite = Runyun()
-//        sprite.texture = texture
-//        sprite.color = color
-//        sprite.size = size
-//        sprite.zPosition = 1
-//        let atlas = SKTextureAtlas(named: "RunyunWalkCycle")
-//        let m1 = atlas.textureNamed("runyunwalk_1.png")
-//        let m2 = atlas.textureNamed("runyunwalk_2.png")
-//        let m3 = atlas.textureNamed("runyunwalk_3.png")
-//        let m4 = atlas.textureNamed("runyunwalk_4.png")
-//
-//        let textures = [m1, m2, m3, m4]
-//        let animation = SKAction.animate(with: textures, timePerFrame: 0.10)
-//
-//        let moveRight = SKAction.moveBy(x: 50, y:0, duration:1.0)
-//        let moveLeft = SKAction.moveBy(x: -50, y:0, duration:1.0)
-//        let moveUp = SKAction.moveBy(x: 0, y: 50, duration:1.0)
-//        let moveDown = SKAction.moveBy(x: 0, y: -50, duration:1.0)
-//        let pause = SKAction.wait(forDuration: 1.0)
-//        let aboutFace = SKAction.run {
-//            if sprite.xScale == 1 {
-//                sprite.xScale = -1
-//            }
-//            else {
-//                sprite.xScale = 1
-//            }
-//
-//        }
-//
-//        let pauseAnimation = SKAction.run {
-//            sprite.texture = SKTexture(imageNamed: "runyunwalk_1")
-//        }
-//        let moveLeftSequence = SKAction.sequence([pauseAnimation, pause, moveLeft, aboutFace])
-//        let moveRightSequence = SKAction.sequence([pauseAnimation, pause, moveRight, aboutFace])
-//        let walk = SKAction.sequence([moveLeftSequence, moveRightSequence])
-//        sprite.color = UIColor.systemGreen
-//        sprite.colorBlendFactor = 1
-//
-//        let endlessAction = SKAction.repeatForever(walk)
-//        addChild(sprite)
-//        sprite.run(SKAction.repeatForever(endlessAction))
-//        sprite.run(SKAction.repeatForever(animation))
-//
-//        let testRunyun = TestRunyun()
-//        testRunyun.body.size = CGSize(width: 60, height: 75)
-//        testRunyun.leaves.size = CGSize(width: 60, height: 75)
-//        testRunyun.position = CGPoint(x: frame.midX, y: frame.midY)
-//        self.addChild(testRunyun)
+
         
 //        let inventory = GameData.sharedInstance.inventory
 //        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: .rare, seedType: .blue)
@@ -84,27 +34,7 @@ class ForestScene: SKScene {
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 //        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-//        let atlas = SKTextureAtlas(named: "runyunWalk")
-//        let f1 = atlas.textureNamed("runyun_walk_1")
-//        let f2 = atlas.textureNamed("runyun_walk_2")
-//        let f3 = atlas.textureNamed("runyun_walk_3")
-//        let f4 = atlas.textureNamed("runyun_walk_4")
-//        let f5 = atlas.textureNamed("runyun_walk_5")
-//        let walkCycle = [f1, f2, f3, f4, f5]
-//
-//        let texture = SKTexture(imageNamed: "runyun_walk_1")
-//        let color = UIColor.clear
-//        let size = CGSize(width: 100, height: 140)
-//        let sprite = Runyun(runyunStorageObject: GameData.sharedInstance.inventory.runyunStorage[0], leaf: nil)
-//        sprite.texture = texture
-//        sprite.color = color
-//        sprite.size = size
-//        sprite.zPosition = 1
-//
-//        let animation = SKAction.animate(with: walkCycle, timePerFrame: 0.10)
-//        self.addChild(sprite)
-//        sprite.run(SKAction.repeatForever(animation))
-        
+
 //        let inventory = GameData.sharedInstance.inventory
 //        let sunglasses = Accessory(stackLimit: 3, name: "Sunglasses", itemDescription: "Sunglasses", itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: CGPoint(x: 0, y: 0), runyunAnchorPoint: CGPoint(x: 0, y: 0))
 //        inventory?.addItem(item:sunglasses)
@@ -258,30 +188,6 @@ class ForestScene: SKScene {
         background.size = self.size
         background.zPosition = CGFloat(Depth.background.rawValue)
         addChild(background)
-        
-//        let forestSprite = Runyun()
-//        let forestSprite2 = Runyun()
-//
-//        forestSprite.position = CGPoint(x: frame.midX, y: frame.midY)
-//        forestSprite.size = CGSize(width: 275, height: 200)
-//        forestSprite2.position = CGPoint(x: frame.midX + 200, y: frame.midY - 200)
-//        forestSprite2.size = CGSize(width: 275, height: 200)
-//        forestSprite2.xScale = -1
-//
-//        self.addChild(forestSprite)
-//        self.addChild(forestSprite2)
-//
-//        let moveRight = SKAction.moveBy(x: 50, y:0, duration:1.0)
-//        let moveLeft = SKAction.moveBy(x: -50, y:0, duration:1.0)
-//        let moveUp = SKAction.moveBy(x: 0, y: 50, duration:1.0)
-//        let moveDown = SKAction.moveBy(x: 0, y: -50, duration:1.0)
-//        let pause = SKAction.wait(forDuration: 1.0)
-//        let bounceTo = SKAction.scale(to: 1.2, duration: 0.1)
-//        let bounceFrom = SKAction.scale(to: 1, duration: 0.1)
-//        let sequence = SKAction.sequence([bounceTo, bounceFrom, moveRight, pause, bounceTo, bounceFrom, moveUp, pause, bounceTo, bounceFrom, moveLeft, pause, bounceTo, bounceFrom, moveDown, pause])
-//
-//        let endlessAction = SKAction.repeatForever(sequence)
-//        forestSprite.run(endlessAction)
         
         let test = Ball(stackLimit: 3, name: "Beach Ball", itemDescription: "Test", itemState: .inForest, itemType: .toy, weight: 2.0)
         GameData.sharedInstance.inventory.items.append(test)
