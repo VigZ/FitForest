@@ -123,8 +123,6 @@ class Runyun: SKSpriteNode, Placeable {
                 
                 let xDelta = Double(self.position.x) + xPosition
                 let yDelta = Double(self.position.y) + yPosition
-    //            let xPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxX)! + 1)))
-    //            let yPosition = CGFloat(arc4random_uniform(UInt32((self.scene?.frame.maxY)! + 1)))
                 let randomPoint = CGPoint(x: xDelta, y: yDelta)
                 
                 let distance = sqrt(pow((randomPoint.x - self.position.x), 2.0) + pow((randomPoint.y - self.position.y), 2.0))
@@ -156,6 +154,7 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
     func attachAnimation(){
+        self.texture = SKTexture(imageNamed: "runyun_default") //This workaround stops the flickering. Will need to be the first frame of the idle/interact.
         switch state {
         case .walking:
             let walkCycle = setupFrames(atlasName: "runyunWalk")
@@ -182,6 +181,7 @@ class Runyun: SKSpriteNode, Placeable {
                                        resize: false,
                                        restore: true)),
                       withKey:"runyun_animation")
+            //May need to revisit this if the full animations cause the tiny flicker. Might be unavoidable though.
         default:
             self.texture = SKTexture(imageNamed: "runyunWalk_1")
         }
