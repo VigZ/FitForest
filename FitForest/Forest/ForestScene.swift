@@ -30,10 +30,10 @@ class ForestScene: SKScene {
 //        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: .rare, seedType: .blue)
 //        inventory?.addItem(item:seed)
         
-//        let inventory = GameData.sharedInstance.inventory
-//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        let inventory = GameData.sharedInstance.inventory
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
 
 //        let inventory = GameData.sharedInstance.inventory
 //        let sunglasses = Accessory(stackLimit: 3, name: "Sunglasses", itemDescription: "Sunglasses", itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: CGPoint(x: 0, y: 0), runyunAnchorPoint: CGPoint(x: 0, y: 0))

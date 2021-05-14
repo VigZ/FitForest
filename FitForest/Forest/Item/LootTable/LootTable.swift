@@ -43,15 +43,16 @@ struct LootTable {
         return sum
     }
     
-    private func assignRanges() -> [String: ClosedRange<Int>] {
-        var rangeDict = [String:ClosedRange<Int>]()
+    private func assignRanges() -> [String: Range<Int>] {
+        var rangeDict = [String: Range<Int>]()
         var lastInt = 1
         
         for item in items {
             let name = item["name"] as! String
             let weight = item["itemWeight"] as! Int
-            rangeDict[name] = lastInt...(lastInt + weight)
-            lastInt = weight + 1
+            let highValue = lastInt + weight
+            rangeDict[name] = lastInt..<highValue
+            lastInt = highValue
         }
         return rangeDict
     }
@@ -59,13 +60,14 @@ struct LootTable {
     private func pickRandomValue() -> String? {
         let limit = sumWeights()
         let rangeDict = assignRanges()
+        print(rangeDict)
         let randomNumber = Int.random(in: 1...limit)
         for (key, value) in rangeDict {
             if value.contains(randomNumber) {
                 return key
             }
         }
-        return nil
+        return nil //TODO Add error handling here.
     }
     
     func pickRandomItem() -> Item? {
