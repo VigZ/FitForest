@@ -82,7 +82,6 @@
 		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
 		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
 		27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */; };
-		27B6D64F2648DD1800351376 /* runyunWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 27B6D64E2648DD1800351376 /* runyunWalk.atlas */; };
 		27B6D682264AF79700351376 /* RunyunDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D681264AF79700351376 /* RunyunDetailView.swift */; };
 		27B6D687264AFEC100351376 /* UIVIew+animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D686264AFEC100351376 /* UIVIew+animate.swift */; };
 		27B6D68F264B205800351376 /* UITextField+addToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B6D68E264B205800351376 /* UITextField+addToolbar.swift */; };
@@ -207,7 +206,6 @@
 		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
 		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
 		27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDecodeable.swift; sourceTree = "<group>"; };
-		27B6D64E2648DD1800351376 /* runyunWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = runyunWalk.atlas; path = FitForest/runyunWalk.atlas; sourceTree = "<group>"; };
 		27B6D681264AF79700351376 /* RunyunDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunyunDetailView.swift; sourceTree = "<group>"; };
 		27B6D686264AFEC100351376 /* UIVIew+animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+animate.swift"; sourceTree = "<group>"; };
 		27B6D68E264B205800351376 /* UITextField+addToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+addToolbar.swift"; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 		277A881325BCD0C700C1F374 = {
 			isa = PBXGroup;
 			children = (
-				27B6D64E2648DD1800351376 /* runyunWalk.atlas */,
 				277A881E25BCD0C700C1F374 /* FitForest */,
 				277A883525BCD0C700C1F374 /* FitForestTests */,
 				277A884025BCD0C700C1F374 /* FitForestUITests */,
@@ -298,7 +295,6 @@
 		277A881E25BCD0C700C1F374 /* FitForest */ = {
 			isa = PBXGroup;
 			children = (
-				27B6D6342648DC9E00351376 /* runyunWalk.atlas */,
 				27ED5AA326135BD9002946F9 /* Forest */,
 				27D5D60526091E1B00B3D62A /* Utils */,
 				27D5D5F126090D9B00B3D62A /* Main */,
@@ -548,13 +544,6 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		27B6D6342648DC9E00351376 /* runyunWalk.atlas */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = runyunWalk.atlas;
-			sourceTree = "<group>";
-		};
 		27D5D5F126090D9B00B3D62A /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,7 +733,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27B6D64F2648DD1800351376 /* runyunWalk.atlas in Resources */,
 				2783382026268C0300F872A4 /* ItemDictionary.json in Resources */,
 				274762A5262FE0A400190AF4 /* Bronze.json in Resources */,
 				274762AA262FE0B300190AF4 /* Silver.json in Resources */,

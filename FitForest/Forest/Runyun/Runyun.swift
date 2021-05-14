@@ -158,7 +158,7 @@ class Runyun: SKSpriteNode, Placeable {
     func attachAnimation(){
         switch state {
         case .walking:
-            let walkCycle = setupFrames()
+            let walkCycle = setupFrames(atlasName: "runyunWalk")
             self.run(SKAction.repeatForever(
                       SKAction.animate(with: walkCycle,
                                        timePerFrame: 0.1,
@@ -167,26 +167,38 @@ class Runyun: SKSpriteNode, Placeable {
                       withKey:"runyun_animation")
             
         case .idle:
-            self.texture = SKTexture(imageNamed: "runyun_walk_1") //TODO Add setup for other animation atlas'
+            let idleCycle = setupFrames(atlasName: "runyunIdle")
+            self.run(SKAction.repeatForever(
+                      SKAction.animate(with: idleCycle,
+                                       timePerFrame: 0.1,
+                                       resize: false,
+                                       restore: true)),
+                      withKey:"runyun_animation")
         case .interacting:
-            self.texture = SKTexture(imageNamed: "runyun_walk_1")
+            let interactCycle = setupFrames(atlasName: "runyunInteract")
+            self.run(SKAction.repeatForever(
+                      SKAction.animate(with: interactCycle,
+                                       timePerFrame: 0.1,
+                                       resize: false,
+                                       restore: true)),
+                      withKey:"runyun_animation")
         default:
-            self.texture = SKTexture(imageNamed: "runyun_walk_1")
+            self.texture = SKTexture(imageNamed: "runyunWalk_1")
         }
     }
     
-    private func setupFrames() -> [SKTexture]{
+    private func setupFrames(atlasName: String) -> [SKTexture]{
         
-        let runyunWalk = SKTextureAtlas(named: "runyunWalk")
-        var walkFrames: [SKTexture] = []
+        let animationAtlas = SKTextureAtlas(named: atlasName)
+        var frames: [SKTexture] = []
 
-        let numImages = runyunWalk.textureNames.count
+        let numImages = animationAtlas.textureNames.count
         for i in 1...numImages {
-          let frameName = "runyun_walk_\(i)"
-          walkFrames.append(runyunWalk.textureNamed(frameName))
+          let frameName = "\(atlasName)_\(i)"
+          frames.append(animationAtlas.textureNamed(frameName))
         }
         
-        return walkFrames
+        return frames
     }
     
     func setState(runyunState: RunyunState){
@@ -231,7 +243,6 @@ class Runyun: SKSpriteNode, Placeable {
         setState(runyunState: .interacting)
         toy.unitInteract()
     }
-
     
     private func addStepObserver() {
         if self.runyunStorageObject.seedling {
