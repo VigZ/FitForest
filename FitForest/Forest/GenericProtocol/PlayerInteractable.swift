@@ -10,5 +10,5 @@ import SpriteKit
 
 protocol PlayerInteractable: SKSpriteNode {
     // responds to player input
-    
+    func playerInteract()
 }

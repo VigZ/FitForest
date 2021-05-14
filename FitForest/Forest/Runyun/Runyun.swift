@@ -223,6 +223,7 @@ class Runyun: SKSpriteNode, Placeable {
     
     func interact(toy: ToyNode){
         print("Interacting!")
+        toy.unitInteract()
         self.attachActions()
     }
 

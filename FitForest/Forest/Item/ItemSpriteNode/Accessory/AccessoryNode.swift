@@ -73,5 +73,13 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
     func setUpPhysics() {
         
     }
+    
+    func unitInteract() {
+        
+    }
+    
+    func playerInteract() {
+        
+    }
 
 }

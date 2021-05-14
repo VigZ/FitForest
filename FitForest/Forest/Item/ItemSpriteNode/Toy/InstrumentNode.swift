@@ -58,5 +58,13 @@ class InstrumentNode: SKSpriteNode, ToyNode {
     func setUpPhysics() {
         
     }
+    
+    func playerInteract() {
+        
+    }
+    
+    func unitInteract() {
+        
+    }
 
 }

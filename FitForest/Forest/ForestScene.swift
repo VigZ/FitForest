@@ -149,6 +149,11 @@ class ForestScene: SKScene {
                     entity.pickedUp()
                 }
             }
+            if entity is PlayerInteractable {
+                if let entity = entity as? PlayerInteractable {
+                    entity.playerInteract()
+                }
+            }
         }
     }
     
@@ -184,6 +189,9 @@ class ForestScene: SKScene {
         if let node = node as? Runyun {
             node.removeAllActions()
             node.attachAnimation()
+        }
+        if let node = node as? ToyNode {
+            node.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         }
         node.position = touch.location(in: self)
     }

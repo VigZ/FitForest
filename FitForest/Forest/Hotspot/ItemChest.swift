@@ -53,6 +53,10 @@ class ItemChest: SKSpriteNode, HotSpot {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
     }
+    
+    func playerInteract() {
+        
+    }
 
 
 }

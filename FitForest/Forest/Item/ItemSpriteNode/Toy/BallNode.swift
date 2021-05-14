@@ -66,6 +66,36 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         physicsBody!.contactTestBitMask = CollisionCategory.DetectionCategory.rawValue
         physicsBody!.affectedByGravity = false
         physicsBody!.isDynamic = true
+        physicsBody!.allowsRotation = true
+        let ballItem = linkedInventoryItem as! Ball
+        physicsBody!.mass = CGFloat(ballItem.weight)
+    }
+    
+    func bounce() {
+        // needs to apply impulse base on weight of ball, and in choose random direction.
+        if !isBeingMoved{
+            isBeingMoved = true
+            let randX = Int.random(in: -100...100)
+            let randY = Int.random(in: -100...100)
+            physicsBody?.applyImpulse(CGVector(dx: randX, dy: randY))
+            let fullRotation: Float =  .pi * 2
+            Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false) { timer in
+                self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                timer.invalidate()
+                self.isBeingMoved = false
+            }
+            let rotate =  SKAction.rotate(byAngle: CGFloat(fullRotation), duration: 4)
+            self.run(rotate)
+        }
+
+    }
+    
+    func unitInteract() {
+        bounce()
+    }
+    
+    func playerInteract(){
+        bounce()
     }
 
 }

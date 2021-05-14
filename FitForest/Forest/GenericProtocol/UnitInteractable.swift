@@ -10,4 +10,5 @@ import SpriteKit
 
 protocol UnitInteractable: SKSpriteNode {
     //responds to runyun interaction and has collision
+    func unitInteract()
 }
