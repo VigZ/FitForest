@@ -51,6 +51,10 @@ class Runyun: SKSpriteNode, Placeable {
         
         self.zPosition = CGFloat(Depth.runyun.rawValue)
         if let newLeaf = self.leaf {
+            newLeaf.size = CGSize(width: 100, height: 90)
+            newLeaf.anchorPoint = CGPoint(x: 0.5, y: 0)
+            newLeaf.position = CGPoint(x:self.position.x + 30 , y: self.position.y + 20)
+            newLeaf.zPosition = CGFloat(Depth.leaf.rawValue)
             self.addChild(newLeaf)
         }
         addStepObserver()

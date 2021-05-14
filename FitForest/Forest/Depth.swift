@@ -10,5 +10,6 @@ import Foundation
 enum Depth: Int {
     case background = -200
     case runyun =  5
-    case item =  4
+    case leaf = -1
+    case item =  -5
 }
