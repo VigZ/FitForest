@@ -13,12 +13,12 @@ class ItemNodeFactory {
     static var sharedInstance = ItemNodeFactory()
     
     func createItemNode(item : Item)-> SKSpriteNode?{
+        
         let underScoredName = item.name.replacingOccurrences(of: " ", with: "_")
             switch item {
                 case is Ball:
-                    let newNode = BallNode(name:underScoredName)
-                    newNode.linkedInventoryItem = item as? Ball
-                    print(newNode.linkedInventoryItem)
+                    //TODO Clean this up, setup physics uses weight value from item, but is called before the item was set here. Resorted to convienence init, should probably normalize.
+                    let newNode = BallNode(name:underScoredName, item: item)
                     return newNode
                 case is Instrument:
                     let newNode = InstrumentNode(name:underScoredName)

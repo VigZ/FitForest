@@ -23,8 +23,13 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         super.init(texture: texture, color: color, size: size)
         self.name = name
         // Set physics properties
-        setUpPhysics()
         self.zPosition = CGFloat(Depth.item.rawValue)
+    }
+    
+    convenience init(name: String, item: Item) {
+        self.init(name: name)
+        self.linkedInventoryItem = item
+        setUpPhysics()
     }
 
     required init?(coder aDecoder: NSCoder) {
