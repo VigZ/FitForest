@@ -77,6 +77,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     func bounce() {
+        //TODO Adjust formula and weight/mass for balls accordingly to get desired effect. Could alwyas switch back to timer based end of animation.
         if self.physicsBody?.velocity == CGVector(dx: 0, dy: 0) {
             // needs to apply impulse base on weight of ball, and in choose random direction.
                 let randX = Int.random(in: -100...100)
