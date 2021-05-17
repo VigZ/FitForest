@@ -220,6 +220,7 @@ class ForestScene: SKScene {
         for child in self.children {
             if child is Runyun || child is ToyNode {
                 if let node = child as? Runyun {
+                    
                     if node.runyunStorageObject.seedling == false {
                         node.addPhysicsBody()
                         node.setState(runyunState: .walking)
