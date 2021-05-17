@@ -83,7 +83,6 @@ class Runyun: SKSpriteNode, Placeable {
                 }
         keyedCoder.encode(self.runyunStorageObject, forKey: "runyunStorageObject")
         try! keyedCoder.encodeEncodable(self.state, forKey: "state")
-        self.removeAllActions()
     }
 
     

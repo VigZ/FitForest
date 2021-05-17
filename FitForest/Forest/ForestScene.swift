@@ -233,6 +233,24 @@ class ForestScene: SKScene {
             }
         }
     }
+    
+    func removeActions(){
+        for child in self.children {
+            if child is Runyun || child is ToyNode {
+                if let node = child as? Runyun {
+                    
+                    if node.runyunStorageObject.seedling == false {
+                        node.removeAllActions()
+                    }
+                }
+                else if let node = child as? ToyNode {
+                    node.removeAllActions()
+                }
+                
+            }
+        }
+    }
+    
     func checkForContacts(spriteNode: SKSpriteNode){
         guard let physicsBody = spriteNode.physicsBody else {return}
         for body in physicsBody.allContactedBodies(){
