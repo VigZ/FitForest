@@ -93,17 +93,20 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
     func hatch() {
-        if let observer = tokenObserver {
-            let ns = NotificationCenter.default
-            ns.removeObserver(observer)
-            tokenObserver = nil
-        }
         self.runyunStorageObject.seedling = false
         leaf.isHidden = false
         self.runyunStorageObject.observedStepsRemaining = 0
         setState(runyunState: .walking)
         addPhysicsBody()
         print("A new Runyun has hatched!")
+    }
+    
+    func readyToHatch() {
+        if let observer = tokenObserver {
+            let ns = NotificationCenter.default
+            ns.removeObserver(observer)
+            tokenObserver = nil
+        }
     }
     
     func showDetail() {
@@ -268,7 +271,7 @@ class Runyun: SKSpriteNode, Placeable {
                     print("\(self.runyunStorageObject.observedStepsRemaining) steps remaing")
                     
                     if self.runyunStorageObject.observedStepsRemaining <= 0 {
-                        self.hatch()
+                        self.readyToHatch()
                     }
                     
                     

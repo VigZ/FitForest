@@ -118,7 +118,12 @@ class ForestScene: SKScene {
             for entity in nodes(at: touch.location(in: self)) {
                 if entity is Runyun {
                     if let entity = entity as? Runyun {
-                        entity.showDetail()
+                        if entity.runyunStorageObject.seedling && entity.runyunStorageObject.observedStepsRemaining <= 0 {
+                            entity.hatch()
+                        }
+                        else {
+                            entity.showDetail()
+                        }
                     }
                 }
             }
