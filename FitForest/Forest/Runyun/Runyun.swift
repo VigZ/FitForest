@@ -14,7 +14,7 @@ class Runyun: SKSpriteNode, Placeable {
     var state: RunyunState! //TODO: Remove ability to drag and drop seedling state runyuns
     var accessory: AccessoryNode?
     var tokenObserver:NSObjectProtocol?
-    var leaf: SKSpriteNode!
+    var leaf: SKSpriteNode
     // TODO: Either turn runyun into SKNode with body and leaf sprite, or make sure that leaf as a child will still move the runyun when tapped and held.
     func pickedUp() {
         print("\(runyunStorageObject.seedling)")
@@ -32,7 +32,7 @@ class Runyun: SKSpriteNode, Placeable {
     }
     
 
-    init(runyunStorageObject: RunyunStorageObject, leaf: SKSpriteNode?) {
+    init(runyunStorageObject: RunyunStorageObject, leaf: SKSpriteNode) {
         // Make a texture from an image, a color, and size
         let imageName = runyunStorageObject.seedling ? "seedling" : "runyunWalk_1"
         
@@ -41,27 +41,26 @@ class Runyun: SKSpriteNode, Placeable {
         let size = CGSize(width: 100, height: 140)
         self.state = .idle
         self.runyunStorageObject = runyunStorageObject
-        if let leaf = leaf {
-            self.leaf = leaf
+        self.leaf = leaf
             
-        }
         // Call the designated initializer
         super.init(texture: texture, color: color, size: size)
 
         // Set physics properties
         
         self.zPosition = CGFloat(Depth.runyun.rawValue)
-        if let newLeaf = self.leaf {
-            newLeaf.size = CGSize(width: 100, height: 90)
-            newLeaf.anchorPoint = CGPoint(x: 0.5, y: 0)
-            newLeaf.position = CGPoint(x:self.position.x + 30 , y: self.position.y + 20)
-            newLeaf.zPosition = CGFloat(Depth.leaf.rawValue)
-            self.addChild(newLeaf)
-        }
+        leaf.size = CGSize(width: 100, height: 90)
+        leaf.anchorPoint = CGPoint(x: 0.5, y: 0)
+        leaf.position = CGPoint(x:self.position.x + 30 , y: self.position.y + 20)
+        leaf.zPosition = CGFloat(Depth.leaf.rawValue)
+        self.addChild(leaf)
         addStepObserver()
         if !runyunStorageObject.seedling {
             addPhysicsBody()
             setState(runyunState: .walking)
+        }
+        else {
+            leaf.isHidden = true
         }
         
     }
@@ -72,8 +71,10 @@ class Runyun: SKSpriteNode, Placeable {
         }
         self.runyunStorageObject = (keyedDecoder.decodeObject(forKey: "runyunStorageObject") as? RunyunStorageObject)!
         self.state =  keyedDecoder.decodeDecodable(RunyunState.self, forKey: "state")
+        self.leaf = keyedDecoder.decodeObject(forKey: "leaf") as? SKSpriteNode ?? SKSpriteNode(imageNamed: "standard_leaf")
         super.init(coder: aDecoder)
         addStepObserver()
+        
     }
     
     override func encode(with aCoder: NSCoder) {
@@ -82,6 +83,7 @@ class Runyun: SKSpriteNode, Placeable {
                     fatalError("Must use Keyed Coding")
                 }
         keyedCoder.encode(self.runyunStorageObject, forKey: "runyunStorageObject")
+        keyedCoder.encode(self.leaf, forKey: "leaf")
         try! keyedCoder.encodeEncodable(self.state, forKey: "state")
     }
 
@@ -97,6 +99,7 @@ class Runyun: SKSpriteNode, Placeable {
             tokenObserver = nil
         }
         self.runyunStorageObject.seedling = false
+        leaf.isHidden = false
         self.runyunStorageObject.observedStepsRemaining = 0
         setState(runyunState: .walking)
         addPhysicsBody()
@@ -240,6 +243,10 @@ class Runyun: SKSpriteNode, Placeable {
             self.interact(toy: toy)
         }
         //Interact with toy
+    }
+    
+    func createLeafNode(leafType: LeafType){
+        
     }
     
     func interact(toy: ToyNode){
