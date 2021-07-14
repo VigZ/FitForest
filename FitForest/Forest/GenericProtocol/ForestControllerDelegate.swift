@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ForestControllerDelegate: class {
+protocol ForestControllerDelegate: AnyObject {
     func showInventory()
 }
