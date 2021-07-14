@@ -77,6 +77,10 @@ class HidingSpotNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     func hide(runyun: Runyun) {
+        
+        guard hiddenRunyun == nil else {
+            return
+        }
         // Hide runyun
         hiddenRunyun = runyun
         runyun.isHidden = true
