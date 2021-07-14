@@ -8,8 +8,8 @@
 import Foundation
 import SpriteKit
 
-class InstrumentNode: SKSpriteNode, ToyNode {
-    
+class InstrumentNode: SKSpriteNode, ToyNode, HasLinkedItem  {
+
     var linkedInventoryItem: Item!
     var isBeingMoved: Bool = false
     
@@ -65,6 +65,11 @@ class InstrumentNode: SKSpriteNode, ToyNode {
     
     func unitInteract() {
         
+    }
+    
+    func toggleLinkedItem() {
+        guard let linkedInventoryItem = linkedInventoryItem else {return}
+        linkedInventoryItem.itemState.toggle()
     }
 
 }
