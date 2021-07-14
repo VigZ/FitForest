@@ -41,6 +41,7 @@ class HidingSpotNode: SKSpriteNode, ToyNode, HasLinkedItem {
     }
     
     override func encode(with aCoder: NSCoder) {
+        cleanUp()
         super.encode(with: aCoder)
         aCoder.encode(self.linkedInventoryItem, forKey: "linkedInventoryItem")
         aCoder.encode(self.isBeingMoved, forKey: "isBeingMoved")
@@ -102,6 +103,12 @@ class HidingSpotNode: SKSpriteNode, ToyNode, HasLinkedItem {
     
     func playerInteract(){
         unhide()
+    }
+    
+    func cleanUp() {
+        if hiddenRunyun != nil {
+            unhide()
+        }
     }
 
 }

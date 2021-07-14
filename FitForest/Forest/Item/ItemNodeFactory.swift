@@ -24,6 +24,10 @@ class ItemNodeFactory {
                     let newNode = InstrumentNode(name:underScoredName)
                     newNode.linkedInventoryItem = item as? Instrument
                     return newNode
+                case is HidingSpot:
+                    let newNode = HidingSpotNode(name:underScoredName)
+                    newNode.linkedInventoryItem = item as? HidingSpot
+                    return newNode
                 case is Seed:
                     let seed = item as! Seed
                     let newNode = SeedNode(name:underScoredName, modifier: seed.modifier, seedType: seed.seedType )
