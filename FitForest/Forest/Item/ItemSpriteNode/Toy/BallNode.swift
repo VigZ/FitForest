@@ -89,7 +89,7 @@ class BallNode: SKSpriteNode, ToyNode, HasLinkedItem {
         }
     }
     
-    func unitInteract() {
+    func unitInteract(unit: SKSpriteNode) {
         bounce()
     }
     

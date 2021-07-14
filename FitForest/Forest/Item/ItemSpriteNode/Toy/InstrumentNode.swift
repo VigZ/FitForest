@@ -63,7 +63,7 @@ class InstrumentNode: SKSpriteNode, ToyNode, HasLinkedItem  {
         
     }
     
-    func unitInteract() {
+    func unitInteract(unit: SKSpriteNode) {
         
     }
     

@@ -74,7 +74,7 @@ class AccessoryNode: SKSpriteNode, ToyNode, HasLinkedItem {
         
     }
     
-    func unitInteract() {
+    func unitInteract(unit: SKSpriteNode) {
         
     }
     
