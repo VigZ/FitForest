@@ -255,7 +255,7 @@ class Runyun: SKSpriteNode, Placeable {
     func interact(toy: ToyNode){
         print("Interacting!")
         setState(runyunState: .interacting)
-        toy.unitInteract()
+        toy.unitInteract(unit: self as SKSpriteNode)
     }
     
     private func addStepObserver() {

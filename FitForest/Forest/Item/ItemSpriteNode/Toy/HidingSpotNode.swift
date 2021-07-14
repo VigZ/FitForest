@@ -72,18 +72,26 @@ class HidingSpotNode: SKSpriteNode, ToyNode, HasLinkedItem {
         physicsBody!.collisionBitMask = 0
         physicsBody!.contactTestBitMask = CollisionCategory.DetectionCategory.rawValue
         physicsBody!.affectedByGravity = false
-        physicsBody!.isDynamic = true
-        physicsBody!.allowsRotation = true
-        let ballItem = linkedInventoryItem as! Ball
-        physicsBody!.mass = CGFloat(ballItem.weight)
     }
     
     func hide(runyun: Runyun) {
         // Hide runyun
+        hiddenRunyun = runyun
+        runyun.isHidden = true
+        
+        // Set runyun location to center of object.
+        
+        runyun.removeAllActions()
+        runyun.position = self.position
+        
+        
     }
     
     func unhide() {
         // Unhide Runyun
+        hiddenRunyun?.isHidden = false
+        hiddenRunyun?.setState(runyunState: .walking)
+        hiddenRunyun = nil
     }
     
     
