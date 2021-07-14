@@ -26,6 +26,7 @@ class HidingSpotNode: SKSpriteNode, ToyNode, HasLinkedItem {
         self.name = name
         // Set physics properties
         self.zPosition = CGFloat(Depth.item.rawValue)
+        setUpPhysics()
     }
     
     convenience init(name: String, item: Item) {
