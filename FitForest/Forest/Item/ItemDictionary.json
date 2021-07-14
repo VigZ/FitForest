@@ -17,6 +17,11 @@
         "itemDescription": "I wouldn't kick this thing...",
         "weight": 5.0
     }],
+    "HidingSpot":[{
+        "name": "Cardboard Box",
+        "stackLimit": 3,
+        "itemDescription": "!"
+    }],
     "Instrument":[{
         "name": "Guitar",
         "stackLimit": 3,

@@ -16,7 +16,10 @@
             "classIdentifier": "Ball",
             "itemWeight": 10
         },
-        
+        {"name": "Cardboard Box",
+            "classIdentifier": "HidingSpot",
+            "itemWeight": 10
+        },
     
     ]
    
