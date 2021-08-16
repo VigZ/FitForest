@@ -64,12 +64,16 @@ class InstrumentNode: SKSpriteNode, ToyNode, HasLinkedItem  {
     }
     
     func unitInteract(unit: SKSpriteNode) {
-        
+        playSound()
     }
     
     func toggleLinkedItem() {
         guard let linkedInventoryItem = linkedInventoryItem else {return}
         linkedInventoryItem.itemState.toggle()
+    }
+    
+    func playSound() {
+        run(SKAction.playSoundFileNamed("\(String(describing: name))",waitForCompletion:true))
     }
 
 }
