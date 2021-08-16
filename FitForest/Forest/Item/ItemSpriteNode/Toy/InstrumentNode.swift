@@ -60,7 +60,7 @@ class InstrumentNode: SKSpriteNode, ToyNode, HasLinkedItem  {
     }
     
     func playerInteract() {
-        
+        playSound()
     }
     
     func unitInteract(unit: SKSpriteNode) {
@@ -73,6 +73,9 @@ class InstrumentNode: SKSpriteNode, ToyNode, HasLinkedItem  {
     }
     
     func playSound() {
+        guard let name = name else {
+            return
+        }
         run(SKAction.playSoundFileNamed("\(String(describing: name))",waitForCompletion:true))
     }
 

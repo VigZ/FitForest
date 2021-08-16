@@ -80,6 +80,7 @@
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
+		279BF91626CAE0A0004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91526CAE0A0004735A5 /* Guitar.wav */; };
 		27A93F0325C9E73F0090A794 /* FitForestJourneyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */; };
 		27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F0725C9F0410090A794 /* BuilderPack.swift */; };
 		27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A93F2225CDDDB60090A794 /* SerializationError.swift */; };
@@ -206,6 +207,7 @@
 		278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyWorkout.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
+		279BF91526CAE0A0004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = "../../../../Music/Music/Media.localized/Music/Unknown Artist/Unknown Album/Guitar.wav"; sourceTree = "<group>"; };
 		27A93F0225C9E73F0090A794 /* FitForestJourneyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestJourneyManager.swift; sourceTree = "<group>"; };
 		27A93F0725C9F0410090A794 /* BuilderPack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderPack.swift; sourceTree = "<group>"; };
 		27A93F2225CDDDB60090A794 /* SerializationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				277A882125BCD0C700C1F374 /* SceneDelegate.swift */,
 				277A882825BCD0C700C1F374 /* Assets.xcassets */,
 				277A882A25BCD0C700C1F374 /* LaunchScreen.storyboard */,
+				279BF91526CAE0A0004735A5 /* Guitar.wav */,
 				277A882D25BCD0C700C1F374 /* Info.plist */,
 				277A887025C04DAE00C1F374 /* MainTabBarController.swift */,
 			);
@@ -745,6 +748,7 @@
 				277A882C25BCD0C700C1F374 /* LaunchScreen.storyboard in Resources */,
 				27ED5AC426162363002946F9 /* ForestScene.sks in Resources */,
 				27476393263F918D00190AF4 /* BasicLeaf.json in Resources */,
+				279BF91626CAE0A0004735A5 /* Guitar.wav in Resources */,
 				2747628C262F769400190AF4 /* DefaultLootTable.json in Resources */,
 				274762B4262FE0CF00190AF4 /* Diamond.json in Resources */,
 				277A882925BCD0C700C1F374 /* Assets.xcassets in Resources */,
