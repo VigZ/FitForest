@@ -11,6 +11,7 @@ struct StoreItem {
     
     let name: String
     let description: String
+    let classIdentifier: String
     let price:Int
     
 }

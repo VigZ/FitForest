@@ -21,14 +21,29 @@ class InAppCurrencyBuyFlow: BuyFlow {
             return
         }
         
+        guard hasInventorySpace(item) else {
+            // Raise not enough inventory Space error. Etc. Etc.
+            return
+        }
         
-        // Check to see if user has max of item in inventory.
-        
+        commitPurchase(item)
         
     }
     
     func commitPurchase(_ item: StoreItem) {
-        <#code#>
+        // Subtract currency based on Item Name.
+        
+        var points = GameData.sharedInstance.points
+        points -= item.price
+        
+        // Create Item and add to inventory.
+        
+        createItem(item)
+        
+        // Create Transaction object with: Date, previous gem count, post gem count, item name.
+        
+        
+        // Send out notification events for item added/bought.
     }
     
     private func hasEnoughCurrency(_ item: StoreItem) -> Bool{
@@ -54,4 +69,11 @@ class InAppCurrencyBuyFlow: BuyFlow {
         }
             return true
         }
+    
+    func createItem(_ item: StoreItem) {
+        let inventory = GameData.sharedInstance.inventory
+        
+        inventory?.retrieveItemData(classIdentifier: item.classIdentifier, itemName: item.name)
+    }
+    
     }
