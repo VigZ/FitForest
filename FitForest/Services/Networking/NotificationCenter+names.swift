@@ -31,4 +31,10 @@ extension NSNotification.Name {
         static let shouldHideInventory = NSNotification.Name(rawValue: "shouldHideInventory")
         static let itemAdded = NSNotification.Name(rawValue: "itemAdded")
     }
+    
+    //Store Events
+    
+    class StoreEvents {
+        static let itemPurchased = NSNotification.Name(rawValue:"itemPurchasedSuccessfully")
+    }
 }

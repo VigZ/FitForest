@@ -42,8 +42,11 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         // Create Transaction object with: Date, previous gem count, post gem count, item name.
         
+        createTransaction(item)
         
         // Send out notification events for item added/bought.
+        
+        sendNotifications(item)
     }
     
     private func hasEnoughCurrency(_ item: StoreItem) -> Bool{
@@ -74,6 +77,15 @@ class InAppCurrencyBuyFlow: BuyFlow {
         let inventory = GameData.sharedInstance.inventory
         
         inventory?.retrieveItemData(classIdentifier: item.classIdentifier, itemName: item.name)
+    }
+    
+    func createTransaction(_ item: StoreItem) {
+        // Create new Transaction record for item
+    }
+    
+    func sendNotifications(_ item: StoreItem) {
+        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemPurchased, object: item)
+        print("Item was purchased successfully")
     }
     
     }
