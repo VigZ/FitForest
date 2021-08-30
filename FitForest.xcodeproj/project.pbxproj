@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2724D17426DD5E75005CDABC /* BuyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724D17326DD5E75005CDABC /* BuyFlow.swift */; };
+		2724D17626DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724D17526DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift */; };
+		2724D17826DD5FEE005CDABC /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2724D17726DD5FEE005CDABC /* StoreItem.swift */; };
 		2747627A262B9D4F00190AF4 /* HasLinkedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476279262B9D4F00190AF4 /* HasLinkedItem.swift */; };
 		2747628C262F769400190AF4 /* DefaultLootTable.json in Resources */ = {isa = PBXBuildFile; fileRef = 2747628B262F769400190AF4 /* DefaultLootTable.json */; };
 		27476294262F7CCF00190AF4 /* LootTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27476293262F7CCF00190AF4 /* LootTable.swift */; };
@@ -129,6 +131,8 @@
 
 /* Begin PBXFileReference section */
 		2724D17326DD5E75005CDABC /* BuyFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFlow.swift; sourceTree = "<group>"; };
+		2724D17526DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppCurrencyBuyFlow.swift; sourceTree = "<group>"; };
+		2724D17726DD5FEE005CDABC /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		27476279262B9D4F00190AF4 /* HasLinkedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasLinkedItem.swift; sourceTree = "<group>"; };
 		2747628B262F769400190AF4 /* DefaultLootTable.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultLootTable.json; sourceTree = "<group>"; };
 		27476293262F7CCF00190AF4 /* LootTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootTable.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				2724D17326DD5E75005CDABC /* BuyFlow.swift */,
+				2724D17526DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift */,
+				2724D17726DD5FEE005CDABC /* StoreItem.swift */,
 			);
 			path = StoreFront;
 			sourceTree = "<group>";
@@ -851,6 +857,7 @@
 				277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
 				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
+				2724D17826DD5FEE005CDABC /* StoreItem.swift in Sources */,
 				27B6D6AC264CCC6100351376 /* CollisionCategory.swift in Sources */,
 				278337A22624A60B00F872A4 /* GameData.swift in Sources */,
 				277D69BB26432B6A00561171 /* SeedModifier.swift in Sources */,
@@ -868,6 +875,7 @@
 				27D5D5FC260914C500B3D62A /* BottomContainer.swift in Sources */,
 				278337CF26260A4F00F872A4 /* Consumable.swift in Sources */,
 				2747633D2638A0C300190AF4 /* ConsumableNode.swift in Sources */,
+				2724D17626DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift in Sources */,
 				279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */,
 				2724D17426DD5E75005CDABC /* BuyFlow.swift in Sources */,
 				274762B926307BCB00190AF4 /* FindViewController.swift in Sources */,
