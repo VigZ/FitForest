@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class InAppCurrencyBuyFlow: BuyFlow {
     
@@ -84,13 +85,13 @@ class InAppCurrencyBuyFlow: BuyFlow {
         // Create new Transaction record for item
         let context = CoreDataStack.sharedInstance.context
         let points = GameData.sharedInstance.points
-        let transaction = Transaction(context: context)
+        let transaction = StoreTransaction(context: context)
 
         // Assign values to the entity's properties
         transaction.date = Date()
         transaction.itemName = item.name
-        transaction.prePurchaseCount = points
-        transaction.postPurchaseCount = points - item.price
+        transaction.prePurchaseCount = Int32(points)
+        transaction.postPurchaseCount = Int32(points - item.price)
 
         // To save the new entity to the persistent store, call
         // save on the context
