@@ -31,6 +31,11 @@ class InAppCurrencyBuyFlow: BuyFlow {
     }
     
     func commitPurchase(_ item: StoreItem) {
+        
+        // Create Transaction object with: Date, previous gem count, post gem count, item name.
+        
+        createTransaction(item)
+        
         // Subtract currency based on Item Name.
         
         var points = GameData.sharedInstance.points
@@ -39,10 +44,6 @@ class InAppCurrencyBuyFlow: BuyFlow {
         // Create Item and add to inventory.
         
         createItem(item)
-        
-        // Create Transaction object with: Date, previous gem count, post gem count, item name.
-        
-        createTransaction(item)
         
         // Send out notification events for item added/bought.
         
@@ -81,6 +82,24 @@ class InAppCurrencyBuyFlow: BuyFlow {
     
     func createTransaction(_ item: StoreItem) {
         // Create new Transaction record for item
+        let context = CoreDataStack.sharedInstance.context
+        let points = GameData.sharedInstance.points
+        let transaction = Transaction(context: context)
+
+        // Assign values to the entity's properties
+        transaction.date = Date()
+        transaction.itemName = item.name
+        transaction.prePurchaseCount = points
+        transaction.postPurchaseCount = points - item.price
+
+        // To save the new entity to the persistent store, call
+        // save on the context
+        do {
+            try context.save()
+        }
+        catch {
+            // Handle Error
+        }
     }
     
     func sendNotifications(_ item: StoreItem) {

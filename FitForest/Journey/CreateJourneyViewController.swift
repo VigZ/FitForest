@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import CoreData
 
 class CreateJourneyViewController: UIViewController, HasCustomView {
     typealias CustomView = CreateJourneyView
