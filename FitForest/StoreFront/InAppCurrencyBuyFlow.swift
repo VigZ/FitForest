@@ -11,9 +11,11 @@ import CoreData
 class InAppCurrencyBuyFlow: BuyFlow {
     
     var points: Int
+    var inventory: [Item]
     
-    init(points: Int) {
+    init(points: Int, inventory: [Item]) {
         self.points = points
+        self.inventory = inventory
     }
     
     func startBuy(item: StoreItem) throws {
@@ -46,7 +48,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
             throw BuyFlowErrors.notEnoughCurrency(currency: points)
         }
         
-        guard hasInventorySpace(item) else {
+        guard hasInventorySpace(item, items: inventory) else {
             // Raise not enough inventory Space error. Etc. Etc.
             throw BuyFlowErrors.notEnoughInventorySpace
         }
@@ -81,8 +83,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         return true
     }
     
-    private func hasInventorySpace(_ item: StoreItem) -> Bool {
-        let items = GameData.sharedInstance.inventory.items
+    private func hasInventorySpace(_ item: StoreItem, items: [Item]) -> Bool {
         // Loop through inventory, checking count of particular item.
         var count = 0
         
