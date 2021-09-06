@@ -21,7 +21,7 @@ class BuyFlowTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        NotificationCenter.default.removeObserver(self)
     }
 
     func testHasEnoughCurrencyError() throws {
@@ -44,8 +44,24 @@ class BuyFlowTests: XCTestCase {
         
         XCTAssertThrowsError(try inAppBuyFlow?.validatePurchase(newStoreItem)) { error in
             XCTAssertEqual(error as! BuyFlowErrors, BuyFlowErrors.notEnoughInventorySpace)
-                
+        }
     }
+    
+    func testBuyCompletedNotification() {
+        
+        let newStoreItem = StoreItem(name: "Test Ball", description: "This is a test item.", classIdentifier: "Ball", price: 500)
+        
+        let points = 700
+        
+        let expected = XCTNSNotificationExpectation(name: Notification.Name.StoreEvents.itemPurchased, object: nil )
+        
+        // post notification
+        inAppBuyFlow?.sendNotifications(newStoreItem, remainingPoints: points)
+        
+        // wait for response
+        
+        wait(for: [expected], timeout: 5)
+        
         
     }
 

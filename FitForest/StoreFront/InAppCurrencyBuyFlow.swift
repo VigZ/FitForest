@@ -59,7 +59,12 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         // Create Transaction object with: Date, previous gem count, post gem count, item name.
         
-        createTransaction(item)
+        do {
+            try createTransaction(item)
+        }
+        catch {
+            throw BuyFlowErrors.couldNotCreateTransaction
+        }
         
         // Subtract currency based on Item Name.
         let newPoints = subtractPoints(points: points, storeItem: item)
@@ -71,7 +76,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         // Send out notification events for item added/bought.
         
-        sendNotifications(item, points: newPoints)
+        sendNotifications(item, remainingPoints: newPoints)
     }
     
     private func hasEnoughCurrency(_ item: StoreItem) -> Bool{
@@ -105,7 +110,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         return newPoints
     }
     
-    func createTransaction(_ item: StoreItem) {
+    func createTransaction(_ item: StoreItem) throws {
         // Create new Transaction record for item
         let context = CoreDataStack.sharedInstance.context
         let points = GameData.sharedInstance.points
@@ -124,14 +129,15 @@ class InAppCurrencyBuyFlow: BuyFlow {
         }
         catch {
             // Handle Error
-            print("Something went wrong.")
+            throw CoreDataError.didNotSave
+            
         }
         
         print("Saved Transaction:\(String(describing: transaction.date)), \(String(describing: transaction.itemName))")
     }
     
-    func sendNotifications(_ item: StoreItem, points: Int) {
-        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemPurchased, object: (item, points))
+    func sendNotifications(_ item: StoreItem, remainingPoints: Int) {
+        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemPurchased, object: (item, remainingPoints))
         print("Item was purchased successfully")
     }
     

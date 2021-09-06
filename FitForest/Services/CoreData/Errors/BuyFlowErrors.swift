@@ -15,4 +15,6 @@ enum BuyFlowErrors: Error, Equatable {
     case notEnoughInventorySpace
     
     case couldNotCommitPurchase
+    
+    case couldNotCreateTransaction
 }
