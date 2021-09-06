@@ -28,10 +28,9 @@ class InAppCurrencyBuyFlow: BuyFlow {
             try commitPurchase(item)
         }
         
-        catch {
-            
+        catch BuyFlowErrors.couldNotCommitPurchase {
+            print ("Could not commit purchase. Something went wrong.")
         }
-
         
     }
     

@@ -8,9 +8,11 @@
 import Foundation
 
 
-enum BuyFlowErrors: Error {
+enum BuyFlowErrors: Error, Equatable {
     
     case notEnoughCurrency(currency:Int)
     
     case notEnoughInventorySpace
+    
+    case couldNotCommitPurchase
 }

@@ -84,6 +84,7 @@
 		27925DB426E65AE700C5CC28 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DB326E65AE700C5CC28 /* TestCoreDataStack.swift */; };
 		27925DBA26E65F9C00C5CC28 /* BuyFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DB926E65F9C00C5CC28 /* BuyFlowTests.swift */; };
 		27925DBC26E666E600C5CC28 /* BuyFlowErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBB26E666E600C5CC28 /* BuyFlowErrors.swift */; };
+		27925DBE26E66C0200C5CC28 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBD26E66C0200C5CC28 /* CoreDataError.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
 		279BF91A26CB0573004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91926CB0573004735A5 /* Guitar.wav */; };
@@ -217,6 +218,7 @@
 		27925DB326E65AE700C5CC28 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		27925DB926E65F9C00C5CC28 /* BuyFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFlowTests.swift; sourceTree = "<group>"; };
 		27925DBB26E666E600C5CC28 /* BuyFlowErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFlowErrors.swift; sourceTree = "<group>"; };
+		27925DBD26E66C0200C5CC28 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
 		279BF91926CB0573004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = FitForest/Assets.xcassets/Guitar.dataset/Guitar.wav; sourceTree = SOURCE_ROOT; };
@@ -591,6 +593,7 @@
 			children = (
 				27A93F2225CDDDB60090A794 /* SerializationError.swift */,
 				27925DBB26E666E600C5CC28 /* BuyFlowErrors.swift */,
+				27925DBD26E66C0200C5CC28 /* CoreDataError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */,
 				277FEF162628FB0A002C5FBB /* InventoryCollectionViewController.swift in Sources */,
 				277A886325BF380700C1F374 /* NotificationCenter+names.swift in Sources */,
+				27925DBE26E66C0200C5CC28 /* CoreDataError.swift in Sources */,
 				27D5D6462609796400B3D62A /* MKMapView+centerToLocation.swift in Sources */,
 				2724D17826DD5FEE005CDABC /* StoreItem.swift in Sources */,
 				27B6D6AC264CCC6100351376 /* CollisionCategory.swift in Sources */,
