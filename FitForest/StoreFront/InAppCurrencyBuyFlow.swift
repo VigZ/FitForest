@@ -10,6 +10,12 @@ import CoreData
 
 class InAppCurrencyBuyFlow: BuyFlow {
     
+    var points: Int
+    
+    init(points: Int) {
+        self.points = points
+    }
+    
     func startBuy(item: StoreItem) throws {
         
         do {
@@ -37,7 +43,6 @@ class InAppCurrencyBuyFlow: BuyFlow {
     func validatePurchase(_ item: StoreItem) throws {
         // Check to see if user has enough gems.
         guard hasEnoughCurrency(item) else {
-            let points = GameData.sharedInstance.points
             throw BuyFlowErrors.notEnoughCurrency(currency: points)
         }
         

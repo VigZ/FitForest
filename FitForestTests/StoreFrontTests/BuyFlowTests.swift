@@ -17,7 +17,7 @@ class BuyFlowTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        inAppBuyFlow = InAppCurrencyBuyFlow()
+        inAppBuyFlow = InAppCurrencyBuyFlow(points: 500)
     }
 
     override func tearDownWithError() throws {
@@ -25,10 +25,9 @@ class BuyFlowTests: XCTestCase {
     }
 
     func testHasEnoughCurrency() throws {
-        let points = 500
         let newStoreItem = StoreItem(name: "Test Item", description: "This is a test item.", classIdentifier: "Ball", price: 600) // Using valid class identifier, should decouple this.
         XCTAssertThrowsError(try inAppBuyFlow?.validatePurchase(newStoreItem)) { error in
-            XCTAssertEqual(error as! BuyFlowErrors, BuyFlowErrors.notEnoughCurrency(currency: points))
+            XCTAssertEqual(error as! BuyFlowErrors, BuyFlowErrors.notEnoughCurrency(currency: inAppBuyFlow!.points))
         }
         
         
