@@ -62,9 +62,8 @@ class InAppCurrencyBuyFlow: BuyFlow {
         createTransaction(item)
         
         // Subtract currency based on Item Name.
-        
-        var points = GameData.sharedInstance.points
-        points -= item.price
+        let newPoints = subtractPoints(points: points, storeItem: item)
+        points = newPoints
         
         // Create Item and add to inventory.
         
@@ -72,7 +71,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         // Send out notification events for item added/bought.
         
-        sendNotifications(item)
+        sendNotifications(item, points: newPoints)
     }
     
     private func hasEnoughCurrency(_ item: StoreItem) -> Bool{
@@ -103,6 +102,11 @@ class InAppCurrencyBuyFlow: BuyFlow {
         inventory?.retrieveItemData(classIdentifier: item.classIdentifier, itemName: item.name)
     }
     
+    func subtractPoints(points:Int, storeItem: StoreItem) -> Int {
+        let newPoints = points - storeItem.price
+        return newPoints
+    }
+    
     func createTransaction(_ item: StoreItem) {
         // Create new Transaction record for item
         let context = CoreDataStack.sharedInstance.context
@@ -128,8 +132,8 @@ class InAppCurrencyBuyFlow: BuyFlow {
         print("Saved Transaction:\(String(describing: transaction.date)), \(String(describing: transaction.itemName))")
     }
     
-    func sendNotifications(_ item: StoreItem) {
-        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemPurchased, object: item)
+    func sendNotifications(_ item: StoreItem, points: Int) {
+        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemPurchased, object: (item, points))
         print("Item was purchased successfully")
     }
     
