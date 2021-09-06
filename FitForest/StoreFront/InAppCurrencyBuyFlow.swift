@@ -10,28 +10,46 @@ import CoreData
 
 class InAppCurrencyBuyFlow: BuyFlow {
     
-    func startBuy(item: StoreItem) {
-        validatePurchase(item)
-        commitPurchase(item)
+    func startBuy(item: StoreItem) throws {
+        
+        do {
+           try validatePurchase(item)
+        }
+        
+        catch BuyFlowErrors.notEnoughCurrency(let currency) {
+            print("Does not have enough currency. Has \(currency)")
+        }
+        
+        catch BuyFlowErrors.notEnoughInventorySpace {
+            print("Inventory item is at max stacks.")
+        }
+        
+        do {
+            try commitPurchase(item)
+        }
+        
+        catch {
+            
+        }
+
+        
     }
     
-    func validatePurchase(_ item: StoreItem) {
+    func validatePurchase(_ item: StoreItem) throws {
         // Check to see if user has enough gems.
         guard hasEnoughCurrency(item) else {
-            // Raise not enough currency error. Etc. Etc.
-            return
+            let points = GameData.sharedInstance.points
+            throw BuyFlowErrors.notEnoughCurrency(currency: points)
         }
         
         guard hasInventorySpace(item) else {
             // Raise not enough inventory Space error. Etc. Etc.
-            return
+            throw BuyFlowErrors.notEnoughInventorySpace
         }
-        
-        commitPurchase(item)
         
     }
     
-    func commitPurchase(_ item: StoreItem) {
+    func commitPurchase(_ item: StoreItem) throws {
         
         // Create Transaction object with: Date, previous gem count, post gem count, item name.
         

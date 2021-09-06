@@ -20,9 +20,11 @@ class BuyFlowTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testHasEnoughCurrency() throws {
+        let points = 500
+        let newStoreItem = StoreItem(name: "Test Item", description: "This is a test item.", classIdentifier: "Ball", price: 600) // Using valid class identifier, should decouple this.
+        
+        
     }
 
     func testPerformanceExample() throws {

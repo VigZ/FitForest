@@ -9,9 +9,9 @@ import Foundation
 
 protocol BuyFlow {
     
-    func startBuy(item: StoreItem)
+    func startBuy(item: StoreItem) throws
     
-    func validatePurchase(_ item: StoreItem)
+    func validatePurchase(_ item: StoreItem) throws
     
-    func commitPurchase(_ item: StoreItem)
+    func commitPurchase(_ item: StoreItem) throws
 }
