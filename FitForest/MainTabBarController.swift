@@ -48,8 +48,16 @@ class MainTabBarController: UITabBarController {
         
         tabThree.tabBarItem = tabThreeBarItem
         
+        // Create Third Tab
+        let tabFour = StoreFrontViewController()
+        let tabFourImage = UIImage(systemName: "tag")
+        let selectedTabFourImage = UIImage(systemName: "tag.fill")
+        let tabFourBarItem = UITabBarItem(title: "Shop", image: tabFourImage, selectedImage: selectedTabFourImage)
+        
+        tabFour.tabBarItem = tabFourBarItem
+        
         // Add ViewControllers
-        self.viewControllers = [tabOne, tabTwoNav, tabThree]
+        self.viewControllers = [tabOne, tabTwoNav, tabThree, tabFour]
     }
     
 
