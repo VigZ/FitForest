@@ -18,8 +18,8 @@
     <entity name="StoreTransaction" representedClassName="StoreTransaction" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="itemName" optional="YES" attributeType="String"/>
-        <attribute name="postPurchaseCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="prePurchaseCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="postPurchaseCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="prePurchaseCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Journey" positionX="-63" positionY="-18" width="128" height="134"/>

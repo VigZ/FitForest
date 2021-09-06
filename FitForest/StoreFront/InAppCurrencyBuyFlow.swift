@@ -78,6 +78,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
     func createItem(_ item: StoreItem) {
         let inventory = GameData.sharedInstance.inventory
         
+        //Should add some kind of error handling here.
         inventory?.retrieveItemData(classIdentifier: item.classIdentifier, itemName: item.name)
     }
     
@@ -90,8 +91,8 @@ class InAppCurrencyBuyFlow: BuyFlow {
         // Assign values to the entity's properties
         transaction.date = Date()
         transaction.itemName = item.name
-        transaction.prePurchaseCount = Int32(points)
-        transaction.postPurchaseCount = Int32(points - item.price)
+        transaction.prePurchaseCount = Int64(points)
+        transaction.postPurchaseCount = Int64(points - item.price)
 
         // To save the new entity to the persistent store, call
         // save on the context
@@ -100,7 +101,10 @@ class InAppCurrencyBuyFlow: BuyFlow {
         }
         catch {
             // Handle Error
+            print("Something went wrong.")
         }
+        
+        print("Saved Transaction:\(String(describing: transaction.date)), \(String(describing: transaction.itemName))")
     }
     
     func sendNotifications(_ item: StoreItem) {

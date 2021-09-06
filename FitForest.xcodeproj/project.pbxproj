@@ -81,6 +81,7 @@
 		278453BF25C89F5B00D00B80 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 278453BE25C89F5B00D00B80 /* HealthKit.framework */; };
 		278453C425C89FD700D00B80 /* FitForestHealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453C325C89FD700D00B80 /* FitForestHealthStore.swift */; };
 		278453CF25C8A8DB00D00B80 /* JourneyWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */; };
+		27925DB426E65AE700C5CC28 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DB326E65AE700C5CC28 /* TestCoreDataStack.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
 		279BF91A26CB0573004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91926CB0573004735A5 /* Guitar.wav */; };
@@ -211,6 +212,7 @@
 		278453BE25C89F5B00D00B80 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		278453C325C89FD700D00B80 /* FitForestHealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitForestHealthStore.swift; sourceTree = "<group>"; };
 		278453CE25C8A8DB00D00B80 /* JourneyWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyWorkout.swift; sourceTree = "<group>"; };
+		27925DB326E65AE700C5CC28 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
 		279BF91926CB0573004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = FitForest/Assets.xcassets/Guitar.dataset/Guitar.wav; sourceTree = SOURCE_ROOT; };
@@ -402,6 +404,7 @@
 				277A88F225C494D700C1F374 /* CoreDataStack.swift */,
 				277A88F825C495DE00C1F374 /* CoreDataCRUD.swift */,
 				27A93F3225CDF30F0090A794 /* CoreDataDecodeable.swift */,
+				27925DB326E65AE700C5CC28 /* TestCoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				278338592626D14F00F872A4 /* Instrument.swift in Sources */,
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
 				277D69C52643390000561171 /* LeafType.swift in Sources */,
+				27925DB426E65AE700C5CC28 /* TestCoreDataStack.swift in Sources */,
 				278337F926263E4700F872A4 /* UnitInteractable.swift in Sources */,
 				27A93F2325CDDDB60090A794 /* SerializationError.swift in Sources */,
 				277FEF002628E25F002C5FBB /* ItemNodeFactory.swift in Sources */,
