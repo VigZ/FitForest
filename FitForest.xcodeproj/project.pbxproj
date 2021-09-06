@@ -85,6 +85,8 @@
 		27925DBA26E65F9C00C5CC28 /* BuyFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DB926E65F9C00C5CC28 /* BuyFlowTests.swift */; };
 		27925DBC26E666E600C5CC28 /* BuyFlowErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBB26E666E600C5CC28 /* BuyFlowErrors.swift */; };
 		27925DBE26E66C0200C5CC28 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBD26E66C0200C5CC28 /* CoreDataError.swift */; };
+		27925DC026E6D89100C5CC28 /* StoreFrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */; };
+		27925DC326E6D90200C5CC28 /* StoreFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DC226E6D90200C5CC28 /* StoreFrontView.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
 		279BF91A26CB0573004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91926CB0573004735A5 /* Guitar.wav */; };
@@ -219,6 +221,8 @@
 		27925DB926E65F9C00C5CC28 /* BuyFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFlowTests.swift; sourceTree = "<group>"; };
 		27925DBB26E666E600C5CC28 /* BuyFlowErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFlowErrors.swift; sourceTree = "<group>"; };
 		27925DBD26E66C0200C5CC28 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontViewController.swift; sourceTree = "<group>"; };
+		27925DC226E6D90200C5CC28 /* StoreFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontView.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
 		279BF91926CB0573004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = FitForest/Assets.xcassets/Guitar.dataset/Guitar.wav; sourceTree = SOURCE_ROOT; };
@@ -279,9 +283,11 @@
 		2724D17226DD5DF4005CDABC /* StoreFront */ = {
 			isa = PBXGroup;
 			children = (
+				27925DC126E6D8CB00C5CC28 /* Views */,
 				2724D17326DD5E75005CDABC /* BuyFlow.swift */,
 				2724D17526DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift */,
 				2724D17726DD5FEE005CDABC /* StoreItem.swift */,
+				27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */,
 			);
 			path = StoreFront;
 			sourceTree = "<group>";
@@ -543,6 +549,14 @@
 				27925DB926E65F9C00C5CC28 /* BuyFlowTests.swift */,
 			);
 			path = StoreFrontTests;
+			sourceTree = "<group>";
+		};
+		27925DC126E6D8CB00C5CC28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27925DC226E6D90200C5CC28 /* StoreFrontView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		279BF91826CB0561004735A5 /* Sounds */ = {
@@ -851,6 +865,7 @@
 				27ED5AA526135C07002946F9 /* ForestController.swift in Sources */,
 				2747630D2632927200190AF4 /* TestRunyun.swift in Sources */,
 				277A88E125C474B000C1F374 /* FitForestLocationManager.swift in Sources */,
+				27925DC326E6D90200C5CC28 /* StoreFrontView.swift in Sources */,
 				277D69C02643360700561171 /* RunyunStorageObject.swift in Sources */,
 				277A889325C31DCD00C1F374 /* FitForest.xcdatamodeld in Sources */,
 				27D5D61A2609264D00B3D62A /* JourneyDetailView.swift in Sources */,
@@ -873,6 +888,7 @@
 				277A882025BCD0C700C1F374 /* AppDelegate.swift in Sources */,
 				277FEF232629EC86002C5FBB /* ItemCard.swift in Sources */,
 				274763422638B5F400190AF4 /* AccessoryNode.swift in Sources */,
+				27925DC026E6D89100C5CC28 /* StoreFrontViewController.swift in Sources */,
 				2783382626268F6800F872A4 /* BallNode.swift in Sources */,
 				27476335263881DA00190AF4 /* SeedNode.swift in Sources */,
 				27E86C3C25D351AB00C5AB8A /* JourneyCell.swift in Sources */,
