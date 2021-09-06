@@ -76,7 +76,6 @@ class InAppCurrencyBuyFlow: BuyFlow {
     }
     
     private func hasEnoughCurrency(_ item: StoreItem) -> Bool{
-        let points = GameData.sharedInstance.points
         guard points >= item.price else {
             return false
         }
@@ -86,13 +85,12 @@ class InAppCurrencyBuyFlow: BuyFlow {
     private func hasInventorySpace(_ item: StoreItem, items: [Item]) -> Bool {
         // Loop through inventory, checking count of particular item.
         var count = 0
-        
         for inventoryItem in items {
-            guard count < inventoryItem.stackLimit else {
-                return false
-            }
             if inventoryItem.name == item.name {
                 count += 1
+            }
+            if count >= inventoryItem.stackLimit {
+                return false
             }
         }
             return true

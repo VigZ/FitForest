@@ -39,7 +39,7 @@ class BuyFlowTests: XCTestCase {
         
         for _ in 1...3 {
             let testItem = Ball(stackLimit: 3, name: "Test Ball", itemDescription: "This is a test ball.", itemState: .inInventory, itemType: .toy, weight: 1.0)
-            inAppBuyFlow.inventory.append(testItem)
+            inAppBuyFlow?.inventory.append(testItem)
         }
         
         XCTAssertThrowsError(try inAppBuyFlow?.validatePurchase(newStoreItem)) { error in
