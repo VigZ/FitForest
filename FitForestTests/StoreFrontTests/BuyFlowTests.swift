@@ -16,8 +16,8 @@ class BuyFlowTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        inAppBuyFlow = InAppCurrencyBuyFlow(points: 500, inventory: [Item]())
+        let inventoryManager = InventoryManager(items: [Item](), runyunStorage: [RunyunStorageObject]())
+        inAppBuyFlow = InAppCurrencyBuyFlow(points: 500, inventory: inventoryManager)
     }
 
     override func tearDownWithError() throws {
@@ -39,7 +39,7 @@ class BuyFlowTests: XCTestCase {
         
         for _ in 1...3 {
             let testItem = Ball(stackLimit: 3, name: "Test Ball", itemDescription: "This is a test ball.", itemState: .inInventory, itemType: .toy, weight: 1.0)
-            inAppBuyFlow?.inventory.append(testItem)
+            inAppBuyFlow?.inventory.items.append(testItem)
         }
         
         XCTAssertThrowsError(try inAppBuyFlow?.validatePurchase(newStoreItem)) { error in
