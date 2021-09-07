@@ -26,10 +26,12 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         catch BuyFlowErrors.notEnoughCurrency(let currency) {
             print("Does not have enough currency. Has \(currency)")
+            return
         }
         
         catch BuyFlowErrors.notEnoughInventorySpace {
             print("Inventory item is at max stacks.")
+            return
         }
         
         do {
@@ -38,6 +40,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         catch BuyFlowErrors.couldNotCommitPurchase {
             print ("Could not commit purchase. Something went wrong.")
+            return
         }
         
     }
