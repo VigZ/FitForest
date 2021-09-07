@@ -43,7 +43,10 @@ class InventoryManager:NSObject, NSCoding {
                     // Parse Json file for correct item data
                     
                     guard let itemClassArray = object[classIdentifier] else {return}
-                    guard let item = itemClassArray.first(where:{ $0["name"] as! String == itemName }) else { return }
+                    guard let item = itemClassArray.first(where:{ $0["name"] as! String == itemName }) else {
+                        return
+                        // Should add error handling here to handle when an item can't be created.
+                    }
                     guard let createdItem = ItemFactory.sharedInstance.createItem(itemClass: classIdentifier, data: item) else {return}
                     //TODO ADD ERROR HANDLING FOR ALL OF THE GUARD STATEMENTS
                     
