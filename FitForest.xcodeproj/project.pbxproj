@@ -95,6 +95,7 @@
 		27925DCF26E7AC8C00C5CC28 /* StoreTabPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DCE26E7AC8C00C5CC28 /* StoreTabPageController.swift */; };
 		27925DD326E7AD8E00C5CC28 /* StoreFrontCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DD226E7AD8E00C5CC28 /* StoreFrontCollectionViewController.swift */; };
 		27925DD526E7B90400C5CC28 /* StoreFrontHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DD426E7B90400C5CC28 /* StoreFrontHeaderView.swift */; };
+		27925DD726E7DED000C5CC28 /* StoreItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DD626E7DED000C5CC28 /* StoreItemCollectionViewCell.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
 		279BF91A26CB0573004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91926CB0573004735A5 /* Guitar.wav */; };
@@ -239,6 +240,7 @@
 		27925DCE26E7AC8C00C5CC28 /* StoreTabPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTabPageController.swift; sourceTree = "<group>"; };
 		27925DD226E7AD8E00C5CC28 /* StoreFrontCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontCollectionViewController.swift; sourceTree = "<group>"; };
 		27925DD426E7B90400C5CC28 /* StoreFrontHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontHeaderView.swift; sourceTree = "<group>"; };
+		27925DD626E7DED000C5CC28 /* StoreItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
 		279BF91926CB0573004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = FitForest/Assets.xcassets/Guitar.dataset/Guitar.wav; sourceTree = SOURCE_ROOT; };
@@ -579,6 +581,7 @@
 				27925DC426E7A98A00C5CC28 /* StoreFrontTabBar.swift */,
 				27925DCC26E7AB9800C5CC28 /* StoreTabCell.swift */,
 				27925DD426E7B90400C5CC28 /* StoreFrontHeaderView.swift */,
+				27925DD626E7DED000C5CC28 /* StoreItemCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				2783380326263ECA00F872A4 /* Placeable.swift in Sources */,
 				27925DC726E7A9E400C5CC28 /* TabsDelegate.swift in Sources */,
 				2747627A262B9D4F00190AF4 /* HasLinkedItem.swift in Sources */,
+				27925DD726E7DED000C5CC28 /* StoreItemCollectionViewCell.swift in Sources */,
 				27D5D658260D370A00B3D62A /* RankPointsMultipliers.swift in Sources */,
 				27925DCD26E7AB9800C5CC28 /* StoreTabCell.swift in Sources */,
 				27D5D62D2609296700B3D62A /* LabelContainer.swift in Sources */,
