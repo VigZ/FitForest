@@ -30,7 +30,7 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        
+        collectionView.backgroundColor = .clear
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
                 layout.minimumLineSpacing = 10
                 layout.minimumInteritemSpacing = 10
@@ -71,9 +71,10 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StoreItemCollectionViewCell
     
         // Configure the cell
-        cell.storeItem = storeItems[indexPath.row]
-        cell.nameLabel.text = storeItems[indexPath.row].name
-        
+        let storeItem = storeItems[indexPath.row]
+        cell.storeItem = storeItem
+        cell.nameLabel.text = storeItem.name
+        cell.priceLabel.text = String(storeItem.price)
         return cell
     }
 
