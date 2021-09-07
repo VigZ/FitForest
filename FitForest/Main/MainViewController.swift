@@ -40,6 +40,7 @@ class MainViewController: UIViewController, HasCustomView {
     private func registerForNotifications() {
         let ns = NotificationCenter.default
         let stepCountUpdated = Notification.Name.StepTrackerEvents.stepCountUpdated
+        let storeItemBought = Notification.Name.StoreEvents.itemPurchased
         
         ns.addObserver(forName: stepCountUpdated, object: nil, queue: nil){
             (notification) in
@@ -48,6 +49,14 @@ class MainViewController: UIViewController, HasCustomView {
                 self.customView.topContainer.stateLabel.text = StepTracker.sharedInstance.currentActivity
                 self.customView.topContainer.pointsLabel.text = String(GameData.sharedInstance.points)
                 self.checkItemDrop()
+            }
+        }
+        
+        ns.addObserver(forName: storeItemBought, object: nil, queue: nil) {
+            (notification) in
+            let object = notification.object as! (StoreItem, Int)
+            DispatchQueue.main.async {
+                self.customView.topContainer.pointsLabel.text = String(object.1)
             }
         }
         

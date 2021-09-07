@@ -70,6 +70,9 @@ class GameData: NSObject, NSCoding {
         coder.encode(self.points, forKey: "points")
         coder.encode(self.inventory, forKey: "inventory")
         coder.encode(self.scene, forKey: "scene")
+        
+        NotificationCenter.default.removeObserver(self)
+        print("removing observer")
     }
     
     init(points:Int, inventory:InventoryManager, scene:ForestScene ) {
@@ -88,6 +91,25 @@ class GameData: NSObject, NSCoding {
         self.init(points:points,
                   inventory:inventory,
                   scene: scene)
+        registerForNotifications()
+    }
+    
+    private func registerForNotifications() {
+        print("Registering for Notifications")
+        let ns = NotificationCenter.default
+        let itemPurchased = Notification.Name.StoreEvents.itemPurchased
+        
+        ns.addObserver(forName: itemPurchased, object: nil, queue: nil){
+            (notification) in
+            
+            //(item, remainingPoints)
+            
+            // Subtract Points
+            let object = notification.object as! (StoreItem, Int)
+            self.points = object.1
+            print("This is being reached \(object.1) points left")
+        }
+        
     }
     
 }
