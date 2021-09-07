@@ -30,6 +30,15 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
+        
+        if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
+                layout.minimumLineSpacing = 10
+                layout.minimumInteritemSpacing = 10
+                layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                let size = CGSize(width:(collectionView!.bounds.width-30)/2, height: 250)
+                layout.itemSize = size
+        }
+        
         self.collectionView!.register(StoreItemCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
