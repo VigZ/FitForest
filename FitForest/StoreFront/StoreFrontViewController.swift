@@ -164,22 +164,23 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
             return nil
         }
         
+        let items = [StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500)]
         currentIndex = index
         // TODO: Implement custom logic.
         if index == 0 {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else if index == 1 {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: [items[0]])
             vc.pageIndex = index
             return vc
         } else if index == 2 {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: [items[0]])
             vc.pageIndex = index
             return vc
         } else {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         }

@@ -11,19 +11,19 @@ class StoreItemCollectionViewCell: UICollectionViewCell {
     
     var storeItem:StoreItem!
     
-    let nameLabel: UILabel = {
+    var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let priceLabel: UILabel = {
+    var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let imageView: UIImageView = {
+    var imageView: UIImageView = {
         let image = UIImage(named: "runyun.jpeg")!
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false

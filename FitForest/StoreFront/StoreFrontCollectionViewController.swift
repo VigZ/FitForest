@@ -13,6 +13,17 @@ class StoreFrontCollectionViewController: UICollectionViewController {
     
     var pageIndex: Int!
     
+    var storeItems: [StoreItem]
+    
+    init(collectionViewLayout layout: UICollectionViewLayout, items: [StoreItem]) {
+        storeItems = items
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -44,14 +55,16 @@ class StoreFrontCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return storeItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! StoreItemCollectionViewCell
     
         // Configure the cell
-    
+        cell.storeItem = storeItems[indexPath.row]
+        cell.nameLabel.text = storeItems[indexPath.row].name
+        
         return cell
     }
 
