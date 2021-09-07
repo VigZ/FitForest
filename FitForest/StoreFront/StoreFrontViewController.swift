@@ -21,6 +21,7 @@ class StoreFrontViewController: UIViewController, HasCustomView {
         let customView = CustomView()
         customView.delegate = self
         view = customView
+        tabsView = StoreFrontTabBar()
     }
     
     override func viewDidLoad() {
@@ -33,9 +34,9 @@ class StoreFrontViewController: UIViewController, HasCustomView {
     func setupTabs() {
         // Add Tabs (Set 'icon'to nil if you don't want to have icons)
         tabsView.tabs = [
-            StoreTab(icon: UIImage(named: "music"), title: "Music"),
-            StoreTab(icon: UIImage(named: "movies"), title: "Movies"),
-            StoreTab(icon: UIImage(named: "books"), title: "Books")
+            StoreTab(icon: UIImage(named: "leaf"), title: "Seeds"),
+            StoreTab(icon: UIImage(named: "gift"), title: "Toys"),
+            StoreTab(icon: UIImage(named: "crown"), title: "Accessories")
         ]
         
         // Set TabMode to '.fixed' for stretched tabs in full width of screen or '.scrollable' for scrolling to see all tabs

@@ -17,4 +17,27 @@ class StoreFrontView: UIView {
     }
     */
     var delegate:UIViewController!
+
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+      setupView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+      super.init(coder: aDecoder)
+      setupView()
+    }
+
+    private func setupView() {
+        backgroundColor = .white
+        setupLayout()
+    }
+
+    private func setupLayout() {
+      
+    }
+
+    override class var requiresConstraintBasedLayout: Bool {
+      return true
+    }
 }
