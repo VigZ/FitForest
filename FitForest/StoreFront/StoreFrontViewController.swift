@@ -26,13 +26,15 @@ class StoreFrontViewController: UIViewController, HasCustomView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTabs()
+//        setupPageViewController()
+
         
     }
     
     func setupTabs() {
         // Add Tabs (Set 'icon'to nil if you don't want to have icons)
+        self.view.addSubview(tabsView)
         tabsView.tabs = [
             StoreTab(icon: UIImage(named: "leaf"), title: "Seeds"),
             StoreTab(icon: UIImage(named: "gift"), title: "Toys"),
@@ -58,7 +60,7 @@ class StoreFrontViewController: UIViewController, HasCustomView {
     
     func setupPageViewController() {
         // PageViewController
-        self.pageController = storyboard?.instantiateViewController(withIdentifier: "StoreTabPageController") as! StoreTabPageController
+        self.pageController = StoreTabPageController()
         self.addChild(self.pageController)
         self.view.addSubview(self.pageController.view)
         
@@ -154,19 +156,19 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
         currentIndex = index
         // TODO: Implement custom logic.
         if index == 0 {
-            let vc = StoreFrontCollectionViewController()
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             vc.pageIndex = index
             return vc
         } else if index == 1 {
-            let vc = StoreFrontCollectionViewController()
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             vc.pageIndex = index
             return vc
         } else if index == 2 {
-            let vc = StoreFrontCollectionViewController()
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             vc.pageIndex = index
             return vc
         } else {
-            let vc = StoreFrontCollectionViewController()
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             vc.pageIndex = index
             return vc
         }

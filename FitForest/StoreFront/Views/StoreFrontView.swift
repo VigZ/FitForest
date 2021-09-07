@@ -16,6 +16,13 @@ class StoreFrontView: UIView {
         // Drawing code
     }
     */
+    
+    lazy var header: StoreFrontHeaderView = {
+        let header = StoreFrontHeaderView()
+        header.translatesAutoresizingMaskIntoConstraints = false
+        return header
+    }()
+    
     var delegate:UIViewController!
 
     override init(frame: CGRect) {
@@ -29,12 +36,18 @@ class StoreFrontView: UIView {
     }
 
     private func setupView() {
+        addSubview(header)
         backgroundColor = .white
         setupLayout()
     }
 
     private func setupLayout() {
-      
+        NSLayoutConstraint.activate([
+            header.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            header.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            header.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            header.heightAnchor.constraint(equalToConstant: 270)
+        ])
     }
 
     override class var requiresConstraintBasedLayout: Bool {
