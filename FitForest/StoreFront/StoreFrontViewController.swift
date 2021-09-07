@@ -164,7 +164,7 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
             return nil
         }
         
-        let items = [StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 500)]
+        let items = [StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200)]
         currentIndex = index
         // TODO: Implement custom logic.
         if index == 0 {

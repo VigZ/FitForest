@@ -77,6 +77,24 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         cell.priceLabel.text = String(storeItem.price)
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Create a BuyFlow Instance and start the process.
+        let storeItem = storeItems[indexPath.row]
+        let points = GameData.sharedInstance.points
+        guard let inventory = GameData.sharedInstance.inventory else {
+            return
+        }
+        let buyFlow =  InAppCurrencyBuyFlow(points: points, inventory: inventory)
+        
+        do {
+            try buyFlow.startBuy(item: storeItem)
+        }
+        catch {
+            print("There was an error: \(error)")
+        }
+        
+    }
 
     // MARK: UICollectionViewDelegate
 
