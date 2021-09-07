@@ -140,20 +140,8 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
     
     // Return the current position that is saved in the UIViewControllers we have in the UIPageViewController
     func getVCPageIndex(_ viewController: UIViewController?) -> Int {
-        switch viewController {
-        case is Demo1ViewController:
-            let vc = viewController as! Demo1ViewController
-            return vc.pageIndex
-        case is Demo2ViewController:
-            let vc = viewController as! Demo2ViewController
-            return vc.pageIndex
-        case is Demo3ViewController:
-            let vc = viewController as! Demo3ViewController
-            return vc.pageIndex
-        default:
-            let vc = viewController as! Demo1ViewController
-            return vc.pageIndex
-        }
+        let vc = viewController as! StoreFrontCollectionViewController
+        return vc.pageIndex
     }
     
     // Show ViewController for the current position
