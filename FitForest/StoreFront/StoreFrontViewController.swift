@@ -152,23 +152,23 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
         
         currentIndex = index
         // TODO: Implement custom logic.
-//        if index == 0 {
-//            let contentVC = storyboard?.instantiateViewController(withIdentifier: "Demo1ViewController") as! Demo1ViewController
-//            contentVC.pageIndex = index
-//            return contentVC
-//        } else if index == 1 {
-//            let contentVC = storyboard?.instantiateViewController(withIdentifier: "Demo2ViewController") as! Demo2ViewController
-//            contentVC.pageIndex = index
-//            return contentVC
-//        } else if index == 2 {
-//            let contentVC = storyboard?.instantiateViewController(withIdentifier: "Demo3ViewController") as! Demo3ViewController
-//            contentVC.pageIndex = index
-//            return contentVC
-//        } else {
-//            let contentVC = storyboard?.instantiateViewController(withIdentifier: "Demo1ViewController") as! Demo1ViewController
-//            contentVC.pageIndex = index
-//            return contentVC
-//        }
+        if index == 0 {
+            let vc = StoreFrontCollectionViewController()
+            vc.pageIndex = index
+            return vc
+        } else if index == 1 {
+            let vc = StoreFrontCollectionViewController()
+            vc.pageIndex = index
+            return vc
+        } else if index == 2 {
+            let vc = StoreFrontCollectionViewController()
+            vc.pageIndex = index
+            return vc
+        } else {
+            let vc = StoreFrontCollectionViewController()
+            vc.pageIndex = index
+            return vc
+        }
     }
 }
 
