@@ -8,7 +8,7 @@
 import UIKit
 
 class StoreTabPageController: UIPageViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

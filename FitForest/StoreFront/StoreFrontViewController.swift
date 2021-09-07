@@ -27,7 +27,7 @@ class StoreFrontViewController: UIViewController, HasCustomView {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabs()
-//        setupPageViewController()
+        setupPageViewController()
 
         
     }
@@ -60,9 +60,7 @@ class StoreFrontViewController: UIViewController, HasCustomView {
         let sfv = view as! StoreFrontView
         
         tabsView.translatesAutoresizingMaskIntoConstraints = false
-        tabsView.backgroundColor = .red
         
-        // TODO: Delete this, though this is now showing the tabs view.
         NSLayoutConstraint.activate([
             tabsView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             tabsView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
@@ -73,7 +71,7 @@ class StoreFrontViewController: UIViewController, HasCustomView {
     
     func setupPageViewController() {
         // PageViewController
-        self.pageController = StoreTabPageController()
+        self.pageController = StoreTabPageController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.addChild(self.pageController)
         self.view.addSubview(self.pageController.view)
         
