@@ -56,6 +56,19 @@ class StoreFrontViewController: UIViewController, HasCustomView {
         
         // Set the selected Tab when the app starts
         tabsView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .centeredVertically)
+        
+        let sfv = view as! StoreFrontView
+        
+        tabsView.translatesAutoresizingMaskIntoConstraints = false
+        tabsView.backgroundColor = .red
+        
+        // TODO: Delete this, though this is now showing the tabs view.
+        NSLayoutConstraint.activate([
+            tabsView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            tabsView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            tabsView.topAnchor.constraint(equalTo: sfv.header.bottomAnchor),
+            tabsView.heightAnchor.constraint(equalToConstant: 55)
+        ])
     }
     
     func setupPageViewController() {
