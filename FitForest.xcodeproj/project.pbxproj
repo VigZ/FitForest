@@ -87,6 +87,11 @@
 		27925DBE26E66C0200C5CC28 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBD26E66C0200C5CC28 /* CoreDataError.swift */; };
 		27925DC026E6D89100C5CC28 /* StoreFrontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */; };
 		27925DC326E6D90200C5CC28 /* StoreFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DC226E6D90200C5CC28 /* StoreFrontView.swift */; };
+		27925DC526E7A98A00C5CC28 /* StoreFrontTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DC426E7A98A00C5CC28 /* StoreFrontTabBar.swift */; };
+		27925DC726E7A9E400C5CC28 /* TabsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DC626E7A9E400C5CC28 /* TabsDelegate.swift */; };
+		27925DC926E7AA0F00C5CC28 /* TabMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DC826E7AA0F00C5CC28 /* TabMode.swift */; };
+		27925DCB26E7AA5400C5CC28 /* StoreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DCA26E7AA5400C5CC28 /* StoreTab.swift */; };
+		27925DCD26E7AB9800C5CC28 /* StoreTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27925DCC26E7AB9800C5CC28 /* StoreTabCell.swift */; };
 		279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF90F269FA216004735A5 /* HidingSpotNode.swift */; };
 		279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BF911269FA23C004735A5 /* HidingSpot.swift */; };
 		279BF91A26CB0573004735A5 /* Guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 279BF91926CB0573004735A5 /* Guitar.wav */; };
@@ -223,6 +228,11 @@
 		27925DBD26E66C0200C5CC28 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 		27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontViewController.swift; sourceTree = "<group>"; };
 		27925DC226E6D90200C5CC28 /* StoreFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontView.swift; sourceTree = "<group>"; };
+		27925DC426E7A98A00C5CC28 /* StoreFrontTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFrontTabBar.swift; sourceTree = "<group>"; };
+		27925DC626E7A9E400C5CC28 /* TabsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsDelegate.swift; sourceTree = "<group>"; };
+		27925DC826E7AA0F00C5CC28 /* TabMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMode.swift; sourceTree = "<group>"; };
+		27925DCA26E7AA5400C5CC28 /* StoreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTab.swift; sourceTree = "<group>"; };
+		27925DCC26E7AB9800C5CC28 /* StoreTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTabCell.swift; sourceTree = "<group>"; };
 		279BF90F269FA216004735A5 /* HidingSpotNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpotNode.swift; sourceTree = "<group>"; };
 		279BF911269FA23C004735A5 /* HidingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HidingSpot.swift; sourceTree = "<group>"; };
 		279BF91926CB0573004735A5 /* Guitar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Guitar.wav; path = FitForest/Assets.xcassets/Guitar.dataset/Guitar.wav; sourceTree = SOURCE_ROOT; };
@@ -283,11 +293,14 @@
 		2724D17226DD5DF4005CDABC /* StoreFront */ = {
 			isa = PBXGroup;
 			children = (
+				27925DC626E7A9E400C5CC28 /* TabsDelegate.swift */,
+				27925DC826E7AA0F00C5CC28 /* TabMode.swift */,
 				27925DC126E6D8CB00C5CC28 /* Views */,
 				2724D17326DD5E75005CDABC /* BuyFlow.swift */,
 				2724D17526DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift */,
 				2724D17726DD5FEE005CDABC /* StoreItem.swift */,
 				27925DBF26E6D89100C5CC28 /* StoreFrontViewController.swift */,
+				27925DCA26E7AA5400C5CC28 /* StoreTab.swift */,
 			);
 			path = StoreFront;
 			sourceTree = "<group>";
@@ -555,6 +568,8 @@
 			isa = PBXGroup;
 			children = (
 				27925DC226E6D90200C5CC28 /* StoreFrontView.swift */,
+				27925DC426E7A98A00C5CC28 /* StoreFrontTabBar.swift */,
+				27925DCC26E7AB9800C5CC28 /* StoreTabCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,6 +856,7 @@
 				277A885725BCE06B00C1F374 /* StepTracker.swift in Sources */,
 				277A882425BCD0C700C1F374 /* MainViewController.swift in Sources */,
 				27ED5AB426161E47002946F9 /* Runyun.swift in Sources */,
+				27925DC926E7AA0F00C5CC28 /* TabMode.swift in Sources */,
 				27A93F3325CDF30F0090A794 /* CoreDataDecodeable.swift in Sources */,
 				278338592626D14F00F872A4 /* Instrument.swift in Sources */,
 				277A890625C4BE3500C1F374 /* MulticolorPolyline.swift in Sources */,
@@ -882,6 +898,7 @@
 				27925DBC26E666E600C5CC28 /* BuyFlowErrors.swift in Sources */,
 				279BF912269FA23C004735A5 /* HidingSpot.swift in Sources */,
 				27B6D6B4264DE92300351376 /* Depth.swift in Sources */,
+				27925DC526E7A98A00C5CC28 /* StoreFrontTabBar.swift in Sources */,
 				27A93F0825C9F0410090A794 /* BuilderPack.swift in Sources */,
 				278337CA26260A2F00F872A4 /* Accessory.swift in Sources */,
 				274763252637BF4F00190AF4 /* Seed.swift in Sources */,
@@ -917,6 +934,7 @@
 				2724D17626DD5F4F005CDABC /* InAppCurrencyBuyFlow.swift in Sources */,
 				279BF910269FA216004735A5 /* HidingSpotNode.swift in Sources */,
 				2724D17426DD5E75005CDABC /* BuyFlow.swift in Sources */,
+				27925DCB26E7AA5400C5CC28 /* StoreTab.swift in Sources */,
 				274762B926307BCB00190AF4 /* FindViewController.swift in Sources */,
 				27ED5AAA26135CF4002946F9 /* ForestScene.swift in Sources */,
 				27D5D6012609162600B3D62A /* MainView.swift in Sources */,
@@ -924,8 +942,10 @@
 				277FEF3F262B29CC002C5FBB /* ItemChest.swift in Sources */,
 				277A890125C4BBFC00C1F374 /* JourneyDetailViewController.swift in Sources */,
 				2783380326263ECA00F872A4 /* Placeable.swift in Sources */,
+				27925DC726E7A9E400C5CC28 /* TabsDelegate.swift in Sources */,
 				2747627A262B9D4F00190AF4 /* HasLinkedItem.swift in Sources */,
 				27D5D658260D370A00B3D62A /* RankPointsMultipliers.swift in Sources */,
+				27925DCD26E7AB9800C5CC28 /* StoreTabCell.swift in Sources */,
 				27D5D62D2609296700B3D62A /* LabelContainer.swift in Sources */,
 				278337FE26263E6900F872A4 /* PlayerInteractable.swift in Sources */,
 				277A88DC25C4690F00C1F374 /* CreateJourneyViewController.swift in Sources */,
