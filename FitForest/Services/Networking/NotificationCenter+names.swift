@@ -36,5 +36,6 @@ extension NSNotification.Name {
     
     class StoreEvents {
         static let itemPurchased = NSNotification.Name(rawValue:"itemPurchasedSuccessfully")
+        static let itemNotPurchased = NSNotification.Name(rawValue:"itemPurchasedFailed")
     }
 }
