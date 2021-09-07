@@ -91,10 +91,9 @@ class GameData: NSObject, NSCoding {
         self.init(points:points,
                   inventory:inventory,
                   scene: scene)
-        registerForNotifications()
     }
     
-    private func registerForNotifications() {
+    func registerForNotifications() {
         print("Registering for Notifications")
         let ns = NotificationCenter.default
         let itemPurchased = Notification.Name.StoreEvents.itemPurchased
