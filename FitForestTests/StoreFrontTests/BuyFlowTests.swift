@@ -47,7 +47,7 @@ class BuyFlowTests: XCTestCase {
         }
     }
     
-    func testBuyCompletedNotification() {
+    func testSuccessfulBuyCompletedNotification() {
         
         let newStoreItem = StoreItem(name: "Test Ball", description: "This is a test item.", classIdentifier: "Ball", price: 500)
         
@@ -56,7 +56,7 @@ class BuyFlowTests: XCTestCase {
         let expected = XCTNSNotificationExpectation(name: Notification.Name.StoreEvents.itemPurchased, object: nil )
         
         // post notification
-        inAppBuyFlow?.sendNotifications(newStoreItem, remainingPoints: points)
+        inAppBuyFlow?.sendSuccessNotifications(newStoreItem, remainingPoints: points)
         
         // wait for response
         
