@@ -12,7 +12,7 @@ class ItemFactory {
     
     static var sharedInstance = ItemFactory()
     
-    enum ItemClass:String {
+    enum ItemClass:String, CaseIterable {
         case Ball
         case Instrument
         case HidingSpot
