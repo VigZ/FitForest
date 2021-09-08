@@ -4,45 +4,52 @@
         "stackLimit": 3,
         "itemDescription": "Your average beach ball.",
         "weight": 0.5,
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     },
     {
         "name": "Soccer Ball",
         "stackLimit": 3,
         "itemDescription": "Kick it fast!",
         "weight": 1.0,
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     },
     {
         "name": "Stone Ball",
         "stackLimit": 3,
         "itemDescription": "I wouldn't kick this thing...",
         "weight": 5.0,
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     }],
     "HidingSpot":[{
         "name": "Cardboard Box",
         "stackLimit": 3,
         "itemDescription": "!",
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     }],
     "Instrument":[{
         "name": "Guitar",
         "stackLimit": 3,
         "itemDescription": "Let's rock out!",
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     },
     {
         "name": "Trumpet",
         "stackLimit": 3,
         "itemDescription": "Botti who?",
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     },
     {
         "name": "Drum",
         "stackLimit": 3,
         "itemDescription": "Marching to the beat...of yourself.",
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     }
     ],
     "Seed": [{
@@ -51,7 +58,8 @@
         "itemDescription": "Your basic red runyun seed.",
         "seedType": "red",
         "modifier": "basic",
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     },],
     "Accessory": [{
         "name": "Sunglasses",
@@ -59,6 +67,7 @@
         "itemDescription": "Looking cool!",
         "anchorPoint": [0,0],
         "runyunAnchorPoint": [0,0],
-        "price": 200
+        "price": 200,
+        "purchaseable": true
     }]
 }
