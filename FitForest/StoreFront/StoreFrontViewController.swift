@@ -167,7 +167,9 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
         
         currentIndex = index
         var items: [StoreItem]
-        // TODO: Implement custom logic.
+        let excluded = ["Seed", "Accessory"]
+        let toys = ItemFactory.ItemClass.allCases.map({"\($0)"}).filter{!excluded.contains($0)}
+        
         if index == 0 {
             // Grab all purchaseable seeds
             items = fetchItems(classIdentifier: ["Seed"])
@@ -176,7 +178,7 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
             return vc
         } else if index == 1 {
             // Grab all purchaseable toys.
-            items = fetchItems(classIdentifier: ["Ball"])
+            items = fetchItems(classIdentifier: toys)
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
