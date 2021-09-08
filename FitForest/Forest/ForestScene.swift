@@ -30,12 +30,12 @@ class ForestScene: SKScene {
 //        let seed = Seed(stackLimit: 10, name: "Basic Red Seed", itemDescription: "Your basic red runyun seed", itemState: ItemState.inInventory, itemType: ItemType.consumable, modifier: .rare, seedType: .blue)
 //        inventory?.addItem(item:seed)
         
-        let inventory = GameData.sharedInstance.inventory
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-        
-        inventory?.retrieveItemData(classIdentifier: "HidingSpot", itemName: "Cardboard Box")
+//        let inventory = GameData.sharedInstance.inventory
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//
+//        inventory?.retrieveItemData(classIdentifier: "HidingSpot", itemName: "Cardboard Box")
 //        let inventory = GameData.sharedInstance.inventory
 //        let sunglasses = Accessory(stackLimit: 3, name: "Sunglasses", itemDescription: "Sunglasses", itemState: ItemState.inInventory, itemType: ItemType.accessory, anchorPoint: CGPoint(x: 0, y: 0), runyunAnchorPoint: CGPoint(x: 0, y: 0))
 //        inventory?.addItem(item:sunglasses)
@@ -194,20 +194,20 @@ class ForestScene: SKScene {
         background.size = self.size
         background.zPosition = CGFloat(Depth.background.rawValue)
         addChild(background)
+//
+//        let test = Ball(stackLimit: 3, name: "Beach Ball", itemDescription: "Test", itemState: .inForest, itemType: .toy, weight: 2.0)
+//        GameData.sharedInstance.inventory.items.append(test)
+//        let ball = GameData.sharedInstance.inventory.items[0]
+//        let newBallNode = ItemNodeFactory.sharedInstance.createItemNode(item: ball)!
+//        newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
+//        newBallNode.size = CGSize(width: 100, height: 100)
+//
+//        self.addChild(newBallNode)
         
-        let test = Ball(stackLimit: 3, name: "Beach Ball", itemDescription: "Test", itemState: .inForest, itemType: .toy, weight: 2.0)
-        GameData.sharedInstance.inventory.items.append(test)
-        let ball = GameData.sharedInstance.inventory.items[0]
-        let newBallNode = ItemNodeFactory.sharedInstance.createItemNode(item: ball)!
-        newBallNode.position = CGPoint(x: frame.midX - 200, y: frame.midY + 200)
-        newBallNode.size = CGSize(width: 100, height: 100)
-
-        self.addChild(newBallNode)
-        
-        let inventory = GameData.sharedInstance.inventory
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
-        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        let inventory = GameData.sharedInstance.inventory
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
+//        inventory?.retrieveItemData(classIdentifier: "Seed", itemName: "Red Seed")
         
         let itemChest = ItemChest(name: "Item_Chest_Placeholder")
         itemChest.position = CGPoint(x: frame.minX + 200, y: frame.maxY - 200)
