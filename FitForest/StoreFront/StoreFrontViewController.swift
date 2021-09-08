@@ -170,32 +170,32 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
         // TODO: Implement custom logic.
         if index == 0 {
             // Grab all purchaseable seeds
-            items = fetchItems(classIdentifier: "Seed")
+            items = fetchItems(classIdentifier: ["Seed"])
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else if index == 1 {
             // Grab all purchaseable toys.
-            items = fetchItems(classIdentifier: "Ball")
+            items = fetchItems(classIdentifier: ["Ball"])
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else if index == 2 {
             // Grab all purchaseable accessories
-            items = fetchItems(classIdentifier: "Accessory")
+            items = fetchItems(classIdentifier: ["Accessory"])
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else {
             // Grab all purchaseable seeds.
-            items = fetchItems(classIdentifier: "Seed")
+            items = fetchItems(classIdentifier: ["Seed"])
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         }
     }
     
-    private func fetchItems(classIdentifier: String) -> [StoreItem] {
+    private func fetchItems(classIdentifier: [String]) -> [StoreItem] {
         // Read from Item Dictionary JSON file and retrieve all purchaseable items.
         do {
             if let file = Bundle.main.url(forResource: "ItemDictionary", withExtension: "json") {
@@ -205,16 +205,15 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
                 if let object = json as? ItemDictionary {
                     // json is a dictionary
                     // Parse Json file for correct item data
-                    
-                    guard let itemClassArray = object[classIdentifier] else {return []}
-                    
                     var storeItems = [StoreItem]()
-                    for item in itemClassArray {
-                        
-                        if let purchaseable = item["purchaseable"] {
-                            if purchaseable as! Bool == true {
-                                let storeItem = StoreItem(name: item["name"] as! String, description: item["itemDescription"] as! String, classIdentifier: classIdentifier, price: item["price"] as! Int)
-                                storeItems.append(storeItem)
+                    for string in classIdentifier {
+                        guard let itemClassArray = object[string] else { continue }
+                        for item in itemClassArray {
+                            if let purchaseable = item["purchaseable"] {
+                                if purchaseable as! Bool == true {
+                                    let storeItem = StoreItem(name: item["name"] as! String, description: item["itemDescription"] as! String, classIdentifier: string, price: item["price"] as! Int)
+                                    storeItems.append(storeItem)
+                                }
                             }
                         }
                     }
