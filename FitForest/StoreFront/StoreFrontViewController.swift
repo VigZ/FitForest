@@ -10,6 +10,7 @@ import UIKit
 
 class StoreFrontViewController: UIViewController, HasCustomView {
     typealias CustomView = StoreFrontView
+    typealias ItemDictionary = [String: [[String:Any]]]
     
     var tabsView: StoreFrontTabBar!
     
@@ -164,26 +165,72 @@ extension StoreFrontViewController: UIPageViewControllerDataSource, UIPageViewCo
             return nil
         }
         
-        let items = [StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200), StoreItem(name: "Test", description: "Testing", classIdentifier: "Ball", price: 200)]
         currentIndex = index
+        var items: [StoreItem]
         // TODO: Implement custom logic.
         if index == 0 {
+            // Grab all purchaseable seeds
+            items = fetchItems(classIdentifier: "Seed")
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else if index == 1 {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: [items[0]])
+            // Grab all purchaseable toys.
+            items = fetchItems(classIdentifier: "Ball")
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else if index == 2 {
-            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: [items[0]])
+            // Grab all purchaseable accessories
+            items = fetchItems(classIdentifier: "Accessory")
+            let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         } else {
+            // Grab all purchaseable seeds.
+            items = fetchItems(classIdentifier: "Seed")
             let vc = StoreFrontCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout(), items: items)
             vc.pageIndex = index
             return vc
         }
+    }
+    
+    private func fetchItems(classIdentifier: String) -> [StoreItem] {
+        // Read from Item Dictionary JSON file and retrieve all purchaseable items.
+        do {
+            if let file = Bundle.main.url(forResource: "ItemDictionary", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let object = json as? ItemDictionary {
+                    // json is a dictionary
+                    // Parse Json file for correct item data
+                    
+                    guard let itemClassArray = object[classIdentifier] else {return []}
+                    
+                    var storeItems = [StoreItem]()
+                    for item in itemClassArray {
+                        
+                        if let purchaseable = item["purchaseable"] {
+                            if purchaseable as! Bool == true {
+                                let storeItem = StoreItem(name: item["name"] as! String, description: item["itemDescription"] as! String, classIdentifier: classIdentifier, price: item["price"] as! Int)
+                                storeItems.append(storeItem)
+                            }
+                        }
+                    }
+                    return storeItems
+                    //TODO ADD ERROR HANDLING FOR ALL OF THE GUARD STATEMENTS
+                    
+                } else {
+                    print("JSON is invalid")
+                }
+            } else {
+                print("The file does not exist.")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return []
     }
 }
 
