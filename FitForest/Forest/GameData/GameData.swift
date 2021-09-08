@@ -12,7 +12,7 @@ class GameData: NSObject, NSCoding {
     
     static var sharedInstance: GameData = GameData.loadFromDisk()
     
-    var points: Int = 0
+    var points: Int = 1000
     var inventory: InventoryManager!
 
     var scene: ForestScene = SKScene(fileNamed: "ForestScene") as! ForestScene
@@ -39,7 +39,7 @@ class GameData: NSObject, NSCoding {
         let newScene = SKScene(fileNamed: "ForestScene") as! ForestScene
         newScene.isInitialSetup = true
         let newInventory = InventoryManager(items:[Item](), runyunStorage: [RunyunStorageObject]())
-        let newGameData = GameData(points: 0, inventory: newInventory, scene: newScene)
+        let newGameData = GameData(points: 1000, inventory: newInventory, scene: newScene)
         newGameData.saveToDisk()
         print("Creating new save data...")
         return newGameData
@@ -70,9 +70,6 @@ class GameData: NSObject, NSCoding {
         coder.encode(self.points, forKey: "points")
         coder.encode(self.inventory, forKey: "inventory")
         coder.encode(self.scene, forKey: "scene")
-        
-        NotificationCenter.default.removeObserver(self)
-        print("removing observer")
     }
     
     init(points:Int, inventory:InventoryManager, scene:ForestScene ) {
