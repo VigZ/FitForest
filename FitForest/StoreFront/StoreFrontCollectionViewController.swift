@@ -42,6 +42,8 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         self.collectionView!.register(StoreItemCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
+        registerForNotifcations()
     }
 
     /*
@@ -94,6 +96,19 @@ class StoreFrontCollectionViewController: UICollectionViewController {
             print("There was an error: \(error)")
         }
         
+    }
+    
+    func registerForNotifcations() {
+        let ns = NotificationCenter.default
+        let failedPurchase = Notification.Name.StoreEvents.itemNotPurchased
+        ns.addObserver(forName: failedPurchase, object: nil, queue: nil){
+            (notification) in
+            let alertController = UIAlertController(title: "Could not purchase item.",
+                                                    message: "There was an error purchasing your item.",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            self.present(alertController, animated: true)
+                      }
     }
 
     // MARK: UICollectionViewDelegate
