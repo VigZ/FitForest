@@ -26,13 +26,13 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         catch BuyFlowErrors.notEnoughCurrency(let currency) {
             print("Does not have enough currency. Has \(currency)")
-            sendFailNotification()
+            sendFailNotification(error: BuyFlowErrors.notEnoughCurrency(currency: currency))
             return
         }
         
         catch BuyFlowErrors.notEnoughInventorySpace {
             print("Inventory item is at max stacks.")
-            sendFailNotification()
+            sendFailNotification(error: BuyFlowErrors.notEnoughInventorySpace)
             return
         }
         
@@ -42,7 +42,7 @@ class InAppCurrencyBuyFlow: BuyFlow {
         
         catch BuyFlowErrors.couldNotCommitPurchase {
             print ("Could not commit purchase. Something went wrong.")
-            sendFailNotification()
+            sendFailNotification(error: BuyFlowErrors.couldNotCommitPurchase)
             return
         }
         
@@ -147,8 +147,8 @@ class InAppCurrencyBuyFlow: BuyFlow {
         print("Item was purchased successfully")
     }
     
-    func sendFailNotification() {
-        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemNotPurchased, object: nil)
+    func sendFailNotification(error: Error) {
+        NotificationCenter.default.post(name: Notification.Name.StoreEvents.itemNotPurchased, object: error)
         print("Item could not be purchased successfully")
     }
     

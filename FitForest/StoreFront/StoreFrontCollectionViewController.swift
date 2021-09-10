@@ -104,7 +104,7 @@ class StoreFrontCollectionViewController: UICollectionViewController {
         ns.addObserver(forName: failedPurchase, object: nil, queue: nil){
             (notification) in
             let alertController = UIAlertController(title: "Could not purchase item.",
-                                                    message: "There was an error purchasing your item.",
+                                                    message: "There was an error purchasing your item. Error: \(String(describing: notification.object))",
                                                     preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
             self.present(alertController, animated: true)
